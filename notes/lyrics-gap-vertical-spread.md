@@ -29,7 +29,8 @@ which is why the problem only showed on underfilled pages.
 
 ## Fix
 
-Lowered `maxStaffSpread` from 20 to **8** spaces in the style
+Lowered `maxStaffSpread` from 20 to **12** spaces (first tried 8, which
+was too tight) in the style
 (`score_style.mss` inside each `.mscz`) of all 14 scores.
 
 In the MuseScore UI: Format → Style → Page → *Max. staff distance*
@@ -44,13 +45,15 @@ changed.
 - `o_czom` exported before and after: page 1 identical; on page 2 the
   lyrics now sit close to both staves in every system.
 - With `maxStaffSpread` = 8 and = 3.5 the result for `o_czom` was the
-  same: the lyrics already set the minimum gap. 8 leaves a little slack.
+  same: the lyrics already set the minimum gap. That looked too tight, so
+  the final value is 12: a little extra air between the staves on sparse
+  pages, without the old large gap.
 - All 14 modified files open and export to PDF from the command line.
 
 ## Notes for later
 
 - If a sparse page should have a bit more room between staves, pick a value
-  between 8 and 20.
+  between 12 and 20; for less, go down towards 8.
 - New scores created from MuseScore's default style get 20 again; change
   it there (or save a custom style) to avoid the problem.
 - Exported PDFs/MP4s made before this change still show the old spacing.
@@ -64,7 +67,7 @@ unzip -p o_czom.mscz score_style.mss | grep maxStaffSpread
 # change it in place
 mkdir -p /tmp/fix && cd /tmp/fix
 unzip -o /path/to/score.mscz score_style.mss
-sed -i '' 's#<maxStaffSpread>20</maxStaffSpread>#<maxStaffSpread>8</maxStaffSpread>#' score_style.mss
+sed -i '' 's#<maxStaffSpread>20</maxStaffSpread>#<maxStaffSpread>12</maxStaffSpread>#' score_style.mss
 zip /path/to/score.mscz score_style.mss
 
 # export to check
