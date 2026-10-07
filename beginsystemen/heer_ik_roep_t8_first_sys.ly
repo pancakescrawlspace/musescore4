@@ -3,14 +3,19 @@
 \pointAndClickOff
 
 \layout {
+    indent = 0 %rene
+    ragged-last = ##f %rene
     \context { \Score
         autoBeaming = ##f
         }
     }
 PartPOneVoiceOne =  \relative a' {
+    \omit Staff.TimeSignature %rene
     \clef "treble" \key f \major | % 1
+    \time 13/4
     \stemUp a2 ^ "Toon 8" \stemUp g4 \stemUp g4 \stemUp g4 \stemUp g4
     \stemUp g4 \stemUp a2. ( \stemUp g4 ) \stemUp f2 | % 2
+    \time 7/4
     \stemUp a4 \stemUp a2 \stemUp bes4 \stemUp a4 \stemUp g2 \bar "|."
     }
 
@@ -23,6 +28,7 @@ PartPOneVoiceTwo =  \relative f' {
     }
 
 PartPTwoVoiceOne =  \relative c' {
+    \omit Staff.TimeSignature %rene
     \clef "bass" \key f \major | % 1
     \stemUp c2 \stemUp c4 \stemUp c4 \stemUp c4 \stemUp c4 \stemUp c4 c1
     \stemUp a2 | % 2
