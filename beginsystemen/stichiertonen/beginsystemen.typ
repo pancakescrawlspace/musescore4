@@ -1,6 +1,6 @@
 #let heading-line(body) = align(center, text(weight: "bold", size: 21pt, body))
 #v(-1cm)
-#heading-line[Stichiertonen]
+#heading-line[#text(font: "Helvetica")[Stichiertonen]]
 #v(-.5cm)
 #image("heer_ik_roep_t1_first_sys.cropped.svg", width: 100%)
 #image("heer_ik_roep_t2_first_sys.cropped.svg", width: 100%)
