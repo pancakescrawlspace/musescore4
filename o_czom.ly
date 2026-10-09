@@ -74,11 +74,19 @@ PartPOneVoiceOneLyricsOne =  \lyricmode {\set ignoreMelismata = ##t
     "K cze" -- mu skor -- "biet’ " __\skip1 o czom kru -- szyt -- sia o
     czom mnie sle -- zy pro -- li -- "wat’ " __\skip1 A "nuż" -- no Bo
     -- hu lisz mo -- lit -- sia Je -- ho "na " __\skip1 po -- moszcz pry
-    -- zy --\skip1 Je ho "na " __\skip1 po -- moszcz pry -- zy -- "wat’"
+    -- zy -- "wat’" Je ho "na " __\skip1 po -- moszcz pry -- zy -- "wat’"
     Bo -- "że!" Ty mo -- ja na -- "dież" -- "da," mo -- ja ra -- "dost’"
     "w żyz" -- ni "siej," u -- spo -- koj "że" mie -- "nia," Bo -- "że,"
     "w hor" -- "koj " __\skip1 u -- czas -- ti mo -- "jej:" "w hor" --
     "koj " __\skip1 u -- czas -- ti mo -- "jej " __\skip1
+    }
+
+PartPOneVoiceOneLyricsTwo =  \lyricmode {\set ignoreMelismata = ##t
+  \override Lyrics.LyricSpace.minimum-distance = #3.5
+    "K cze" -- mu skor -- "biet’ " __\skip1 o czom kru -- szyt -- sia o
+    czom mnie sle -- zy pro -- li -- "wat’ " __\skip1 A "nuż" -- no Bo
+    -- hu lisz mo -- lit -- sia Je -- ho "na " __\skip1 po -- moszcz pry
+    -- zy -- "wat’" Je ho "na " __\skip1 po -- moszcz pry -- zy -- "wat’"
     }
 
 PartPOneVoiceTwo =  \relative b {
@@ -190,6 +198,7 @@ PartPTwoVoiceOne =  \relative e {
                     \mergeDifferentlyDottedOn\mergeDifferentlyHeadedOn
                     \context Voice = "PartPOneVoiceOne" {  \voiceOne \PartPOneVoiceOne }
                     \new Lyrics \lyricsto "PartPOneVoiceOne" { \set stanza = "1." \PartPOneVoiceOneLyricsOne }
+                    \new Lyrics \lyricsto "PartPOneVoiceOne" { \set stanza = "2." \PartPOneVoiceOneLyricsTwo }
                     \context Voice = "PartPOneVoiceTwo" {  \voiceTwo \PartPOneVoiceTwo }
                     >>
                 >>
