@@ -2,6 +2,15 @@
 % automatically converted by musicxml2ly from o_czom.musicxml
 \pointAndClickOff
 
+\paper {
+  #(define fonts
+    (set-global-fonts
+     #:roman "Helvetica"
+     #:sans "Helvetica"
+     #:typewriter "Helvetica"
+    ))
+}
+
 \header {
     title =  "Untitled score"
     composer =  "Composer / arranger"
@@ -174,19 +183,18 @@ PartPTwoVoiceOne =  \relative e {
         <<
             \new Staff
             <<
-                \set Staff.instrumentName = "Women"
+                \set Staff.instrumentName = ""
                 
                 \context Staff << 
                     \mergeDifferentlyDottedOn\mergeDifferentlyHeadedOn
                     \context Voice = "PartPOneVoiceOne" {  \voiceOne \PartPOneVoiceOne }
                     \new Lyrics \lyricsto "PartPOneVoiceOne" { \set stanza = "1." \PartPOneVoiceOneLyricsOne }
                     \context Voice = "PartPOneVoiceTwo" {  \voiceTwo \PartPOneVoiceTwo }
-                    \new Lyrics \lyricsto "PartPOneVoiceTwo" { \set stanza = "1." \PartPOneVoiceTwoLyricsOne }
                     >>
                 >>
             \new Staff
             <<
-                \set Staff.instrumentName = "Men"
+                \set Staff.instrumentName = ""
                 
                 \context Staff << 
                     \mergeDifferentlyDottedOn\mergeDifferentlyHeadedOn
