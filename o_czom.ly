@@ -6,8 +6,6 @@
   #(define fonts
     (set-global-fonts
      #:roman "Helvetica"
-     #:sans "Helvetica"
-     #:typewriter "Helvetica"
     ))
 }
 
@@ -71,23 +69,44 @@ PartPOneVoiceOne =  \relative e' {
 
 PartPOneVoiceOneLyricsOne =  \lyricmode {\set ignoreMelismata = ##t
   \override Lyrics.LyricSpace.minimum-distance = #3.5
-    "K cze" -- mu skor -- "biet’ " __\skip1 o czom kru -- szyt -- sia o
-    czom mnie sle -- zy pro -- li -- "wat’ " __\skip1 A "nuż" -- no Bo
-    -- hu lisz mo -- lit -- sia Je -- ho "na " __\skip1 po -- moszcz pry
-    -- zy -- "wat’" Je ho "na " __\skip1 po -- moszcz pry -- zy -- "wat’"
-    Bo -- "że!" Ty mo -- ja na -- "dież" -- "da," mo -- ja ra -- "dost’"
-    "w żyz" -- ni "siej," u -- spo -- koj "że" mie -- "nia," Bo -- "że,"
-    "w hor" -- "koj " __\skip1 u -- czas -- ti mo -- "jej:" "w hor" --
-    "koj " __\skip1 u -- czas -- ti mo -- "jej " __\skip1
+    "K cze" -- mu skor -- "biet’ " __\skip1 o czom kru -- szyt -- sia 
+    o czom mnie sle -- zy pro -- li -- "wat’ " __\skip1 
+    A "nuż" -- no Bo -- hu lisz mo -- lit -- sia 
+    Je -- ho "na " __\skip1 po -- moszcz pry -- zy -- "wat’" 
+    Je -- ho "na " __\skip1 po -- moszcz pry -- zy -- "wat’"
+    Bo -- "że!" Ty mo -- ja na -- "dież" -- "da," 
+    mo -- ja ra -- "dost’" "w żyz" -- ni "siej," 
+    u -- spo -- koj "że" mie -- "nia," Bo -- "że,"
+    "w hor" -- "koj " __\skip1 u -- czas -- ti mo -- "jej:" 
+    "w hor" -- "koj " __\skip1 u -- czas -- ti mo -- "jej " __\skip1
     }
 
 PartPOneVoiceOneLyricsTwo =  \lyricmode {\set ignoreMelismata = ##t
   \override Lyrics.LyricSpace.minimum-distance = #3.5
-    "K cze" -- mu skor -- "biet’ " __\skip1 o czom kru -- szyt -- sia o
-    czom mnie sle -- zy pro -- li -- "wat’ " __\skip1 A "nuż" -- no Bo
-    -- hu lisz mo -- lit -- sia Je -- ho "na " __\skip1 po -- moszcz pry
-    -- zy -- "wat’" Je ho "na " __\skip1 po -- moszcz pry -- zy -- "wat’"
+    "K Nie" -- mu du -- szoj __\skip1 ja "budu woz" -- wy -- szat -- sia 
+    na nie -- bo um swoj woz -- wo -- "dit’ " __\skip1 
+    Pred Nim lisz pro -- doł -- żat' smi -- rat -- sia 
+    i "s czust" -- wom __\skip1 skorb -- nym ho -- wo -- ryt' 
+    i "s czust" -- wom __\skip1 skorb -- nym ho -- wo -- ryt' 
     }
+
+PartPOneVoiceOneLyricsThree =  \lyricmode {\set ignoreMelismata = ##t
+  \override Lyrics.LyricSpace.minimum-distance = #3.5
+    Wie -- zdie bie -- dy __\skip1 wie -- zdie na -- pas -- ti 
+    wie -- zdie i wsio mie -- nia stra -- szyt __\skip1 
+    Ku -- da że skro -- juś ot nie -- sczast' -- ja
+    i hdie naj __\skip1 ti mnie twier -- dy szczyt
+    i hdie naj __\skip1 ti mnie twier -- dy szczyt
+    }
+
+PartPOneVoiceOneLyricsFour =  \lyricmode {\set ignoreMelismata = ##t
+  \override Lyrics.LyricSpace.minimum-distance = #3.5
+    O Bo -- hie wsio __\skip1 mo -- "jo upo" -- ko -- je -- ńje
+    "s Nim" moż -- no żyt' mnie i "w bie" -- dach __\skip1
+    "K Nie" -- mu pry -- bieh -- nu "s u" -- mi -- le -- ńjem
+    wsia żyzń mo __\skip1 ja "w Je" -- ho ru -- kach
+    wsia żyzń mo __\skip1 ja "w Je" -- ho ru -- kach
+}
 
 PartPOneVoiceTwo =  \relative b {
     \clef "treble" \numericTimeSignature\time 4/4 \key g \major \partial
@@ -199,6 +218,8 @@ PartPTwoVoiceOne =  \relative e {
                     \context Voice = "PartPOneVoiceOne" {  \voiceOne \PartPOneVoiceOne }
                     \new Lyrics \lyricsto "PartPOneVoiceOne" { \set stanza = "1." \PartPOneVoiceOneLyricsOne }
                     \new Lyrics \lyricsto "PartPOneVoiceOne" { \set stanza = "2." \PartPOneVoiceOneLyricsTwo }
+                    \new Lyrics \lyricsto "PartPOneVoiceOne" { \set stanza = "3." \PartPOneVoiceOneLyricsThree }
+                    \new Lyrics \lyricsto "PartPOneVoiceOne" { \set stanza = "4." \PartPOneVoiceOneLyricsFour }
                     \context Voice = "PartPOneVoiceTwo" {  \voiceTwo \PartPOneVoiceTwo }
                     >>
                 >>
