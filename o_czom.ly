@@ -12,8 +12,8 @@
 }
 
 \header {
-    title =  "Untitled score"
-    composer =  "Composer / arranger"
+    title =  "O czom skorbiet'"
+    composer =  "Bohohłasnik"
     encodingsoftware =  "MuseScore Studio 4.7.5"
     encodingdate =  "2026-10-08"
     }
@@ -70,6 +70,7 @@ PartPOneVoiceOne =  \relative e' {
     }
 
 PartPOneVoiceOneLyricsOne =  \lyricmode {\set ignoreMelismata = ##t
+  \override Lyrics.LyricSpace.minimum-distance = #3.5
     "K cze" -- mu skor -- "biet’ " __\skip1 o czom kru -- szyt -- sia o
     czom mnie sle -- zy pro -- li -- "wat’ " __\skip1 A "nuż" -- no Bo
     -- hu lisz mo -- lit -- sia Je -- ho "na " __\skip1 po -- moszcz pry
