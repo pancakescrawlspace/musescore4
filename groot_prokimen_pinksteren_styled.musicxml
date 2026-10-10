@@ -8,7 +8,7 @@
     <creator type="composer">Composer / arranger</creator>
     <encoding>
       <software>MuseScore Studio 4.7.5</software>
-      <encoding-date>2026-10-10</encoding-date>
+      <encoding-date>2026-10-11</encoding-date>
       <supports element="accidental" type="yes"/>
       <supports element="beam" type="yes"/>
       <supports element="print" attribute="new-page" type="no"/>
@@ -1099,6 +1099,9 @@
         </note>
       </measure>
     <measure number="16">
+      <barline location="left">
+        <ending number="1, 2" type="start">1, 2</ending>
+        </barline>
       <note>
         <pitch>
           <step>D</step>
@@ -1294,9 +1297,14 @@
         </note>
       <barline location="right">
         <bar-style>light-heavy</bar-style>
+        <ending number="1, 2" type="stop"/>
+        <repeat direction="backward" times="3"/>
         </barline>
       </measure>
     <measure number="19">
+      <barline location="left">
+        <ending number="3" type="start">3</ending>
+        </barline>
       <note>
         <pitch>
           <step>D</step>
@@ -1502,6 +1510,7 @@
         </note>
       <barline location="right">
         <bar-style>light-heavy</bar-style>
+        <ending number="3" type="stop"/>
         </barline>
       </measure>
     </part>
@@ -2511,6 +2520,7 @@
         </note>
       <barline location="right">
         <bar-style>light-heavy</bar-style>
+        <repeat direction="backward" times="3"/>
         </barline>
       </measure>
     <measure number="19">
