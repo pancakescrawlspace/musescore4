@@ -2379,6 +2379,9 @@
         </note>
       </measure>
     <measure number="16">
+      <barline location="left">
+        <ending number="1, 2" type="start" print-object="no">1, 2</ending>
+        </barline>
       <note>
         <pitch>
           <step>A</step>
@@ -2520,10 +2523,14 @@
         </note>
       <barline location="right">
         <bar-style>light-heavy</bar-style>
+        <ending number="1, 2" type="stop"/>
         <repeat direction="backward" times="3"/>
         </barline>
       </measure>
     <measure number="19">
+      <barline location="left">
+        <ending number="3" type="start" print-object="no">3</ending>
+        </barline>
       <note>
         <pitch>
           <step>A</step>
@@ -2665,6 +2672,7 @@
         </note>
       <barline location="right">
         <bar-style>light-heavy</bar-style>
+        <ending number="3" type="stop"/>
         </barline>
       </measure>
     </part>

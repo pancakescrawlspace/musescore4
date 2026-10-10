@@ -44,7 +44,9 @@ PartPOneVoiceOne =  \relative a' {
             | % 19
             \stemUp d2 \stemUp b8 [ \stemUp e8 ] | \barNumberCheck #20
             \stemUp d4. \stemUp cis8 \stemUp b8 [ \stemUp cis8 ] | % 21
-            \stemUp d2. }
+            \stemUp d2.
+            % hand edit: final barline (musicxml2ly drops it inside \alternative)
+            \bar "|." }
         } }
 
 PartPOneVoiceOneLyricsOne =  \lyricmode {\set ignoreMelismata = ##t Wie
@@ -103,19 +105,16 @@ PartPTwoVoiceOne =  \relative d' {
         \stemUp a2 \stemUp a4 | % 14
         \stemUp d2 \stemUp d4 | % 15
         \stemUp d2 \stemUp cis8 [ \stemUp cis8 ] }
-    % hand edit: repeat closed after bar 15 and bars 16-18 / 19-21 put in
-    % \alternative, as in the women's voices (MuseScore exports the
-    % voltas on the top staff only)
     \alternative { {
             | % 16
-        \stemUp a2 \stemUp b4 | % 17
-        \stemUp a2 \stemUp a8 [ \stemUp a8 ] | % 18
-        \stemUp a2. }
+            \stemUp a2 \stemUp b4 | % 17
+            \stemUp a2 \stemUp a8 [ \stemUp a8 ] | % 18
+            \stemUp a2. }
         {
             | % 19
-    \stemUp a2 \stemUp b4 | \barNumberCheck #20
-    \stemUp a2 \stemUp a8 [ \stemUp a8 ] | % 21
-    \stemUp a2. \bar "|." }
+            \stemUp a2 \stemUp b4 | \barNumberCheck #20
+            \stemUp a2 \stemUp a8 [ \stemUp a8 ] | % 21
+            \stemUp a2. }
         } }
 
 PartPTwoVoiceTwo =  \relative d {
@@ -136,19 +135,16 @@ PartPTwoVoiceTwo =  \relative d {
         \stemDown d2 \stemDown e4 | % 14
         \stemDown fis2 \stemDown g4 | % 15
         \stemDown a2 \stemDown a,8 [ \stemDown a8 ] }
-    % hand edit: repeat closed after bar 15 and bars 16-18 / 19-21 put in
-    % \alternative, as in the women's voices (MuseScore exports the
-    % voltas on the top staff only)
     \alternative { {
             | % 16
-        \stemDown d2 \stemDown g4 | % 17
-        \stemDown a2 \stemDown a,8 [ \stemDown a8 ] | % 18
-        \stemDown d2. }
+            \stemDown d2 \stemDown g4 | % 17
+            \stemDown a2 \stemDown a,8 [ \stemDown a8 ] | % 18
+            \stemDown d2. }
         {
             | % 19
-    \stemDown d2 \stemDown g4 | \barNumberCheck #20
-    \stemDown a2 \stemDown a,8 [ \stemDown a8 ] | % 21
-    \stemDown d2. \bar "|." }
+            \stemDown d2 \stemDown g4 | \barNumberCheck #20
+            \stemDown a2 \stemDown a,8 [ \stemDown a8 ] | % 21
+            \stemDown d2. }
         } }
 
 
