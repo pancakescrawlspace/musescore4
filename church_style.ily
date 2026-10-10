@@ -1,5 +1,5 @@
-% House style for the heer_ik_roep_*_timesig.ly files (musicxml2ly output);
-% each of them does \include "heer_ik_roep_style.ily" after \version.
+% House style for the *_timesig.ly files (musicxml2ly output);
+% each of them does \include "church_style.ily" after \version.
 
 \paper {
   % LilyPond 2.24 syntax; 2.25+ uses property-defaults.fonts.serif instead
@@ -11,7 +11,7 @@
   % no footer ("Music engraving by LilyPond ..." tagline)
   oddFooterMarkup = ##f
   evenFooterMarkup = ##f
-  % title on the left, subtitle ("toon N") on the right, on one line
+  % title on the left, optional subtitle (e.g. "toon N") on the right, on one line
   bookTitleMarkup = \markup \fill-line {
     \fontsize #4 \bold \fromproperty #'header:title
     \fromproperty #'header:subtitle

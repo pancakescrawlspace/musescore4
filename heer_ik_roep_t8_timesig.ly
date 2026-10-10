@@ -1,5 +1,5 @@
 \version "2.24.4"
-\include "heer_ik_roep_style.ily"
+\include "church_style.ily"
 % automatically converted by musicxml2ly from heer_ik_roep_t8_timesig.musicxml
 \pointAndClickOff
 
