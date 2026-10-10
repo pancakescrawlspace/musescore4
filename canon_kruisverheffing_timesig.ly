@@ -1,6 +1,7 @@
 \version "2.24.4"
 \include "church_style.ily"
 % automatically converted by musicxml2ly from canon_kruisverheffing_timesig.musicxml
+% hand edits after conversion: the \include above and the \header title/subtitle (replacing musicxml2ly's title and composer), plus the changes marked with "hand edit" comments below
 \pointAndClickOff
 
 \header {
@@ -171,7 +172,7 @@ PartPTwoVoiceTwo =  \relative d {
                 
                 \context Staff << 
                     \mergeDifferentlyDottedOn\mergeDifferentlyHeadedOn
-                    % allow a line break in the long first measure, after "maakte"
+                    % hand edit: allow a line break in the long first measure, after "maakte"
                     { s4*15 \bar "" }
                     \context Voice = "PartPOneVoiceOne" {  \voiceOne \PartPOneVoiceOne }
                     \new Lyrics \lyricsto "PartPOneVoiceOne" { \set stanza = "1." \PartPOneVoiceOneLyricsOne }

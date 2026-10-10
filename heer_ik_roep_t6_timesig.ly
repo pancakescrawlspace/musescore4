@@ -1,6 +1,7 @@
 \version "2.24.4"
 \include "church_style.ily"
 % automatically converted by musicxml2ly from heer_ik_roep_t6_timesig.musicxml
+% hand edits after conversion: the \include above and the \header title/subtitle (replacing musicxml2ly's title and composer)
 \pointAndClickOff
 
 \header {

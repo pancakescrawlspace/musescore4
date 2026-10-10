@@ -1,6 +1,7 @@
 \version "2.24.4"
 \include "church_style.ily"
 % automatically converted by musicxml2ly from groot_prokimen_pinksteren_styled.musicxml
+% hand edits after conversion: the \include above and the \header title/subtitle (replacing musicxml2ly's title and composer), plus the changes marked with "hand edit" comments below
 \pointAndClickOff
 
 \header {
@@ -33,7 +34,7 @@ PartPOneVoiceOne =  \relative a' {
         \stemUp d2 \stemUp e4 | % 15
         \stemUp fis2 \stemUp e8 [ \stemUp e8 ] }
     \alternative { {
-            % new system for the voltas; label as "1.-2." (MuseScore: "1, 2")
+            % hand edit: new system for the voltas; label as "1.-2." (MuseScore: "1, 2")
             \break \once \override Score.VoltaBracket.text = "1.-2."
             | % 16
             \stemUp d2 \stemUp b8 [ \stemUp e8 ] | % 17
@@ -102,6 +103,9 @@ PartPTwoVoiceOne =  \relative d' {
         \stemUp a2 \stemUp a4 | % 14
         \stemUp d2 \stemUp d4 | % 15
         \stemUp d2 \stemUp cis8 [ \stemUp cis8 ] }
+    % hand edit: repeat closed after bar 15 and bars 16-18 / 19-21 put in
+    % \alternative, as in the women's voices (MuseScore exports the
+    % voltas on the top staff only)
     \alternative { {
             | % 16
         \stemUp a2 \stemUp b4 | % 17
@@ -132,6 +136,9 @@ PartPTwoVoiceTwo =  \relative d {
         \stemDown d2 \stemDown e4 | % 14
         \stemDown fis2 \stemDown g4 | % 15
         \stemDown a2 \stemDown a,8 [ \stemDown a8 ] }
+    % hand edit: repeat closed after bar 15 and bars 16-18 / 19-21 put in
+    % \alternative, as in the women's voices (MuseScore exports the
+    % voltas on the top staff only)
     \alternative { {
             | % 16
         \stemDown d2 \stemDown g4 | % 17
