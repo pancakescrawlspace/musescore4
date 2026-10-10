@@ -1,10 +1,11 @@
 \version "2.24.4"
+\include "heer_ik_roep_style.ily"
 % automatically converted by musicxml2ly from heer_ik_roep_t3_timesig.musicxml
 \pointAndClickOff
 
 \header {
-    title =  "Untitled score"
-    composer =  "Composer / arranger"
+    title = "Heer ik roep"
+    subtitle = "toon 3"
     encodingsoftware =  "MuseScore Studio 4.7.5"
     encodingdate =  "2026-10-10"
     }
