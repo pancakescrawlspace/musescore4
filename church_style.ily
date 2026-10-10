@@ -1,6 +1,10 @@
 % House style for the *_timesig.ly files (musicxml2ly output);
 % each of them does \include "church_style.ily" after \version.
 
+% true when the score's \header sets a subtitle
+#(define (has-subtitle? layout props)
+   (chain-assoc-get 'header:subtitle props #f))
+
 \paper {
   % LilyPond 2.24 syntax; 2.25+ uses property-defaults.fonts.serif instead
   #(define fonts
@@ -11,10 +15,16 @@
   % no footer ("Music engraving by LilyPond ..." tagline)
   oddFooterMarkup = ##f
   evenFooterMarkup = ##f
-  % title on the left, optional subtitle (e.g. "toon N") on the right, on one line
-  bookTitleMarkup = \markup \fill-line {
-    \fontsize #4 \bold \fromproperty #'header:title
-    \fromproperty #'header:subtitle
+  % with a subtitle (e.g. "toon N"): title on the left, subtitle on the
+  % right, on one line; without one: title centered
+  bookTitleMarkup = \markup \column {
+    \if #has-subtitle? \fill-line {
+      \fontsize #4 \bold \fromproperty #'header:title
+      \fromproperty #'header:subtitle
+    }
+    \unless #has-subtitle? \fill-line {
+      \fontsize #4 \bold \fromproperty #'header:title
+    }
   }
 }
 
