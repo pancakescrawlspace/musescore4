@@ -6,6 +6,11 @@
   #(define fonts
      (set-global-fonts #:roman "Helvetica" #:sans "Helvetica"
                        #:factor (/ staff-height pt 20)))
+  % first system starts at the margin like the others
+  indent = 0
+  % no footer ("Music engraving by LilyPond ..." tagline)
+  oddFooterMarkup = ##f
+  evenFooterMarkup = ##f
   % title on the left, subtitle ("toon N") on the right, on one line
   bookTitleMarkup = \markup \fill-line {
     \fontsize #4 \bold \fromproperty #'header:title
