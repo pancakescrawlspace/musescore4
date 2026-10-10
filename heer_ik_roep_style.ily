@@ -21,6 +21,8 @@
   }
   \context {
     \Lyrics
+    % no verse number ("1." set by musicxml2ly)
+    \remove "Stanza_number_engraver"
     % 14pt: text is 11pt at the default staff size 20, and each
     % font-size step scales by 2^(1/6)
     \override LyricText.font-size = #(* 6 (/ (log (/ 14 11)) (log 2)))

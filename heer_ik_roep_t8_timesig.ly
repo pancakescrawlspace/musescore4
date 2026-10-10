@@ -30,7 +30,7 @@ PartPOneVoiceOne =  \relative a' {
     \time 8/4 \omit Staff.TimeSignature \stemUp a4 \stemUp a4 \stemUp a2
     \stemUp bes4 \stemUp a4 \stemUp g2 | % 6
     \time 10/4 \omit Staff.TimeSignature \stemUp bes2 \stemUp a2 \stemUp
-    g4 \stemUp g4 f1 | % 7
+    g4 \stemUp g4 f1 \bar "||"
     \time 12/4 \omit Staff.TimeSignature \stemUp a2 \stemUp g4 \stemUp g4
     \stemUp g4 \stemUp g4 \stemUp a2. ( \stemUp g4 ) \stemUp f2 | % 8
     \time 11/4 \omit Staff.TimeSignature \stemUp a4 \stemUp a4 \stemUp a4
@@ -70,7 +70,7 @@ PartPOneVoiceTwo =  \relative f' {
     \time 8/4 \omit Staff.TimeSignature \stemDown f4 \stemDown f4
     \stemDown f2 \stemDown g4 \stemDown f4 \stemDown e2 | % 6
     \time 10/4 \omit Staff.TimeSignature \stemDown g2 \stemDown f2
-    \stemDown e4 \stemDown e4 d1 | % 7
+    \stemDown e4 \stemDown e4 d1 \bar "||"
     \time 12/4 \omit Staff.TimeSignature \stemDown f2 \stemDown e4
     \stemDown e4 \stemDown e4 \stemDown e4 \stemDown f2. ( \stemDown e4
     ) \stemDown d2 | % 8
@@ -100,7 +100,7 @@ PartPTwoVoiceOne =  \relative c' {
     \time 8/4 \omit Staff.TimeSignature \stemUp c4 \stemUp c4 \stemUp c2
     \stemUp c4 \stemUp c4 \stemUp c2 | % 6
     \time 10/4 \omit Staff.TimeSignature \stemUp d2 \stemUp d2 \stemUp
-    cis4 \stemUp cis4 a1 | % 7
+    cis4 \stemUp cis4 a1 \bar "||"
     \time 12/4 \omit Staff.TimeSignature \stemUp c2 \stemUp c4 \stemUp c4
     \stemUp c4 \stemUp c4 c1 \stemUp a2 | % 8
     \time 11/4 \omit Staff.TimeSignature \stemUp c4 \stemUp c4 \stemUp c4
@@ -129,7 +129,7 @@ PartPTwoVoiceTwo =  \relative f {
     \time 8/4 \omit Staff.TimeSignature \stemDown f4 \stemDown f4
     \stemDown f2 \stemDown e4 \stemDown f4 \stemDown c2 | % 6
     \time 10/4 \omit Staff.TimeSignature \stemDown g'2 \stemDown a2
-    \stemDown a,4 \stemDown a4 d1 | % 7
+    \stemDown a,4 \stemDown a4 d1 \bar "||"
     \time 12/4 \omit Staff.TimeSignature \stemDown f2 \stemDown c4
     \stemDown c4 \stemDown c4 \stemDown c4 \stemDown f2. ( \stemDown c4
     ) \stemDown d2 | % 8

@@ -1247,6 +1247,9 @@
         <voice>2</voice>
         <type>whole</type>
         </note>
+      <barline location="right">
+        <bar-style>light-light</bar-style>
+        </barline>
       </measure>
     <measure number="7">
       <attributes>
@@ -3228,6 +3231,9 @@
         <voice>2</voice>
         <type>whole</type>
         </note>
+      <barline location="right">
+        <bar-style>light-light</bar-style>
+        </barline>
       </measure>
     <measure number="7">
       <attributes>
