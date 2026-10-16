@@ -13,7 +13,7 @@ U = \tweak Stem.direction #UP \etc
   title = "Heer ik roep"
   subtitle = "toon 3"
   "id: software" = "MuseScore Studio 4.7.5"
-  "id: encoding-date" = "2026-10-16"
+  "id: encoding-date" = "2026-10-17"
 }
 \layout {
   \context {
@@ -27,11 +27,11 @@ U = \tweak Stem.direction #UP \etc
 }
 PartPOneVoiceOne = \relative g' {
   \clef "treble" \once \omit Staff.TimeSignature \time 13/4 \key f \major \U g2
-  \U a4 \U a4 \U a4 \U a4 \U bes4 \U a2 ( \U g4 \U f4 ) \D g2 | % 1
+  \U a4 \U a4 \U a4 \U a4 \U bes4 \U a2 ( \U g4 \U f4 ) \U g2 | % 1
   \once \omit Staff.TimeSignature \time 10/4 \U g4 \U g2. ( \U a4 ) \U g2 \U f4
   \U e2 | \break % 2
   \once \omit Staff.TimeSignature \time 13/4 \U g2 \U a4 \U a4 \U a4 \U a4 \U
-  bes4 \U a2 ( \U g4 \U f4 ) \D g2 | % 3
+  bes4 \U a2 ( \U g4 \U f4 ) \U g2 | % 3
   \U g4 \U g2 \U a4 \U a4 \U a4 \U a4 \U a4 \U g2 ( \U f4 ) \U e2 | \break % 4
   \once \omit Staff.TimeSignature \time 11/4 \U g4 \U g2 \U a4 \U bes4 \U a2 (
   \U g4 \U f4 ) \U g2 | % 5
