@@ -18,7 +18,8 @@ For a score `X`:
 
 `o_czom_hand.ly`/`o_czom_hand.pdf` (with the `o_czom_hand.musicxml` it
 was converted from) are an earlier hand-finished version of o_czom: don't
-regenerate them. `o_czom.png` is the original score it was transcribed
+regenerate them. `o_czom_hand.ly` is LilyPond 2.24 code; to compile it
+with 2.26, first run `convert-ly -e o_czom_hand.ly`. `o_czom.png` is the original score it was transcribed
 from. The generated `o_czom.*` has the same music and lyrics as the hand
 version; it differs only in house style (title layout, default lyric
 spacing) and uses ’ throughout where the hand version sometimes has '.
@@ -71,7 +72,19 @@ replacing the `.ly`, so you can run the steps by hand. It also runs the
 note check, and rejoins `heer_ik_roep_alle_tonen.pdf` when a Heer ik roep
 tone was rebuilt.
 
-It adds one thing `musicxml2ly` can't: the count of a repeat played three
+It also adds what `musicxml2ly` leaves out:
+
+- **Line breaks:** system and page breaks set in MuseScore become
+  `\break`/`\pageBreak` at the same measures. They're read from the
+  `.mscz` itself, because MuseScore exports them to MusicXML only with a
+  matching preference. The Heer ik roep tones have a system break after
+  every second measure, so each line holds two measures and each half of
+  the tone ends at a line end. This also shows in MuseScore and the videos.
+- **Verse numbers:** "1.", "2.", ... when a voice has more than one verse
+  (`musicxml2ly` 2.26 no longer writes them).
+- **Repeat counts:** see below.
+
+The count of a repeat played three
 or more times ("3×" above the end repeat, at the lyrics' size, as in
 onder_uwe_hoede's last measure), using `\textEndMark`. Repeats with volta brackets don't need
 it, and a count of 2 isn't printed (also as in MuseScore). Nor is a count
@@ -122,7 +135,7 @@ A few files have more, each marked with a `% hand edit:` comment:
 - `canon_kruisverheffing.ly`: `{ s4*15 \bar "" }` before the first
   voice, which allows a line break in the long first measure.
 - `groot_prokimen_pinksteren.ly`: a new system for the voltas, the
-  volta label `1.-2.` (LilyPond 2.24's volta font has no comma or en dash),
+  volta label `1.-2.` (LilyPond's volta font had no comma or en dash),
   and the final barline (musicxml2ly drops it inside `\alternative`).
 
 `groot_prokimen_pinksteren.mscz` also has hidden copies of its two voltas
@@ -136,7 +149,9 @@ to the originals, so mirror any volta change there.
 lyrics, no staff names, verse numbers only when a score has more than one
 verse, no first-system indent, no footer, and the title on the left with
 the subtitle on the right (or the title centered when there is no
-subtitle). It uses LilyPond 2.24 syntax.
+subtitle). It uses LilyPond 2.26 syntax. The minimum gap between lyric
+words is 1.4: with 2.26, 1.6 no longer fit two measures per line in the
+Heer ik roep tones.
 
 ### Checking the result
 
@@ -246,7 +261,10 @@ SVGs. The `heer_ik_roep_tN_first_sys.ly` files there are edited by hand
 
 - MuseScore Studio 4 (`mscore` inside the app bundle), plus FFmpeg for its
   video export
-- LilyPond 2.24 with `musicxml2ly`
+- LilyPond 2.26 with `musicxml2ly`: the official build in
+  `~/Applications/lilypond-2.26.0`, with its commands linked into
+  `~/.local/bin` (MacPorts only had 2.24 and the 2.25 development version
+  in October 2026). Since 2026-10-16; the `.ly` files were 2.24 before.
 - `mutool` (MuPDF), used by `check-pdf-notes.py`
 - `qpdf`, for the combined PDF
 

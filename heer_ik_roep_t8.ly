@@ -1,186 +1,185 @@
-\version "2.24.4"
+\version "2.26.0"
 \include "church_style.ily"
 % automatically converted by musicxml2ly from heer_ik_roep_t8.musicxml
 % hand edits after conversion: the \include above and the \header title/subtitle (replacing musicxml2ly's title and composer)
 \pointAndClickOff
 
+%% additional definitions required by the score:
+D = \tweak Stem.direction #DOWN \etc
+U = \tweak Stem.direction #UP \etc
+
+
 \header {
-    title = "Heer ik roep"
-    subtitle = "toon 8"
-    encodingsoftware =  "MuseScore Studio 4.7.5"
-    encodingdate =  "2026-10-16"
-    }
-
+  title = "Heer ik roep"
+  subtitle = "toon 8"
+  "id: software" = "MuseScore Studio 4.7.5"
+  "id: encoding-date" = "2026-10-16"
+}
 \layout {
-    \context { \Score
-        autoBeaming = ##f
-        }
-    }
-PartPOneVoiceOne =  \relative a' {
-    \clef "treble" \time 13/4 \omit Staff.TimeSignature \key f \major | % 1
-    \stemUp a2 \stemUp g4 \stemUp g4 \stemUp g4 \stemUp g4 \stemUp g4
-    \stemUp a2. ( \stemUp g4 ) \stemUp f2 | % 2
-    \time 7/4 \omit Staff.TimeSignature \stemUp a4 \stemUp a2 \stemUp
-    bes4 \stemUp a4 \stemUp g2 | % 3
-    \time 14/4 \omit Staff.TimeSignature \stemUp a4 \stemUp a4 \stemUp a4
-    \stemUp a4 \stemUp g2 \stemUp f4 ( \stemUp a4 ) \stemUp g2 ( \stemUp
-    f2 ) \stemUp e2 | % 4
-    \time 12/4 \omit Staff.TimeSignature \stemUp g4 \stemUp g4 \stemUp g4
-    \stemUp g4 \stemUp g4 \stemUp g4 \stemUp g4 \stemUp a2 ( \stemUp g4
-    ) \stemUp f2 | % 5
-    \time 8/4 \omit Staff.TimeSignature \stemUp a4 \stemUp a4 \stemUp a2
-    \stemUp bes4 \stemUp a4 \stemUp g2 | % 6
-    \time 10/4 \omit Staff.TimeSignature \stemUp bes2 \stemUp a2 \stemUp
-    g4 \stemUp g4 f1 \bar "||"
-    \time 12/4 \omit Staff.TimeSignature \stemUp a2 \stemUp g4 \stemUp g4
-    \stemUp g4 \stemUp g4 \stemUp a2. ( \stemUp g4 ) \stemUp f2 | % 8
-    \time 11/4 \omit Staff.TimeSignature \stemUp a4 \stemUp a4 \stemUp a4
-    \stemUp a4 \stemUp a4 \stemUp a2 ( \stemUp bes4 ) \stemUp a4 \stemUp
-    g2 | % 9
-    \time 13/4 \omit Staff.TimeSignature \stemUp a4 \stemUp g2 \stemUp f4
-    \stemUp f4 \stemUp f4 \stemUp a4 \stemUp g2 ( \stemUp f2 ) \stemUp e2
-    | \barNumberCheck #10
-    \time 9/4 \omit Staff.TimeSignature \stemUp g4 \stemUp g4 \stemUp g4
-    \stemUp g4 \stemUp a2 ( \stemUp g4 ) \stemUp f2 | % 11
-    \time 10/4 \omit Staff.TimeSignature \stemUp bes2 \stemUp a2 \stemUp
-    g4 \stemUp g4 f1 \bar "|."
-    }
+  \context {
+    \Staff
+    printKeyCancellation = ##f
+  }
+  \context {
+    \Score
+    autoBeaming = ##f
+  }
+}
+PartPOneVoiceOne = \relative a' {
+  \clef "treble" \once \omit Staff.TimeSignature \time 13/4 \key f \major \U a2
+  \U g4 \U g4 \U g4 \U g4 \U g4 \U a2. ( \U g4 ) \U f2 | % 1
+  \once \omit Staff.TimeSignature \time 7/4 \U a4 \U a2 \U bes4 \U a4 \U g2 | \break % 2
+  \once \omit Staff.TimeSignature \time 14/4 \U a4 \U a4 \U a4 \U a4 \U g2 \U f4
+  ( \U a4 ) \U g2 ( \U f2 ) \U e2 | % 3
+  \once \omit Staff.TimeSignature \time 12/4 \U g4 \U g4 \U g4 \U g4 \U g4 \U g4
+  \U g4 \U a2 ( \U g4 ) \U f2 | \break % 4
+  \once \omit Staff.TimeSignature \time 8/4 \U a4 \U a4 \U a2 \U bes4 \U a4 \U g2
+  | % 5
+  \once \omit Staff.TimeSignature \time 10/4 \U bes2 \U a2 \U g4 \U g4 f1 \bar
+  "||" \break % 6
+  \once \omit Staff.TimeSignature \time 12/4 \U a2 \U g4 \U g4 \U g4 \U g4 \U a2.
+  ( \U g4 ) \U f2 | % 7
+  \once \omit Staff.TimeSignature \time 11/4 \U a4 \U a4 \U a4 \U a4 \U a4 \U a2
+  ( \U bes4 ) \U a4 \U g2 | \break % 8
+  \once \omit Staff.TimeSignature \time 13/4 \U a4 \U g2 \U f4 \U f4 \U f4 \U a4
+  \U g2 ( \U f2 ) \U e2 | % 9
 
-PartPOneVoiceOneLyricsOne =  \lyricmode {\set ignoreMelismata = ##t
-    "Heer," ik roep tot U ver -- "hoor " __\skip1 "mij," ver -- hoor mij
-    o Heer Heer ik roep tot U "ver " __\skip1 "hoor " __\skip1 mij sla
-    acht op de stem van mijn "sme " __\skip1 king wan -- neer ik tot U
-    "roep:" ver -- hoor mij o "Heer!" Laat mijn ge -- bed als "wie "
-    __\skip1 rook op -- stij -- gen voor Uw "aan " __\skip1 ge -- zicht
-    de op -- hef -- fing van mijn "han " __\skip1 den zij een a -- vond
-    -- "of " __\skip1 "fer:" ver -- hoor mij o "Heer!"
-    }
+  \barNumberCheck #10
+  \once \omit Staff.TimeSignature \time 9/4 \U g4 \U g4 \U g4 \U g4 \U a2 ( \U g4
+  ) \U f2 | \break % 10
+  \once \omit Staff.TimeSignature \time 10/4 \U bes2 \U a2 \U g4 \U g4 f1 \bar
+  "|."
+}
 
-PartPOneVoiceTwo =  \relative f' {
-    \clef "treble" \time 13/4 \omit Staff.TimeSignature \key f \major | % 1
-    \stemDown f2 \stemDown e4 \stemDown e4 \stemDown e4 \stemDown e4
-    \stemDown e4 \stemDown f2. ( \stemDown e4 ) \stemDown d2 | % 2
-    \time 7/4 \omit Staff.TimeSignature \stemDown f4 \stemDown f2
-    \stemDown g4 \stemDown f4 \stemDown e2 | % 3
-    \time 14/4 \omit Staff.TimeSignature \stemDown f4 \stemDown f4
-    \stemDown f4 \stemDown f4 \stemDown e2 \stemDown d4 ( \stemDown f4 )
-    \stemDown e2 ( \stemDown d2 ) \stemDown c2 | % 4
-    \time 12/4 \omit Staff.TimeSignature \stemDown e4 \stemDown e4
-    \stemDown e4 \stemDown e4 \stemDown e4 \stemDown e4 \stemDown e4
-    \stemDown f2 ( \stemDown e4 ) \stemDown d2 | % 5
-    \time 8/4 \omit Staff.TimeSignature \stemDown f4 \stemDown f4
-    \stemDown f2 \stemDown g4 \stemDown f4 \stemDown e2 | % 6
-    \time 10/4 \omit Staff.TimeSignature \stemDown g2 \stemDown f2
-    \stemDown e4 \stemDown e4 d1 \bar "||"
-    \time 12/4 \omit Staff.TimeSignature \stemDown f2 \stemDown e4
-    \stemDown e4 \stemDown e4 \stemDown e4 \stemDown f2. ( \stemDown e4
-    ) \stemDown d2 | % 8
-    \time 11/4 \omit Staff.TimeSignature \stemDown f4 \stemDown f4
-    \stemDown f4 \stemDown f4 \stemDown f4 \stemDown f2 ( \stemDown g4 )
-    \stemDown f4 \stemDown e2 | % 9
-    \time 13/4 \omit Staff.TimeSignature \stemDown f4 \stemDown e2
-    \stemDown d4 \stemDown d4 \stemDown d4 \stemDown f4 \stemDown e2 (
-    \stemDown d2 ) \stemDown c2 | \barNumberCheck #10
-    \time 9/4 \omit Staff.TimeSignature \stemDown e4 \stemDown e4
-    \stemDown e4 \stemDown e4 \stemDown f2 ( \stemDown e4 ) \stemDown d2
-    | % 11
-    \time 10/4 \omit Staff.TimeSignature \stemDown g2 \stemDown f2
-    \stemDown e4 \stemDown e4 d1 \bar "|."
-    }
+PartPOneVoiceOneLyricsOne = \lyricmode {
+  \set ignoreMelismata = ##t
+  \set includeGraceNotes = ##t
+  "Heer," ik roep tot U ver -- hoor __ \skip1 "mij," ver -- hoor mij o Heer Heer
+  ik roep tot U ver __ \skip1 hoor __ \skip1 mij sla acht op de stem van mijn
+  sme __ \skip1 king wan -- neer ik tot U "roep:" ver -- hoor mij o "Heer!" Laat
+  mijn ge -- bed als wie __ \skip1 rook op -- stij -- gen voor Uw aan __ \skip1
+  ge -- zicht de op -- hef -- fing van mijn han __ \skip1 den zij een a -- vond
+  -- of __ \skip1 "fer:" ver -- hoor mij o "Heer!"
+}
 
-PartPTwoVoiceOne =  \relative c' {
-    \clef "bass" \time 13/4 \omit Staff.TimeSignature \key f \major | % 1
-    \stemUp c2 \stemUp c4 \stemUp c4 \stemUp c4 \stemUp c4 \stemUp c4 c1
-    \stemUp a2 | % 2
-    \time 7/4 \omit Staff.TimeSignature \stemUp c4 \stemUp c2 \stemUp c4
-    \stemUp c4 \stemUp c2 | % 3
-    \time 14/4 \omit Staff.TimeSignature \stemUp c4 \stemUp c4 \stemUp c4
-    \stemUp c4 \stemUp c2 \stemUp c2 \stemUp c2 \stemUp b2 \stemUp g2 | % 4
-    \time 12/4 \omit Staff.TimeSignature \stemUp c4 \stemUp c4 \stemUp c4
-    \stemUp c4 \stemUp c4 \stemUp c4 \stemUp c4 \stemUp c2. \stemUp a2 | % 5
-    \time 8/4 \omit Staff.TimeSignature \stemUp c4 \stemUp c4 \stemUp c2
-    \stemUp c4 \stemUp c4 \stemUp c2 | % 6
-    \time 10/4 \omit Staff.TimeSignature \stemUp d2 \stemUp d2 \stemUp
-    cis4 \stemUp cis4 a1 \bar "||"
-    \time 12/4 \omit Staff.TimeSignature \stemUp c2 \stemUp c4 \stemUp c4
-    \stemUp c4 \stemUp c4 c1 \stemUp a2 | % 8
-    \time 11/4 \omit Staff.TimeSignature \stemUp c4 \stemUp c4 \stemUp c4
-    \stemUp c4 \stemUp c4 \stemUp c2. \stemUp c4 \stemUp c2 | % 9
-    \time 13/4 \omit Staff.TimeSignature \stemUp c4 \stemUp c2 \stemUp c4
-    \stemUp c4 \stemUp c4 \stemUp c4 \stemUp c2 ( \stemUp b2 ) \stemUp g2
-    | \barNumberCheck #10
-    \time 9/4 \omit Staff.TimeSignature \stemUp c4 \stemUp c4 \stemUp c4
-    \stemUp c4 \stemUp c2. \stemUp a2 | % 11
-    \time 10/4 \omit Staff.TimeSignature \stemUp d2 \stemUp d2 \stemUp
-    cis4 \stemDown cis4 a1 \bar "|."
-    }
+PartPOneVoiceTwo = \relative f' {
+  \clef "treble" \once \omit Staff.TimeSignature \time 13/4 \key f \major \D f2
+  \D e4 \D e4 \D e4 \D e4 \D e4 \D f2. ( \D e4 ) \D d2 | % 1
+  \once \omit Staff.TimeSignature \time 7/4 \D f4 \D f2 \D g4 \D f4 \D e2 | % 2
+  \once \omit Staff.TimeSignature \time 14/4 \D f4 \D f4 \D f4 \D f4 \D e2 \D d4
+  ( \D f4 ) \D e2 ( \D d2 ) \D c2 | % 3
+  \once \omit Staff.TimeSignature \time 12/4 \D e4 \D e4 \D e4 \D e4 \D e4 \D e4
+  \D e4 \D f2 ( \D e4 ) \D d2 | % 4
+  \once \omit Staff.TimeSignature \time 8/4 \D f4 \D f4 \D f2 \D g4 \D f4 \D e2
+  | % 5
+  \once \omit Staff.TimeSignature \time 10/4 \D g2 \D f2 \D e4 \D e4 d1 \bar
+  "||" % 6
+  \once \omit Staff.TimeSignature \time 12/4 \D f2 \D e4 \D e4 \D e4 \D e4 \D f2.
+  ( \D e4 ) \D d2 | % 7
+  \once \omit Staff.TimeSignature \time 11/4 \D f4 \D f4 \D f4 \D f4 \D f4 \D f2
+  ( \D g4 ) \D f4 \D e2 | % 8
+  \once \omit Staff.TimeSignature \time 13/4 \D f4 \D e2 \D d4 \D d4 \D d4 \D f4
+  \D e2 ( \D d2 ) \D c2 | % 9
 
-PartPTwoVoiceTwo =  \relative f {
-    \clef "bass" \time 13/4 \omit Staff.TimeSignature \key f \major | % 1
-    \stemDown f2 \stemDown c4 \stemDown c4 \stemDown c4 \stemDown c4
-    \stemDown c4 \stemDown f2. ( \stemDown c4 ) \stemDown d2 | % 2
-    \time 7/4 \omit Staff.TimeSignature \stemDown f4 \stemDown f2
-    \stemDown e4 \stemDown f4 \stemDown c2 | % 3
-    \time 14/4 \omit Staff.TimeSignature \stemDown f4 \stemDown f4
-    \stemDown f4 \stemDown f4 \stemDown c2 \stemDown c4 ( \stemDown f4 )
-    \stemDown g2 ( \stemDown g,2 ) \stemDown c2 | % 4
-    \time 12/4 \omit Staff.TimeSignature \stemDown c4 \stemDown c4
-    \stemDown c4 \stemDown c4 \stemDown c4 \stemDown c4 \stemDown c4
-    \stemDown f2 ( \stemDown c4 ) \stemDown d2 | % 5
-    \time 8/4 \omit Staff.TimeSignature \stemDown f4 \stemDown f4
-    \stemDown f2 \stemDown e4 \stemDown f4 \stemDown c2 | % 6
-    \time 10/4 \omit Staff.TimeSignature \stemDown g'2 \stemDown a2
-    \stemDown a,4 \stemDown a4 d1 \bar "||"
-    \time 12/4 \omit Staff.TimeSignature \stemDown f2 \stemDown c4
-    \stemDown c4 \stemDown c4 \stemDown c4 \stemDown f2. ( \stemDown c4
-    ) \stemDown d2 | % 8
-    \time 11/4 \omit Staff.TimeSignature \stemDown f4 \stemDown f4
-    \stemDown f4 \stemDown f4 \stemDown f4 \stemDown f2 ( \stemDown e4 )
-    \stemDown f4 \stemDown c2 | % 9
-    \time 13/4 \omit Staff.TimeSignature \stemDown f4 \stemDown c2
-    \stemDown c4 \stemDown c4 \stemDown c4 \stemDown f4 \stemDown g2 (
-    \stemDown g,2 ) \stemDown c2 | \barNumberCheck #10
-    \time 9/4 \omit Staff.TimeSignature \stemDown c4 \stemDown c4
-    \stemDown c4 \stemDown c4 \stemDown f2 ( \stemDown c4 ) \stemDown d2
-    | % 11
-    \time 10/4 \omit Staff.TimeSignature \stemDown g2 \stemDown a2
-    \stemDown a,4 \stemDown a4 d1 \bar "|."
-    }
+  \barNumberCheck #10
+  \once \omit Staff.TimeSignature \time 9/4 \D e4 \D e4 \D e4 \D e4 \D f2 ( \D e4
+  ) \D d2 | % 10
+  \once \omit Staff.TimeSignature \time 10/4 \D g2 \D f2 \D e4 \D e4 d1 \bar
+  "|."
+}
+
+PartPTwoVoiceOne = \relative c' {
+  \clef "bass" \once \omit Staff.TimeSignature \time 13/4 \key f \major \U c2 \U
+  c4 \U c4 \U c4 \U c4 \U c4 c1 \U a2 | % 1
+  \once \omit Staff.TimeSignature \time 7/4 \U c4 \U c2 \U c4 \U c4 \U c2 | % 2
+  \once \omit Staff.TimeSignature \time 14/4 \U c4 \U c4 \U c4 \U c4 \U c2 \U c2
+  \U c2 \U b2 \U g2 | % 3
+  \once \omit Staff.TimeSignature \time 12/4 \U c4 \U c4 \U c4 \U c4 \U c4 \U c4
+  \U c4 \U c2. \U a2 | % 4
+  \once \omit Staff.TimeSignature \time 8/4 \U c4 \U c4 \U c2 \U c4 \U c4 \U c2
+  | % 5
+  \once \omit Staff.TimeSignature \time 10/4 \U d2 \U d2 \U cis4 \U cis4 a1 \bar
+  "||" % 6
+  \once \omit Staff.TimeSignature \time 12/4 \U c2 \U c4 \U c4 \U c4 \U c4 c1 \U
+  a2 | % 7
+  \once \omit Staff.TimeSignature \time 11/4 \U c4 \U c4 \U c4 \U c4 \U c4 \U c2.
+  \U c4 \U c2 | % 8
+  \once \omit Staff.TimeSignature \time 13/4 \U c4 \U c2 \U c4 \U c4 \U c4 \U c4
+  \U c2 ( \U b2 ) \U g2 | % 9
+
+  \barNumberCheck #10
+  \once \omit Staff.TimeSignature \time 9/4 \U c4 \U c4 \U c4 \U c4 \U c2. \U a2
+  | % 10
+  \once \omit Staff.TimeSignature \time 10/4 \U d2 \U d2 \U cis4 \D cis4 a1 \bar
+  "|."
+}
+
+PartPTwoVoiceTwo = \relative f {
+  \clef "bass" \once \omit Staff.TimeSignature \time 13/4 \key f \major \D f2 \D
+  c4 \D c4 \D c4 \D c4 \D c4 \D f2. ( \D c4 ) \D d2 | % 1
+  \once \omit Staff.TimeSignature \time 7/4 \D f4 \D f2 \D e4 \D f4 \D c2 | % 2
+  \once \omit Staff.TimeSignature \time 14/4 \D f4 \D f4 \D f4 \D f4 \D c2 \D c4
+  ( \D f4 ) \D g2 ( \D g,2 ) \D c2 | % 3
+  \once \omit Staff.TimeSignature \time 12/4 \D c4 \D c4 \D c4 \D c4 \D c4 \D c4
+  \D c4 \D f2 ( \D c4 ) \D d2 | % 4
+  \once \omit Staff.TimeSignature \time 8/4 \D f4 \D f4 \D f2 \D e4 \D f4 \D c2
+  | % 5
+  \once \omit Staff.TimeSignature \time 10/4 \D g'2 \D a2 \D a,4 \D a4 d1 \bar
+  "||" % 6
+  \once \omit Staff.TimeSignature \time 12/4 \D f2 \D c4 \D c4 \D c4 \D c4 \D f2.
+  ( \D c4 ) \D d2 | % 7
+  \once \omit Staff.TimeSignature \time 11/4 \D f4 \D f4 \D f4 \D f4 \D f4 \D f2
+  ( \D e4 ) \D f4 \D c2 | % 8
+  \once \omit Staff.TimeSignature \time 13/4 \D f4 \D c2 \D c4 \D c4 \D c4 \D f4
+  \D g2 ( \D g,2 ) \D c2 | % 9
+
+  \barNumberCheck #10
+  \once \omit Staff.TimeSignature \time 9/4 \D c4 \D c4 \D c4 \D c4 \D f2 ( \D c4
+  ) \D d2 | % 10
+  \once \omit Staff.TimeSignature \time 10/4 \D g2 \D a2 \D a,4 \D a4 d1 \bar
+  "|."
+}
 
 
 % The score definition
 \score {
-    <<
-        
-        \new StaffGroup
-        <<
-            \new Staff
-            <<
-                \set Staff.instrumentName = "Women"
-                
-                \context Staff << 
-                    \mergeDifferentlyDottedOn\mergeDifferentlyHeadedOn
-                    \context Voice = "PartPOneVoiceOne" {  \voiceOne \PartPOneVoiceOne }
-                    \new Lyrics \lyricsto "PartPOneVoiceOne" { \set stanza = "1." \PartPOneVoiceOneLyricsOne }
-                    \context Voice = "PartPOneVoiceTwo" {  \voiceTwo \PartPOneVoiceTwo }
-                    >>
-                >>
-            \new Staff
-            <<
-                \set Staff.instrumentName = "Men"
-                
-                \context Staff << 
-                    \mergeDifferentlyDottedOn\mergeDifferentlyHeadedOn
-                    \context Voice = "PartPTwoVoiceOne" {  \voiceOne \PartPTwoVoiceOne }
-                    \context Voice = "PartPTwoVoiceTwo" {  \voiceTwo \PartPTwoVoiceTwo }
-                    >>
-                >>
-            
-            >>
-        
+  <<
+    \new StaffGroup <<
+      \new Staff = "P1" <<
+        \set Staff.instrumentName = "Women"
+        \context Staff <<
+          \override Staff.BarLine.allow-span-bar = ##f
+          \mergeDifferentlyDottedOn
+          \mergeDifferentlyHeadedOn
+          \context Voice = "PartPOneVoiceOne" {
+            \voiceOne \PartPOneVoiceOne
+          }
+          \new Lyrics \lyricsto "PartPOneVoiceOne" {
+            \PartPOneVoiceOneLyricsOne
+          }
+          \context Voice = "PartPOneVoiceTwo" {
+            \voiceTwo \PartPOneVoiceTwo
+          }
         >>
-    \layout {}
-    % To create MIDI output, uncomment the following line:
-    %  \midi {\tempo 4 = 100 }
-    }
+      >>
+      \new Staff = "P2" <<
+        \set Staff.instrumentName = "Men"
+        \context Staff <<
+          \override Staff.BarLine.allow-span-bar = ##f
+          \mergeDifferentlyDottedOn
+          \mergeDifferentlyHeadedOn
+          \context Voice = "PartPTwoVoiceOne" {
+            \voiceOne \PartPTwoVoiceOne
+          }
+          \context Voice = "PartPTwoVoiceTwo" {
+            \voiceTwo \PartPTwoVoiceTwo
+          }
+        >>
+      >>
+    >>
+  >>
+  \layout {}
+  % To create MIDI output, uncomment the following line:
+  % \midi { \tempo 4 = 100 }
+}
 

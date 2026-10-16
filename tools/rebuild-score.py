@@ -15,6 +15,10 @@ spacer (`{ s4*N \\bar "" }`). Any other "% hand edit:" line makes the
 script stop before the .ly is replaced, so redo those by hand. A score
 without a .ly yet gets its title and subtitle from the score's title frame.
 
+System breaks and page breaks in the score (MuseScore's layout breaks) become
+\\break / \\pageBreak at the same measures. They are read from the .mscz
+itself: MuseScore exports them to MusicXML only with a matching preference.
+
 A repeat played three or more times without volta brackets gets its count
 ("3×") above the end repeat, as MuseScore prints it: MuseScore doesn't export
 that text to MusicXML, and LilyPond doesn't print repeat counts. Not when
@@ -72,18 +76,22 @@ def splice(new, old, mscz):
     if old is not None:
         inc = re.search(r'\\include "church_style.ily"\n', old).group(0)
         com = re.search(r"% hand edits after conversion:.*\n", old).group(0)
-        head = re.search(r"\\header \{\n((?:    (?:title|subtitle) = .*\n)+)", old).group(1)
+        fields = dict(re.findall(r'^\s*(title|subtitle)\s*=\s*("[^"]*")', old, re.M))
     else:
         title, subtitle = title_frame(mscz)
         print(f"  no .ly yet: title {title!r}" + (f", subtitle {subtitle!r}" if subtitle else ""))
         inc, com = '\\include "church_style.ily"\n', COMMENT + "\n"
-        head = f'    title = "{title}"\n' + (f'    subtitle = "{subtitle}"\n' if subtitle else "")
-    new = new.replace('\\version "2.24.4"\n', '\\version "2.24.4"\n' + inc, 1)
+        fields = {"title": f'"{title}"', **({"subtitle": f'"{subtitle}"'} if subtitle else {})}
+    version = re.search(r'\\version "[^"]*"\n', new).group(0)
+    new = new.replace(version, version + inc, 1)
     conv = re.search(r"% automatically converted by musicxml2ly from .*\n", new).group(0)
     new = new.replace(conv, conv + com, 1)
-    generated = re.search(r'    title =  "[^"]*"\n    composer =  "[^"]*"\n', new)
+    # musicxml2ly's title ("Untitled score") and composer lines, in 2.24 or 2.26 layout
+    generated = re.search(r'^([ \t]*)title\s*=\s*"[^"]*"\n(?:[ \t]*composer\s*=\s*"[^"]*"\n)?', new, re.M)
     if not generated:
         raise Failed("musicxml2ly output has no title/composer to replace")
+    ind = generated.group(1)
+    head = "".join(f"{ind}{k} = {v}\n" for k, v in fields.items())
     new = new.replace(generated.group(0), head, 1)
     if old is not None:
         m = SPACER.search(old)
@@ -124,12 +132,66 @@ def repeat_counts(ly):
             depth -= body[j] == "}"
             j += 1
         close = j - 1  # the repeat's closing brace
-        if re.match(r"\s*\\alternative", body[j:]):
-            continue
+        if "\\alternative" in body[m.end():close] or re.match(r"\s*\\alternative", body[j:]):
+            continue  # volta brackets show the count
         out += [body[pos:close], f'\\textEndMark "{m.group(1)}×" ']
         pos = close
     out.append(body[pos:])
     return ly[:start] + "".join(out) + ly[i:]
+
+
+def layout_breaks(mscz):
+    """{measure index (0-based): "\\break" or "\\pageBreak"} from the score's first staff."""
+    with zipfile.ZipFile(mscz) as z:
+        root = ET.fromstring(z.read([n for n in z.namelist() if n.endswith(".mscx")][0]))
+    staff = root.find("Score").find("Staff")
+    out = {}
+    for i, m in enumerate(staff.findall("Measure")):
+        for b in m.findall("LayoutBreak"):
+            kind = b.findtext("subtype")
+            if kind in ("line", "page"):
+                out[i] = "\\break" if kind == "line" else "\\pageBreak"
+    return out
+
+
+def line_breaks(ly, mscz):
+    """Put the score's layout breaks into the first music variable. musicxml2ly ends every
+    measure but the last with a "% N" comment; the k-th such comment ends measure k."""
+    breaks = layout_breaks(mscz)
+    if not breaks:
+        return ly
+    first = re.search(r"^(\w+) =\s*\\relative [^{]*\{", ly, re.M)
+    start, depth, i = first.end(), 1, first.end()
+    while depth:
+        depth += ly[i] == "{"
+        depth -= ly[i] == "}"
+        i += 1
+    body = ly[start:i]
+    ends = list(re.finditer(r"% \d+[ \t]*\n", body))
+    for k in sorted(breaks, reverse=True):
+        if k >= len(ends):
+            continue  # a break after the last measure changes nothing
+        at = ends[k].start()
+        body = body[:at] + breaks[k] + " " + body[at:]
+    return ly[:start] + body + ly[i:]
+
+
+def stanza_numbers(ly):
+    """Number the verses ("1.", "2.", ...) of each voice that has more than one;
+    musicxml2ly 2.26 no longer writes \\set stanza (2.24 did, for every verse)."""
+    if "\\set stanza" in ly:
+        return ly
+    lyrics = re.findall(r'\\new Lyrics \\lyricsto "(\w+)" \{\s*\\(\w+)', ly)
+    per_voice = {}
+    for voice, var in lyrics:
+        per_voice.setdefault(voice, []).append(var)
+    for voice, vars_ in per_voice.items():
+        if len(vars_) < 2:
+            continue
+        for n, var in enumerate(vars_, 1):
+            ly = re.sub(rf'(\\new Lyrics \\lyricsto "{voice}" \{{\s*)\\{var}\b',
+                        rf'\g<1>\\set stanza = "{n}." \\{var}', ly, count=1)
+    return ly
 
 
 def has_timesig(mscz):
@@ -162,7 +224,7 @@ def rebuild(name):
         if r.returncode or not os.path.exists(out):
             raise Failed("musicxml2ly failed")
         # 4. hand edits
-        ly = repeat_counts(splice(open(out).read(), old, mscz))
+        ly = line_breaks(stanza_numbers(repeat_counts(splice(open(out).read(), old, mscz))), mscz)
     with open(base + ".ly", "w") as f:
         f.write(ly)
     # 5. PDF

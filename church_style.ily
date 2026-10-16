@@ -1,4 +1,5 @@
-% House style for the *_timesig.ly files (musicxml2ly output);
+\version "2.26.0"
+% House style for the generated .ly files (musicxml2ly output);
 % each of them does \include "church_style.ily" after \version.
 
 % true when the score's \header sets a subtitle
@@ -6,10 +7,9 @@
    (chain-assoc-get 'header:subtitle props #f))
 
 \paper {
-  % LilyPond 2.24 syntax; 2.25+ uses property-defaults.fonts.serif instead
-  #(define fonts
-     (set-global-fonts #:roman "Helvetica" #:sans "Helvetica"
-                       #:factor (/ staff-height pt 20)))
+  % Helvetica for all text (LilyPond 2.26 syntax; 2.24 used set-global-fonts)
+  property-defaults.fonts.serif = "Helvetica"
+  property-defaults.fonts.sans = "Helvetica"
   % first system starts at the margin like the others
   indent = 0
   % no footer ("Music engraving by LilyPond ..." tagline)
@@ -61,7 +61,9 @@
     % font-size step scales by 2^(1/6)
     \override LyricText.font-size = #(* 6 (/ (log (/ 14 11)) (log 2)))
     % more room between syllables and around hyphens for the larger text
-    \override LyricSpace.minimum-distance = #1.6
+    % (1.4: LilyPond 2.26 spaces lyrics a little wider than 2.24, where 1.6
+    % fit two measures per line in the Heer ik roep tones; 1.6 no longer does)
+    \override LyricSpace.minimum-distance = #1.4
     \override LyricHyphen.minimum-distance = #1.4
   }
 }

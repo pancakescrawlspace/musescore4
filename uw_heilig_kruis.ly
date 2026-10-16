@@ -1,103 +1,108 @@
-\version "2.24.4"
+\version "2.26.0"
 \include "church_style.ily"
 % automatically converted by musicxml2ly from uw_heilig_kruis.musicxml
 % hand edits after conversion: the \include above and the \header title/subtitle (replacing musicxml2ly's title and composer)
 \pointAndClickOff
 
+%% additional definitions required by the score:
+D = \tweak Stem.direction #DOWN \etc
+U = \tweak Stem.direction #UP \etc
+
+
 \header {
-    title = "Uw Heilig Kruis"
-    encodingsoftware =  "MuseScore Studio 4.7.5"
-    encodingdate =  "2026-10-16"
-    }
-
+  title = "Uw Heilig Kruis"
+  "id: software" = "MuseScore Studio 4.7.5"
+  "id: encoding-date" = "2026-10-16"
+}
 \layout {
-    \context { \Score
-        autoBeaming = ##f
-        }
-    }
-PartPOneVoiceOne =  \relative fis' {
-    \clef "treble" \time 21/4 \omit Staff.TimeSignature \key g \major | % 1
-    \stemUp fis4 \stemUp g2 \stemUp fis2 \stemUp g2 \stemUp a4 ( \stemUp
-    b4 ) \stemUp c4 \stemUp b4 \stemUp c4 \stemUp a4 \stemUp b2 (
-    \stemUp a2 ) g1 | % 2
-    \time 22/4 \omit Staff.TimeSignature \stemUp b4 \stemUp b4 \stemUp a2
-    \stemUp g2 \stemUp fis4 \stemUp g4 \stemUp a4. ( \stemUp b8 \stemUp
-    a4 ) \stemUp g4 \stemUp fis2 \stemUp g2 \stemUp fis2 g1 \bar "|."
-    }
+  \context {
+    \Staff
+    printKeyCancellation = ##f
+  }
+  \context {
+    \Score
+    autoBeaming = ##f
+  }
+}
+PartPOneVoiceOne = \relative fis' {
+  \clef "treble" \once \omit Staff.TimeSignature \time 21/4 \key g \major \U fis4
+  \U g2 \U fis2 \U g2 \U a4 ( \U b4 ) \U c4 \U b4 \U c4 \U a4 \U b2 ( \U a2 ) g1
+  | % 1
+  \once \omit Staff.TimeSignature \time 22/4 \U b4 \U b4 \U a2 \U g2 \U fis4 \U
+  g4 \U a4. ( \U b8 \U a4 ) \U g4 \U fis2 \U g2 \U fis2 g1 \bar "|."
+}
 
-PartPOneVoiceOneLyricsOne =  \lyricmode {\set ignoreMelismata = ##t Uw
-    hei -- lig kruis "ver " __\skip1 e -- ren wij Ge -- "bie " __\skip1
-    der en Uw hei -- li -- ge ver -- "rij " __\skip1 \skip1 ze -- nis lo
-    -- ven wij
-    }
+PartPOneVoiceOneLyricsOne = \lyricmode {
+  \set ignoreMelismata = ##t
+  \set includeGraceNotes = ##t
+  Uw hei -- lig kruis ver __ \skip1 e -- ren wij Ge -- bie __ \skip1 der en Uw
+  hei -- li -- ge ver -- rij __ \skip1 \skip1 ze -- nis lo -- ven wij
+}
 
-PartPOneVoiceTwo =  \relative dis' {
-    \clef "treble" \time 21/4 \omit Staff.TimeSignature \key g \major | % 1
-    \stemDown dis4 \stemDown e2 \stemDown dis2 \stemDown e2 \stemDown
-    fis4 ( \stemDown g4 ) \stemDown a4 \stemDown g4 \stemDown a4
-    \stemDown fis4 \stemDown g2 ( \stemDown fis2 ) e1 | % 2
-    \time 22/4 \omit Staff.TimeSignature \stemDown g4 \stemDown g4
-    \stemDown fis2 \stemDown e2 \stemDown dis4 \stemDown e4 \stemDown
-    fis4. ( \stemDown g8 \stemDown fis4 ) \stemDown e4 \stemDown dis2
-    \stemDown e2 \stemDown dis2 e1 \bar "|."
-    }
+PartPOneVoiceTwo = \relative dis' {
+  \clef "treble" \once \omit Staff.TimeSignature \time 21/4 \key g \major \D dis4
+  \D e2 \D dis2 \D e2 \D fis4 ( \D g4 ) \D a4 \D g4 \D a4 \D fis4 \D g2 ( \D fis2
+  ) e1 | % 1
+  \once \omit Staff.TimeSignature \time 22/4 \D g4 \D g4 \D fis2 \D e2 \D dis4
+  \D e4 \D fis4. ( \D g8 \D fis4 ) \D e4 \D dis2 \D e2 \D dis2 e1 \bar "|."
+}
 
-PartPTwoVoiceOne =  \relative b {
-    \clef "bass" \time 21/4 \omit Staff.TimeSignature \key g \major | % 1
-    \stemUp b4 \stemUp b2 \stemUp b2 \stemUp b2 \stemUp d2 \stemUp d4
-    \stemUp d4 \stemUp d4 \stemUp d4 \stemUp d2 ( \stemUp dis2 ) b1 | % 2
-    \time 22/4 \omit Staff.TimeSignature \stemUp d4 \stemUp d4 \stemUp
-    dis2 \stemUp b2 \stemUp b4 \stemUp b4 \stemUp d2. \stemUp b4 \stemUp
-    b2 \stemUp b2 \stemUp b2 b1 \bar "|."
-    }
+PartPTwoVoiceOne = \relative b {
+  \clef "bass" \once \omit Staff.TimeSignature \time 21/4 \key g \major \U b4 \U
+  b2 \U b2 \U b2 \U d2 \U d4 \U d4 \U d4 \U d4 \U d2 ( \U dis2 ) b1 | % 1
+  \once \omit Staff.TimeSignature \time 22/4 \U d4 \U d4 \U dis2 \U b2 \U b4 \U
+  b4 \U d2. \U b4 \U b2 \U b2 \U b2 b1 \bar "|."
+}
 
-PartPTwoVoiceTwo =  \relative b, {
-    \clef "bass" \time 21/4 \omit Staff.TimeSignature \key g \major | % 1
-    \stemDown b4 \stemDown e2 \stemDown b2 \stemDown e2 \stemDown d2
-    \stemDown d4 \stemDown d4 \stemDown d4 \stemDown d4 \stemDown <g,
-        g'>2 ( \stemDown b2 ) e1 | % 2
-    \time 22/4 \omit Staff.TimeSignature \stemDown g4 \stemDown g4
-    \stemDown b,2 \stemDown e2 \stemDown b4 \stemDown e4 \stemDown d4. (
-    \stemDown g8 \stemDown d4 ) \stemDown e4 \stemDown b2 \stemDown e2
-    \stemDown b2 <e, e'>1 \bar "|."
-    }
+PartPTwoVoiceTwo = \relative b, {
+  \clef "bass" \once \omit Staff.TimeSignature \time 21/4 \key g \major \D b4 \D
+  e2 \D b2 \D e2 \D d2 \D d4 \D d4 \D d4 \D d4 \D <g, g'>2 ( \D b2 ) e1 | % 1
+  \once \omit Staff.TimeSignature \time 22/4 \D g4 \D g4 \D b,2 \D e2 \D b4 \D e4
+  \D d4. ( \D g8 \D d4 ) \D e4 \D b2 \D e2 \D b2 <e, e'>1 \bar "|."
+}
 
 
 % The score definition
 \score {
-    <<
-        
-        \new StaffGroup
-        <<
-            \new Staff
-            <<
-                \set Staff.instrumentName = "Women"
-                \set Staff.shortInstrumentName = "W."
-                
-                \context Staff << 
-                    \mergeDifferentlyDottedOn\mergeDifferentlyHeadedOn
-                    \context Voice = "PartPOneVoiceOne" {  \voiceOne \PartPOneVoiceOne }
-                    \new Lyrics \lyricsto "PartPOneVoiceOne" { \set stanza = "1." \PartPOneVoiceOneLyricsOne }
-                    \context Voice = "PartPOneVoiceTwo" {  \voiceTwo \PartPOneVoiceTwo }
-                    >>
-                >>
-            \new Staff
-            <<
-                \set Staff.instrumentName = "Men"
-                \set Staff.shortInstrumentName = "M."
-                
-                \context Staff << 
-                    \mergeDifferentlyDottedOn\mergeDifferentlyHeadedOn
-                    \context Voice = "PartPTwoVoiceOne" {  \voiceOne \PartPTwoVoiceOne }
-                    \context Voice = "PartPTwoVoiceTwo" {  \voiceTwo \PartPTwoVoiceTwo }
-                    >>
-                >>
-            
-            >>
-        
+  <<
+    \new StaffGroup <<
+      \new Staff = "P1" <<
+        \set Staff.instrumentName = "Women"
+        \set Staff.shortInstrumentName = "W."
+        \context Staff <<
+          \override Staff.BarLine.allow-span-bar = ##f
+          \mergeDifferentlyDottedOn
+          \mergeDifferentlyHeadedOn
+          \context Voice = "PartPOneVoiceOne" {
+            \voiceOne \PartPOneVoiceOne
+          }
+          \new Lyrics \lyricsto "PartPOneVoiceOne" {
+            \PartPOneVoiceOneLyricsOne
+          }
+          \context Voice = "PartPOneVoiceTwo" {
+            \voiceTwo \PartPOneVoiceTwo
+          }
         >>
-    \layout {}
-    % To create MIDI output, uncomment the following line:
-    %  \midi {\tempo 4 = 100 }
-    }
+      >>
+      \new Staff = "P2" <<
+        \set Staff.instrumentName = "Men"
+        \set Staff.shortInstrumentName = "M."
+        \context Staff <<
+          \override Staff.BarLine.allow-span-bar = ##f
+          \mergeDifferentlyDottedOn
+          \mergeDifferentlyHeadedOn
+          \context Voice = "PartPTwoVoiceOne" {
+            \voiceOne \PartPTwoVoiceOne
+          }
+          \context Voice = "PartPTwoVoiceTwo" {
+            \voiceTwo \PartPTwoVoiceTwo
+          }
+        >>
+      >>
+    >>
+  >>
+  \layout {}
+  % To create MIDI output, uncomment the following line:
+  % \midi { \tempo 4 = 100 }
+}
 

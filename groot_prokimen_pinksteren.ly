@@ -1,4 +1,4 @@
-\version "2.24.4"
+\version "2.26.0"
 \include "church_style.ily"
 % automatically converted by musicxml2ly from groot_prokimen_pinksteren.musicxml
 % hand edits after conversion: the \include above and the \header title/subtitle (replacing musicxml2ly's title and composer), plus the changes marked with "hand edit" comments below
