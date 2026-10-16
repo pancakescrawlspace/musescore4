@@ -8,7 +8,7 @@
     <creator type="composer">Composer / arranger</creator>
     <encoding>
       <software>MuseScore Studio 4.7.5</software>
-      <encoding-date>2026-10-07</encoding-date>
+      <encoding-date>2026-10-16</encoding-date>
       <supports element="accidental" type="yes"/>
       <supports element="beam" type="yes"/>
       <supports element="print" attribute="new-page" type="no"/>
@@ -61,6 +61,10 @@
         <key>
           <fifths>-1</fifths>
           </key>
+        <time print-object="no">
+          <beats>10</beats>
+          <beat-type>4</beat-type>
+          </time>
         <clef>
           <sign>G</sign>
           <line>2</line>
@@ -263,6 +267,12 @@
         </note>
       </measure>
     <measure number="2">
+      <attributes>
+        <time print-object="no">
+          <beats>7</beats>
+          <beat-type>4</beat-type>
+          </time>
+        </attributes>
       <note>
         <pitch>
           <step>B</step>
@@ -392,6 +402,12 @@
         </note>
       </measure>
     <measure number="3">
+      <attributes>
+        <time print-object="no">
+          <beats>11</beats>
+          <beat-type>4</beat-type>
+          </time>
+        </attributes>
       <note>
         <pitch>
           <step>C</step>
@@ -591,6 +607,12 @@
         </note>
       </measure>
     <measure number="4">
+      <attributes>
+        <time print-object="no">
+          <beats>13</beats>
+          <beat-type>4</beat-type>
+          </time>
+        </attributes>
       <note>
         <pitch>
           <step>A</step>
@@ -722,7 +744,8 @@
         </note>
       <note>
         <pitch>
-          <step>G</step>
+          <step>B</step>
+          <alter>-1</alter>
           <octave>4</octave>
           </pitch>
         <duration>2</duration>
@@ -733,18 +756,6 @@
           <syllabic>single</syllabic>
           <text>king</text>
           </lyric>
-        </note>
-      <note>
-        <chord/>
-        <pitch>
-          <step>B</step>
-          <alter>-1</alter>
-          <octave>4</octave>
-          </pitch>
-        <duration>2</duration>
-        <voice>1</voice>
-        <type>half</type>
-        <stem>up</stem>
         </note>
       <backup>
         <duration>13</duration>
@@ -845,14 +856,24 @@
           <slur type="stop" number="1"/>
           </notations>
         </note>
-      <forward>
-        <duration>1</duration>
-        </forward>
-      <forward>
-        <duration>1</duration>
-        </forward>
+      <note>
+        <pitch>
+          <step>G</step>
+          <octave>4</octave>
+          </pitch>
+        <duration>2</duration>
+        <voice>2</voice>
+        <type>half</type>
+        <stem>down</stem>
+        </note>
       </measure>
     <measure number="5">
+      <attributes>
+        <time print-object="no">
+          <beats>11</beats>
+          <beat-type>4</beat-type>
+          </time>
+        </attributes>
       <note>
         <pitch>
           <step>B</step>
@@ -1038,6 +1059,12 @@
         </note>
       </measure>
     <measure number="6">
+      <attributes>
+        <time print-object="no">
+          <beats>10</beats>
+          <beat-type>4</beat-type>
+          </time>
+        </attributes>
       <note>
         <pitch>
           <step>B</step>
@@ -1165,6 +1192,12 @@
         </barline>
       </measure>
     <measure number="7">
+      <attributes>
+        <time print-object="no">
+          <beats>9</beats>
+          <beat-type>4</beat-type>
+          </time>
+        </attributes>
       <note>
         <pitch>
           <step>G</step>
@@ -1338,6 +1371,12 @@
         </note>
       </measure>
     <measure number="8">
+      <attributes>
+        <time print-object="no">
+          <beats>10</beats>
+          <beat-type>4</beat-type>
+          </time>
+        </attributes>
       <note>
         <pitch>
           <step>B</step>
@@ -1542,6 +1581,12 @@
         </note>
       </measure>
     <measure number="9">
+      <attributes>
+        <time print-object="no">
+          <beats>11</beats>
+          <beat-type>4</beat-type>
+          </time>
+        </attributes>
       <note>
         <pitch>
           <step>B</step>
@@ -1742,6 +1787,12 @@
         </note>
       </measure>
     <measure number="10">
+      <attributes>
+        <time print-object="no">
+          <beats>10</beats>
+          <beat-type>4</beat-type>
+          </time>
+        </attributes>
       <note>
         <pitch>
           <step>A</step>
@@ -1831,7 +1882,8 @@
         </note>
       <note>
         <pitch>
-          <step>G</step>
+          <step>B</step>
+          <alter>-1</alter>
           <octave>4</octave>
           </pitch>
         <duration>2</duration>
@@ -1842,18 +1894,6 @@
           <syllabic>single</syllabic>
           <text>fer</text>
           </lyric>
-        </note>
-      <note>
-        <chord/>
-        <pitch>
-          <step>B</step>
-          <alter>-1</alter>
-          <octave>4</octave>
-          </pitch>
-        <duration>2</duration>
-        <voice>1</voice>
-        <type>half</type>
-        <stem>up</stem>
         </note>
       <backup>
         <duration>10</duration>
@@ -1924,9 +1964,16 @@
           <slur type="stop" number="1"/>
           </notations>
         </note>
-      <forward>
+      <note>
+        <pitch>
+          <step>G</step>
+          <octave>4</octave>
+          </pitch>
         <duration>2</duration>
-        </forward>
+        <voice>2</voice>
+        <type>half</type>
+        <stem>down</stem>
+        </note>
       </measure>
     <measure number="11">
       <note>
@@ -2063,6 +2110,10 @@
         <key>
           <fifths>-1</fifths>
           </key>
+        <time print-object="no">
+          <beats>10</beats>
+          <beat-type>4</beat-type>
+          </time>
         <clef>
           <sign>F</sign>
           <line>4</line>
@@ -2233,6 +2284,12 @@
         </note>
       </measure>
     <measure number="2">
+      <attributes>
+        <time print-object="no">
+          <beats>7</beats>
+          <beat-type>4</beat-type>
+          </time>
+        </attributes>
       <note>
         <pitch>
           <step>C</step>
@@ -2338,6 +2395,12 @@
         </note>
       </measure>
     <measure number="3">
+      <attributes>
+        <time print-object="no">
+          <beats>11</beats>
+          <beat-type>4</beat-type>
+          </time>
+        </attributes>
       <note>
         <pitch>
           <step>C</step>
@@ -2503,6 +2566,12 @@
         </note>
       </measure>
     <measure number="4">
+      <attributes>
+        <time print-object="no">
+          <beats>13</beats>
+          <beat-type>4</beat-type>
+          </time>
+        </attributes>
       <note>
         <pitch>
           <step>C</step>
@@ -2697,6 +2766,12 @@
         </note>
       </measure>
     <measure number="5">
+      <attributes>
+        <time print-object="no">
+          <beats>11</beats>
+          <beat-type>4</beat-type>
+          </time>
+        </attributes>
       <note>
         <pitch>
           <step>C</step>
@@ -2837,6 +2912,12 @@
         </note>
       </measure>
     <measure number="6">
+      <attributes>
+        <time print-object="no">
+          <beats>10</beats>
+          <beat-type>4</beat-type>
+          </time>
+        </attributes>
       <note>
         <pitch>
           <step>C</step>
@@ -2946,6 +3027,12 @@
         </barline>
       </measure>
     <measure number="7">
+      <attributes>
+        <time print-object="no">
+          <beats>9</beats>
+          <beat-type>4</beat-type>
+          </time>
+        </attributes>
       <note>
         <pitch>
           <step>C</step>
@@ -3091,6 +3178,12 @@
         </note>
       </measure>
     <measure number="8">
+      <attributes>
+        <time print-object="no">
+          <beats>10</beats>
+          <beat-type>4</beat-type>
+          </time>
+        </attributes>
       <note>
         <pitch>
           <step>C</step>
@@ -3256,6 +3349,12 @@
         </note>
       </measure>
     <measure number="9">
+      <attributes>
+        <time print-object="no">
+          <beats>11</beats>
+          <beat-type>4</beat-type>
+          </time>
+        </attributes>
       <note>
         <pitch>
           <step>C</step>
@@ -3421,6 +3520,12 @@
         </note>
       </measure>
     <measure number="10">
+      <attributes>
+        <time print-object="no">
+          <beats>10</beats>
+          <beat-type>4</beat-type>
+          </time>
+        </attributes>
       <note>
         <pitch>
           <step>C</step>

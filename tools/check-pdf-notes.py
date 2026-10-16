@@ -309,8 +309,10 @@ def check(mscz, pdf):
                     problems.append(f"{where} m{m + 1}: pdf notes add up to {sums[m]}, measure is {ln}")
             # slurs: pair starts and ends within the voice, then find the curve between the two heads
             open_, pairs = [], []
-            for i, (_, _, _, start, end, _) in enumerate(a):
+            for i, (mm, _, _, start, end, _) in enumerate(a):
                 if end:
+                    if not open_:
+                        raise Unsupported(f"{where} m{mm + 1}: slur end without a slur start in that voice")
                     pairs.append((open_.pop(), i))
                 if start:
                     open_.append(i)

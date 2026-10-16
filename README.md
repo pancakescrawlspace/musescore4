@@ -11,33 +11,45 @@ For a score `X`:
 | File | What it is |
 |---|---|
 | `X.mscz` | The score. Edit only this one. |
-| `X_timesig.mscz` | Generated copy with hidden time signatures (see below). |
-| `X_timesig.musicxml` | MusicXML export of the copy. |
-| `X_timesig.ly` | `musicxml2ly` output plus a few hand edits. |
-| `X_timesig.pdf` | The engraved score. |
+| `X.musicxml` | Its MusicXML export. |
+| `X.ly` | `musicxml2ly` output plus a few hand edits. |
+| `X.pdf` | The engraved score. |
+| `X.mp4` | Video (not in git), see "Videos". |
 
-Scores that have real time signatures skip the hidden-time-signature copy
-and use `_styled` instead of `_timesig`. That applies to
-`groot_prokimen_pinksteren`, `nog_vele_jaren_trouwmap` and `o_czom`.
-
-Older files without a suffix (`heer_ik_roep_t1.ly`, `heer_ik_roep_t3.pdf`,
-`onder_uwe_hoede.mxl`, …) are earlier exports and not part of this
-pipeline. `o_czom.ly`/`o_czom.pdf` are an earlier hand-finished version:
-don't regenerate them. `o_czom.mscz` now has all four of its verses, and
+Three scores use `X_styled.*` for the generated files instead:
+`groot_prokimen_pinksteren`, `nog_vele_jaren_trouwmap` and `o_czom`. For
+o_czom that keeps them apart from `o_czom.ly`/`o_czom.pdf`, an earlier
+hand-finished version: don't regenerate those. `o_czom.mscz` now has all four of its verses, and
 `o_czom_styled.*` generated from it has the same music and lyrics. It
 differs only in house style (title layout, default lyric spacing) and
 uses ’ throughout where the hand-finished file sometimes has '.
 
-## Why the `_timesig` copy
+## Hidden time signatures
 
-Most of these scores have no time signature, only measures of custom
-length (chant-style psalm tones). Their MusicXML export has no `<time>`,
-so `musicxml2ly` writes no `\time` and LilyPond rebars everything as 4/4.
-`tools/mscz-add-hidden-timesig.py` makes a copy with a hidden time
-signature wherever the measure length changes. Its export carries
-`<time print-object="no">`, which becomes
-`\time 14/4 \omit Staff.TimeSignature` in the `.ly`, so the barlines match
-MuseScore.
+Most of these scores are in free meter: measures of custom length
+(chant-style psalm tones), no visible time signature. Without any time
+signature, their MusicXML export has no `<time>`, so `musicxml2ly` writes
+no `\time` and LilyPond rebars everything as 4/4. So each of them has a
+hidden time signature wherever the measure length changes. The export
+then carries `<time print-object="no">`, which becomes
+`\time 14/4 \omit Staff.TimeSignature` in the `.ly`, and the barlines
+match MuseScore.
+
+The hidden time signatures also show no courtesy signature at a line
+break, so MuseScore looks exactly as without them. For a new free-meter
+score, add them once:
+
+```sh
+tools/mscz-add-hidden-timesig.py X.mscz      # in place
+```
+
+After that, keep them right when you change a measure's length: give the
+measure a time signature of its new length (and hide it, without courtesy
+signature), or the measures after it get the wrong one. `rebuild-score.py`
+refuses a score without any time signatures.
+
+(Until 2026-10-16 the hidden time signatures lived in separate generated
+`X_timesig.mscz` copies, and all outputs were named `X_timesig.*`.)
 
 ## Rebuilding a score
 
@@ -48,9 +60,7 @@ tools/rebuild-score.py X            # e.g. tools/rebuild-score.py heer_ik_roep_t
 tools/rebuild-score.py X Y Z        # several at once
 ```
 
-This runs all the steps below. It picks the route from the score: a score
-with time signatures goes the `_styled` route, a free-meter one the
-`_timesig` route. The generic hand edits (and the line-break spacer below)
+This runs all the steps below. The generic hand edits (and the line-break spacer below)
 are carried over from the current `.ly`; a score without a `.ly` yet gets
 its title and subtitle from its title frame. If a `.ly` has hand edits
 the script can't carry over (groot_prokimen's voltas), it stops before
@@ -69,23 +79,20 @@ already say it, and the count is hidden in MuseScore too.
 The steps it runs, for doing it by hand (from the repository root):
 
 ```sh
-# 1. hidden time signatures (skip for the _styled scores)
-tools/mscz-add-hidden-timesig.py X.mscz X_timesig.mscz
+# 1. MusicXML (for the three _styled scores: -o X_styled.musicxml, and so on)
+"/Applications/MuseScore 4.app/Contents/MacOS/mscore" -o X.musicxml X.mscz
 
-# 2. MusicXML (the _styled scores export X.mscz to X_styled.musicxml)
-"/Applications/MuseScore 4.app/Contents/MacOS/mscore" -o X_timesig.musicxml X_timesig.mscz
+# 2. LilyPond source
+musicxml2ly -o X.ly X.musicxml
+rm -f X.ly~      # backup left behind by musicxml2ly's convert-ly step
 
-# 3. LilyPond source
-musicxml2ly -o X_timesig.ly X_timesig.musicxml
-rm -f X_timesig.ly~      # backup left behind by musicxml2ly's convert-ly step
+# 3. hand edits (below), and the repeat count if there is one
 
-# 4. hand edits (below)
+# 4. PDF
+lilypond X.ly
 
-# 5. PDF
-lilypond X_timesig.ly
-
-# 6. check the notes in the PDF against the score
-tools/check-pdf-notes.py X.mscz X_timesig.pdf
+# 5. check the notes in the PDF against the score
+tools/check-pdf-notes.py X.mscz X.pdf
 ```
 
 `mscore -o` sometimes exits with status 134 after writing a complete file,
@@ -94,11 +101,11 @@ trusting the exit status (see "MuseScore command line" below).
 
 ### Hand edits to the `.ly`
 
-Step 3 overwrites the `.ly`, so reapply these afterwards. Each `.ly` lists
+Step 2 overwrites the `.ly`, so reapply these afterwards. Each `.ly` lists
 its hand edits in a comment near the top, and `git diff` shows anything
 you missed.
 
-In every `_timesig.ly` and `_styled.ly`:
+In every generated `.ly`:
 
 - `\include "church_style.ily"` right after `\version`;
 - the comment `% hand edits after conversion: …` after musicxml2ly's
@@ -109,7 +116,7 @@ In every `_timesig.ly` and `_styled.ly`:
 
 A few files have more, each marked with a `% hand edit:` comment:
 
-- `canon_kruisverheffing_timesig.ly`: `{ s4*15 \bar "" }` before the first
+- `canon_kruisverheffing.ly`: `{ s4*15 \bar "" }` before the first
   voice, which allows a line break in the long first measure.
 - `groot_prokimen_pinksteren_styled.ly`: a new system for the voltas, the
   volta label `1.-2.` (LilyPond 2.24's volta font has no comma or en dash),
@@ -138,12 +145,12 @@ unsupported rather than passed. See `tools/README.md`.
 
 ## Heer ik roep: all eight tones
 
-`heer_ik_roep_alle_tonen.pdf` is the eight `heer_ik_roep_tN_timesig.pdf`
+`heer_ik_roep_alle_tonen.pdf` is the eight `heer_ik_roep_tN.pdf`
 files, toon 1 to toon 8, one per page. `tools/rebuild-score.py` rejoins it
 when it rebuilds a tone; by hand:
 
 ```sh
-qpdf --empty --pages heer_ik_roep_t{1,2,3,4,5,6,7,8}_timesig.pdf -- heer_ik_roep_alle_tonen.pdf
+qpdf --empty --pages heer_ik_roep_t{1,2,3,4,5,6,7,8}.pdf -- heer_ik_roep_alle_tonen.pdf
 ```
 
 ## Videos

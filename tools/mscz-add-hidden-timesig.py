@@ -1,15 +1,20 @@
 #!/usr/bin/env python3
-"""Copy a MuseScore 4 .mscz, adding a hidden time signature to every measure
-whose length (<Measure len="n/d">) differs from the previous one in that staff,
-so MusicXML export carries <time print-object="no"> for each length change.
+"""Add a hidden time signature to every measure of a MuseScore 4 .mscz whose
+length (<Measure len="n/d">) differs from the previous one in that staff, so
+MusicXML export carries <time print-object="no"> for each length change.
 
-usage: tools/mscz-add-hidden-timesig.py in.mscz out.mscz
+The time signatures are invisible and show no courtesy signature at a line
+break, so MuseScore's layout stays exactly as without them.
+
+usage: tools/mscz-add-hidden-timesig.py score.mscz            (in place)
+       tools/mscz-add-hidden-timesig.py in.mscz out.mscz
 """
 import re
 import sys
 import zipfile
 
-TIMESIG = "<TimeSig>\n<visible>0</visible>\n<sigN>{}</sigN>\n<sigD>{}</sigD>\n</TimeSig>\n"
+TIMESIG = ("<TimeSig>\n<visible>0</visible>\n<showCourtesySig>0</showCourtesySig>\n"
+           "<sigN>{}</sigN>\n<sigD>{}</sigD>\n</TimeSig>\n")
 
 
 def patch_staff(staff):
@@ -45,7 +50,8 @@ def patch_mscx(txt):
     return "<Staff id=".join(patch_staff(c) for c in txt.split("<Staff id="))
 
 
-def main(src, dst):
+def main(src, dst=None):
+    dst = dst or src
     with zipfile.ZipFile(src) as zin:
         # patch first, so a refused score leaves no half-written dst behind
         files = [(info, zin.read(info)) for info in zin.infolist()]

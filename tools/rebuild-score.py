@@ -4,10 +4,11 @@
 
 usage: tools/rebuild-score.py NAME [NAME ...]
 
-NAME is a score name like heer_ik_roep_t3 (or heer_ik_roep_t3.mscz). A
-score with time signatures is exported directly, to NAME_styled.*; a
-free-meter score first gets a NAME_timesig.mscz copy with hidden time
-signatures, and the outputs are NAME_timesig.*.
+NAME is a score name like heer_ik_roep_t3 (or heer_ik_roep_t3.mscz). The
+outputs are NAME.musicxml, NAME.ly and NAME.pdf, or NAME_styled.* where a
+NAME_styled.ly exists (where NAME.ly is a separate hand-made file, as for
+o_czom). Scores need time signatures, hidden ones for free meter: a score
+without any is refused (add them with tools/mscz-add-hidden-timesig.py).
 
 Hand edits taken from the current .ly: the \\include of church_style.ily,
 the hand-edit comment, the \\header title/subtitle, and the line-break
@@ -142,20 +143,15 @@ def rebuild(name):
     mscz = name + ".mscz"
     if not os.path.exists(mscz):
         raise Failed(f"{mscz} not found")
-    styled = has_timesig(mscz)
-    base = name + ("_styled" if styled else "_timesig")
+    base = name + "_styled" if os.path.exists(name + "_styled.ly") else name
     print(f"== {mscz} -> {base}.*")
+    # 1. time signatures: without them musicxml2ly rebars everything as 4/4
+    if not has_timesig(mscz):
+        raise Failed(f"{mscz} has no time signatures; for free meter add hidden ones with "
+                     f"tools/mscz-add-hidden-timesig.py {mscz}")
     old = open(base + ".ly").read() if os.path.exists(base + ".ly") else None
-    # 1. hidden time signatures
-    if styled:
-        source = mscz
-    else:
-        r = run(os.path.join(TOOLS, "mscz-add-hidden-timesig.py"), mscz, base + ".mscz")
-        if r.returncode:
-            raise Failed(r.stderr.strip())
-        source = base + ".mscz"
     # 2. MusicXML; mscore may exit 134 after writing a complete file, so check the file
-    run(MSCORE, "-o", base + ".musicxml", source)
+    run(MSCORE, "-o", base + ".musicxml", mscz)
     with open(base + ".musicxml") as f:
         if not f.read().rstrip().endswith("</score-partwise>"):
             raise Failed(f"{base}.musicxml is incomplete")
@@ -180,6 +176,9 @@ def rebuild(name):
     if r.returncode == 2:
         print("  note check skipped: " + r.stdout.strip().splitlines()[-1].strip())
         return True
+    if r.returncode and "problem(s)" not in r.stdout:
+        print("  note check crashed: " + (r.stderr.strip().splitlines() or ["?"])[-1])
+        return False
     print("\n".join("  " + l.strip() for l in r.stdout.strip().splitlines()[1:] if "PROBLEM" in l or l.strip() == "OK"
                     or "problem(s)" in l))
     return r.returncode == 0
@@ -199,7 +198,7 @@ def main(args):
             print(f"  FAILED: {e}")
             status = 2
     if tones:
-        pdfs = [f"heer_ik_roep_t{n}_timesig.pdf" for n in range(1, 9)]
+        pdfs = [f"heer_ik_roep_t{n}.pdf" for n in range(1, 9)]
         r = run("qpdf", "--empty", "--pages", *pdfs, "--", "heer_ik_roep_alle_tonen.pdf")
         print("== heer_ik_roep_alle_tonen.pdf " + ("joined again" if r.returncode == 0 else "FAILED: " + r.stderr.strip()))
         status = status if r.returncode == 0 else 2
