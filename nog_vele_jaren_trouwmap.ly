@@ -1,13 +1,13 @@
 \version "2.24.4"
 \include "church_style.ily"
-% automatically converted by musicxml2ly from nog_vele_jaren_trouwmap_styled.musicxml
+% automatically converted by musicxml2ly from nog_vele_jaren_trouwmap.musicxml
 % hand edits after conversion: the \include above and the \header title/subtitle (replacing musicxml2ly's title and composer)
 \pointAndClickOff
 
 \header {
     title = "Nog vele jaren"
     encodingsoftware =  "MuseScore Studio 4.7.5"
-    encodingdate =  "2026-10-10"
+    encodingdate =  "2026-10-16"
     }
 
 \layout {

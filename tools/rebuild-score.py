@@ -5,10 +5,9 @@
 usage: tools/rebuild-score.py NAME [NAME ...]
 
 NAME is a score name like heer_ik_roep_t3 (or heer_ik_roep_t3.mscz). The
-outputs are NAME.musicxml, NAME.ly and NAME.pdf, or NAME_styled.* where a
-NAME_styled.ly exists (where NAME.ly is a separate hand-made file, as for
-o_czom). Scores need time signatures, hidden ones for free meter: a score
-without any is refused (add them with tools/mscz-add-hidden-timesig.py).
+outputs are NAME.musicxml, NAME.ly and NAME.pdf. Scores need time
+signatures, hidden ones for free meter: a score without any is refused
+(add them with tools/mscz-add-hidden-timesig.py).
 
 Hand edits taken from the current .ly: the \\include of church_style.ily,
 the hand-edit comment, the \\header title/subtitle, and the line-break
@@ -143,7 +142,7 @@ def rebuild(name):
     mscz = name + ".mscz"
     if not os.path.exists(mscz):
         raise Failed(f"{mscz} not found")
-    base = name + "_styled" if os.path.exists(name + "_styled.ly") else name
+    base = name
     print(f"== {mscz} -> {base}.*")
     # 1. time signatures: without them musicxml2ly rebars everything as 4/4
     if not has_timesig(mscz):

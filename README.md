@@ -16,13 +16,16 @@ For a score `X`:
 | `X.pdf` | The engraved score. |
 | `X.mp4` | Video (not in git), see "Videos". |
 
-Three scores use `X_styled.*` for the generated files instead:
-`groot_prokimen_pinksteren`, `nog_vele_jaren_trouwmap` and `o_czom`. For
-o_czom that keeps them apart from `o_czom.ly`/`o_czom.pdf`, an earlier
-hand-finished version: don't regenerate those. `o_czom.mscz` now has all four of its verses, and
-`o_czom_styled.*` generated from it has the same music and lyrics. It
-differs only in house style (title layout, default lyric spacing) and
-uses ’ throughout where the hand-finished file sometimes has '.
+`o_czom_hand.ly`/`o_czom_hand.pdf` (with the `o_czom_hand.musicxml` it
+was converted from) are an earlier hand-finished version of o_czom: don't
+regenerate them. `o_czom.png` is the original score it was transcribed
+from. The generated `o_czom.*` has the same music and lyrics as the hand
+version; it differs only in house style (title layout, default lyric
+spacing) and uses ’ throughout where the hand version sometimes has '.
+
+(Until 2026-10-16 the generated files of groot_prokimen_pinksteren,
+nog_vele_jaren_trouwmap and o_czom were named `X_styled.*`, and the hand
+version was `o_czom.ly`/`.pdf`.)
 
 ## Hidden time signatures
 
@@ -79,7 +82,7 @@ already say it, and the count is hidden in MuseScore too.
 The steps it runs, for doing it by hand (from the repository root):
 
 ```sh
-# 1. MusicXML (for the three _styled scores: -o X_styled.musicxml, and so on)
+# 1. MusicXML
 "/Applications/MuseScore 4.app/Contents/MacOS/mscore" -o X.musicxml X.mscz
 
 # 2. LilyPond source
@@ -118,7 +121,7 @@ A few files have more, each marked with a `% hand edit:` comment:
 
 - `canon_kruisverheffing.ly`: `{ s4*15 \bar "" }` before the first
   voice, which allows a line break in the long first measure.
-- `groot_prokimen_pinksteren_styled.ly`: a new system for the voltas, the
+- `groot_prokimen_pinksteren.ly`: a new system for the voltas, the
   volta label `1.-2.` (LilyPond 2.24's volta font has no comma or en dash),
   and the final barline (musicxml2ly drops it inside `\alternative`).
 
