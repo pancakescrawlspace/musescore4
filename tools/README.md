@@ -1,7 +1,24 @@
 # tools
 
-Scripts for getting the church scores from MuseScore to LilyPond. Both use the
-Python standard library only; run them from the repository root.
+Scripts for getting the church scores from MuseScore to LilyPond. They use
+the Python standard library only; run them from the repository root. The
+pipeline as a whole is described in `../README.md`.
+
+## Rebuilding a score (`rebuild-score.py`)
+
+Runs the whole pipeline for one or more scores: hidden-time-signature copy
+(for free-meter scores), MusicXML export with MuseScore, `musicxml2ly`, the
+hand edits, LilyPond, and the note check below.
+
+```sh
+tools/rebuild-score.py heer_ik_roep_t3 onder_uwe_hoede
+```
+
+The hand edits come from the current `.ly`: the `\include`, the hand-edit
+comment, the `\header` title/subtitle and the line-break spacer. Other
+`% hand edit:` lines stop the script before it replaces the `.ly`. Exit
+status 0 means done, 1 means a note check found differences, 2 means a step
+failed.
 
 ## Free-meter scores (`mscz-add-hidden-timesig.py`)
 

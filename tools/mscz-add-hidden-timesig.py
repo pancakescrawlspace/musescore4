@@ -46,11 +46,13 @@ def patch_mscx(txt):
 
 
 def main(src, dst):
-    with zipfile.ZipFile(src) as zin, zipfile.ZipFile(dst, "w", zipfile.ZIP_DEFLATED) as zout:
-        for info in zin.infolist():
-            data = zin.read(info)
-            if info.filename.endswith(".mscx"):
-                data = patch_mscx(data.decode("utf-8")).encode("utf-8")
+    with zipfile.ZipFile(src) as zin:
+        # patch first, so a refused score leaves no half-written dst behind
+        files = [(info, zin.read(info)) for info in zin.infolist()]
+        files = [(info, patch_mscx(data.decode("utf-8")).encode("utf-8") if info.filename.endswith(".mscx") else data)
+                 for info, data in files]
+    with zipfile.ZipFile(dst, "w", zipfile.ZIP_DEFLATED) as zout:
+        for info, data in files:
             zout.writestr(info, data)
 
 
