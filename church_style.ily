@@ -51,6 +51,9 @@
     % is more than one verse
     \Score
     \consists #only-several-stanza-numbers
+    % text at a barline (repeat counts like "3×" from \textEndMark) at
+    % the lyrics' size; LilyPond's default is smaller
+    \override TextMark.font-size = #(* 6 (/ (log (/ 14 11)) (log 2)))
   }
   \context {
     \Lyrics

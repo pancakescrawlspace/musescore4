@@ -58,6 +58,11 @@ replacing the `.ly`, so you can run the steps by hand. It also runs the
 note check, and rejoins `heer_ik_roep_alle_tonen.pdf` when a Heer ik roep
 tone was rebuilt.
 
+It adds one thing `musicxml2ly` can't: the count of a repeat played three
+or more times ("3×" above the end repeat, at the lyrics' size, as in
+onder_uwe_hoede's last measure), using `\textEndMark`. Repeats with volta brackets don't need
+it, and a count of 2 isn't printed (also as in MuseScore).
+
 The steps it runs, for doing it by hand (from the repository root):
 
 ```sh
@@ -192,6 +197,16 @@ Findings about `mscore` (MuseScore Studio 4.7.5, at
   against `heer_ik_roep_t2.mp4` exported from the dialog: every frame of
   the video is identical. Not handled: scores with more than three staves,
   and instrument names (these scores hide them already).
+- **Repeat counts:** a repeated passage is marked with start/end repeat
+  barlines, and the end repeat's "play count" says how often it is played
+  (Properties panel on the barline). The count printed above it is a
+  separate `PlayCountText` element (style "Play count text" under
+  Repeats). MuseScore's presets write "3x" with a letter x; onder_uwe_hoede
+  uses the custom text "3×" instead, to match the PDF. MuseScore adds the
+  element only when you change the play count in the interface, and it
+  isn't exported to MusicXML. So a repeat made by
+  editing the `.mscz` file needs that element added too, and the LilyPond
+  side gets the count from `rebuild-score.py`.
 
 ## Lyrics in MuseScore
 

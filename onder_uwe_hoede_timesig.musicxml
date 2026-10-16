@@ -1572,17 +1572,16 @@
         </note>
       </measure>
     <measure number="7">
+      <barline location="left">
+        <bar-style>heavy-light</bar-style>
+        <repeat direction="forward"/>
+        </barline>
       <attributes>
         <time print-object="no">
           <beats>18</beats>
           <beat-type>4</beat-type>
           </time>
         </attributes>
-      <direction placement="above">
-        <direction-type>
-          <words>(3x)</words>
-          </direction-type>
-        </direction>
       <note>
         <pitch>
           <step>G</step>
@@ -1873,6 +1872,7 @@
         </note>
       <barline location="right">
         <bar-style>light-heavy</bar-style>
+        <repeat direction="backward" times="3"/>
         </barline>
       </measure>
     </part>
@@ -3041,6 +3041,10 @@
         </note>
       </measure>
     <measure number="7">
+      <barline location="left">
+        <bar-style>heavy-light</bar-style>
+        <repeat direction="forward"/>
+        </barline>
       <attributes>
         <time print-object="no">
           <beats>18</beats>
@@ -3260,6 +3264,7 @@
         </note>
       <barline location="right">
         <bar-style>light-heavy</bar-style>
+        <repeat direction="backward" times="3"/>
         </barline>
       </measure>
     </part>

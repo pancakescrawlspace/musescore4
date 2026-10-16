@@ -32,10 +32,11 @@ PartPOneVoiceOne =  \relative g' {
     fis4 \stemUp g2. | % 6
     \time 19/4 \omit Staff.TimeSignature \stemUp a4 \stemUp b2 \stemUp a4
     \stemUp c4 \stemUp b4 ( \stemUp a4 \stemUp g4 ) \stemUp b4 \stemUp a4
-    \stemUp g4 \stemUp fis2. \stemUp fis4 g1 | % 7
-    \time 18/4 \omit Staff.TimeSignature \stemUp g4 ^ "(3x)" \stemUp g4
-    \stemUp g4 \stemUp g4 \stemUp g4 \stemUp a4 \stemUp b2 ( \stemUp a2
-    ) \stemUp g2 ( \stemUp fis2 ) g1 \bar "|."
+    \stemUp g4 \stemUp fis2. \stemUp fis4 g1 \repeat volta 3 {
+        | % 7
+        \time 18/4 \omit Staff.TimeSignature \stemUp g4 \stemUp g4
+        \stemUp g4 \stemUp g4 \stemUp g4 \stemUp a4 \stemUp b2 ( \stemUp
+        a2 ) \stemUp g2 ( \stemUp fis2 ) g1 \textEndMark "3×" }
     }
 
 PartPOneVoiceOneLyricsOne =  \lyricmode {\set ignoreMelismata = ##t On
@@ -65,10 +66,11 @@ PartPOneVoiceTwo =  \relative e' {
     \time 19/4 \omit Staff.TimeSignature \stemDown fis4 \stemDown g2
     \stemDown fis4 \stemDown a4 \stemDown g4 ( \stemDown fis4 \stemDown
     e4 ) \stemDown g4 \stemDown fis4 \stemDown e4 \stemDown dis2.
-    \stemDown dis4 e1 | % 7
-    \time 18/4 \omit Staff.TimeSignature \stemDown e4 \stemDown e4
-    \stemDown e4 \stemDown e4 \stemDown e4 \stemDown fis4 \stemDown g2 (
-    \stemDown fis2 ) \stemDown e2 ( \stemDown dis2 ) e1 \bar "|."
+    \stemDown dis4 e1 \repeat volta 3 {
+        | % 7
+        \time 18/4 \omit Staff.TimeSignature \stemDown e4 \stemDown e4
+        \stemDown e4 \stemDown e4 \stemDown e4 \stemDown fis4 \stemDown
+        g2 ( \stemDown fis2 ) \stemDown e2 ( \stemDown dis2 ) e1 }
     }
 
 PartPTwoVoiceOne =  \relative b {
@@ -87,9 +89,10 @@ PartPTwoVoiceOne =  \relative b {
     \stemUp b2. | % 6
     \time 19/4 \omit Staff.TimeSignature \stemUp d4 \stemUp d2 \stemUp d4
     \stemUp d4 \stemUp d4 ( \stemUp b2 ) \stemUp b4 \stemUp b4 \stemUp b4
-    \stemUp b2. \stemUp b4 b1 | % 7
-    \time 18/4 \omit Staff.TimeSignature \stemUp b4 \stemUp b4 \stemUp b4
-    \stemUp b4 \stemUp b4 \stemUp d4 d1 b1 b1 \bar "|."
+    \stemUp b2. \stemUp b4 b1 \repeat volta 3 {
+        | % 7
+        \time 18/4 \omit Staff.TimeSignature \stemUp b4 \stemUp b4
+        \stemUp b4 \stemUp b4 \stemUp b4 \stemUp d4 d1 b1 b1 }
     }
 
 PartPTwoVoiceTwo =  \relative e {
@@ -109,10 +112,11 @@ PartPTwoVoiceTwo =  \relative e {
     \time 19/4 \omit Staff.TimeSignature \stemDown d4 \stemDown g2
     \stemDown d4 \stemDown d4 \stemDown d4 ( \stemDown dis4 \stemDown e4
     ) \stemDown e4 \stemDown dis4 \stemDown e4 \stemDown b2. \stemDown b4
-    e1 | % 7
-    \time 18/4 \omit Staff.TimeSignature \stemDown e4 \stemDown e4
-    \stemDown e4 \stemDown e4 \stemDown e4 \stemDown d4 \stemDown g2 (
-    \stemDown d2 ) \stemDown e2 ( \stemDown b2 ) e1 \bar "|."
+    e1 \repeat volta 3 {
+        | % 7
+        \time 18/4 \omit Staff.TimeSignature \stemDown e4 \stemDown e4
+        \stemDown e4 \stemDown e4 \stemDown e4 \stemDown d4 \stemDown g2
+        ( \stemDown d2 ) \stemDown e2 ( \stemDown b2 ) e1 }
     }
 
 
