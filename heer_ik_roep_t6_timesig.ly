@@ -8,7 +8,7 @@
     title = "Heer ik roep"
     subtitle = "toon 6"
     encodingsoftware =  "MuseScore Studio 4.7.5"
-    encodingdate =  "2026-10-10"
+    encodingdate =  "2026-10-16"
     }
 
 \layout {
@@ -31,20 +31,16 @@ PartPOneVoiceOne =  \relative g' {
     \stemUp a2 \stemUp g2 \stemUp fis2 | % 6
     \time 14/4 \omit Staff.TimeSignature \stemUp g4 ( \stemUp a4 )
     \stemUp b2. ( \stemUp a4 ) \stemUp g2 \stemUp fis2 g1 \bar "||"
-    \repeat volta 2 {
-        | % 7
-        \time 9/4 \omit Staff.TimeSignature \stemUp g4 \stemUp g4
-        \stemUp g4 \stemUp g4 \stemUp g4 \stemUp fis2 \stemUp g2 | % 8
-        \time 11/4 \omit Staff.TimeSignature \stemUp a4 \stemUp a4
-        \stemUp a4 \stemUp a4 \stemUp a4 \stemUp a2 \stemUp g2 \stemUp a2
-        | % 9
-        \stemUp b4 \stemUp b4 \stemUp b4 \stemUp b4 \stemUp b4 \stemUp b4
-        \stemUp a2 ( \stemUp g4 ) \stemUp fis2 | \barNumberCheck #10
-        \time 8/4 \omit Staff.TimeSignature \stemUp g4 \stemUp g4
-        \stemUp g4 \stemUp g4 \stemUp fis2 \stemUp g2 | % 11
-        \time 14/4 \omit Staff.TimeSignature \stemUp g4 ( \stemUp a4 )
-        \stemUp b2. ( \stemUp a4 ) \stemUp g2 \stemUp fis2 g1 \bar "|."
-        }
+    \time 9/4 \omit Staff.TimeSignature \stemUp g4 \stemUp g4 \stemUp g4
+    \stemUp g4 \stemUp g4 \stemUp fis2 \stemUp g2 | % 8
+    \time 11/4 \omit Staff.TimeSignature \stemUp a4 \stemUp a4 \stemUp a4
+    \stemUp a4 \stemUp a4 \stemUp a2 \stemUp g2 \stemUp a2 | % 9
+    \stemUp b4 \stemUp b4 \stemUp b4 \stemUp b4 \stemUp b4 \stemUp b4
+    \stemUp a2 ( \stemUp g4 ) \stemUp fis2 | \barNumberCheck #10
+    \time 8/4 \omit Staff.TimeSignature \stemUp g4 \stemUp g4 \stemUp g4
+    \stemUp g4 \stemUp fis2 \stemUp g2 | % 11
+    \time 14/4 \omit Staff.TimeSignature \stemUp g4 ( \stemUp a4 )
+    \stemUp b2. ( \stemUp a4 ) \stemUp g2 \stemUp fis2 g1 \bar "|."
     }
 
 PartPOneVoiceOneLyricsOne =  \lyricmode {\set ignoreMelismata = ##t Heer
@@ -73,23 +69,19 @@ PartPOneVoiceTwo =  \relative e' {
     \time 14/4 \omit Staff.TimeSignature \stemDown e4 ( \stemDown fis4 )
     \stemDown g2. ( \stemDown fis4 ) \stemDown e2 \stemDown dis2 e1 \bar
     "||"
-    \repeat volta 2 {
-        | % 7
-        \time 9/4 \omit Staff.TimeSignature \stemDown e4 \stemDown e4
-        \stemDown e4 \stemDown e4 \stemDown e4 \stemDown dis2 \stemDown
-        e2 | % 8
-        \time 11/4 \omit Staff.TimeSignature \stemDown fis4 \stemDown
-        fis4 \stemDown fis4 \stemDown fis4 \stemDown fis4 \stemDown fis2
-        \stemDown e2 \stemDown fis2 | % 9
-        \stemDown g4 \stemDown g4 \stemDown g4 \stemDown g4 \stemDown g4
-        \stemDown g4 \stemDown fis2 ( \stemDown e4 ) \stemDown dis2 |
-        \barNumberCheck #10
-        \time 8/4 \omit Staff.TimeSignature \stemDown e4 \stemDown e4
-        \stemDown e4 \stemDown e4 \stemDown dis2 \stemDown e2 | % 11
-        \time 14/4 \omit Staff.TimeSignature \stemDown e4 ( \stemDown
-        fis4 ) \stemDown g2. ( \stemDown fis4 ) \stemDown e2 \stemDown
-        dis2 e1 \bar "|."
-        }
+    \time 9/4 \omit Staff.TimeSignature \stemDown e4 \stemDown e4
+    \stemDown e4 \stemDown e4 \stemDown e4 \stemDown dis2 \stemDown e2 | % 8
+    \time 11/4 \omit Staff.TimeSignature \stemDown fis4 \stemDown fis4
+    \stemDown fis4 \stemDown fis4 \stemDown fis4 \stemDown fis2
+    \stemDown e2 \stemDown fis2 | % 9
+    \stemDown g4 \stemDown g4 \stemDown g4 \stemDown g4 \stemDown g4
+    \stemDown g4 \stemDown fis2 ( \stemDown e4 ) \stemDown dis2 |
+    \barNumberCheck #10
+    \time 8/4 \omit Staff.TimeSignature \stemDown e4 \stemDown e4
+    \stemDown e4 \stemDown e4 \stemDown dis2 \stemDown e2 | % 11
+    \time 14/4 \omit Staff.TimeSignature \stemDown e4 ( \stemDown fis4 )
+    \stemDown g2. ( \stemDown fis4 ) \stemDown e2 \stemDown dis2 e1 \bar
+    "|."
     }
 
 PartPTwoVoiceOne =  \relative b {
@@ -107,20 +99,16 @@ PartPTwoVoiceOne =  \relative b {
     \stemUp d2 \stemUp b2 \stemUp b2 | % 6
     \time 14/4 \omit Staff.TimeSignature \stemUp b4 ( \stemUp d4 )
     \stemUp d2. ( \stemUp c4 ) \stemUp b2 \stemUp b2 b1 \bar "||"
-    \repeat volta 2 {
-        | % 7
-        \time 9/4 \omit Staff.TimeSignature \stemUp b4 \stemUp b4
-        \stemUp b4 \stemUp b4 \stemUp b4 \stemUp b2 \stemUp b2 | % 8
-        \time 11/4 \omit Staff.TimeSignature \stemUp d4 \stemUp d4
-        \stemUp d4 \stemUp d4 \stemUp d4 \stemUp d2 \stemUp d2 \stemUp d2
-        | % 9
-        \stemUp d4 \stemUp d4 \stemUp d4 \stemUp d4 \stemUp d4 \stemUp d4
-        \stemUp d2 ( \stemUp b4 ) \stemUp b2 | \barNumberCheck #10
-        \time 8/4 \omit Staff.TimeSignature \stemUp b4 \stemUp b4
-        \stemUp b4 \stemUp b4 \stemUp b2 \stemUp b2 | % 11
-        \time 14/4 \omit Staff.TimeSignature \stemUp b4 ( \stemUp d4 )
-        \stemUp d2. ( \stemUp c4 ) \stemUp b2 \stemUp b2 b1 \bar "|."
-        }
+    \time 9/4 \omit Staff.TimeSignature \stemUp b4 \stemUp b4 \stemUp b4
+    \stemUp b4 \stemUp b4 \stemUp b2 \stemUp b2 | % 8
+    \time 11/4 \omit Staff.TimeSignature \stemUp d4 \stemUp d4 \stemUp d4
+    \stemUp d4 \stemUp d4 \stemUp d2 \stemUp d2 \stemUp d2 | % 9
+    \stemUp d4 \stemUp d4 \stemUp d4 \stemUp d4 \stemUp d4 \stemUp d4
+    \stemUp d2 ( \stemUp b4 ) \stemUp b2 | \barNumberCheck #10
+    \time 8/4 \omit Staff.TimeSignature \stemUp b4 \stemUp b4 \stemUp b4
+    \stemUp b4 \stemUp b2 \stemUp b2 | % 11
+    \time 14/4 \omit Staff.TimeSignature \stemUp b4 ( \stemUp d4 )
+    \stemUp d2. ( \stemUp c4 ) \stemUp b2 \stemUp b2 b1 \bar "|."
     }
 
 PartPTwoVoiceTwo =  \relative e {
@@ -139,23 +127,19 @@ PartPTwoVoiceTwo =  \relative e {
     \time 14/4 \omit Staff.TimeSignature \stemDown e4 ( \stemDown d4 )
     \stemDown g2. ( \stemDown a4 ) \stemDown b2 \stemDown b,2 e1 \bar
     "||"
-    \repeat volta 2 {
-        | % 7
-        \time 9/4 \omit Staff.TimeSignature \stemDown e4 \stemDown e4
-        \stemDown e4 \stemDown e4 \stemDown e4 \stemDown b2 \stemDown e2
-        | % 8
-        \time 11/4 \omit Staff.TimeSignature \stemDown d4 \stemDown d4
-        \stemDown d4 \stemDown d4 \stemDown d4 \stemDown d2 \stemDown d2
-        \stemDown d2 | % 9
-        \stemDown g4 \stemDown g4 \stemDown g4 \stemDown g4 \stemDown g4
-        \stemDown g4 \stemDown d2 ( \stemDown e4 ) \stemDown b2 |
-        \barNumberCheck #10
-        \time 8/4 \omit Staff.TimeSignature \stemDown e4 \stemDown e4
-        \stemDown e4 \stemDown e4 \stemDown b2 \stemDown e2 | % 11
-        \time 14/4 \omit Staff.TimeSignature \stemDown e4 ( \stemDown d4
-        ) \stemDown g2. ( \stemDown a4 ) \stemDown b2 \stemDown b,2 e1
-        \bar "|."
-        }
+    \time 9/4 \omit Staff.TimeSignature \stemDown e4 \stemDown e4
+    \stemDown e4 \stemDown e4 \stemDown e4 \stemDown b2 \stemDown e2 | % 8
+    \time 11/4 \omit Staff.TimeSignature \stemDown d4 \stemDown d4
+    \stemDown d4 \stemDown d4 \stemDown d4 \stemDown d2 \stemDown d2
+    \stemDown d2 | % 9
+    \stemDown g4 \stemDown g4 \stemDown g4 \stemDown g4 \stemDown g4
+    \stemDown g4 \stemDown d2 ( \stemDown e4 ) \stemDown b2 |
+    \barNumberCheck #10
+    \time 8/4 \omit Staff.TimeSignature \stemDown e4 \stemDown e4
+    \stemDown e4 \stemDown e4 \stemDown b2 \stemDown e2 | % 11
+    \time 14/4 \omit Staff.TimeSignature \stemDown e4 ( \stemDown d4 )
+    \stemDown g2. ( \stemDown a4 ) \stemDown b2 \stemDown b,2 e1 \bar
+    "|."
     }
 
 
