@@ -20,6 +20,19 @@ comment, the `\header` title/subtitle and the line-break spacer. Other
 status 0 means done, 1 means a note check found differences, 2 means a step
 failed.
 
+## Videos with reflow (`score-video.py`)
+
+Exports `score.mp4` from `score.mscz` with MuseScore, laid out as with
+"Reflow to fit video resolution" in the export dialog, which the command
+line can't select. It changes a temporary copy of the score to match
+reflow and exports that; the score itself isn't touched. Details are in
+`../README.md` under "MuseScore command line".
+
+```sh
+tools/score-video.py heer_ik_roep_t3.mscz                    # 1080p, 24 fps
+tools/score-video.py --resolution 720p --fps 30 heer_ik_roep_t3.mscz
+```
+
 ## Free-meter scores (`mscz-add-hidden-timesig.py`)
 
 A MuseScore score with no time signature, only measures of custom length

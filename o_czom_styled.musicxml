@@ -84,6 +84,18 @@
           <syllabic>begin</syllabic>
           <text>K cze</text>
           </lyric>
+        <lyric number="2">
+          <syllabic>begin</syllabic>
+          <text>K Nie</text>
+          </lyric>
+        <lyric number="3">
+          <syllabic>begin</syllabic>
+          <text>Wie</text>
+          </lyric>
+        <lyric number="4">
+          <syllabic>single</syllabic>
+          <text>O</text>
+          </lyric>
         </note>
       <note>
         <chord/>
@@ -109,6 +121,18 @@
         <lyric number="1">
           <syllabic>end</syllabic>
           <text>mu</text>
+          </lyric>
+        <lyric number="2">
+          <syllabic>end</syllabic>
+          <text>mu</text>
+          </lyric>
+        <lyric number="3">
+          <syllabic>end</syllabic>
+          <text>zdie</text>
+          </lyric>
+        <lyric number="4">
+          <syllabic>begin</syllabic>
+          <text>Bo</text>
           </lyric>
         </note>
       <note>
@@ -136,6 +160,18 @@
         <lyric number="1">
           <syllabic>begin</syllabic>
           <text>skor</text>
+          </lyric>
+        <lyric number="2">
+          <syllabic>begin</syllabic>
+          <text>du</text>
+          </lyric>
+        <lyric number="3">
+          <syllabic>begin</syllabic>
+          <text>bie</text>
+          </lyric>
+        <lyric number="4">
+          <syllabic>end</syllabic>
+          <text>hie</text>
           </lyric>
         </note>
       <note>
@@ -204,6 +240,21 @@
           <text>biet’</text>
           <extend/>
           </lyric>
+        <lyric number="2">
+          <syllabic>end</syllabic>
+          <text>szoj</text>
+          <extend/>
+          </lyric>
+        <lyric number="3">
+          <syllabic>end</syllabic>
+          <text>dy</text>
+          <extend/>
+          </lyric>
+        <lyric number="4">
+          <syllabic>single</syllabic>
+          <text>wsio</text>
+          <extend/>
+          </lyric>
         </note>
       <note>
         <chord/>
@@ -256,6 +307,18 @@
           <syllabic>single</syllabic>
           <text>o</text>
           </lyric>
+        <lyric number="2">
+          <syllabic>single</syllabic>
+          <text>ja</text>
+          </lyric>
+        <lyric number="3">
+          <syllabic>begin</syllabic>
+          <text>wie</text>
+          </lyric>
+        <lyric number="4">
+          <syllabic>begin</syllabic>
+          <text>mo</text>
+          </lyric>
         </note>
       <note>
         <chord/>
@@ -282,6 +345,18 @@
           <syllabic>single</syllabic>
           <text>czom</text>
           </lyric>
+        <lyric number="2">
+          <syllabic>begin</syllabic>
+          <text>budu woz</text>
+          </lyric>
+        <lyric number="3">
+          <syllabic>end</syllabic>
+          <text>zdie</text>
+          </lyric>
+        <lyric number="4">
+          <syllabic>middle</syllabic>
+          <text>jo upo</text>
+          </lyric>
         </note>
       <note>
         <pitch>
@@ -297,6 +372,18 @@
         <lyric number="1">
           <syllabic>begin</syllabic>
           <text>kru</text>
+          </lyric>
+        <lyric number="2">
+          <syllabic>middle</syllabic>
+          <text>wy</text>
+          </lyric>
+        <lyric number="3">
+          <syllabic>begin</syllabic>
+          <text>na</text>
+          </lyric>
+        <lyric number="4">
+          <syllabic>middle</syllabic>
+          <text>ko</text>
           </lyric>
         </note>
       <note>
@@ -388,6 +475,18 @@
           <syllabic>middle</syllabic>
           <text>szyt</text>
           </lyric>
+        <lyric number="2">
+          <syllabic>middle</syllabic>
+          <text>szat</text>
+          </lyric>
+        <lyric number="3">
+          <syllabic>middle</syllabic>
+          <text>pas</text>
+          </lyric>
+        <lyric number="4">
+          <syllabic>middle</syllabic>
+          <text>je</text>
+          </lyric>
         </note>
       <note>
         <chord/>
@@ -413,6 +512,18 @@
         <lyric number="1">
           <syllabic>end</syllabic>
           <text>sia</text>
+          </lyric>
+        <lyric number="2">
+          <syllabic>end</syllabic>
+          <text>sia</text>
+          </lyric>
+        <lyric number="3">
+          <syllabic>end</syllabic>
+          <text>ti</text>
+          </lyric>
+        <lyric number="4">
+          <syllabic>end</syllabic>
+          <text>ńje</text>
           </lyric>
         </note>
       <note>
@@ -441,6 +552,18 @@
           <syllabic>single</syllabic>
           <text>o</text>
           </lyric>
+        <lyric number="2">
+          <syllabic>single</syllabic>
+          <text>na</text>
+          </lyric>
+        <lyric number="3">
+          <syllabic>begin</syllabic>
+          <text>wie</text>
+          </lyric>
+        <lyric number="4">
+          <syllabic>single</syllabic>
+          <text>s Nim</text>
+          </lyric>
         </note>
       <note>
         <chord/>
@@ -466,6 +589,18 @@
         <lyric number="1">
           <syllabic>single</syllabic>
           <text>czom</text>
+          </lyric>
+        <lyric number="2">
+          <syllabic>begin</syllabic>
+          <text>nie</text>
+          </lyric>
+        <lyric number="3">
+          <syllabic>end</syllabic>
+          <text>zdie</text>
+          </lyric>
+        <lyric number="4">
+          <syllabic>begin</syllabic>
+          <text>moż</text>
           </lyric>
         </note>
       <note>
@@ -494,6 +629,18 @@
         <lyric number="1">
           <syllabic>single</syllabic>
           <text>mnie</text>
+          </lyric>
+        <lyric number="2">
+          <syllabic>end</syllabic>
+          <text>bo</text>
+          </lyric>
+        <lyric number="3">
+          <syllabic>single</syllabic>
+          <text>i</text>
+          </lyric>
+        <lyric number="4">
+          <syllabic>end</syllabic>
+          <text>no</text>
           </lyric>
         </note>
       <note>
@@ -587,6 +734,18 @@
           <syllabic>begin</syllabic>
           <text>sle</text>
           </lyric>
+        <lyric number="2">
+          <syllabic>single</syllabic>
+          <text>um</text>
+          </lyric>
+        <lyric number="3">
+          <syllabic>single</syllabic>
+          <text>wsio</text>
+          </lyric>
+        <lyric number="4">
+          <syllabic>single</syllabic>
+          <text>żyt’</text>
+          </lyric>
         </note>
       <note>
         <chord/>
@@ -612,6 +771,18 @@
         <lyric number="1">
           <syllabic>end</syllabic>
           <text>zy</text>
+          </lyric>
+        <lyric number="2">
+          <syllabic>single</syllabic>
+          <text>swoj</text>
+          </lyric>
+        <lyric number="3">
+          <syllabic>begin</syllabic>
+          <text>mie</text>
+          </lyric>
+        <lyric number="4">
+          <syllabic>single</syllabic>
+          <text>mnie</text>
           </lyric>
         </note>
       <note>
@@ -640,6 +811,18 @@
           <syllabic>begin</syllabic>
           <text>pro</text>
           </lyric>
+        <lyric number="2">
+          <syllabic>begin</syllabic>
+          <text>woz</text>
+          </lyric>
+        <lyric number="3">
+          <syllabic>end</syllabic>
+          <text>nia</text>
+          </lyric>
+        <lyric number="4">
+          <syllabic>single</syllabic>
+          <text>i</text>
+          </lyric>
         </note>
       <note>
         <chord/>
@@ -666,6 +849,18 @@
         <lyric number="1">
           <syllabic>middle</syllabic>
           <text>li</text>
+          </lyric>
+        <lyric number="2">
+          <syllabic>middle</syllabic>
+          <text>wo</text>
+          </lyric>
+        <lyric number="3">
+          <syllabic>begin</syllabic>
+          <text>stra</text>
+          </lyric>
+        <lyric number="4">
+          <syllabic>begin</syllabic>
+          <text>w bie</text>
           </lyric>
         </note>
       <note>
@@ -751,6 +946,21 @@
           <text>wat’</text>
           <extend/>
           </lyric>
+        <lyric number="2">
+          <syllabic>end</syllabic>
+          <text>dit’</text>
+          <extend/>
+          </lyric>
+        <lyric number="3">
+          <syllabic>end</syllabic>
+          <text>szyt</text>
+          <extend/>
+          </lyric>
+        <lyric number="4">
+          <syllabic>end</syllabic>
+          <text>dach</text>
+          <extend/>
+          </lyric>
         </note>
       <note>
         <chord/>
@@ -802,6 +1012,18 @@
           <syllabic>single</syllabic>
           <text>A</text>
           </lyric>
+        <lyric number="2">
+          <syllabic>single</syllabic>
+          <text>Pred</text>
+          </lyric>
+        <lyric number="3">
+          <syllabic>begin</syllabic>
+          <text>Ku</text>
+          </lyric>
+        <lyric number="4">
+          <syllabic>begin</syllabic>
+          <text>K Nie</text>
+          </lyric>
         </note>
       <note>
         <chord/>
@@ -829,6 +1051,18 @@
           <syllabic>begin</syllabic>
           <text>nuż</text>
           </lyric>
+        <lyric number="2">
+          <syllabic>single</syllabic>
+          <text>Nim</text>
+          </lyric>
+        <lyric number="3">
+          <syllabic>end</syllabic>
+          <text>da</text>
+          </lyric>
+        <lyric number="4">
+          <syllabic>end</syllabic>
+          <text>mu</text>
+          </lyric>
         </note>
       <note>
         <chord/>
@@ -854,6 +1088,18 @@
         <lyric number="1">
           <syllabic>end</syllabic>
           <text>no</text>
+          </lyric>
+        <lyric number="2">
+          <syllabic>single</syllabic>
+          <text>lisz</text>
+          </lyric>
+        <lyric number="3">
+          <syllabic>single</syllabic>
+          <text>że</text>
+          </lyric>
+        <lyric number="4">
+          <syllabic>begin</syllabic>
+          <text>pry</text>
           </lyric>
         </note>
       <note>
@@ -952,6 +1198,18 @@
           <syllabic>begin</syllabic>
           <text>Bo</text>
           </lyric>
+        <lyric number="2">
+          <syllabic>begin</syllabic>
+          <text>pro</text>
+          </lyric>
+        <lyric number="3">
+          <syllabic>begin</syllabic>
+          <text>skro</text>
+          </lyric>
+        <lyric number="4">
+          <syllabic>middle</syllabic>
+          <text>bieh</text>
+          </lyric>
         </note>
       <note>
         <chord/>
@@ -977,6 +1235,18 @@
         <lyric number="1">
           <syllabic>end</syllabic>
           <text>hu</text>
+          </lyric>
+        <lyric number="2">
+          <syllabic>middle</syllabic>
+          <text>doł</text>
+          </lyric>
+        <lyric number="3">
+          <syllabic>end</syllabic>
+          <text>juś</text>
+          </lyric>
+        <lyric number="4">
+          <syllabic>end</syllabic>
+          <text>nu</text>
           </lyric>
         </note>
       <note>
@@ -1004,6 +1274,18 @@
           <syllabic>single</syllabic>
           <text>lisz</text>
           </lyric>
+        <lyric number="2">
+          <syllabic>end</syllabic>
+          <text>żat’</text>
+          </lyric>
+        <lyric number="3">
+          <syllabic>single</syllabic>
+          <text>ot</text>
+          </lyric>
+        <lyric number="4">
+          <syllabic>begin</syllabic>
+          <text>s u</text>
+          </lyric>
         </note>
       <note>
         <chord/>
@@ -1030,6 +1312,18 @@
         <lyric number="1">
           <syllabic>begin</syllabic>
           <text>mo</text>
+          </lyric>
+        <lyric number="2">
+          <syllabic>begin</syllabic>
+          <text>smi</text>
+          </lyric>
+        <lyric number="3">
+          <syllabic>begin</syllabic>
+          <text>nie</text>
+          </lyric>
+        <lyric number="4">
+          <syllabic>middle</syllabic>
+          <text>mi</text>
           </lyric>
         </note>
       <note>
@@ -1111,6 +1405,18 @@
           <syllabic>middle</syllabic>
           <text>lit</text>
           </lyric>
+        <lyric number="2">
+          <syllabic>middle</syllabic>
+          <text>rat</text>
+          </lyric>
+        <lyric number="3">
+          <syllabic>middle</syllabic>
+          <text>sczast’</text>
+          </lyric>
+        <lyric number="4">
+          <syllabic>middle</syllabic>
+          <text>le</text>
+          </lyric>
         </note>
       <note>
         <chord/>
@@ -1137,6 +1443,18 @@
           <syllabic>end</syllabic>
           <text>sia</text>
           </lyric>
+        <lyric number="2">
+          <syllabic>end</syllabic>
+          <text>sia</text>
+          </lyric>
+        <lyric number="3">
+          <syllabic>end</syllabic>
+          <text>ja</text>
+          </lyric>
+        <lyric number="4">
+          <syllabic>end</syllabic>
+          <text>ńjem</text>
+          </lyric>
         </note>
       <note>
         <rest/>
@@ -1156,6 +1474,18 @@
         <lyric number="1">
           <syllabic>begin</syllabic>
           <text>Je</text>
+          </lyric>
+        <lyric number="2">
+          <syllabic>single</syllabic>
+          <text>i</text>
+          </lyric>
+        <lyric number="3">
+          <syllabic>single</syllabic>
+          <text>i</text>
+          </lyric>
+        <lyric number="4">
+          <syllabic>single</syllabic>
+          <text>wsia</text>
           </lyric>
         </note>
       <note>
@@ -1230,6 +1560,18 @@
           <syllabic>end</syllabic>
           <text>ho</text>
           </lyric>
+        <lyric number="2">
+          <syllabic>begin</syllabic>
+          <text>s czust</text>
+          </lyric>
+        <lyric number="3">
+          <syllabic>single</syllabic>
+          <text>hdie</text>
+          </lyric>
+        <lyric number="4">
+          <syllabic>single</syllabic>
+          <text>żyzń</text>
+          </lyric>
         </note>
       <note>
         <chord/>
@@ -1255,6 +1597,21 @@
         <lyric number="1">
           <syllabic>single</syllabic>
           <text>na</text>
+          <extend/>
+          </lyric>
+        <lyric number="2">
+          <syllabic>end</syllabic>
+          <text>wom</text>
+          <extend/>
+          </lyric>
+        <lyric number="3">
+          <syllabic>single</syllabic>
+          <text>naj</text>
+          <extend/>
+          </lyric>
+        <lyric number="4">
+          <syllabic>single</syllabic>
+          <text>mo</text>
           <extend/>
           </lyric>
         </note>
@@ -1336,6 +1693,18 @@
           <syllabic>begin</syllabic>
           <text>po</text>
           </lyric>
+        <lyric number="2">
+          <syllabic>begin</syllabic>
+          <text>skorb</text>
+          </lyric>
+        <lyric number="3">
+          <syllabic>single</syllabic>
+          <text>ti</text>
+          </lyric>
+        <lyric number="4">
+          <syllabic>single</syllabic>
+          <text>ja</text>
+          </lyric>
         </note>
       <note>
         <chord/>
@@ -1363,6 +1732,18 @@
           <syllabic>end</syllabic>
           <text>moszcz</text>
           </lyric>
+        <lyric number="2">
+          <syllabic>end</syllabic>
+          <text>nym</text>
+          </lyric>
+        <lyric number="3">
+          <syllabic>single</syllabic>
+          <text>mnie</text>
+          </lyric>
+        <lyric number="4">
+          <syllabic>begin</syllabic>
+          <text>w Je</text>
+          </lyric>
         </note>
       <note>
         <chord/>
@@ -1387,6 +1768,18 @@
         <lyric number="1">
           <syllabic>begin</syllabic>
           <text>pry</text>
+          </lyric>
+        <lyric number="2">
+          <syllabic>begin</syllabic>
+          <text>ho</text>
+          </lyric>
+        <lyric number="3">
+          <syllabic>begin</syllabic>
+          <text>twier</text>
+          </lyric>
+        <lyric number="4">
+          <syllabic>end</syllabic>
+          <text>ho</text>
           </lyric>
         </note>
       <note>
@@ -1413,6 +1806,18 @@
         <lyric number="1">
           <syllabic>middle</syllabic>
           <text>zy</text>
+          </lyric>
+        <lyric number="2">
+          <syllabic>middle</syllabic>
+          <text>wo</text>
+          </lyric>
+        <lyric number="3">
+          <syllabic>end</syllabic>
+          <text>dy</text>
+          </lyric>
+        <lyric number="4">
+          <syllabic>begin</syllabic>
+          <text>ru</text>
           </lyric>
         </note>
       <note>
@@ -1487,6 +1892,18 @@
           <syllabic>end</syllabic>
           <text>wat’</text>
           </lyric>
+        <lyric number="2">
+          <syllabic>end</syllabic>
+          <text>ryt’</text>
+          </lyric>
+        <lyric number="3">
+          <syllabic>single</syllabic>
+          <text>szczyt</text>
+          </lyric>
+        <lyric number="4">
+          <syllabic>end</syllabic>
+          <text>kach</text>
+          </lyric>
         </note>
       <note>
         <chord/>
@@ -1517,6 +1934,18 @@
         <lyric number="1">
           <syllabic>begin</syllabic>
           <text>Je</text>
+          </lyric>
+        <lyric number="2">
+          <syllabic>single</syllabic>
+          <text>i</text>
+          </lyric>
+        <lyric number="3">
+          <syllabic>single</syllabic>
+          <text>i</text>
+          </lyric>
+        <lyric number="4">
+          <syllabic>single</syllabic>
+          <text>wsia</text>
           </lyric>
         </note>
       <note>
@@ -1580,6 +2009,18 @@
           <syllabic>end</syllabic>
           <text>ho</text>
           </lyric>
+        <lyric number="2">
+          <syllabic>begin</syllabic>
+          <text>s czust</text>
+          </lyric>
+        <lyric number="3">
+          <syllabic>single</syllabic>
+          <text>hdie</text>
+          </lyric>
+        <lyric number="4">
+          <syllabic>single</syllabic>
+          <text>żyzń</text>
+          </lyric>
         </note>
       <note>
         <chord/>
@@ -1605,6 +2046,21 @@
         <lyric number="1">
           <syllabic>single</syllabic>
           <text>na</text>
+          <extend/>
+          </lyric>
+        <lyric number="2">
+          <syllabic>end</syllabic>
+          <text>wom</text>
+          <extend/>
+          </lyric>
+        <lyric number="3">
+          <syllabic>single</syllabic>
+          <text>naj</text>
+          <extend/>
+          </lyric>
+        <lyric number="4">
+          <syllabic>single</syllabic>
+          <text>mo</text>
           <extend/>
           </lyric>
         </note>
@@ -1686,6 +2142,18 @@
           <syllabic>begin</syllabic>
           <text>po</text>
           </lyric>
+        <lyric number="2">
+          <syllabic>begin</syllabic>
+          <text>skorb</text>
+          </lyric>
+        <lyric number="3">
+          <syllabic>single</syllabic>
+          <text>ti</text>
+          </lyric>
+        <lyric number="4">
+          <syllabic>single</syllabic>
+          <text>ja</text>
+          </lyric>
         </note>
       <note>
         <chord/>
@@ -1713,6 +2181,18 @@
           <syllabic>end</syllabic>
           <text>moszcz</text>
           </lyric>
+        <lyric number="2">
+          <syllabic>end</syllabic>
+          <text>nym</text>
+          </lyric>
+        <lyric number="3">
+          <syllabic>single</syllabic>
+          <text>mnie</text>
+          </lyric>
+        <lyric number="4">
+          <syllabic>begin</syllabic>
+          <text>w Je</text>
+          </lyric>
         </note>
       <note>
         <chord/>
@@ -1737,6 +2217,18 @@
         <lyric number="1">
           <syllabic>begin</syllabic>
           <text>pry</text>
+          </lyric>
+        <lyric number="2">
+          <syllabic>begin</syllabic>
+          <text>ho</text>
+          </lyric>
+        <lyric number="3">
+          <syllabic>begin</syllabic>
+          <text>twier</text>
+          </lyric>
+        <lyric number="4">
+          <syllabic>end</syllabic>
+          <text>ho</text>
           </lyric>
         </note>
       <note>
@@ -1763,6 +2255,18 @@
         <lyric number="1">
           <syllabic>middle</syllabic>
           <text>zy</text>
+          </lyric>
+        <lyric number="2">
+          <syllabic>middle</syllabic>
+          <text>wo</text>
+          </lyric>
+        <lyric number="3">
+          <syllabic>end</syllabic>
+          <text>dy</text>
+          </lyric>
+        <lyric number="4">
+          <syllabic>begin</syllabic>
+          <text>ru</text>
           </lyric>
         </note>
       <note>
@@ -1835,6 +2339,18 @@
         <lyric number="1">
           <syllabic>end</syllabic>
           <text>wat’</text>
+          </lyric>
+        <lyric number="2">
+          <syllabic>end</syllabic>
+          <text>ryt’</text>
+          </lyric>
+        <lyric number="3">
+          <syllabic>single</syllabic>
+          <text>szczyt</text>
+          </lyric>
+        <lyric number="4">
+          <syllabic>end</syllabic>
+          <text>kach</text>
           </lyric>
         </note>
       <note>

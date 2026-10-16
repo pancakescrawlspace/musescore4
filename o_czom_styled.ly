@@ -73,6 +73,42 @@ PartPOneVoiceOneLyricsOne =  \lyricmode {\set ignoreMelismata = ##t
     "w hor" -- "koj " __\skip1 u -- czas -- ti mo -- "jej " __\skip1
     }
 
+PartPOneVoiceOneLyricsTwo =  \lyricmode {\set ignoreMelismata = ##t
+    "K Nie" -- mu du -- "szoj " __\skip1 ja "budu woz" -- wy -- szat --
+    sia na nie -- bo um swoj woz -- wo -- "dit’ " __\skip1 Pred Nim lisz
+    pro -- "doł" -- "żat’" smi -- rat -- sia i "s czust" -- "wom "
+    __\skip1 skorb -- nym ho -- wo -- "ryt’" i "s czust" -- "wom "
+    __\skip1 skorb -- nym ho -- wo -- "ryt’" \skip1 \skip1 \skip1 \skip1
+    \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
+    \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
+    \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
+    \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
+    }
+
+PartPOneVoiceOneLyricsThree =  \lyricmode {\set ignoreMelismata = ##t
+    Wie -- zdie bie -- "dy " __\skip1 wie -- zdie na -- pas -- ti wie --
+    zdie i wsio mie -- nia stra -- "szyt " __\skip1 Ku -- da "że" skro
+    -- "juś" ot nie -- "sczast’" -- ja i hdie "naj " __\skip1 ti mnie
+    twier -- dy szczyt i hdie "naj " __\skip1 ti mnie twier -- dy
+    szczyt\skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
+    \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
+    \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
+    \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
+    \skip1 \skip1 \skip1 \skip1
+    }
+
+PartPOneVoiceOneLyricsFour =  \lyricmode {\set ignoreMelismata = ##t O
+    Bo -- hie "wsio " __\skip1 mo -- "jo upo" -- ko -- je -- "ńje"
+    "s Nim" "moż" -- no "żyt’" mnie i "w bie" -- "dach " __\skip1
+    "K Nie" -- mu pry -- bieh -- nu "s u" -- mi -- le -- "ńjem" wsia
+    "żyzń" "mo " __\skip1 ja "w Je" -- ho ru -- kach wsia "żyzń" "mo "
+    __\skip1 ja "w Je" -- ho ru -- kach\skip1 \skip1 \skip1 \skip1
+    \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
+    \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
+    \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
+    \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
+    }
+
 PartPOneVoiceTwo =  \relative b {
     \clef "treble" \numericTimeSignature\time 4/4 \key g \major \partial
     4. \stemDown b8 [ \stemDown b8 \stemDown b8 ] | % 1
@@ -170,6 +206,9 @@ PartPTwoVoiceOne =  \relative e {
                     \mergeDifferentlyDottedOn\mergeDifferentlyHeadedOn
                     \context Voice = "PartPOneVoiceOne" {  \voiceOne \PartPOneVoiceOne }
                     \new Lyrics \lyricsto "PartPOneVoiceOne" { \set stanza = "1." \PartPOneVoiceOneLyricsOne }
+                    \new Lyrics \lyricsto "PartPOneVoiceOne" { \set stanza = "2." \PartPOneVoiceOneLyricsTwo }
+                    \new Lyrics \lyricsto "PartPOneVoiceOne" { \set stanza = "3." \PartPOneVoiceOneLyricsThree }
+                    \new Lyrics \lyricsto "PartPOneVoiceOne" { \set stanza = "4." \PartPOneVoiceOneLyricsFour }
                     \context Voice = "PartPOneVoiceTwo" {  \voiceTwo \PartPOneVoiceTwo }
                     >>
                 >>

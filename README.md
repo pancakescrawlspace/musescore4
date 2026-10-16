@@ -22,8 +22,11 @@ and use `_styled` instead of `_timesig`. That applies to
 
 Older files without a suffix (`heer_ik_roep_t1.ly`, `heer_ik_roep_t3.pdf`,
 `onder_uwe_hoede.mxl`, …) are earlier exports and not part of this
-pipeline. `o_czom.ly`/`o_czom.pdf` are a hand-finished version with four
-verses: don't regenerate them (`o_czom_styled.*` is the generated one).
+pipeline. `o_czom.ly`/`o_czom.pdf` are an earlier hand-finished version:
+don't regenerate them. `o_czom.mscz` now has all four of its verses, and
+`o_czom_styled.*` generated from it has the same music and lyrics. It
+differs only in house style (title layout, default lyric spacing) and
+uses ’ throughout where the hand-finished file sometimes has '.
 
 ## Why the `_timesig` copy
 
@@ -79,7 +82,7 @@ tools/check-pdf-notes.py X.mscz X_timesig.pdf
 
 `mscore -o` sometimes exits with status 134 after writing a complete file,
 so check that the MusicXML ends with `</score-partwise>` rather than
-trusting the exit status.
+trusting the exit status (see "MuseScore command line" below).
 
 ### Hand edits to the `.ly`
 
@@ -112,9 +115,10 @@ to the originals, so mirror any volta change there.
 ### House style
 
 `church_style.ily` holds the shared look: Helvetica throughout, 14 pt
-lyrics, no staff names or verse numbers, no first-system indent, no
-footer, and the title on the left with the subtitle on the right (or the
-title centered when there is no subtitle). It uses LilyPond 2.24 syntax.
+lyrics, no staff names, verse numbers only when a score has more than one
+verse, no first-system indent, no footer, and the title on the left with
+the subtitle on the right (or the title centered when there is no
+subtitle). It uses LilyPond 2.24 syntax.
 
 ### Checking the result
 
@@ -133,6 +137,61 @@ when it rebuilds a tone; by hand:
 ```sh
 qpdf --empty --pages heer_ik_roep_t{1,2,3,4,5,6,7,8}_timesig.pdf -- heer_ik_roep_alle_tonen.pdf
 ```
+
+## Videos
+
+The `heer_ik_roep_tN.mp4` videos (not in git) are made from the `.mscz`
+with MuseScore's video export, using "Reflow to fit video resolution":
+
+```sh
+tools/score-video.py heer_ik_roep_t{1,2,3,4,5,6,7,8}.mscz    # writes heer_ik_roep_tN.mp4
+```
+
+The defaults (1080p, 24 fps) match the export dialog's defaults; use
+`--resolution` and `--fps` for others. `heer_ik_roep_t4_piano.mp4` is a
+separate video and isn't made this way.
+
+## MuseScore command line
+
+Findings about `mscore` (MuseScore Studio 4.7.5, at
+`/Applications/MuseScore 4.app/Contents/MacOS/mscore`):
+
+- **Exit status:** `mscore -o` sometimes exits with status 134 after
+  writing a complete file. Check the output file, not the exit status.
+- **Video export:** `mscore --score-video -o out.mp4 score.mscz` makes the
+  same video as File > Export > Video, with options `--resolution`
+  (2160p … 360p, default 1080p), `--fps` (60, 30, 24; default 24), `--ls`
+  and `--ts` (pause before and after playback, default 3 s) and
+  `--no-audio`.
+- **No reflow from the command line:** the command line always uses "Use
+  page layout", which shows whole A4 pages scaled into the frame. "Reflow
+  to fit video resolution" is set only in the export dialog. It isn't saved
+  in MuseScore's preferences, and no command-line option sets it. (In the
+  source, `src/importexport/videoexport`: the view mode defaults to
+  `PageFull`, and only the dialog calls `setViewMode(Flexible)`.)
+- **What reflow does** (`VideoWriter::prepareScore`, view mode
+  `Flexible`): it hides the title frame and the instrument names. It sets
+  the page to the video size at 300 dpi (6.4 × 3.6 in for 1080p), with no
+  top or bottom margins, one-sided, without header or footer, system
+  distance 10 sp and staff borders 7/5 sp. Scores with more than three
+  staves are also scaled to fit a whole page's height.
+- **The title card:** the video opens with a card showing the score's
+  title, taken from the title frame (`notationTitle()`). If there is no
+  title frame, it falls back to the `workTitle` metadata (File > Project
+  properties), which in these scores is still MuseScore's default
+  "Untitled score".
+- **View settings are ignored:** the command line ignores
+  `showVerticalFrames` in the `.mscz`'s `viewsettings.json`, so it can't
+  hide the title frame the way reflow does.
+- **How `tools/score-video.py` gets reflow anyway:** it makes reflow's
+  changes in a temporary copy of the score: the style in `score_style.mss`
+  inside the `.mscz`, and removing the title frame, with the frame's title
+  text copied into `workTitle` for the title card. It then exports that
+  copy with page layout. Because the page now has the video's aspect
+  ratio, page layout fills the frame exactly as reflow does. Checked
+  against `heer_ik_roep_t2.mp4` exported from the dialog: every frame of
+  the video is identical. Not handled: scores with more than three staves,
+  and instrument names (these scores hide them already).
 
 ## Lyrics in MuseScore
 
@@ -155,7 +214,8 @@ SVGs. The `heer_ik_roep_tN_first_sys.ly` files there are edited by hand
 
 ## Tools
 
-- MuseScore Studio 4 (`mscore` inside the app bundle)
+- MuseScore Studio 4 (`mscore` inside the app bundle), plus FFmpeg for its
+  video export
 - LilyPond 2.24 with `musicxml2ly`
 - `mutool` (MuPDF), used by `check-pdf-notes.py`
 - `qpdf`, for the combined PDF

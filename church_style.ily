@@ -28,6 +28,18 @@
   }
 }
 
+% Engraver for the Score context: drops the verse numbers if they are all
+% "1.", i.e. if the score has a single verse.
+#(define (only-several-stanza-numbers context)
+   (let ((numbers '()))
+     (make-engraver
+      (acknowledgers
+       ((stanza-number-interface engraver grob source-engraver)
+        (set! numbers (cons grob numbers))))
+      ((finalize engraver)
+       (if (every (lambda (g) (equal? (ly:grob-property g 'text) "1.")) numbers)
+           (for-each ly:grob-suicide! numbers))))))
+
 \layout {
   \context {
     % no staff names ("Women"/"Men" set by musicxml2ly)
@@ -35,9 +47,13 @@
     \remove "Instrument_name_engraver"
   }
   \context {
+    % verse numbers ("1.", "2.", ... set by musicxml2ly) only when there
+    % is more than one verse
+    \Score
+    \consists #only-several-stanza-numbers
+  }
+  \context {
     \Lyrics
-    % no verse number ("1." set by musicxml2ly)
-    \remove "Stanza_number_engraver"
     % 14pt: text is 11pt at the default staff size 20, and each
     % font-size step scales by 2^(1/6)
     \override LyricText.font-size = #(* 6 (/ (log (/ 14 11)) (log 2)))
