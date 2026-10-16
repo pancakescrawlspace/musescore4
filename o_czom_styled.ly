@@ -8,7 +8,7 @@
     title = "O czom skorbiet’"
     subtitle = "Bohohłasnik"
     encodingsoftware =  "MuseScore Studio 4.7.5"
-    encodingdate =  "2026-10-10"
+    encodingdate =  "2026-10-16"
     }
 
 \layout {
@@ -66,11 +66,11 @@ PartPOneVoiceOneLyricsOne =  \lyricmode {\set ignoreMelismata = ##t
     "K cze" -- mu skor -- "biet’ " __\skip1 o czom kru -- szyt -- sia o
     czom mnie sle -- zy pro -- li -- "wat’ " __\skip1 A "nuż" -- no Bo
     -- hu lisz mo -- lit -- sia Je -- ho "na " __\skip1 po -- moszcz pry
-    -- zy --\skip1 Je ho "na " __\skip1 po -- moszcz pry -- zy -- "wat’"
-    Bo -- "że!" Ty mo -- ja na -- "dież" -- "da," mo -- ja ra -- "dost’"
-    "w żyz" -- ni "siej," u -- spo -- koj "że" mie -- "nia," Bo -- "że,"
-    "w hor" -- "koj " __\skip1 u -- czas -- ti mo -- "jej:" "w hor" --
-    "koj " __\skip1 u -- czas -- ti mo -- "jej " __\skip1
+    -- zy -- "wat’" Je ho "na " __\skip1 po -- moszcz pry -- zy --
+    "wat’" Bo -- "że!" Ty mo -- ja na -- "dież" -- "da," mo -- ja ra --
+    "dost’" "w żyz" -- ni "siej," u -- spo -- koj "że" mie -- "nia," Bo
+    -- "że," "w hor" -- "koj " __\skip1 u -- czas -- ti mo -- "jej:"
+    "w hor" -- "koj " __\skip1 u -- czas -- ti mo -- "jej " __\skip1
     }
 
 PartPOneVoiceTwo =  \relative b {
@@ -113,18 +113,6 @@ PartPOneVoiceTwo =  \relative b {
     \stemDown e8 [ \stemDown e8 ] \stemDown b4 \stemDown b4 | % 24
     \numericTimeSignature\time 4/4  \stemDown b2 ( \stemDown b8 ) r8 r4
     \bar "|."
-    }
-
-PartPOneVoiceTwoLyricsOne =  \lyricmode {\set ignoreMelismata =
-    ##t\skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-    \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-    \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-    \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 "wat’"
-    \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-    \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-    \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-    \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-    \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
     }
 
 PartPTwoVoiceOne =  \relative e {
@@ -183,7 +171,6 @@ PartPTwoVoiceOne =  \relative e {
                     \context Voice = "PartPOneVoiceOne" {  \voiceOne \PartPOneVoiceOne }
                     \new Lyrics \lyricsto "PartPOneVoiceOne" { \set stanza = "1." \PartPOneVoiceOneLyricsOne }
                     \context Voice = "PartPOneVoiceTwo" {  \voiceTwo \PartPOneVoiceTwo }
-                    \new Lyrics \lyricsto "PartPOneVoiceTwo" { \set stanza = "1." \PartPOneVoiceTwoLyricsOne }
                     >>
                 >>
             \new Staff

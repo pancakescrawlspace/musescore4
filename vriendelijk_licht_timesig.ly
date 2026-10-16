@@ -7,7 +7,7 @@
 \header {
     title = "Vriendelijk licht"
     encodingsoftware =  "MuseScore Studio 4.7.5"
-    encodingdate =  "2026-10-10"
+    encodingdate =  "2026-10-16"
     }
 
 \layout {
@@ -51,14 +51,14 @@ PartPOneVoiceOneLyricsOne =  \lyricmode {\set ignoreMelismata = ##t Je
     -- zus Chris -- tus Gij vreug -- de -- vol licht van de hei -- li --
     ge "heer " __\skip1 lijk -- heid van de on -- sterf -- lijk -- "ke,"
     he -- mel -- "se," "hei " __\skip1 li -- "ge," za -- li -- ge "Va "
-    __\skip1 der\skip1 ko -- men "bij " __\skip1 "zons " __\skip1 on --
+    __\skip1 der Ge -- ko -- men "bij " __\skip1 "zons " __\skip1 on --
     der -- gang en schou -- wend "het " __\skip1 "a " __\skip1 vond --
     licht be -- "zin " __\skip1 gen wij "God:" Va -- "der," "Zoon "
-    __\skip1 en hei -- li -- ge Geest\skip1 \skip1 waar -- dig U te
-    "al " __\skip1 len "tij " __\skip1 de met hei -- li -- ge stem --
-    men te "lo " __\skip1 \skip1 ven Zoon van God die het "le " __\skip1
-    ven "schenkt " __\skip1 daar -- om "ver " __\skip1 heer -- lijkt de
-    we -- reld "U!"
+    __\skip1 en hei -- li -- ge Geest Het is waar -- dig U te "al "
+    __\skip1 len "tij " __\skip1 de met hei -- li -- ge stem -- men te
+    "lo " __\skip1 \skip1 ven Zoon van God die het "le " __\skip1 ven
+    "schenkt " __\skip1 daar -- om "ver " __\skip1 heer -- lijkt de we
+    -- reld "U!"
     }
 
 PartPOneVoiceTwo =  \relative f' {
@@ -94,22 +94,6 @@ PartPOneVoiceTwo =  \relative f' {
     \time 18/4 \omit Staff.TimeSignature \stemDown f2 \stemDown fis2
     \stemDown g4 ( \stemDown a4 ) \stemDown bes2 \stemDown a4 \stemDown
     g4 \stemDown f2 \stemDown e2 c1 \bar "|."
-    }
-
-PartPOneVoiceTwoLyricsOne =  \lyricmode {\set ignoreMelismata =
-    ##t\skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-    \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-    \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-    \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-    \skip1 Ge --\skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-    \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-    \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-    \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 Het is\skip1 \skip1
-    \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-    \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-    \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-    \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-    \skip1 \skip1 \skip1
     }
 
 PartPTwoVoiceOne =  \relative c' {
@@ -192,7 +176,6 @@ PartPTwoVoiceTwo =  \relative f {
                     \context Voice = "PartPOneVoiceOne" {  \voiceOne \PartPOneVoiceOne }
                     \new Lyrics \lyricsto "PartPOneVoiceOne" { \set stanza = "1." \PartPOneVoiceOneLyricsOne }
                     \context Voice = "PartPOneVoiceTwo" {  \voiceTwo \PartPOneVoiceTwo }
-                    \new Lyrics \lyricsto "PartPOneVoiceTwo" { \set stanza = "1." \PartPOneVoiceTwoLyricsOne }
                     >>
                 >>
             \new Staff

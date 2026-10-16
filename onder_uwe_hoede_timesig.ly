@@ -7,7 +7,7 @@
 \header {
     title = "Onder Uwe hoede"
     encodingsoftware =  "MuseScore Studio 4.7.5"
-    encodingdate =  "2026-10-10"
+    encodingdate =  "2026-10-16"
     }
 
 \layout {
@@ -39,11 +39,11 @@ PartPOneVoiceOne =  \relative g' {
     }
 
 PartPOneVoiceOneLyricsOne =  \lyricmode {\set ignoreMelismata = ##t On
-    der U we hoe --\skip1 \skip1 de en er bar men vluch ten wij al hei
-    li ge Moe der Gods Zie on ze gro --\skip1 te nood hoor on ze be de
-    wees on ze red ding o wees ons be houd Gij e nig al rei --\skip1
-    \skip1 ne en ge ze gen\skip1 Al hei li ge Moe der Gods --\skip1 red
-    --\skip1 ons
+    der U we "hoe " __\skip1 \skip1 de en er bar men vluch ten wij al
+    hei li ge Moe der Gods Zie on ze "gro " __\skip1 te nood hoor on ze
+    be de wees on ze red ding o wees ons be houd Gij e nig al "rei "
+    __\skip1 \skip1 ne en ge ze gen de Al hei li ge Moe der "Gods "
+    __\skip1 "red " __\skip1 ons
     }
 
 PartPOneVoiceTwo =  \relative e' {
@@ -68,17 +68,6 @@ PartPOneVoiceTwo =  \relative e' {
     \time 18/4 \omit Staff.TimeSignature \stemDown e4 \stemDown e4
     \stemDown e4 \stemDown e4 \stemDown e4 \stemDown fis4 \stemDown g2 (
     \stemDown fis2 ) \stemDown e2 ( \stemDown dis2 ) e1 \bar "|."
-    }
-
-PartPOneVoiceTwoLyricsOne =  \lyricmode {\set ignoreMelismata =
-    ##t\skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-    \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-    \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-    \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-    \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-    \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-    \skip1 \skip1 de\skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-    \skip1 \skip1 \skip1 \skip1
     }
 
 PartPTwoVoiceOne =  \relative b {
@@ -142,7 +131,6 @@ PartPTwoVoiceTwo =  \relative e {
                     \context Voice = "PartPOneVoiceOne" {  \voiceOne \PartPOneVoiceOne }
                     \new Lyrics \lyricsto "PartPOneVoiceOne" { \set stanza = "1." \PartPOneVoiceOneLyricsOne }
                     \context Voice = "PartPOneVoiceTwo" {  \voiceTwo \PartPOneVoiceTwo }
-                    \new Lyrics \lyricsto "PartPOneVoiceTwo" { \set stanza = "1." \PartPOneVoiceTwoLyricsOne }
                     >>
                 >>
             \new Staff

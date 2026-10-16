@@ -48,7 +48,7 @@ PartPOneVoiceOne =  \relative g' {
 PartPOneVoiceOneLyricsOne =  \lyricmode {\set ignoreMelismata = ##t Heer
     ik roep tot "u," ver -- "hoor " __\skip1 \skip1 "mij," ver --
     "hoor " __\skip1 mij o "Heer," Heer ik roep tot "U," ver -- "hoor "
-    __\skip1 \skip1 mij sla acht op de stem van mijn sme --\skip1
+    __\skip1 \skip1 mij sla acht op de stem van mijn "sme " __\skip1
     "king," wan -- neer ik tot "U " __\skip1 \skip1 "roep," ver --
     "hoor " __\skip1 \skip1 "mij " __\skip1 o "Heer!" Laat mijn ge --
     bed als "wie " __\skip1 \skip1 rook op -- stij -- gen voor Uw aan --

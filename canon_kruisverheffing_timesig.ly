@@ -7,7 +7,7 @@
 \header {
     title = "Canon van Kruisverheffing"
     encodingsoftware =  "MuseScore Studio 4.7.5"
-    encodingdate =  "2026-10-10"
+    encodingdate =  "2026-10-16"
     }
 
 \layout {
@@ -51,7 +51,7 @@ PartPOneVoiceOneLyricsOne =  \lyricmode {\set ignoreMelismata = ##t
     -- te -- ren we -- der ge -- slo -- ten daa -- rom zin -- gen wij
     tot Chris -- tus God want Hij is be -- "dekt " __\skip1 "met "
     __\skip1 heer -- lijk -- "heid:" E -- re zij Uw kost -- baar Kruis
-    "o " __\skip1 \skip1 "re!"
+    "o " __\skip1 He "re!"
     }
 
 PartPOneVoiceTwo =  \relative d' {
@@ -85,20 +85,6 @@ PartPOneVoiceTwo =  \relative d' {
     \time 18/4 \omit Staff.TimeSignature \stemDown g4 \stemDown g4
     \stemDown g4 \stemDown g4 \stemDown g4 \stemDown g4 \stemDown g2
     \stemDown d2 \stemDown e2 ( \stemDown fis2 ) d1 \bar "|."
-    }
-
-PartPOneVoiceTwoLyricsOne =  \lyricmode {\set ignoreMelismata =
-    ##t\skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-    \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-    \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-    \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-    \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-    \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-    \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-    \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-    \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-    \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-    \skip1 \skip1 "He " __\skip1 \skip1
     }
 
 PartPTwoVoiceOne =  \relative a {
@@ -177,7 +163,6 @@ PartPTwoVoiceTwo =  \relative d {
                     \context Voice = "PartPOneVoiceOne" {  \voiceOne \PartPOneVoiceOne }
                     \new Lyrics \lyricsto "PartPOneVoiceOne" { \set stanza = "1." \PartPOneVoiceOneLyricsOne }
                     \context Voice = "PartPOneVoiceTwo" {  \voiceTwo \PartPOneVoiceTwo }
-                    \new Lyrics \lyricsto "PartPOneVoiceTwo" { \set stanza = "1." \PartPOneVoiceTwoLyricsOne }
                     >>
                 >>
             \new Staff
