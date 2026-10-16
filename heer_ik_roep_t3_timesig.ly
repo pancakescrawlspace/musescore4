@@ -8,7 +8,7 @@
     title = "Heer ik roep"
     subtitle = "toon 3"
     encodingsoftware =  "MuseScore Studio 4.7.5"
-    encodingdate =  "2026-10-10"
+    encodingdate =  "2026-10-16"
     }
 
 \layout {
@@ -30,6 +30,18 @@ PartPOneVoiceOne =  \relative g' {
     \time 11/4 \omit Staff.TimeSignature \stemUp g4 \stemUp g2 \stemUp a4
     \stemUp bes4 \stemUp a2 ( \stemUp g4 \stemUp f4 ) \stemUp g2 | % 6
     \time 14/4 \omit Staff.TimeSignature \stemUp a2 \stemUp g2 ( \stemUp
+    e4 \stemUp f4 ) \stemUp g4 ( \stemUp a4 ) \stemUp f2 e1 \bar "||"
+    \time 12/4 \omit Staff.TimeSignature \stemUp g2 \stemUp a4 \stemUp a4
+    \stemUp a4 \stemUp bes4 \stemUp a2 ( \stemUp g4 \stemUp f4 ) \stemUp
+    g2 | % 8
+    \time 11/4 \omit Staff.TimeSignature \stemUp g2 \stemUp a4 \stemUp a4
+    \stemUp a4 \stemUp a4 \stemUp g2 \stemUp f4 \stemUp e2 | % 9
+    \time 13/4 \omit Staff.TimeSignature \stemUp g4 \stemUp g2 \stemUp a4
+    \stemUp a4 \stemUp a4 \stemUp bes4 \stemUp a2 ( \stemUp g4 \stemUp f4
+    ) \stemUp g2 | \barNumberCheck #10
+    \time 11/4 \omit Staff.TimeSignature \stemUp g4 \stemUp g4 \stemUp g2.
+    \stemUp a4 \stemUp g2 ( \stemUp f4 ) \stemUp e2 | % 11
+    \time 14/4 \omit Staff.TimeSignature \stemUp a2 \stemUp g2 ( \stemUp
     e4 \stemUp f4 ) \stemUp g4 ( \stemUp a4 ) \stemUp f2 e1 \bar "|."
     }
 
@@ -38,7 +50,11 @@ PartPOneVoiceOneLyricsOne =  \lyricmode {\set ignoreMelismata = ##t Heer
     "hoor " __\skip1 mij o "Heer," Heer ik roep tot "U," ver -- "hoor "
     __\skip1 \skip1 mij sla acht op de stem van mijn sme --\skip1
     "king," wan -- neer ik tot "U " __\skip1 \skip1 "roep," ver --
-    "hoor " __\skip1 \skip1 "mij " __\skip1 o "Heer!"
+    "hoor " __\skip1 \skip1 "mij " __\skip1 o "Heer!" Laat mijn ge --
+    bed als "wie " __\skip1 \skip1 rook op -- stij -- gen voor Uw aan --
+    ge -- zicht de op -- hef -- fing van mijn "han " __\skip1 \skip1 den
+    zij een a -- vond -- "of " __\skip1 "fer:" ver -- "hoor " __\skip1
+    \skip1 "mij " __\skip1 o "Heer!"
     }
 
 PartPOneVoiceTwo =  \relative e' {
@@ -59,6 +75,21 @@ PartPOneVoiceTwo =  \relative e' {
     \stemDown e2 | % 6
     \time 14/4 \omit Staff.TimeSignature \stemDown f2 \stemDown e2 (
     \stemDown c4 \stemDown d4 ) \stemDown e4 ( \stemDown f4 ) \stemDown
+    d2 c1 \bar "||"
+    \time 12/4 \omit Staff.TimeSignature \stemDown e2 \stemDown f4
+    \stemDown f4 \stemDown f4 \stemDown g4 \stemDown f2 ( \stemDown e4
+    \stemDown d4 ) \stemDown e2 | % 8
+    \time 11/4 \omit Staff.TimeSignature \stemDown e2 \stemDown f4
+    \stemDown f4 \stemDown f4 \stemDown f4 \stemDown e2 \stemDown d4
+    \stemDown c2 | % 9
+    \time 13/4 \omit Staff.TimeSignature \stemDown e4 \stemDown e2
+    \stemDown f4 \stemDown f4 \stemDown f4 \stemDown g4 \stemDown f2
+    \stemDown e4 \stemDown d4 \stemDown e2 | \barNumberCheck #10
+    \time 11/4 \omit Staff.TimeSignature \stemDown e4 \stemDown e4
+    \stemDown e2. \stemDown f4 \stemDown e2 ( \stemDown d4 ) \stemDown c2
+    | % 11
+    \time 14/4 \omit Staff.TimeSignature \stemDown f2 \stemDown e2 (
+    \stemDown c4 \stemDown d4 ) \stemDown e4 ( \stemDown f4 ) \stemDown
     d2 c1 \bar "|."
     }
 
@@ -74,6 +105,16 @@ PartPTwoVoiceOne =  \relative c' {
     \stemUp c4 \stemUp c2 ( \stemUp b4 ) \stemUp g2 | % 5
     \time 11/4 \omit Staff.TimeSignature \stemUp c4 \stemUp c2 \stemUp c4
     \stemUp c4 \stemUp c2 \stemUp c4 \stemUp c4 \stemUp c2 | % 6
+    \time 14/4 \omit Staff.TimeSignature \stemUp c2 c1 \stemUp c2
+    \stemUp b2 g1 \bar "||"
+    \time 12/4 \omit Staff.TimeSignature \stemUp c2 \stemUp c4 \stemUp c4
+    \stemUp c4 \stemUp c4 c1 \stemUp c2 | % 8
+    \time 11/4 \omit Staff.TimeSignature \stemUp c2 \stemUp c4 \stemUp c4
+    \stemUp c4 \stemUp c4 \stemUp c2 \stemUp b4 \stemUp g2 | % 9
+    \time 13/4 \omit Staff.TimeSignature \stemUp c4 \stemUp c2 \stemUp c4
+    \stemUp c4 \stemUp c4 \stemUp c4 c1 \stemUp c2 | \barNumberCheck #10
+    \time 11/4 \omit Staff.TimeSignature \stemUp c4 \stemUp c4 \stemUp c2.
+    \stemUp c4 \stemUp c2 ( \stemUp b4 ) \stemUp g2 | % 11
     \time 14/4 \omit Staff.TimeSignature \stemUp c2 c1 \stemUp c2
     \stemUp b2 g1 \bar "|."
     }
@@ -93,6 +134,20 @@ PartPTwoVoiceTwo =  \relative c {
     \time 11/4 \omit Staff.TimeSignature \stemDown c4 \stemDown c2
     \stemDown f4 \stemDown f4 \stemDown f2 ( \stemDown c4 ) \stemDown c4
     \stemDown c2 | % 6
+    \time 14/4 \omit Staff.TimeSignature \stemDown f2 c1 \stemDown c4 (
+    \stemDown f4 ) \stemDown g2 c,1 \bar "||"
+    \time 12/4 \omit Staff.TimeSignature \stemDown c2 \stemDown f4
+    \stemDown f4 \stemDown f4 \stemDown f4 \stemDown f2 ( \stemDown c2 )
+    \stemDown c2 | % 8
+    \time 11/4 \omit Staff.TimeSignature \stemDown c2 \stemDown f4
+    \stemDown f4 \stemDown f4 \stemDown f4 \stemDown g2 \stemDown g,4
+    \stemDown c2 | % 9
+    \time 13/4 \omit Staff.TimeSignature \stemDown c4 \stemDown c2
+    \stemDown f4 \stemDown f4 \stemDown f4 \stemDown f4 \stemDown f2 (
+    \stemDown c2 ) \stemDown c2 | \barNumberCheck #10
+    \time 11/4 \omit Staff.TimeSignature \stemDown c4 \stemDown c4
+    \stemDown c2. \stemDown f4 \stemDown g2 ( \stemDown g,4 ) \stemDown
+    c2 | % 11
     \time 14/4 \omit Staff.TimeSignature \stemDown f2 c1 \stemDown c4 (
     \stemDown f4 ) \stemDown g2 c,1 \bar "|."
     }
