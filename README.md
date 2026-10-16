@@ -154,7 +154,10 @@ tools/score-video.py heer_ik_roep_t{1,2,3,4,5,6,7,8}.mscz    # writes heer_ik_ro
 
 The defaults (1080p, 24 fps) match the export dialog's defaults; use
 `--resolution` and `--fps` for others. `heer_ik_roep_t4_piano.mp4` is a
-separate video and isn't made this way.
+separate video and isn't made this way. onder_uwe_hoede has two videos:
+`onder_uwe_hoede-reflowed.mp4` (this tool, from a copy of the score with
+that name) and `onder_uwe_hoede.mp4` in page layout
+(`mscore --score-video -o onder_uwe_hoede.mp4 onder_uwe_hoede.mscz`).
 
 ## MuseScore command line
 
@@ -195,8 +198,9 @@ Findings about `mscore` (MuseScore Studio 4.7.5, at
   copy with page layout. Because the page now has the video's aspect
   ratio, page layout fills the frame exactly as reflow does. Checked
   against `heer_ik_roep_t2.mp4` exported from the dialog: every frame of
-  the video is identical. Not handled: scores with more than three staves,
-  and instrument names (these scores hide them already).
+  the video is identical. Reflow also hides instrument names ("Women",
+  "W."), so the copy gets empty names. Not handled: scores with more than
+  three staves, which reflow also scales to a whole page's height.
 - **Repeat counts:** a repeated passage is marked with start/end repeat
   barlines, and the end repeat's "play count" says how often it is played
   (Properties panel on the barline). The count printed above it is a

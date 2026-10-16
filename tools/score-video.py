@@ -11,7 +11,7 @@ ratio, so page layout then fills the frame exactly as reflow does:
 
   page = video size / 300 dpi (6.4 x 3.6 in for 1080p), no top/bottom
   margins, one-sided, no header/footer, system distance 10 sp, staff
-  borders 7/5 sp, and no title frame.
+  borders 7/5 sp, no title frame and no instrument names.
 
 Reflow only hides the title frame; the video's title card still reads the
 title from it. The command line ignores showVerticalFrames in
@@ -77,6 +77,8 @@ def reflow_copy(src, dst, width, height):
             # so that gets the title frame's text.
             title = title_text(data)
             data = re.sub(rb"[ \t]*<VBox>.*?</VBox>\n", b"", data, flags=re.S)
+            # reflow also hides instrument names ("Women", "W.")
+            data = re.sub(rb"<(longName|shortName)>.*?</\1>", rb"<\1></\1>", data, flags=re.S)
             if title is not None:
                 data = re.sub(rb'<metaTag name="workTitle">[^<]*</metaTag>',
                               b'<metaTag name="workTitle">' + html.escape(title, quote=False).encode("utf-8") + b"</metaTag>",
