@@ -7,7 +7,7 @@
 \header {
     title = "Canon van de Geboorte van de Moeder Gods"
     encodingsoftware =  "MuseScore Studio 4.7.5"
-    encodingdate =  "2026-10-10"
+    encodingdate =  "2026-10-16"
     }
 
 \layout {
@@ -31,10 +31,10 @@ PartPOneVoiceOne =  \relative g' {
     }
 
 PartPOneVoiceOneLyricsOne =  \lyricmode {\set ignoreMelismata = ##t Mijn
-    mond zal ik o -- pe -- nen en ver vuld van de Hei -- li -- ge Geest
-    wil ik U de ko -- nin -- klij -- ke Moe -- der be -- zin -- gen
-    feest -- vie -- ren vol "blijd " __\skip1 schap en ver -- heugd Uw
-    ge -- boor -- te be -- "zin " __\skip1 gen
+    mond zal ik o -- pe -- nen en ver -- vuld van de Hei -- li -- ge
+    Geest wil ik U de ko -- nin -- klij -- ke Moe -- der be -- zin --
+    gen feest -- vie -- ren vol "blijd " __\skip1 schap en ver -- heugd
+    Uw ge -- boor -- te be -- "zin " __\skip1 gen
     }
 
 PartPOneVoiceTwo =  \relative d' {

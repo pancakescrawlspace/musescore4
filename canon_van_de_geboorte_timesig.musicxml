@@ -8,7 +8,7 @@
     <creator type="composer">Composer / arranger</creator>
     <encoding>
       <software>MuseScore Studio 4.7.5</software>
-      <encoding-date>2026-10-10</encoding-date>
+      <encoding-date>2026-10-16</encoding-date>
       <supports element="accidental" type="yes"/>
       <supports element="beam" type="yes"/>
       <supports element="print" attribute="new-page" type="no"/>
@@ -275,7 +275,7 @@
         <type>quarter</type>
         <stem>up</stem>
         <lyric number="1">
-          <syllabic>single</syllabic>
+          <syllabic>begin</syllabic>
           <text>ver</text>
           </lyric>
         </note>
@@ -289,7 +289,7 @@
         <type>quarter</type>
         <stem>up</stem>
         <lyric number="1">
-          <syllabic>single</syllabic>
+          <syllabic>end</syllabic>
           <text>vuld</text>
           </lyric>
         </note>

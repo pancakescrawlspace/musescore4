@@ -39,10 +39,11 @@ PartPOneVoiceOne =  \relative g' {
     }
 
 PartPOneVoiceOneLyricsOne =  \lyricmode {\set ignoreMelismata = ##t On
-    der U we "hoe " __\skip1 \skip1 de en er bar men vluch ten wij al
-    hei li ge Moe der Gods Zie on ze "gro " __\skip1 te nood hoor on ze
-    be de wees on ze red ding o wees ons be houd Gij e nig al "rei "
-    __\skip1 \skip1 ne en ge ze gen de Al hei li ge Moe der "Gods "
+    -- der U -- we "hoe " __\skip1 \skip1 de en er -- bar -- men vluch
+    -- ten wij al -- hei -- li -- ge Moe -- der Gods Zie on -- ze "gro "
+    __\skip1 te nood hoor on -- ze be -- de wees on -- ze red -- ding o
+    wees ons be -- houd Gij e -- nig al -- "rei " __\skip1 \skip1 ne en
+    ge -- ze -- gen -- de Al -- hei -- li -- ge Moe -- der "Gods "
     __\skip1 "red " __\skip1 ons
     }
 

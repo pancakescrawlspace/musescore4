@@ -82,7 +82,7 @@
         <type>quarter</type>
         <stem>up</stem>
         <lyric number="1">
-          <syllabic>single</syllabic>
+          <syllabic>begin</syllabic>
           <text>On</text>
           </lyric>
         </note>
@@ -96,7 +96,7 @@
         <type>quarter</type>
         <stem>up</stem>
         <lyric number="1">
-          <syllabic>single</syllabic>
+          <syllabic>end</syllabic>
           <text>der</text>
           </lyric>
         </note>
@@ -111,7 +111,7 @@
         <type>quarter</type>
         <stem>up</stem>
         <lyric number="1">
-          <syllabic>single</syllabic>
+          <syllabic>begin</syllabic>
           <text>U</text>
           </lyric>
         </note>
@@ -125,7 +125,7 @@
         <type>quarter</type>
         <stem>up</stem>
         <lyric number="1">
-          <syllabic>single</syllabic>
+          <syllabic>end</syllabic>
           <text>we</text>
           </lyric>
         </note>
@@ -210,7 +210,7 @@
         <type>quarter</type>
         <stem>up</stem>
         <lyric number="1">
-          <syllabic>single</syllabic>
+          <syllabic>begin</syllabic>
           <text>er</text>
           </lyric>
         </note>
@@ -224,7 +224,7 @@
         <type>half</type>
         <stem>up</stem>
         <lyric number="1">
-          <syllabic>single</syllabic>
+          <syllabic>middle</syllabic>
           <text>bar</text>
           </lyric>
         </note>
@@ -239,7 +239,7 @@
         <type>half</type>
         <stem>up</stem>
         <lyric number="1">
-          <syllabic>single</syllabic>
+          <syllabic>end</syllabic>
           <text>men</text>
           </lyric>
         </note>
@@ -398,7 +398,7 @@
         <type>quarter</type>
         <stem>up</stem>
         <lyric number="1">
-          <syllabic>single</syllabic>
+          <syllabic>begin</syllabic>
           <text>vluch</text>
           </lyric>
         </note>
@@ -412,7 +412,7 @@
         <type>quarter</type>
         <stem>up</stem>
         <lyric number="1">
-          <syllabic>single</syllabic>
+          <syllabic>end</syllabic>
           <text>ten</text>
           </lyric>
         </note>
@@ -441,7 +441,7 @@
         <type>quarter</type>
         <stem>up</stem>
         <lyric number="1">
-          <syllabic>single</syllabic>
+          <syllabic>begin</syllabic>
           <text>al</text>
           </lyric>
         </note>
@@ -455,7 +455,7 @@
         <type>half</type>
         <stem>up</stem>
         <lyric number="1">
-          <syllabic>single</syllabic>
+          <syllabic>middle</syllabic>
           <text>hei</text>
           </lyric>
         </note>
@@ -469,7 +469,7 @@
         <type>quarter</type>
         <stem>up</stem>
         <lyric number="1">
-          <syllabic>single</syllabic>
+          <syllabic>middle</syllabic>
           <text>li</text>
           </lyric>
         </note>
@@ -483,7 +483,7 @@
         <type>quarter</type>
         <stem>up</stem>
         <lyric number="1">
-          <syllabic>single</syllabic>
+          <syllabic>end</syllabic>
           <text>ge</text>
           </lyric>
         </note>
@@ -499,7 +499,7 @@
         <dot/>
         <stem>up</stem>
         <lyric number="1">
-          <syllabic>single</syllabic>
+          <syllabic>begin</syllabic>
           <text>Moe</text>
           </lyric>
         </note>
@@ -514,7 +514,7 @@
         <type>quarter</type>
         <stem>up</stem>
         <lyric number="1">
-          <syllabic>single</syllabic>
+          <syllabic>end</syllabic>
           <text>der</text>
           </lyric>
         </note>
@@ -673,7 +673,7 @@
         <type>quarter</type>
         <stem>up</stem>
         <lyric number="1">
-          <syllabic>single</syllabic>
+          <syllabic>begin</syllabic>
           <text>on</text>
           </lyric>
         </note>
@@ -687,7 +687,7 @@
         <type>quarter</type>
         <stem>up</stem>
         <lyric number="1">
-          <syllabic>single</syllabic>
+          <syllabic>end</syllabic>
           <text>ze</text>
           </lyric>
         </note>
@@ -866,7 +866,7 @@
         <type>quarter</type>
         <stem>up</stem>
         <lyric number="1">
-          <syllabic>single</syllabic>
+          <syllabic>begin</syllabic>
           <text>on</text>
           </lyric>
         </note>
@@ -880,7 +880,7 @@
         <type>quarter</type>
         <stem>up</stem>
         <lyric number="1">
-          <syllabic>single</syllabic>
+          <syllabic>end</syllabic>
           <text>ze</text>
           </lyric>
         </note>
@@ -895,7 +895,7 @@
         <type>half</type>
         <stem>up</stem>
         <lyric number="1">
-          <syllabic>single</syllabic>
+          <syllabic>begin</syllabic>
           <text>be</text>
           </lyric>
         </note>
@@ -909,7 +909,7 @@
         <type>half</type>
         <stem>up</stem>
         <lyric number="1">
-          <syllabic>single</syllabic>
+          <syllabic>end</syllabic>
           <text>de</text>
           </lyric>
         </note>
@@ -1001,7 +1001,7 @@
         <type>quarter</type>
         <stem>up</stem>
         <lyric number="1">
-          <syllabic>single</syllabic>
+          <syllabic>begin</syllabic>
           <text>on</text>
           </lyric>
         </note>
@@ -1015,7 +1015,7 @@
         <type>quarter</type>
         <stem>up</stem>
         <lyric number="1">
-          <syllabic>single</syllabic>
+          <syllabic>end</syllabic>
           <text>ze</text>
           </lyric>
         </note>
@@ -1029,7 +1029,7 @@
         <type>half</type>
         <stem>up</stem>
         <lyric number="1">
-          <syllabic>single</syllabic>
+          <syllabic>begin</syllabic>
           <text>red</text>
           </lyric>
         </note>
@@ -1043,7 +1043,7 @@
         <type>quarter</type>
         <stem>up</stem>
         <lyric number="1">
-          <syllabic>single</syllabic>
+          <syllabic>end</syllabic>
           <text>ding</text>
           </lyric>
         </note>
@@ -1102,7 +1102,7 @@
         <type>quarter</type>
         <stem>up</stem>
         <lyric number="1">
-          <syllabic>single</syllabic>
+          <syllabic>begin</syllabic>
           <text>be</text>
           </lyric>
         </note>
@@ -1117,7 +1117,7 @@
         <dot/>
         <stem>up</stem>
         <lyric number="1">
-          <syllabic>single</syllabic>
+          <syllabic>end</syllabic>
           <text>houd</text>
           </lyric>
         </note>
@@ -1265,7 +1265,7 @@
         <type>half</type>
         <stem>up</stem>
         <lyric number="1">
-          <syllabic>single</syllabic>
+          <syllabic>begin</syllabic>
           <text>e</text>
           </lyric>
         </note>
@@ -1279,7 +1279,7 @@
         <type>quarter</type>
         <stem>up</stem>
         <lyric number="1">
-          <syllabic>single</syllabic>
+          <syllabic>end</syllabic>
           <text>nig</text>
           </lyric>
         </note>
@@ -1293,7 +1293,7 @@
         <type>quarter</type>
         <stem>up</stem>
         <lyric number="1">
-          <syllabic>single</syllabic>
+          <syllabic>begin</syllabic>
           <text>al</text>
           </lyric>
         </note>
@@ -1310,7 +1310,7 @@
           <slur type="start" number="1"/>
           </notations>
         <lyric number="1">
-          <syllabic>single</syllabic>
+          <syllabic>end</syllabic>
           <text>rei</text>
           <extend/>
           </lyric>
@@ -1376,7 +1376,7 @@
         <type>quarter</type>
         <stem>up</stem>
         <lyric number="1">
-          <syllabic>single</syllabic>
+          <syllabic>begin</syllabic>
           <text>ge</text>
           </lyric>
         </note>
@@ -1392,7 +1392,7 @@
         <dot/>
         <stem>up</stem>
         <lyric number="1">
-          <syllabic>single</syllabic>
+          <syllabic>middle</syllabic>
           <text>ze</text>
           </lyric>
         </note>
@@ -1407,7 +1407,7 @@
         <type>quarter</type>
         <stem>up</stem>
         <lyric number="1">
-          <syllabic>single</syllabic>
+          <syllabic>middle</syllabic>
           <text>gen</text>
           </lyric>
         </note>
@@ -1420,7 +1420,7 @@
         <voice>1</voice>
         <type>whole</type>
         <lyric number="1">
-          <syllabic>single</syllabic>
+          <syllabic>end</syllabic>
           <text>de</text>
           </lyric>
         </note>
@@ -1593,7 +1593,7 @@
         <type>quarter</type>
         <stem>up</stem>
         <lyric number="1">
-          <syllabic>single</syllabic>
+          <syllabic>begin</syllabic>
           <text>Al</text>
           </lyric>
         </note>
@@ -1607,7 +1607,7 @@
         <type>quarter</type>
         <stem>up</stem>
         <lyric number="1">
-          <syllabic>single</syllabic>
+          <syllabic>middle</syllabic>
           <text>hei</text>
           </lyric>
         </note>
@@ -1621,7 +1621,7 @@
         <type>quarter</type>
         <stem>up</stem>
         <lyric number="1">
-          <syllabic>single</syllabic>
+          <syllabic>middle</syllabic>
           <text>li</text>
           </lyric>
         </note>
@@ -1635,7 +1635,7 @@
         <type>quarter</type>
         <stem>up</stem>
         <lyric number="1">
-          <syllabic>single</syllabic>
+          <syllabic>end</syllabic>
           <text>ge</text>
           </lyric>
         </note>
@@ -1649,7 +1649,7 @@
         <type>quarter</type>
         <stem>up</stem>
         <lyric number="1">
-          <syllabic>single</syllabic>
+          <syllabic>begin</syllabic>
           <text>Moe</text>
           </lyric>
         </note>
@@ -1663,7 +1663,7 @@
         <type>quarter</type>
         <stem>up</stem>
         <lyric number="1">
-          <syllabic>single</syllabic>
+          <syllabic>end</syllabic>
           <text>der</text>
           </lyric>
         </note>

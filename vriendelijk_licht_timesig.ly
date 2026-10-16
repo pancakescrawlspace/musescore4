@@ -49,7 +49,7 @@ PartPOneVoiceOne =  \relative a' {
 
 PartPOneVoiceOneLyricsOne =  \lyricmode {\set ignoreMelismata = ##t Je
     -- zus Chris -- tus Gij vreug -- de -- vol licht van de hei -- li --
-    ge "heer " __\skip1 lijk -- heid van de on -- sterf -- lijk -- "ke,"
+    ge "heer " __\skip1 lijk -- heid van de on -- sterf -- lij -- "ke,"
     he -- mel -- "se," "hei " __\skip1 li -- "ge," za -- li -- ge "Va "
     __\skip1 der Ge -- ko -- men "bij " __\skip1 "zons " __\skip1 on --
     der -- gang en schou -- wend "het " __\skip1 "a " __\skip1 vond --

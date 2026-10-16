@@ -1794,7 +1794,7 @@
         <stem>up</stem>
         <lyric number="1">
           <syllabic>begin</syllabic>
-          <text>daa</text>
+          <text>daar</text>
           </lyric>
         </note>
       <note>
@@ -1808,7 +1808,7 @@
         <stem>up</stem>
         <lyric number="1">
           <syllabic>end</syllabic>
-          <text>rom</text>
+          <text>om</text>
           </lyric>
         </note>
       <note>
@@ -2449,7 +2449,7 @@
         <voice>1</voice>
         <type>whole</type>
         <lyric number="1">
-          <syllabic>single</syllabic>
+          <syllabic>begin</syllabic>
           <text>He</text>
           </lyric>
         </note>
@@ -2465,7 +2465,7 @@
           <fermata type="upright"/>
           </notations>
         <lyric number="1">
-          <syllabic>single</syllabic>
+          <syllabic>end</syllabic>
           <text>re!</text>
           </lyric>
         </note>

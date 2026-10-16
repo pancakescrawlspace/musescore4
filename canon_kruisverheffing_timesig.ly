@@ -48,10 +48,10 @@ PartPOneVoiceOneLyricsOne =  \lyricmode {\set ignoreMelismata = ##t
     volk van Is -- ra -- el "de " __\skip1 wa -- te -- "ren " __\skip1
     ge -- "o " __\skip1 pend maar o -- ver de le -- ger -- macht "van "
     __\skip1 "Pha " __\skip1 "ra " __\skip1 o "wer " __\skip1 den de wa
-    -- te -- ren we -- der ge -- slo -- ten daa -- rom zin -- gen wij
+    -- te -- ren we -- der ge -- slo -- ten daar -- om zin -- gen wij
     tot Chris -- tus God want Hij is be -- "dekt " __\skip1 "met "
     __\skip1 heer -- lijk -- "heid:" E -- re zij Uw kost -- baar Kruis
-    "o " __\skip1 He "re!"
+    "o " __\skip1 He -- "re!"
     }
 
 PartPOneVoiceTwo =  \relative d' {
