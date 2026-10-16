@@ -17,7 +17,9 @@ without a .ly yet gets its title and subtitle from the score's title frame.
 
 A repeat played three or more times without volta brackets gets its count
 ("3×") above the end repeat, as MuseScore prints it: MuseScore doesn't export
-that text to MusicXML, and LilyPond doesn't print repeat counts.
+that text to MusicXML, and LilyPond doesn't print repeat counts. Not when
+the count equals the number of verses (a strophic song: the numbered verses
+already say how often it is sung).
 
 After LilyPond, tools/check-pdf-notes.py compares the PDF with the .mscz
 (scores it can't read are skipped). If any heer_ik_roep_tN was rebuilt,
@@ -98,10 +100,12 @@ def splice(new, old, mscz):
 
 def repeat_counts(ly):
     """Add \\textEndMark "N×" at the end of each `\\repeat volta N { ... }` with N >= 3
-    and no \\alternative, in the first music variable only (a mark is score-wide)."""
-    first = re.search(r"^\w+ =\s*\\relative [^{]*\{", ly, re.M)
+    and no \\alternative, in the first music variable only (a mark is score-wide).
+    Skipped when N is the number of verses of that voice."""
+    first = re.search(r"^(\w+) =\s*\\relative [^{]*\{", ly, re.M)
     if not first:
         return ly
+    verses = len(re.findall(rf"^{first.group(1)}Lyrics\w+ =", ly, re.M))
     start, depth = first.end(), 1
     i = start
     while depth:  # end of the first music variable
@@ -112,7 +116,7 @@ def repeat_counts(ly):
     body = ly[start:i]
     out, pos = [], 0
     for m in re.finditer(r"\\repeat volta (\d+) \{", body):
-        if int(m.group(1)) < 3:
+        if int(m.group(1)) < 3 or int(m.group(1)) == verses:
             continue
         j, depth = m.end(), 1
         while depth:

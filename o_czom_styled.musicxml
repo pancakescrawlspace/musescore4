@@ -3949,6 +3949,7 @@
         </note>
       <barline location="right">
         <bar-style>light-heavy</bar-style>
+        <repeat direction="backward" times="4"/>
         </barline>
       </measure>
     </part>
@@ -5021,6 +5022,7 @@
         </note>
       <barline location="right">
         <bar-style>light-heavy</bar-style>
+        <repeat direction="backward" times="4"/>
         </barline>
       </measure>
     </part>

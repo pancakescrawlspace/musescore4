@@ -61,7 +61,10 @@ tone was rebuilt.
 It adds one thing `musicxml2ly` can't: the count of a repeat played three
 or more times ("3×" above the end repeat, at the lyrics' size, as in
 onder_uwe_hoede's last measure), using `\textEndMark`. Repeats with volta brackets don't need
-it, and a count of 2 isn't printed (also as in MuseScore).
+it, and a count of 2 isn't printed (also as in MuseScore). Nor is a count
+that equals the number of verses: in o_czom (four verses, the whole piece
+repeated four times, so each verse gets the refrain) the verse numbers
+already say it, and the count is hidden in MuseScore too.
 
 The steps it runs, for doing it by hand (from the repository root):
 
@@ -154,10 +157,8 @@ tools/score-video.py heer_ik_roep_t{1,2,3,4,5,6,7,8}.mscz    # writes heer_ik_ro
 
 The defaults (1080p, 24 fps) match the export dialog's defaults; use
 `--resolution` and `--fps` for others. `heer_ik_roep_t4_piano.mp4` is a
-separate video and isn't made this way. onder_uwe_hoede has two videos:
-`onder_uwe_hoede-reflowed.mp4` (this tool, from a copy of the score with
-that name) and `onder_uwe_hoede.mp4` in page layout
-(`mscore --score-video -o onder_uwe_hoede.mp4 onder_uwe_hoede.mscz`).
+separate video and isn't made this way. `onder_uwe_hoede.mp4` and
+`o_czom.mp4` are made the same way.
 
 ## MuseScore command line
 
