@@ -264,6 +264,13 @@ The conversion depends on how lyrics are entered:
 - Syllables that soprano and alto sing together go on the soprano
   (voice 1). Syllables entered on voice 2 end up on a separate, lower
   lyric line in LilyPond.
+- Stressed syllables can be marked by underlining them (select the
+  syllable's text while editing it, and underline it). `musicxml2ly` turns
+  that into `\markup \underline`, and `rebuild-score.py` makes it
+  `\markup \stressed`, which `church_style.ily` draws as a thick red line
+  a little below the text, so it clears a "g" and doesn't look like a
+  melisma line. MuseScore itself shows a plain black underline. Used in
+  ti_ipermacho, for the stress of the transliterated Greek.
 
 ## Beginsystemen
 

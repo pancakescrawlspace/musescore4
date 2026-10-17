@@ -25,6 +25,10 @@ that text to MusicXML, and LilyPond doesn't print repeat counts. Not when
 the count equals the number of verses (a strophic song: the numbered verses
 already say how often it is sung).
 
+Lyric syllables underlined in the score mark the stressed syllables; musicxml2ly
+writes them as \\markup \\underline, which becomes \\markup \\stressed (a red
+underline, see church_style.ily).
+
 After LilyPond, tools/check-pdf-notes.py compares the PDF with the .mscz
 (scores it can't read are skipped). If any heer_ik_roep_tN was rebuilt,
 heer_ik_roep_alle_tonen.pdf is joined again.
@@ -194,6 +198,15 @@ def stanza_numbers(ly):
     return ly
 
 
+def stressed_syllables(ly):
+    """Lyric syllables underlined in the score (stressed syllables) come out of
+    musicxml2ly as \\markup \\underline; make them \\markup \\stressed, the red
+    underline from church_style.ily."""
+    def fix(m):
+        return re.sub(r"\\markup(\s+)\\underline\b", r"\\markup\1\\stressed", m.group(0))
+    return re.sub(r"^\w+ = \\lyricmode \{\n.*?\n\}", fix, ly, flags=re.M | re.S)
+
+
 def has_timesig(mscz):
     with zipfile.ZipFile(mscz) as z:
         return any(b"<TimeSig>" in z.read(n) for n in z.namelist() if n.endswith(".mscx"))
@@ -225,6 +238,7 @@ def rebuild(name):
             raise Failed("musicxml2ly failed")
         # 4. hand edits
         ly = line_breaks(stanza_numbers(repeat_counts(splice(open(out).read(), old, mscz))), mscz)
+        ly = stressed_syllables(ly)
     with open(base + ".ly", "w") as f:
         f.write(ly)
     # 5. PDF

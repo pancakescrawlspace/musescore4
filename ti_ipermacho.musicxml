@@ -135,11 +135,11 @@
         <stem>up</stem>
         <lyric number="1">
           <syllabic>middle</syllabic>
-          <text>ma</text>
+          <text underline="1">ma</text>
           </lyric>
         <lyric number="2">
           <syllabic>middle</syllabic>
-          <text>thi</text>
+          <text underline="1">thi</text>
           </lyric>
         </note>
       <note>
@@ -223,12 +223,12 @@
         <beam number="1">begin</beam>
         <lyric number="1">
           <syllabic>end</syllabic>
-          <text>go</text>
+          <text underline="1">go</text>
           <extend/>
           </lyric>
         <lyric number="2">
           <syllabic>end</syllabic>
-          <text>non</text>
+          <text underline="1">non</text>
           <extend/>
           </lyric>
         </note>
@@ -312,12 +312,12 @@
           </notations>
         <lyric number="1">
           <syllabic>end</syllabic>
-          <text>ti</text>
+          <text underline="1">ti</text>
           <extend/>
           </lyric>
         <lyric number="2">
           <syllabic>end</syllabic>
-          <text>sti</text>
+          <text underline="1">sti</text>
           <extend/>
           </lyric>
         </note>
@@ -463,7 +463,7 @@
         <stem>down</stem>
         <lyric number="1">
           <syllabic>middle</syllabic>
-          <text>gra</text>
+          <text underline="1">gra</text>
           </lyric>
         </note>
       <note>
@@ -519,7 +519,7 @@
         <stem>down</stem>
         <lyric number="1">
           <syllabic>begin</syllabic>
-          <text>Po</text>
+          <text underline="1">Po</text>
           </lyric>
         </note>
       <note>
@@ -619,7 +619,7 @@
           </notations>
         <lyric number="1">
           <syllabic>end</syllabic>
-          <text>to</text>
+          <text underline="1">to</text>
           <extend/>
           </lyric>
         </note>
@@ -709,7 +709,7 @@
         <stem>up</stem>
         <lyric number="1">
           <syllabic>begin</syllabic>
-          <text>e</text>
+          <text underline="1">e</text>
           </lyric>
         </note>
       <note>
@@ -780,7 +780,7 @@
         <beam number="1">begin</beam>
         <lyric number="1">
           <syllabic>single</syllabic>
-          <text>kra</text>
+          <text underline="1">kra</text>
           <extend/>
           </lyric>
         </note>
@@ -852,7 +852,7 @@
           </notations>
         <lyric number="1">
           <syllabic>end</syllabic>
-          <text>ma</text>
+          <text underline="1">ma</text>
           <extend/>
           </lyric>
         </note>
@@ -982,7 +982,7 @@
         <stem>down</stem>
         <lyric number="1">
           <syllabic>middle</syllabic>
-          <text>di</text>
+          <text underline="1">di</text>
           </lyric>
         </note>
       <note>
@@ -1038,7 +1038,7 @@
         <stem>down</stem>
         <lyric number="1">
           <syllabic>middle</syllabic>
-          <text>di</text>
+          <text underline="1">di</text>
           </lyric>
         </note>
       <note>
@@ -1095,7 +1095,7 @@
         <stem>up</stem>
         <lyric number="1">
           <syllabic>middle</syllabic>
-          <text>the</text>
+          <text underline="1">the</text>
           </lyric>
         </note>
       <note>
@@ -1148,7 +1148,7 @@
         <stem>down</stem>
         <lyric number="1">
           <syllabic>begin</syllabic>
-          <text>i</text>
+          <text underline="1">i</text>
           </lyric>
         </note>
       <note>
@@ -1176,7 +1176,7 @@
         <stem>down</stem>
         <lyric number="1">
           <syllabic>begin</syllabic>
-          <text>kra</text>
+          <text underline="1">kra</text>
           </lyric>
         </note>
       <note>
@@ -1237,7 +1237,7 @@
         <stem>down</stem>
         <lyric number="1">
           <syllabic>begin</syllabic>
-          <text>Che</text>
+          <text underline="1">Chè</text>
           </lyric>
         </note>
       <note>
@@ -1268,7 +1268,7 @@
           </notations>
         <lyric number="1">
           <syllabic>single</syllabic>
-          <text>Nim</text>
+          <text underline="1">Nim</text>
           <extend/>
           </lyric>
         </note>
@@ -1329,7 +1329,7 @@
           </notations>
         <lyric number="1">
           <syllabic>end</syllabic>
-          <text>nim</text>
+          <text underline="1">nim</text>
           <extend/>
           </lyric>
         </note>

@@ -6,6 +6,17 @@
 #(define (has-subtitle? layout props)
    (chain-assoc-get 'header:subtitle props #f))
 
+% a stressed syllable: underlined in red, the text itself stays black. The
+% line is thick enough to see, and low enough (offset 6) to clear a "g" and
+% not read as a melisma line. tools/rebuild-score.py writes
+% \markup \stressed for lyric syllables underlined in MuseScore.
+#(define-markup-command (stressed layout props arg) (markup?)
+   (interpret-markup layout props
+    #{ \markup \combine
+         \with-color #red \override #'(thickness . 2) \override #'(offset . 6)
+           \underline \transparent #arg
+         #arg #}))
+
 \paper {
   % Helvetica for all text (LilyPond 2.26 syntax; 2.24 used set-global-fonts)
   property-defaults.fonts.serif = "Helvetica"
