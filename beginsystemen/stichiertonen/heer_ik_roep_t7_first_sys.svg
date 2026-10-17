@@ -100,8 +100,8 @@ tspan { white-space: pre; }
 <g transform="translate(13.4140, 12.6906)">
 <path transform="scale(0.0040, -0.0040)" d="M72 -106c40 0 204 110 231 143c7 9 11 19 11 28c0 22 -18 41 -42 41c-40 0 -204 -110 -231 -143c-7 -9 -10 -19 -10 -28c0 -22 17 -41 41 -41zM0 -67c0 71 46 203 258 203c41 0 86 -10 86 -69c0 -71 -46 -203 -258 -203c-41 0 -86 10 -86 69z" fill="currentColor"/>
 </g>
-<g transform="translate(13.4140, 8.7961)">
-<text font-family="serif" font-size="2.2000" text-anchor="start" fill="currentColor">
+<g transform="translate(13.4140, 8.7986)">
+<text font-family="Helvetica" font-size="2.2000" text-anchor="start" fill="currentColor">
 <tspan>Toon 7</tspan>
 </text>
 </g>
@@ -513,13 +513,13 @@ c-13 0 -23 11 -23 25z" fill="currentColor"/>
 <g transform="translate(62.6575, 18.9005)">
 <path transform="scale(0.0040, -0.0040)" d="M72 -106c40 0 204 110 231 143c7 9 11 19 11 28c0 22 -18 41 -42 41c-40 0 -204 -110 -231 -143c-7 -9 -10 -19 -10 -28c0 -22 17 -41 41 -41zM0 -67c0 71 46 203 258 203c41 0 86 -10 86 -69c0 -71 -46 -203 -258 -203c-41 0 -86 10 -86 69z" fill="currentColor"/>
 </g>
-<g transform="translate(52.1198, 162.8440)">
+<g transform="translate(51.6076, 162.8472)">
 <a xlink:href="https://lilypond.org">
-<rect x="0.0000" y="-0.4748" width="15.2621" height="2.0024" fill="none" stroke="none" stroke-width="0.0"/>
+<rect x="0.0000" y="-0.4716" width="16.2864" height="2.0551" fill="none" stroke="none" stroke-width="0.0"/>
 </a>
 </g>
-<g transform="translate(52.1198, 162.8440)">
-<text font-family="serif" font-size="2.2000" text-anchor="start" fill="currentColor">
+<g transform="translate(51.6076, 162.8472)">
+<text font-family="Helvetica" font-size="2.2000" text-anchor="start" fill="currentColor">
 <tspan>LilyPond v2.26.0</tspan>
 </text>
 </g>

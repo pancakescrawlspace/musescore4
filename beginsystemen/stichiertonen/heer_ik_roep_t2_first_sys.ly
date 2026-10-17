@@ -7,7 +7,26 @@
 % The first makes the .pdf, the second the .svg and the .cropped.svg that beginsystemen.typ includes.
 
 % LilyPond 2.24's side margins (2.26 has 15mm), so the systems keep their size in beginsystemen.typ
-\paper { left-margin = 10\mm right-margin = 10\mm }
+\paper {
+    left-margin = 10\mm
+    right-margin = 10\mm
+    % Helvetica for the "Toon N" label, as for the page heading in beginsystemen.typ
+    property-defaults.fonts.serif = "Helvetica"
+    property-defaults.fonts.sans = "Helvetica"
+    }
+
+% room above the "Toon N" label: the crop (-dcrop) fits LilyPond's own box for the text,
+% but the SVG text is drawn by the viewer (Typst), whose letters can reach just past it
+\layout {
+    \context { \Voice
+        \override TextScript.stencil =
+            #(lambda (grob)
+               (let* ((s (ly:text-interface::print grob))
+                      (y (ly:stencil-extent s Y)))
+                 (ly:make-stencil (ly:stencil-expr s) (ly:stencil-extent s X)
+                                  (cons (car y) (+ (cdr y) 0.25)))))
+        }
+    }
 
 \layout {
     indent = 0 %rene
@@ -17,41 +36,38 @@
         }
     }
 PartPOneVoiceOne =  \relative bes' {
-    \omit Staff.TimeSignature %rene
-    \clef "treble" \key f \major | % 1
-    \time 14/4
+    \clef "treble" \time 14/4 \omit Staff.TimeSignature \key f \major | % 1
     \stemUp bes2 ( ^ "Toon 2" \stemUp c2 ) \stemUp bes4 \stemUp bes4
     \stemUp bes4 \stemUp bes4 \stemUp a4 \stemUp bes4 ( \stemUp c4 )
     \stemUp c4 ( \stemUp bes2 ) | % 2
-    \time 7/4
-    \stemUp a4 \stemUp a2 \stemUp bes4 \stemUp bes4 \stemUp bes2 \bar
-    "|."
+    \time 7/4 \omit Staff.TimeSignature \stemUp a4 \stemUp a2 \stemUp
+    bes4 \stemUp bes4 \stemUp bes2 \bar "|."
     }
 
 PartPOneVoiceTwo =  \relative g' {
-    \clef "treble" \key f \major | % 1
+    \clef "treble" \time 14/4 \omit Staff.TimeSignature \key f \major | % 1
     \stemDown g2 ( \stemDown a2 ) \stemDown g4 \stemDown g4 \stemDown g4
     \stemDown g4 \stemDown f4 \stemDown g4 ( \stemDown a4 ) \stemDown a4
     ( \stemDown g2 ) | % 2
-    \stemDown f4 \stemDown f2 \stemDown g4 \stemDown g4 \stemDown g2
-    \bar "|."
+    \time 7/4 \omit Staff.TimeSignature \stemDown f4 \stemDown f2
+    \stemDown g4 \stemDown g4 \stemDown g2 \bar "|."
     }
 
 PartPTwoVoiceOne =  \relative c' {
-    \omit Staff.TimeSignature %rene
-    \clef "bass" \key f \major | % 1
+    \clef "bass" \time 14/4 \omit Staff.TimeSignature \key f \major | % 1
     c1 \stemUp c4 \stemUp c4 \stemUp c4 \stemUp c4 \stemUp c4 \stemUp c2
     \stemUp c2. | % 2
-    \stemUp c4 \stemUp c2 \stemUp c4 \stemUp c4 \stemUp c2 \bar "|."
+    \time 7/4 \omit Staff.TimeSignature \stemUp c4 \stemUp c2 \stemUp c4
+    \stemUp c4 \stemUp c2 \bar "|."
     }
 
 PartPTwoVoiceTwo =  \relative c {
-    \clef "bass" \key f \major | % 1
+    \clef "bass" \time 14/4 \omit Staff.TimeSignature \key f \major | % 1
     \stemDown c2 ( \stemDown f2 ) \stemDown c4 \stemDown c4 \stemDown c4
     \stemDown c4 \stemDown c4 \stemDown c4 ( \stemDown f4 ) \stemDown f4
     ( \stemDown c2 ) | % 2
-    \stemDown f4 \stemDown f2 \stemDown c4 \stemDown c4 \stemDown c2
-    \bar "|."
+    \time 7/4 \omit Staff.TimeSignature \stemDown f4 \stemDown f2
+    \stemDown c4 \stemDown c4 \stemDown c2 \bar "|."
     }
 
 
@@ -63,7 +79,7 @@ PartPTwoVoiceTwo =  \relative c {
         <<
             \new Staff
             <<
-                \set Staff.instrumentName = ""
+                \set Staff.instrumentName = "" % hand edit: no staff names
                 
                 \context Staff << 
                     \override Staff.BarLine.allow-span-bar = ##f % barlines not connected, as in MuseScore
@@ -74,7 +90,7 @@ PartPTwoVoiceTwo =  \relative c {
                 >>
             \new Staff
             <<
-                \set Staff.instrumentName = ""
+                \set Staff.instrumentName = "" % hand edit: no staff names
                 
                 \context Staff << 
                     \override Staff.BarLine.allow-span-bar = ##f % barlines not connected, as in MuseScore

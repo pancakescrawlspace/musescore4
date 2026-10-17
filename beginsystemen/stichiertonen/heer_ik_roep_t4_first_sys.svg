@@ -94,8 +94,8 @@ tspan { white-space: pre; }
 <g transform="translate(13.4140, 12.6906)">
 <path transform="scale(0.0040, -0.0040)" d="M0 -46c0 91 116 182 217 182c63 0 109 -35 109 -90c0 -87 -110 -182 -220 -182c-67 0 -106 39 -106 90z" fill="currentColor"/>
 </g>
-<g transform="translate(13.4140, 8.7306)">
-<text font-family="serif" font-size="2.2000" text-anchor="start" fill="currentColor">
+<g transform="translate(13.4140, 8.8487)">
+<text font-family="Helvetica" font-size="2.2000" text-anchor="start" fill="currentColor">
 <tspan>Toon 4</tspan>
 </text>
 </g>
@@ -438,13 +438,13 @@ c-13 0 -23 11 -23 25z" fill="currentColor"/>
 <g transform="translate(102.8049, 20.9022)">
 <rect x="-0.0650" y="-0.7410" width="0.1300" height="3.2410" ry="0.0400" fill="currentColor"/>
 </g>
-<g transform="translate(52.1198, 162.8440)">
+<g transform="translate(51.6076, 162.8472)">
 <a xlink:href="https://lilypond.org">
-<rect x="0.0000" y="-0.4748" width="15.2621" height="2.0024" fill="none" stroke="none" stroke-width="0.0"/>
+<rect x="0.0000" y="-0.4716" width="16.2864" height="2.0551" fill="none" stroke="none" stroke-width="0.0"/>
 </a>
 </g>
-<g transform="translate(52.1198, 162.8440)">
-<text font-family="serif" font-size="2.2000" text-anchor="start" fill="currentColor">
+<g transform="translate(51.6076, 162.8472)">
+<text font-family="Helvetica" font-size="2.2000" text-anchor="start" fill="currentColor">
 <tspan>LilyPond v2.26.0</tspan>
 </text>
 </g>
