@@ -1,6 +1,13 @@
-\version "2.24.4"
+\version "2.26.0"
 % automatically converted by musicxml2ly from heer_ik_roep_t3_first_sys.musicxml
 \pointAndClickOff
+% build, in this directory, with LilyPond 2.26:
+%   lilypond heer_ik_roep_t3_first_sys.ly
+%   lilypond -dbackend=svg -dcrop heer_ik_roep_t3_first_sys.ly
+% The first makes the .pdf, the second the .svg and the .cropped.svg that beginsystemen.typ includes.
+
+% LilyPond 2.24's side margins (2.26 has 15mm), so the systems keep their size in beginsystemen.typ
+\paper { left-margin = 10\mm right-margin = 10\mm }
 
 \layout {
     indent = 0 %rene
@@ -57,6 +64,7 @@ PartPTwoVoiceTwo =  \relative c {
                 \set Staff.instrumentName = ""
                 
                 \context Staff << 
+                    \override Staff.BarLine.allow-span-bar = ##f % barlines not connected, as in MuseScore
                     \mergeDifferentlyDottedOn\mergeDifferentlyHeadedOn
                     \context Voice = "PartPOneVoiceOne" {  \voiceOne \PartPOneVoiceOne }
                     \context Voice = "PartPOneVoiceTwo" {  \voiceTwo \PartPOneVoiceTwo }
@@ -67,6 +75,7 @@ PartPTwoVoiceTwo =  \relative c {
                 \set Staff.instrumentName = ""
                 
                 \context Staff << 
+                    \override Staff.BarLine.allow-span-bar = ##f % barlines not connected, as in MuseScore
                     \mergeDifferentlyDottedOn\mergeDifferentlyHeadedOn
                     \context Voice = "PartPTwoVoiceOne" {  \voiceOne \PartPTwoVoiceOne }
                     \context Voice = "PartPTwoVoiceTwo" {  \voiceTwo \PartPTwoVoiceTwo }

@@ -1,6 +1,11 @@
-\version "2.24.4"
+\version "2.26.0"
 % automatically converted by musicxml2ly from heer_ik_roep_t3_first_sys_timesig.musicxml
 \pointAndClickOff
+% build, in this directory, with LilyPond 2.26:
+%   lilypond heer_ik_roep_t3_first_sys_timesig.ly
+
+% LilyPond 2.24's side margins (2.26 has 15mm), as when this was first made
+\paper { left-margin = 10\mm right-margin = 10\mm }
 
 \header {
     title =  "Untitled score"
@@ -59,6 +64,7 @@ PartPTwoVoiceTwo =  \relative c {
                 \set Staff.instrumentName = "Women"
                 
                 \context Staff << 
+                    \override Staff.BarLine.allow-span-bar = ##f % barlines not connected, as in MuseScore
                     \mergeDifferentlyDottedOn\mergeDifferentlyHeadedOn
                     \context Voice = "PartPOneVoiceOne" {  \voiceOne \PartPOneVoiceOne }
                     \context Voice = "PartPOneVoiceTwo" {  \voiceTwo \PartPOneVoiceTwo }
@@ -69,6 +75,7 @@ PartPTwoVoiceTwo =  \relative c {
                 \set Staff.instrumentName = "Men"
                 
                 \context Staff << 
+                    \override Staff.BarLine.allow-span-bar = ##f % barlines not connected, as in MuseScore
                     \mergeDifferentlyDottedOn\mergeDifferentlyHeadedOn
                     \context Voice = "PartPTwoVoiceOne" {  \voiceOne \PartPTwoVoiceOne }
                     \context Voice = "PartPTwoVoiceTwo" {  \voiceTwo \PartPTwoVoiceTwo }

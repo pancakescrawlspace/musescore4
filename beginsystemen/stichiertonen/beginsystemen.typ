@@ -1,3 +1,5 @@
+// build, in this directory: typst compile beginsystemen.typ  (makes beginsystemen.pdf)
+// The .cropped.svg files come from heer_ik_roep_tN_first_sys.ly; see the build comment there.
 #let heading-line(body) = align(center, text(weight: "bold", size: 21pt, body))
 #v(-1cm)
 #heading-line[#text(font: "Helvetica")[Stichiertonen]]
