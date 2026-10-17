@@ -35,7 +35,7 @@ PartPOneVoiceOne =  \relative a' {
         \stemUp fis2 \stemUp e8 [ \stemUp e8 ] }
     \alternative { {
             % hand edit: new system for the voltas; label as "1.-2." (MuseScore: "1, 2")
-            \break \once \override Score.VoltaBracket.text = "1.-2."
+            \break \once \override Score.VoltaBracket.text = \markup \volta-number "1.–2."
             | % 16
             \stemUp d2 \stemUp b8 [ \stemUp e8 ] | % 17
             \stemUp d4. \stemUp cis8 \stemUp b8 [ \stemUp cis8 ] | % 18
