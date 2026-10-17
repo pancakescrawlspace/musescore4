@@ -61,9 +61,9 @@
     % font-size step scales by 2^(1/6)
     \override LyricText.font-size = #(* 6 (/ (log (/ 14 11)) (log 2)))
     % more room between syllables and around hyphens for the larger text
-    % (1.4: LilyPond 2.26 spaces lyrics a little wider than 2.24, where 1.6
-    % fit two measures per line in the Heer ik roep tones; 1.6 no longer does)
-    \override LyricSpace.minimum-distance = #1.4
-    \override LyricHyphen.minimum-distance = #1.4
+    % (with 2.26 this needed 1.4 while the Heer ik roep tones ended with a
+    % measure alone; since the densest odd measure stands alone, 1.6 fits)
+    \override LyricSpace.minimum-distance = #1.6
+    \override LyricHyphen.minimum-distance = #1.6
   }
 }

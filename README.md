@@ -151,8 +151,9 @@ lyrics, no staff names, verse numbers only when a score has more than one
 verse, no first-system indent, no footer, and the title on the left with
 the subtitle on the right (or the title centered when there is no
 subtitle). It uses LilyPond 2.26 syntax. The minimum gap between lyric
-words is 1.4: with 2.26, 1.6 no longer fit two measures per line in the
-Heer ik roep tones.
+words is 1.6. With 2.26 it was 1.4 for a while, because 1.6 didn't fit two
+measures per line in the Heer ik roep tones when m11 stood alone; with the
+densest odd measure alone (see "Line breaks" above) it fits.
 
 ### Checking the result
 
