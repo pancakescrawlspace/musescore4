@@ -24,6 +24,13 @@ from. The generated `o_czom.*` has the same music and lyrics as the hand
 version; it differs only in house style (title layout, default lyric
 spacing) and uses ’ throughout where the hand version sometimes has '.
 
+`groot_prokimen_pinksteren_alt.ly`/`.pdf` are a hand-made alternative
+layout of groot_prokimen, written from `groot_prokimen_pinksteren.ly`:
+no voltas, but mm1–18 as the piece, then the caption "De laatste keer
+worden de drie slotmaten als volgt gezongen:" and the last-time ending
+(mm19–21) as a separate small score. Don't regenerate it; mirror note
+changes by hand.
+
 (Until 2026-10-16 the generated files of groot_prokimen_pinksteren,
 nog_vele_jaren_trouwmap and o_czom were named `X_styled.*`, and the hand
 version was `o_czom.ly`/`.pdf`.)
@@ -135,9 +142,13 @@ A few files have more, each marked with a `% hand edit:` comment:
 
 - `canon_kruisverheffing.ly`: `{ s4*15 \bar "" }` before the first
   voice, which allows a line break in the long first measure.
-- `groot_prokimen_pinksteren.ly`: a new system for the voltas, the
-  volta label `1.-2.` (LilyPond's volta font had no comma or en dash),
-  and the final barline (musicxml2ly drops it inside `\alternative`).
+- `groot_prokimen_pinksteren.ly`: a new system for the voltas, their
+  labels "Alle keren behalve de laatste" and "Laatste keer" in 10 pt
+  bold (musicxml2ly leaves out the ending text), a final barline instead of the end repeat after
+  the first volta, and the final barline at the end (musicxml2ly drops
+  it inside `\alternative`). The prokimen is sung several times, but not
+  straight after each other and not a fixed number of times, so the
+  score has voltas without repeat barlines, labelled in words.
 
 `groot_prokimen_pinksteren.mscz` also has hidden copies of its two voltas
 on the men's staff. MuseScore exports voltas only on staves that have

@@ -8,7 +8,7 @@
     <creator type="composer">Composer / arranger</creator>
     <encoding>
       <software>MuseScore Studio 4.7.5</software>
-      <encoding-date>2026-10-16</encoding-date>
+      <encoding-date>2026-10-17</encoding-date>
       <supports element="accidental" type="yes"/>
       <supports element="beam" type="yes"/>
       <supports element="print" attribute="new-page" type="no"/>
@@ -1100,7 +1100,7 @@
       </measure>
     <measure number="16">
       <barline location="left">
-        <ending number="1, 2" type="start">1, 2</ending>
+        <ending number="1" type="start">Alle keren behalve de laatste</ending>
         </barline>
       <note>
         <pitch>
@@ -1297,13 +1297,12 @@
         </note>
       <barline location="right">
         <bar-style>light-heavy</bar-style>
-        <ending number="1, 2" type="stop"/>
-        <repeat direction="backward" times="3"/>
+        <ending number="1" type="stop"/>
         </barline>
       </measure>
     <measure number="19">
       <barline location="left">
-        <ending number="3" type="start">3</ending>
+        <ending number="2" type="start">Laatste keer</ending>
         </barline>
       <note>
         <pitch>
@@ -1510,7 +1509,7 @@
         </note>
       <barline location="right">
         <bar-style>light-heavy</bar-style>
-        <ending number="3" type="stop"/>
+        <ending number="2" type="stop"/>
         </barline>
       </measure>
     </part>
@@ -2380,7 +2379,7 @@
       </measure>
     <measure number="16">
       <barline location="left">
-        <ending number="1, 2" type="start" print-object="no">1, 2</ending>
+        <ending number="1" type="start" print-object="no">Alle keren behalve de laatste</ending>
         </barline>
       <note>
         <pitch>
@@ -2523,13 +2522,12 @@
         </note>
       <barline location="right">
         <bar-style>light-heavy</bar-style>
-        <ending number="1, 2" type="stop"/>
-        <repeat direction="backward" times="3"/>
+        <ending number="1" type="stop"/>
         </barline>
       </measure>
     <measure number="19">
       <barline location="left">
-        <ending number="3" type="start" print-object="no">3</ending>
+        <ending number="2" type="start" print-object="no">Laatste keer</ending>
         </barline>
       <note>
         <pitch>
@@ -2672,7 +2670,7 @@
         </note>
       <barline location="right">
         <bar-style>light-heavy</bar-style>
-        <ending number="3" type="stop"/>
+        <ending number="2" type="stop"/>
         </barline>
       </measure>
     </part>

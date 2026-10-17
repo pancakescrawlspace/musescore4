@@ -16,7 +16,7 @@
         }
     }
 PartPOneVoiceOne =  \relative a' {
-    \repeat volta 3 {
+    \repeat volta 2 {
         \clef "treble" \time 3/4 \key d \major | % 1
         \stemUp a4 \stemUp a4 \stemUp a4 | % 2
         \stemUp a2. | % 3
@@ -34,13 +34,19 @@ PartPOneVoiceOne =  \relative a' {
         \stemUp d2 \stemUp e4 | % 15
         \stemUp fis2 \stemUp e8 [ \stemUp e8 ] }
     \alternative { {
-            % hand edit: new system for the voltas; label as "1.-2." (MuseScore: "1, 2")
-            \break \once \override Score.VoltaBracket.text = \markup \volta-number "1.–2."
+            % hand edit: new system for the voltas; volta labels in 10pt bold (musicxml2ly leaves out the ending text)
+            \break \once \override Score.VoltaBracket.text = \markup \bold "Alle keren behalve de laatste"
+            \once \override Score.VoltaBracket.font-size = #(* 6 (/ (log (/ 10 11)) (log 2)))
+            % hand edit: final barline instead of the end repeat (sung again later, not straight after)
+            \set Score.endRepeatBarType = "|."
             | % 16
             \stemUp d2 \stemUp b8 [ \stemUp e8 ] | % 17
             \stemUp d4. \stemUp cis8 \stemUp b8 [ \stemUp cis8 ] | % 18
             \stemUp d2. }
         {
+            % hand edit: volta label
+            \once \override Score.VoltaBracket.text = \markup \bold "Laatste keer"
+            \once \override Score.VoltaBracket.font-size = #(* 6 (/ (log (/ 10 11)) (log 2)))
             | % 19
             \stemUp d2 \stemUp b8 [ \stemUp e8 ] | \barNumberCheck #20
             \stemUp d4. \stemUp cis8 \stemUp b8 [ \stemUp cis8 ] | % 21
@@ -58,7 +64,7 @@ PartPOneVoiceOneLyricsOne =  \lyricmode {\set ignoreMelismata = ##t Wie
     }
 
 PartPOneVoiceTwo =  \relative fis' {
-    \repeat volta 3 {
+    \repeat volta 2 {
         \clef "treble" \time 3/4 \key d \major | % 1
         \stemDown fis4 \stemDown fis4 \stemDown d4 | % 2
         \stemDown e2. | % 3
@@ -88,7 +94,7 @@ PartPOneVoiceTwo =  \relative fis' {
         } }
 
 PartPTwoVoiceOne =  \relative d' {
-    \repeat volta 3 {
+    \repeat volta 2 {
         \clef "bass" \time 3/4 \key d \major | % 1
         \stemUp d4 \stemUp d4 \stemUp d4 | % 2
         \stemUp cis2. | % 3
@@ -118,7 +124,7 @@ PartPTwoVoiceOne =  \relative d' {
         } }
 
 PartPTwoVoiceTwo =  \relative d {
-    \repeat volta 3 {
+    \repeat volta 2 {
         \clef "bass" \time 3/4 \key d \major | % 1
         \stemDown d4 \stemDown d4 \stemDown fis4 | % 2
         \stemDown a2 \stemDown g4 | % 3
