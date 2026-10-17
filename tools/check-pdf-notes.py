@@ -16,6 +16,13 @@ barlines, slurs). From those it works out, per staff and voice:
 and compares each voice note by note (spelling included, so Bb4 != A#4),
 plus the number of measures, the total length of every measure and every slur.
 
+Stems must follow the voices: up in voice 1, down in voice 2. A stem
+direction forced against its voice in the .mscz (StemDirection down in voice
+1 or up in voice 2, where the staff has both voices in that measure) is a
+problem, and so is a column in the PDF whose two notes have their stems the
+same way. Such a note was usually entered in the wrong voice and moved
+later, keeping its stem.
+
 Scope is what the church scores use: two staves (treble + bass) with two
 voices each, one note per chord, quarter/half/whole notes with dots, slurs.
 Anything else (rests, ties, beams, tuplets, more staves) stops the check
@@ -52,17 +59,23 @@ def dotted(d, dots):
 
 # ---------------------------------------------------------------- .mscz
 def read_mscz(path):
-    """-> ({staff id: [voice 1 notes, voice 2 notes]}, [measure lengths]).
-    A note is (measure index, name, duration, slur start, slur end, stem override)."""
+    """-> ({staff id: [voice 1 notes, voice 2 notes]}, [measure lengths], [problems]).
+    A note is (measure index, name, duration, slur start, slur end). A measure's
+    length is its len attribute, else that of the time signature in force."""
     with zipfile.ZipFile(path) as z:
         mscx = [n for n in z.namelist() if n.endswith(".mscx")][0]
         score = ET.fromstring(z.read(mscx)).find("Score")
-    staves, lens = {}, None
+    staves, lens, problems = {}, None, []
     for staff in score.findall("Staff"):
         voices = collections.defaultdict(list)
         staff_lens = []
+        sig = None
         for mi, meas in enumerate(staff.findall("Measure")):
-            staff_lens.append(F(meas.get("len")) if meas.get("len") else None)
+            ts = meas.find("voice/TimeSig")
+            if ts is not None:
+                sig = F(int(ts.findtext("sigN")), int(ts.findtext("sigD")))
+            staff_lens.append(F(meas.get("len")) if meas.get("len") else sig)
+            stems = []  # (voice index, forced direction, note name)
             for vi, voice in enumerate(meas.findall("voice")):
                 if vi > 1:
                     raise Unsupported(f"more than two voices (m{mi + 1})")
@@ -90,13 +103,19 @@ def read_mscz(path):
                     slurs = [s for s in el.findall("Spanner") if s.get("type") == "Slur"]
                     voices[vi].append((mi, name(letter, alter, octave), d,
                                        any(s.find("next") is not None for s in slurs),
-                                       any(s.find("prev") is not None for s in slurs),
-                                       el.findtext("StemDirection")))
+                                       any(s.find("prev") is not None for s in slurs)))
+                    if el.findtext("StemDirection"):
+                        stems.append((vi, el.findtext("StemDirection"), voices[vi][-1][1]))
+            two_voices = len([v for v in meas.findall("voice") if v.find("Chord") is not None]) == 2
+            for vi, direction, nm in stems:
+                if two_voices and direction != ("up", "down")[vi]:
+                    problems.append(f"staff {staff.get('id')} voice {vi + 1} m{mi + 1} {nm}: "
+                                    f"stem forced {direction} in the mscz")
         staves[int(staff.get("id"))] = [voices[0], voices[1]]
         lens = staff_lens
     if len(staves) != 2:
         raise Unsupported(f"{len(staves)} staves")
-    return staves, lens
+    return staves, lens, problems
 
 
 # ---------------------------------------------------------------- PDF
@@ -192,15 +211,17 @@ def read_pdf(pdf):
         _, h, v = cand[0]
         assert (sx > h["x"] + 0.5 * sp) if v == 1 else (abs(sx - h["x"]) < 0.3), ("stem on wrong side", sx, h["x"])
         h["voices"].add(v)
-    # a forced stem direction puts two heads of one column in the same voice: the higher is voice 1
+    # two heads of one column with their stems the same way: an error, reported
+    # by check(); the higher is taken as voice 1 so that the comparison can go on
     for h in heads:
         col = [o for o in heads if o is not h and o["st"] is h["st"] and abs(o["x"] - h["x"]) < 0.5
                and len(h["voices"]) == 1 and o["voices"] == h["voices"] and o["y"] != h["y"]]
         if col:
             assert len(col) == 1
             hi, lo = sorted((h, col[0]), key=lambda o: -o["y"])
+            way = "up" if h["voices"] == {1} else "down"
             hi["voices"], lo["voices"] = {1}, {2}
-            hi["flag"] = lo["flag"] = "stem"
+            hi["flag"] = lo["flag"] = f"stem {way}, the same way as the other note in its column"
     for h in heads:
         assert h["type"] == "s0" or h["voices"], ("notehead without stem", h["x"], h["y"])
 
@@ -279,9 +300,8 @@ def read_pdf(pdf):
 # ---------------------------------------------------------------- compare
 def check(mscz, pdf):
     print(f"{mscz}  vs  {pdf}")
-    ms, lens = read_mscz(mscz)
+    ms, lens, problems = read_mscz(mscz)
     pv, nmeasures, keys, curves, sp = read_pdf(pdf)
-    problems, notes = [], []
     if nmeasures != len(lens):
         problems.append(f"{len(lens)} measures in mscz, {nmeasures} in pdf")
     total = nslurs = 0
@@ -293,14 +313,11 @@ def check(mscz, pdf):
             total += len(a)
             if len(a) != len(b):
                 problems.append(f"{where}: {len(a)} notes in mscz, {len(b)} in pdf")
-            for i, ((mm, nm, d, _, _, stem), h) in enumerate(zip(a, b)):
+            for i, ((mm, nm, d, _, _), h) in enumerate(zip(a, b)):
                 if (mm, nm, d) != (h["m"], h["name"], h["dur"]):
                     problems.append(f"{where} note {i + 1}: mscz m{mm + 1} {nm} {d}, pdf m{h['m'] + 1} {h['name']} {h['dur']}")
-                if h["flag"] == "stem":
-                    notes.append(f"{where} m{mm + 1} {nm}: forced stem direction"
-                                 + (f" (mscz: stem {stem})" if stem else ""))
-                elif h["flag"]:
-                    problems.append(f"{where} m{h['m'] + 1} {h['name']}: {h['flag']}")
+                if h["flag"]:
+                    problems.append(f"{where} m{h['m'] + 1} {h['name']}: in the pdf, {h['flag']}")
             sums = collections.Counter()
             for h in b:
                 sums[h["m"]] += h["dur"]
@@ -309,7 +326,7 @@ def check(mscz, pdf):
                     problems.append(f"{where} m{m + 1}: pdf notes add up to {sums[m]}, measure is {ln}")
             # slurs: pair starts and ends within the voice, then find the curve between the two heads
             open_, pairs = [], []
-            for i, (mm, _, _, start, end, _) in enumerate(a):
+            for i, (mm, _, _, start, end) in enumerate(a):
                 if end:
                     if not open_:
                         raise Unsupported(f"{where} m{mm + 1}: slur end without a slur start in that voice")
@@ -334,8 +351,6 @@ def check(mscz, pdf):
     for c in unused:
         problems.append(f"curve in pdf at x={c[0][0]:.1f} matches no slur in mscz")
     print(f"  {total} notes, {nslurs} slurs, {nmeasures} measures; key signature in pdf: {keys}")
-    for n in notes:
-        print("  note:", n)
     for p in problems:
         print("  PROBLEM:", p)
     print("  OK" if not problems else f"  {len(problems)} problem(s)")

@@ -77,7 +77,15 @@ voices per staff, one note per chord, quarter/half/whole notes, dots, slurs.
 Rests, ties, beams, tuplets, a slur end without a start in its voice, and
 other layouts give exit status 2 rather than a false pass.
 
-`note:` lines are not errors. A stem direction forced in MuseScore
-(`StemDirection`) shows up in the PDF too. The checker then decides the voices
-of that column by height, and lists them so you can see which notes it handled
-that way.
+Stems must follow the voices: up in voice 1, down in voice 2. A stem
+direction forced against its voice in MuseScore (`StemDirection` down in
+voice 1 or up in voice 2, in a measure where the staff has both voices) is a
+`PROBLEM:`, and so is a column in the PDF whose two notes have their stems the
+same way. Such a note was usually entered in the wrong voice and moved later
+with its stem left as it was (two soprano notes in `heer_ik_roep_t3` had
+this). Fix it in MuseScore by setting the note's stem direction back to
+Auto in the Properties panel. A forced direction that agrees with the voice
+changes nothing and passes.
+
+A measure without a `len` attribute takes its length from the time signature
+in force; MuseScore leaves `len` out when the two agree.

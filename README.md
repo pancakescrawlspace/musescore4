@@ -157,7 +157,7 @@ Heer ik roep tones.
 
 `tools/check-pdf-notes.py` reads the notes back from the PDF itself and
 compares them with the `.mscz`: pitch and spelling, durations, measures
-and slurs. It covers the two-staff SATB layout with quarter, half and
+and slurs. It also rejects stems that point against their voice. It covers the two-staff SATB layout with quarter, half and
 whole notes; anything else (rests, ties, beams, tuplets) is reported as
 unsupported rather than passed. See `tools/README.md`.
 

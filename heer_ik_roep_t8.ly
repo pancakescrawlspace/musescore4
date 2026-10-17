@@ -13,7 +13,7 @@ U = \tweak Stem.direction #UP \etc
   title = "Heer ik roep"
   subtitle = "toon 8"
   "id: software" = "MuseScore Studio 4.7.5"
-  "id: encoding-date" = "2026-10-16"
+  "id: encoding-date" = "2026-10-17"
 }
 \layout {
   \context {
@@ -110,7 +110,7 @@ PartPTwoVoiceOne = \relative c' {
   \barNumberCheck #10
   \once \omit Staff.TimeSignature \time 9/4 \U c4 \U c4 \U c4 \U c4 \U c2. \U a2
   | % 10
-  \once \omit Staff.TimeSignature \time 10/4 \U d2 \U d2 \U cis4 \D cis4 a1 \bar
+  \once \omit Staff.TimeSignature \time 10/4 \U d2 \U d2 \U cis4 \U cis4 a1 \bar
   "|."
 }
 
