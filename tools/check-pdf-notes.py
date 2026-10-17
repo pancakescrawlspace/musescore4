@@ -341,9 +341,10 @@ def check(mscz, pdf):
                     problems.append(f"{label}: notes missing in pdf")
                     continue
                 h0, h1 = b[i], b[j]
+                # a slur over a stem ends just beyond its tip, about 4 sp from the head
                 found = [c for c in unused
                          if h0["x"] - sp < c[0][0] < h0["x"] + 2.5 * sp and h1["x"] - 1.5 * sp < c[1][0] < h1["x"] + 2 * sp
-                         and 0 < side * (c[0][1] - h0["y"]) < 4 * sp and 0 < side * (c[1][1] - h1["y"]) < 4 * sp]
+                         and 0 < side * (c[0][1] - h0["y"]) < 5 * sp and 0 < side * (c[1][1] - h1["y"]) < 5 * sp]
                 if len(found) == 1:
                     unused.remove(found[0])
                 else:

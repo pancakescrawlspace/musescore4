@@ -30,23 +30,23 @@ PartPOneVoiceOne = \relative a' {
   \U g4 \U g4 \U g4 \U g4 \U g4 \U a2. ( \U g4 ) \U f2 | % 1
   \once \omit Staff.TimeSignature \time 7/4 \U a4 \U a2 \U bes4 \U a4 \U g2 | \break % 2
   \once \omit Staff.TimeSignature \time 14/4 \U a4 \U a4 \U a4 \U a4 \U g2 \U f4
-  ( \U a4 ) \U g2 ( \U f2 ) \U e2 | % 3
+  ( \U a4 ) \U g2 ( \U f2 ) \U e2 | \break % 3
   \once \omit Staff.TimeSignature \time 12/4 \U g4 \U g4 \U g4 \U g4 \U g4 \U g4
-  \U g4 \U a2 ( \U g4 ) \U f2 | \break % 4
+  \U g4 \U a2 ( \U g4 ) \U f2 | % 4
   \once \omit Staff.TimeSignature \time 8/4 \U a4 \U a4 \U a2 \U bes4 \U a4 \U g2
-  | % 5
+  | \break % 5
   \once \omit Staff.TimeSignature \time 10/4 \U bes2 \U a2 \U g4 \U g4 f1 \bar
-  "||" \break % 6
+  "||" % 6
   \once \omit Staff.TimeSignature \time 12/4 \U a2 \U g4 \U g4 \U g4 \U g4 \U a2.
-  ( \U g4 ) \U f2 | % 7
+  ( \U g4 ) \U f2 | \break % 7
   \once \omit Staff.TimeSignature \time 11/4 \U a4 \U a4 \U a4 \U a4 \U a4 \U a2
-  ( \U bes4 ) \U a4 \U g2 | \break % 8
+  ( \U bes4 ) \U a4 \U g2 | % 8
   \once \omit Staff.TimeSignature \time 13/4 \U a4 \U g2 \U f4 \U f4 \U f4 \U a4
-  \U g2 ( \U f2 ) \U e2 | % 9
+  \U g2 ( \U f2 ) \U e2 | \break % 9
 
   \barNumberCheck #10
   \once \omit Staff.TimeSignature \time 9/4 \U g4 \U g4 \U g4 \U g4 \U a2 ( \U g4
-  ) \U f2 | \break % 10
+  ) \U f2 | % 10
   \once \omit Staff.TimeSignature \time 10/4 \U bes2 \U a2 \U g4 \U g4 f1 \bar
   "|."
 }

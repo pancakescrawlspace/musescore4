@@ -13,7 +13,7 @@ U = \tweak Stem.direction #UP \etc
   title = "Heer ik roep"
   subtitle = "toon 2"
   "id: software" = "MuseScore Studio 4.7.5"
-  "id: encoding-date" = "2026-10-16"
+  "id: encoding-date" = "2026-10-17"
 }
 \layout {
   \context {
@@ -28,26 +28,26 @@ U = \tweak Stem.direction #UP \etc
 PartPOneVoiceOne = \relative bes' {
   \clef "treble" \once \omit Staff.TimeSignature \time 14/4 \key f \major \U bes2
   ( \U c2 ) \U bes4 \U bes4 \U bes4 \U bes4 \U a4 \U bes4 ( \U c4 ) \U c4 ( \U
-  bes2 ) | % 1
+  bes2 ) | \break % 1
   \once \omit Staff.TimeSignature \time 7/4 \U a4 \U a2 \U bes4 \U bes4 \U bes2
-  | \break % 2
+  | % 2
   \once \omit Staff.TimeSignature \time 12/4 \U d2. \U c4 \U bes4 \U bes4 \U bes4
-  \U bes4 \U bes2 \U a2 | % 3
-  \U a4 \U a4 \U a4 \U a4 \U a4 \U a4 \U a4 \U a2 ( \U bes4 ) \U bes2 | \break % 4
+  \U bes4 \U bes2 \U a2 | \break % 3
+  \U a4 \U a4 \U a4 \U a4 \U a4 \U a4 \U a4 \U a2 ( \U bes4 ) \U bes2 | % 4
   \once \omit Staff.TimeSignature \time 9/4 \U c4 \U d2 \U c4 \U bes4 \U bes2 \U
-  a2 | % 5
+  a2 | \break % 5
   \once \omit Staff.TimeSignature \time 18/4 \U c4 ( \U d4 ) \U c2 \U bes4 \U
-  bes4 a1 ( \U bes2 \U a2 g1 ) \bar "||" \break % 6
+  bes4 a1 ( \U bes2 \U a2 g1 ) \bar "||" % 6
   \once \omit Staff.TimeSignature \time 13/4 \U bes2 ( \U c2 ) \U bes4 \U bes4
-  \U bes4 \U a4 \U bes4 ( \U c4 ) \U c4 ( \U bes2 ) | % 7
+  \U bes4 \U a4 \U bes4 ( \U c4 ) \U c4 ( \U bes2 ) | \break % 7
   \once \omit Staff.TimeSignature \time 10/4 \U a4 \U a4 \U a4 \U a4 \U a4 \U a2
-  \U bes4 \U bes2 | \break % 8
+  \U bes4 \U bes2 | % 8
   \once \omit Staff.TimeSignature \time 11/4 \U c4 \U d2 \U c4 \U bes4 \U bes4
-  \U bes4 \U bes2 \U a2 | % 9
+  \U bes4 \U bes2 \U a2 | \break % 9
 
   \barNumberCheck #10
   \once \omit Staff.TimeSignature \time 9/4 \U a4 \U a4 \U a4 \U a4 \U a2 ( \U
-  bes4 ) \U bes2 | \break % 10
+  bes4 ) \U bes2 | % 10
   \once \omit Staff.TimeSignature \time 18/4 \U c4 ( \U d4 ) \U c2 \U bes4 \U
   bes4 a1 ( \U bes2 \U a2 g1 ) \bar "|."
 }

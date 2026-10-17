@@ -77,9 +77,10 @@ It also adds what `musicxml2ly` leaves out:
 - **Line breaks:** system and page breaks set in MuseScore become
   `\break`/`\pageBreak` at the same measures. They're read from the
   `.mscz` itself, because MuseScore exports them to MusicXML only with a
-  matching preference. The Heer ik roep tones have a system break after
-  every second measure, so each line holds two measures and each half of
-  the tone ends at a line end. This also shows in MuseScore and the videos.
+  matching preference. In each Heer ik roep tone, one odd-numbered measure
+  has a line to itself: the one with the most notes (counting all voices;
+  ties go to the earliest), which is m1 or m3. Every other line holds two
+  measures. This also shows in MuseScore and the videos.
 - **Verse numbers:** "1.", "2.", ... when a voice has more than one verse
   (`musicxml2ly` 2.26 no longer writes them).
 - **Repeat counts:** see below.
