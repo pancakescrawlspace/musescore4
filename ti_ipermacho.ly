@@ -13,7 +13,7 @@ U = \tweak Stem.direction #UP \etc
   title = "Τῇ ὑπερμάχῳ"
   subtitle = "vrouwentrio"
   "id: software" = "MuseScore Studio 4.7.5"
-  "id: encoding-date" = "2026-10-17"
+  "id: encoding-date" = "2026-10-18"
 }
 \layout {
   \context {
@@ -49,18 +49,18 @@ PartPOneVoiceOneLyricsOne = \lyricmode {
   \set ignoreMelismata = ##t
   \set includeGraceNotes = ##t
   Ti i -- per -- ma -- cho stra __ \skip1 ti -- go __ \skip1 ta ni -- ki -- ti
-  __ \skip1 ri __ \skip1 \skip1 \skip1 "a," a -- na -- gra -- fo si i po -- lis
-  __ \skip1 "sou," The __ \skip1 o -- to __ \skip1 \skip1 "kè." "All’" os e --
-  chou -- sa __ \skip1 to kra __ \skip1 tos a -- pros -- ma __ \skip1 chi __
-  \skip1 \skip1 \skip1 "ton," ek pan -- di -- on "mè" kin -- di -- non e -- lef
-  -- "thè" -- ro -- "son," i -- na kra -- so __ \skip1 "si:" "Chè" -- re nim __
-  \skip1 fi a -- nim __ \skip1 "fèf" __ \skip1 \skip1 "tè."
+  __ \skip1 ri __ \skip1 \skip1 \skip1 "a," a -- na -- gra -- fo si i Po -- lis
+  __ \skip1 sou The __ \skip1 o -- to __ \skip1 \skip1 "kè." "All’" os e -- chou
+  -- sa __ \skip1 to kra __ \skip1 tos a -- pros -- ma __ \skip1 chi __ \skip1
+  \skip1 \skip1 "ton," ek pan -- di -- on "mè" kin -- di -- non e -- lef -- the
+  -- ro -- "son," i -- na kra -- zo __ \skip1 "si:" Che -- "rè," Nim __ \skip1
+  fi a -- nim __ \skip1 fef __ \skip1 \skip1 "tè."
 }
 
 PartPOneVoiceOneLyricsTwo = \lyricmode {
   \set ignoreMelismata = ##t
   \set includeGraceNotes = ##t
-  Os li -- tro -- thi -- sa ton __ \skip1 di -- non __ \skip1 ef -- ga -- ri --
+  Os li -- tro -- thi -- sa ton __ \skip1 di -- non __ \skip1 ef -- cha -- ri --
   sti __ \skip1 ri __ \skip1 \skip1 \skip1 "a," \skip1 \skip1 \skip1 \skip1
   \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
   \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1

@@ -8,7 +8,7 @@
     <creator type="composer">Composer / arranger</creator>
     <encoding>
       <software>MuseScore Studio 4.7.5</software>
-      <encoding-date>2026-10-17</encoding-date>
+      <encoding-date>2026-10-18</encoding-date>
       <supports element="accidental" type="yes"/>
       <supports element="beam" type="yes"/>
       <supports element="print" attribute="new-page" type="no"/>
@@ -276,7 +276,7 @@
           </lyric>
         <lyric number="2">
           <syllabic>middle</syllabic>
-          <text>ga</text>
+          <text>cha</text>
           </lyric>
         </note>
       <note>
@@ -519,7 +519,7 @@
         <stem>down</stem>
         <lyric number="1">
           <syllabic>begin</syllabic>
-          <text>po</text>
+          <text>Po</text>
           </lyric>
         </note>
       <note>
@@ -561,7 +561,7 @@
         <stem>down</stem>
         <lyric number="1">
           <syllabic>single</syllabic>
-          <text>sou,</text>
+          <text>sou</text>
           </lyric>
         </note>
       <note>
@@ -1095,7 +1095,7 @@
         <stem>up</stem>
         <lyric number="1">
           <syllabic>middle</syllabic>
-          <text>thè</text>
+          <text>the</text>
           </lyric>
         </note>
       <note>
@@ -1193,7 +1193,7 @@
           </notations>
         <lyric number="1">
           <syllabic>end</syllabic>
-          <text>so</text>
+          <text>zo</text>
           <extend/>
           </lyric>
         </note>
@@ -1237,7 +1237,7 @@
         <stem>down</stem>
         <lyric number="1">
           <syllabic>begin</syllabic>
-          <text>Chè</text>
+          <text>Che</text>
           </lyric>
         </note>
       <note>
@@ -1251,7 +1251,7 @@
         <stem>down</stem>
         <lyric number="1">
           <syllabic>end</syllabic>
-          <text>re</text>
+          <text>rè,</text>
           </lyric>
         </note>
       <note>
@@ -1268,7 +1268,7 @@
           </notations>
         <lyric number="1">
           <syllabic>single</syllabic>
-          <text>nim</text>
+          <text>Nim</text>
           <extend/>
           </lyric>
         </note>
@@ -1360,7 +1360,7 @@
           </notations>
         <lyric number="1">
           <syllabic>single</syllabic>
-          <text>fèf</text>
+          <text>fef</text>
           <extend/>
           </lyric>
         </note>
