@@ -165,6 +165,8 @@ PartPTwoVoiceTwo =  \relative d {
                 \set Staff.instrumentName = "Women"
                 
                 \context Staff << 
+                    % hand edit: barlines not connected between the staves, as in MuseScore (musicxml2ly 2.26 writes this itself; this .ly is older output)
+                    \override Staff.BarLine.allow-span-bar = ##f
                     \mergeDifferentlyDottedOn\mergeDifferentlyHeadedOn
                     \context Voice = "PartPOneVoiceOne" {  \voiceOne \PartPOneVoiceOne }
                     \new Lyrics \lyricsto "PartPOneVoiceOne" { \set stanza = "1." \PartPOneVoiceOneLyricsOne }
@@ -176,6 +178,8 @@ PartPTwoVoiceTwo =  \relative d {
                 \set Staff.instrumentName = "Men"
                 
                 \context Staff << 
+                    % hand edit: barlines not connected between the staves, as in MuseScore (musicxml2ly 2.26 writes this itself; this .ly is older output)
+                    \override Staff.BarLine.allow-span-bar = ##f
                     \mergeDifferentlyDottedOn\mergeDifferentlyHeadedOn
                     \context Voice = "PartPTwoVoiceOne" {  \voiceOne \PartPTwoVoiceOne }
                     \context Voice = "PartPTwoVoiceTwo" {  \voiceTwo \PartPTwoVoiceTwo }

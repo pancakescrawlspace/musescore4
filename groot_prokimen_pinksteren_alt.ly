@@ -146,6 +146,7 @@ SlotPTwoVoiceTwo =  \relative d {
     \stemDown d2.
     }
 
+% barlines not connected between the staves, as in MuseScore and the other scores
 choir =
 #(define-music-function (s1 l1 a1 t1 b1) (ly:music? ly:music? ly:music? ly:music? ly:music?)
    #{
@@ -156,6 +157,7 @@ choir =
             <<
                 \set Staff.instrumentName = "Women"
                 \context Staff <<
+                    \override Staff.BarLine.allow-span-bar = ##f
                     \mergeDifferentlyDottedOn\mergeDifferentlyHeadedOn
                     \context Voice = "PartPOneVoiceOne" {  \voiceOne #s1 }
                     \new Lyrics \lyricsto "PartPOneVoiceOne" { #l1 }
@@ -166,6 +168,7 @@ choir =
             <<
                 \set Staff.instrumentName = "Men"
                 \context Staff <<
+                    \override Staff.BarLine.allow-span-bar = ##f
                     \mergeDifferentlyDottedOn\mergeDifferentlyHeadedOn
                     \context Voice = "PartPTwoVoiceOne" {  \voiceOne #t1 }
                     \context Voice = "PartPTwoVoiceTwo" {  \voiceTwo #b1 }

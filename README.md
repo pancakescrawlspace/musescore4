@@ -145,8 +145,10 @@ A few files have more, each marked with a `% hand edit:` comment:
 - `groot_prokimen_pinksteren.ly`: a new system for the voltas, their
   labels "Alle keren behalve de laatste" and "Laatste keer" in 10 pt
   bold (musicxml2ly leaves out the ending text), a final barline instead of the end repeat after
-  the first volta, and the final barline at the end (musicxml2ly drops
-  it inside `\alternative`). The prokimen is sung several times, but not
+  the first volta, the final barline at the end (musicxml2ly drops
+  it inside `\alternative`), and `allow-span-bar = ##f` on both staves so
+  the barlines aren't connected, as in MuseScore (this `.ly` is older
+  `musicxml2ly` output, from before 2.26, which writes that itself). The prokimen is sung several times, but not
   straight after each other and not a fixed number of times, so the
   score has voltas without repeat barlines, labelled in words.
 
