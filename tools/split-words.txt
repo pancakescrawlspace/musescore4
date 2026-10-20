@@ -1,14 +1,37 @@
 # Words split for a melisma ("sme ___ king"), for voice-explode-mscz.py.
 #
 # The house style splits a word after a melisma syllable, since MuseScore
-# draws the melisma line only at a word's end. A voice that sings the split
-# syllable on a single note has no melisma there, and the script joins the
-# word again ("of-fer") if the split is listed here; the score itself can't
-# tell "sme ___ king" from "U ___ roep" (two words).
+# draws the melisma line only at a word's end. After that, the score can't
+# tell such a split ("sme ___ king", one word) from a melisma at the end of
+# a word ("U ___ roep", two words). This list says which splits are inside
+# a word.
 #
-# One split per line: the word's syllables up to the split | those after it,
-# as in the score (hyphens, case and punctuation don't matter). A word split
-# twice has two lines (ge|boor, boor|te).
+# How to read a line
+#
+#   |  marks the melisma split: the place in the word where the soprano
+#      holds a syllable over several notes, and where the score therefore
+#      breaks the word in two. Left of it is the syllable with the melisma
+#      line, plus the syllables before it in the same word; right of it is
+#      the rest of the word.
+#   -  just separates syllables, as they appear in the score. It is only
+#      there to make the line readable; the script ignores hyphens, as well
+#      as case and punctuation.
+#
+# Examples:
+#
+#   sme|king        "smeking": sme ___ king. The soprano holds "sme"
+#                   (melisma line), then sings "king".
+#   a-vond-of|fer   "avondoffer": a-vond-of ___ fer. The melisma is on "of";
+#                   "a-vond-of" stays joined in the score, "fer" is split off.
+#   aan|ge-zicht    "aangezicht": aan ___ ge-zicht. The melisma is on "aan".
+#
+# A word with two melismas is split twice, so it gets two lines: in
+# "ge ___ boor ___ te" (geboorte) the lines are ge|boor and boor|te.
+#
+# What the script does with a line: in a voice that sings the melisma
+# syllable on a single note, so without a melisma line, it joins the two
+# halves again with a hyphen ("sme-king"). A split that isn't listed stays
+# split, which is right for two separate words such as "U ___ roep".
 
 # canon_kruisverheffing
 ge-o|pend
