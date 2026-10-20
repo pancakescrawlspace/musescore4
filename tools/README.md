@@ -165,14 +165,21 @@ names of the soundfont in the mixer, MuseScore's MS Basic (`Flute`,
 plus one video per voice, that voice on flute and the others on piano.
 MS Basic's piano is 6-7 dB softer than its flute at the same mixer level,
 so the piano voices aren't turned down at all (`--background-db 0`): the
-flute stands out by being 6-7 dB louder (-3, -6 and -12 were too soft):
+flute stands out by being 6-7 dB louder (-3, -6 and -12 were too soft).
+
+`--spotlight-color red` (or blue, green, orange, `#rrggbb`) shows the
+spotlighted voice in that colour as well: note heads, dots, accidentals,
+stems, flags, beams, rests, slurs, ties and lyrics (with their hyphens
+and melisma lines). Ledger lines stay black, like the staff lines. The
+`video-flute/` spotlight videos are red:
 
 ```sh
 s=heer_ik_roep_t1
 tools/voice-explode-mscz.py --instrument "Grand Piano" $s.mscz /tmp/$s.mscz
 for v in soprano alto tenor bass; do
-  tools/voice-explode-mscz.py --spotlight $v --spotlight-instrument Flute \
-    --background-instrument "Grand Piano" --background-db 0 $s.mscz /tmp/${s}_$v.mscz
+  tools/voice-explode-mscz.py --spotlight $v --spotlight-color red \
+    --spotlight-instrument Flute --background-instrument "Grand Piano" \
+    --background-db 0 $s.mscz /tmp/${s}_$v.mscz
 done
 tools/score-video.py /tmp/$s.mscz /tmp/${s}_*.mscz && mv /tmp/$s*.mp4 video-flute/
 ```

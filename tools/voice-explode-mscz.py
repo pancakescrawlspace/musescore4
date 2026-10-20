@@ -5,7 +5,8 @@ voice-explode-ly.py does for LilyPond: Women (soprano + alto) and Men
 part (instrument), so each has its own mixer channel.
 
 usage: tools/voice-explode-mscz.py [--single-lyrics] [--names A,B,...] [--tenor-bass]
-                                   [--spotlight VOICE [--background-db DB]]
+                                   [--spotlight VOICE [--background-db DB]
+                                    [--spotlight-color COLOR]]
                                    IN.mscz OUT.mscz
 
 Each staff with several voices becomes one staff per voice, each in a part of
@@ -35,6 +36,8 @@ several voices) gets the octave treble clef; --tenor-bass keeps its clef.
 
 --spotlight sets the mixer: every part except the named voice (e.g.
 "soprano") is turned down to --background-db (default -12 dB).
+--spotlight-color also colours that voice's notes (heads, dots,
+accidentals, stems, flags, beams), rests, slurs, ties and lyrics.
 
 --instrument sets the sound of every part, and --spotlight-instrument and
 --background-instrument those of the spotlighted voice and the others
@@ -331,6 +334,49 @@ def explode(root, single_lyrics, override, tenor_treble8):
     return new_parts, old_ids
 
 
+def rgb(color):
+    """(r, g, b) of a colour name or #rrggbb."""
+    named = {"red": "#ff0000", "blue": "#0000ff", "green": "#008000", "orange": "#ff8000"}
+    m = re.fullmatch(r"#?([0-9a-f]{6})", named.get(color.lower(), color.lower()))
+    if m is None:
+        sys.exit(f"--spotlight-color: {color!r} is not one of {', '.join(named)} or #rrggbb")
+    return tuple(int(m.group(1)[k:k + 2], 16) for k in (0, 2, 4))
+
+
+def set_color(el, color):
+    """Give an element a colour, written as MuseScore writes it, after its eid."""
+    c = el.find("color")
+    if c is None:
+        c = ET.Element("color")
+        el.insert(next((i + 1 for i, x in enumerate(el) if x.tag == "eid"), 0), c)
+    c.attrib = dict(zip("rgba", map(str, (*color, 255))))
+
+
+def paint(staff, color):
+    """Colour a staff's notes (heads, dots, accidentals, stems, flags, beams), rests,
+    slurs, ties and lyrics; ledger lines, clefs and the rest stay black."""
+    for chord in staff.iter("Chord"):
+        for tag in ("Stem", "Hook"):
+            if tag == "Hook" and (DURATIONS.get(chord.findtext("durationType"), 1) > Fraction(1, 8)):
+                continue
+            if chord.find(tag) is None:
+                at = next((i for i, c in enumerate(chord) if c.tag == "Note"), len(chord))
+                chord.insert(at, ET.Element(tag))
+            set_color(chord.find(tag), color)
+    for cr in staff.iter():
+        if cr.tag not in CHORD_REST:
+            continue
+        for dotted in cr.findall("Note") if cr.tag == "Chord" else [cr]:
+            dots = dotted.findall("NoteDot")
+            for _ in range(int(cr.findtext("dots") or 0) - len(dots)):
+                dotted.append(ET.Element("NoteDot"))
+            for dot in dotted.findall("NoteDot"):
+                set_color(dot, color)
+    for el in staff.iter():
+        if el.tag in ("Note", "Rest", "Accidental", "Lyrics", "Beam", "Slur", "Tie"):
+            set_color(el, color)
+
+
 def presets(name):
     """{lower-case preset name: (bank, program, name)} of the soundfont the mixer calls name."""
     path = next((p for d in SOUNDFONT_DIRS for ext in (".sf3", ".sf2")
@@ -409,6 +455,9 @@ def main():
                     help="turn every other part down in the mixer, e.g. soprano")
     ap.add_argument("--background-db", type=float, default=-12.0,
                     help="mixer volume of the other parts with --spotlight (default -12)")
+    ap.add_argument("--spotlight-color", metavar="COLOR",
+                    help="colour of the spotlighted voice's notes and lyrics: red, blue, "
+                         "green, orange or #rrggbb")
     ap.add_argument("--instrument", metavar="PRESET",
                     help='sound of every part, a soundfont preset such as "Grand Piano"')
     ap.add_argument("--spotlight-instrument", metavar="PRESET",
@@ -418,8 +467,10 @@ def main():
     args = ap.parse_args()
     sounds = (args.spotlight_instrument or args.instrument,
               args.background_instrument or args.instrument)
-    if not args.spotlight and (args.spotlight_instrument or args.background_instrument):
-        sys.exit("--spotlight-instrument and --background-instrument need --spotlight")
+    if not args.spotlight and (args.spotlight_instrument or args.background_instrument
+                               or args.spotlight_color):
+        sys.exit("--spotlight-instrument, --background-instrument and --spotlight-color "
+                 "need --spotlight")
     override = [n.strip() for n in args.names.split(",")] if args.names else None
 
     with zipfile.ZipFile(args.input) as zin:
@@ -433,6 +484,10 @@ def main():
     names = [p.findtext("trackName").lower() for p in new_parts]
     if args.spotlight and args.spotlight.lower() not in names:
         sys.exit(f"--spotlight: no part {args.spotlight!r}; the parts are {', '.join(names)}")
+    if args.spotlight_color:
+        color = rgb(args.spotlight_color)
+        staves = root.find("Score").findall("Staff")
+        paint(staves[names.index(args.spotlight.lower())], color)
     data[mscx[0]] = (b'<?xml version="1.0" encoding="UTF-8"?>\n'
                      + ET.tostring(root, encoding="utf-8", xml_declaration=False))
     if "audiosettings.json" in data:
