@@ -13,6 +13,12 @@ ratio, so page layout then fills the frame exactly as reflow does:
   margins, one-sided, no header/footer, system distance 10 sp, staff
   borders 7/5 sp, no title frame and no instrument names.
 
+Reflow renders a score with more than three staves at a lower dpi, so that
+the original page's height fits the video (about 91 dpi for A4 at 1080p);
+that makes a short four-staff score one tiny line, so it isn't copied.
+Instead --staff-scale (e.g. 0.75) makes the staves smaller where a system
+is taller than the frame (four staves with two lines of text).
+
 Reflow only hides the title frame; the video's title card still reads the
 title from it. The command line ignores showVerticalFrames in
 viewsettings.json, so the frame is removed instead, and its title text goes
@@ -20,7 +26,8 @@ into the workTitle metadata, which the title card falls back to.
 Checked against a video exported from the dialog: every frame identical.
 
 usage: tools/score-video.py score.mscz [...]   writes score.mp4 next to each
-       options: --resolution 1080p (2160p 1440p 1080p 720p 480p 360p), --fps 24
+       options: --resolution 1080p (2160p 1440p 1080p 720p 480p 360p), --fps 24,
+                --staff-scale 1.0
 """
 import argparse, html, os, re, shutil, subprocess, sys, tempfile, zipfile
 
@@ -58,8 +65,7 @@ def card_title(title):
     return " – ".join(line.strip() for line in title.splitlines() if line.strip())
 
 
-
-def reflow_copy(src, dst, width, height):
+def reflow_copy(src, dst, width, height, staff_scale=1.0):
     with zipfile.ZipFile(src) as zin:
         files = [(i, zin.read(i)) for i in zin.infolist()]
     out = []
@@ -67,6 +73,8 @@ def reflow_copy(src, dst, width, height):
         if info.filename == "score_style.mss":
             mss = data.decode("utf-8")
             pw, ph = width / CANVAS_DPI, height / CANVAS_DPI
+            if staff_scale != 1.0:  # not reflow's: smaller staves, so a tall system fits the frame
+                mss = set_style(mss, "spatium", round(get_style(mss, "spatium", 1.75) * staff_scale, 4))
             left = get_style(mss, "pageOddLeftMargin", 0.590551) + get_style(mss, "pageEvenLeftMargin", 0.590551)
             for key, value in (("pageWidth", pw), ("pageHeight", ph), ("pagePrintableWidth", round(pw - left, 6)),
                                ("pageEvenTopMargin", 0), ("pageEvenBottomMargin", 0),
@@ -82,7 +90,7 @@ def reflow_copy(src, dst, width, height):
             # removed. The video's title card falls back to the workTitle metadata,
             # so that gets the title frame's text, on one line.
             title = title_text(data)
-            data = re.sub(rb"[ \t]*<VBox>.*?</VBox>\n", b"", data, flags=re.S)
+            data = re.sub(rb"[ \t]*<VBox>.*?</VBox>\n?", b"", data, flags=re.S)
             # reflow also hides instrument names ("Women", "W.")
             data = re.sub(rb"<(longName|shortName)>.*?</\1>", rb"<\1></\1>", data, flags=re.S)
             if title is not None:
@@ -102,6 +110,8 @@ def main():
     ap.add_argument("scores", nargs="+")
     ap.add_argument("--resolution", default="1080p", choices=HEIGHTS)
     ap.add_argument("--fps", default="24", choices=["24", "30", "60"])
+    ap.add_argument("--staff-scale", type=float, default=1.0,
+                    help="staff size factor, e.g. 0.75 when a system is taller than the frame")
     args = ap.parse_args()
     height = HEIGHTS[args.resolution]
     width = height * 16 // 9
@@ -110,7 +120,7 @@ def main():
         dst = os.path.splitext(src)[0] + ".mp4"
         with tempfile.TemporaryDirectory() as tmp:
             copy = os.path.join(tmp, os.path.basename(src))
-            reflow_copy(src, copy, width, height)
+            reflow_copy(src, copy, width, height, args.staff_scale)
             tmp_mp4 = os.path.join(tmp, "video.mp4")
             r = subprocess.run([MSCORE, "--score-video", "--resolution", args.resolution, "--fps", args.fps,
                                 "-o", tmp_mp4, copy], capture_output=True, text=True)

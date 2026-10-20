@@ -56,7 +56,8 @@ DURATIONS = {"long": Fraction(4), "breve": Fraction(2), "whole": Fraction(1),
 CHORD_REST = {"Chord", "Rest"}
 STAFF_WIDE = {"KeySig", "TimeSig", "Clef", "BarLine"}  # copied to every voice's staff
 ANNOTATIONS = {"Spanner", "Fermata", "PlayCountText", "StaffText", "SystemText", "Tempo",
-               "RehearsalMark", "Dynamic", "Breath", "Harmony", "Expression", "InstrumentChange"}
+               "RehearsalMark", "Dynamic", "Breath", "Harmony", "Expression", "InstrumentChange",
+               "Beam"}  # a beam's properties, before the chord where it starts
 GRACE = {"acciaccatura", "appoggiatura", "grace4", "grace16", "grace32",
          "grace8after", "grace16after", "grace32after"}
 TREBLE8 = "G8vb"
@@ -428,7 +429,16 @@ def audio_settings(text, new_parts, old_ids, spotlight, background_db, sounds=(N
     for p in new_parts:
         track = tracks.get(old_ids[p.get("id")])
         if track is None:
-            continue
+            if not (spotlight or any(sounds)):
+                continue
+            # a score saved by the command line has no mixer tracks: MuseScore's default one
+            track = {"in": {"resourceMeta": {"attributes": {"playbackSetupData": "last.last.last",
+                                                            "soundFontName": "MS Basic"},
+                                             "hasNativeEditorSupport": False, "id": "MS Basic",
+                                             "type": "fluid_soundfont", "vendor": "Fluid"},
+                            "unitConfiguration": {}},
+                     "instrumentId": p.find("Instrument").get("id"),
+                     "out": {"balance": 0, "fxChain": {}, "volumeDb": 0}}
         track = copy.deepcopy(track)
         track["partId"] = p.get("id")
         background = spotlight and p.findtext("trackName").lower() != spotlight.lower()

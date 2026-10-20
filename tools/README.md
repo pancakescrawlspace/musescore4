@@ -34,7 +34,12 @@ reflow and exports that; the score itself isn't touched. Details are in
 ```sh
 tools/score-video.py heer_ik_roep_t3.mscz                    # 1080p, 24 fps
 tools/score-video.py --resolution 720p --fps 30 heer_ik_roep_t3.mscz
+tools/score-video.py --staff-scale 0.7 bwv4.8_tenor.mscz   # smaller staves
 ```
+
+`--staff-scale` makes the staves smaller in the video copy, for a system
+that is taller than the frame: four staves with two lines of text each
+(the Bach chorales split by `voice-explode-mscz.py`) need about 0.7.
 
 ## Free-meter scores (`mscz-add-hidden-timesig.py`)
 
@@ -183,6 +188,10 @@ for v in soprano alto tenor bass; do
 done
 tools/score-video.py /tmp/$s.mscz /tmp/${s}_*.mscz && mv /tmp/$s*.mp4 video-flute/
 ```
+
+A score saved by MuseScore's command line (such as the Bach chorales) has
+no mixer tracks; the parts then get MuseScore's default track before the
+sound or volume is set.
 
 Only the mixer changes, not the instrument in the score, so the staves
 keep their vocal ranges and no note shows up as out of range. (The MIDI

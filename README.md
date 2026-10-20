@@ -244,8 +244,13 @@ Findings about `mscore` (MuseScore Studio 4.7.5, at
   ratio, page layout fills the frame exactly as reflow does. Checked
   against `heer_ik_roep_t2.mp4` exported from the dialog: every frame of
   the video is identical. Reflow also hides instrument names ("Women",
-  "W."), so the copy gets empty names. Not handled: scores with more than
-  three staves, which reflow also scales to a whole page's height.
+  "W."), so the copy gets empty names. Not copied: for more than three
+  staves reflow renders at a lower dpi, so that the original page's height
+  fits the video (`VideoWriter::prepareScore`: video height × 1200 / (page
+  height in 1/1200 in − margins + 200), about 91 dpi for A4 at 1080p). That
+  makes a short four-staff score one unreadable line; the script keeps
+  300 dpi, and `--staff-scale` shrinks the staves where a system is taller
+  than the frame.
 - **Repeat counts:** a repeated passage is marked with start/end repeat
   barlines, and the end repeat's "play count" says how often it is played
   (Properties panel on the barline). The count printed above it is a
