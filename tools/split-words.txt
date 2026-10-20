@@ -1,0 +1,102 @@
+# Words split for a melisma ("sme ___ king"), for voice-explode-mscz.py.
+#
+# The house style splits a word after a melisma syllable, since MuseScore
+# draws the melisma line only at a word's end. A voice that sings the split
+# syllable on a single note has no melisma there, and the script joins the
+# word again ("of-fer") if the split is listed here; the score itself can't
+# tell "sme ___ king" from "U ___ roep" (two words).
+#
+# One split per line: the word's syllables up to the split | those after it,
+# as in the score (hyphens, case and punctuation don't matter). A word split
+# twice has two lines (ge|boor, boor|te).
+
+# canon_kruisverheffing
+ge-o|pend
+Pha|ra
+ra|o
+wer|den
+o|ver
+
+# canon_van_de_geboorte
+blijd|schap
+be-zin|gen
+
+# gij_heilige_martelaren
+mar-te-la|ren
+
+# groot_prokimen_pinksteren
+won|de-ren
+
+# heer_ik_roep_t1 ... t8
+sme|king
+wie|rook
+a-vond-of|fer
+a|vond-of-fer
+ver|hoor
+han|den
+aan|ge-zicht
+
+# jesaja_wees_verheugd
+Em-ma-nu|el
+za|lig
+
+# megalinarion_geboorte
+glo|rie-rij-ke
+ge|boor
+boor|te
+
+# nog_vele_jaren_trouwmap
+ja|ren
+
+# o_czom
+naj|ti
+mo|ja
+
+# onder_uwe_hoede
+hoe|de
+al-rei|ne
+
+# ti_ipermacho (the blanks are syllables still to be transcribed)
+stra|ti-
+ni-ki-|ri
+ri|a
+The|o-
+o-|kè
+|tos
+a-pros-|chi
+chi|ton
+|fi
+a-|fef
+fef|tè
+ef-cha-ri-|ri
+
+# ti_ipermacho_gr
+στρα|τη-γῷ
+νι-κη-τή|ρι
+ρι|α
+Θε|ο-τό
+ο-τό|κε
+κρά|τος
+ἀ-προσ-μά|χη
+χη|τον
+Νύμ|φη
+ἀ-νύμ|φευ
+φευ|τε
+εὐ-χα-ρι-στή|ρι
+
+# uw_heilig_kruis
+ver|e-ren
+Ge-bie|der
+ver-rij|ze-nis
+
+# vriendelijk_licht
+heer|lijk-heid
+hei|li-ge
+Va|der
+zons|on-der-gang
+a|vond-licht
+al|len
+tij|de
+lo|ven
+le|ven
+ver|heer-lijkt

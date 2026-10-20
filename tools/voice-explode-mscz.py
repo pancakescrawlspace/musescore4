@@ -5,7 +5,7 @@ voice-explode-ly.py does for LilyPond: Women (soprano + alto) and Men
 part (instrument), so each has its own mixer channel.
 
 usage: tools/voice-explode-mscz.py [--single-lyrics] [--names A,B,...] [--tenor-bass]
-                                   [--spotlight VOICE [--background-db DB]
+                                   [--spotlight VOICE [--background-db DB] [--spotlight-db DB]
                                     [--spotlight-color COLOR]]
                                    IN.mscz OUT.mscz
 
@@ -29,13 +29,24 @@ Lyrics: a note without lyrics gets copies of the lyrics of the first voice
 in the score that has lyrics at the same moment (same measure, same
 position), as voice-explode.py does for MusicXML. A syllable on a moment
 where the voice holds an earlier note is lost. --single-lyrics leaves the
-lyrics where they are.
+lyrics where they are. A copied syllable's melisma line is that voice's own:
+it runs over the voice's following notes up to its next syllable of the same
+verse (not past a rest; without a next syllable, only over notes with no
+lyrics at all), and a syllable on a single note gets none. A new line on a
+word-internal syllable splits the word there ("sme-king" becomes
+"sme ___ king"), since MuseScore draws the line only at a word's end; the
+other way round, a word split for a melisma the voice doesn't have is joined
+again ("of ___ fer" sung on one note becomes "of-fer"), if the split is in
+tools/split-words.txt (the score can't tell "sme ___ king" from
+"U ___ roep").
 
 The tenor (a voice named Tenor, or the upper voice of a bass-clef staff with
 several voices) gets the octave treble clef; --tenor-bass keeps its clef.
 
 --spotlight sets the mixer: every part except the named voice (e.g.
-"soprano") is set to --background-db (default -12 dB, at most +12).
+"soprano") is set to --background-db (default -12 dB; the mixer's slider
+goes up to +12, but a file may hold more), and --spotlight-db sets the
+named voice (default: as it was), so both can be lowered together.
 --spotlight-color also colours that voice's notes (heads, dots,
 accidentals, stems, flags, beams), rests, slurs, ties and lyrics.
 
@@ -43,7 +54,11 @@ accidentals, stems, flags, beams), rests, slurs, ties and lyrics.
 --background-instrument those of the spotlighted voice and the others
 (both default to --instrument; without any, the sounds stay as they were).
 The names are presets of the soundfont the mixer uses, MuseScore's MS Basic
-("Flute", "Grand Piano", "Choir Aahs", ...), in any case.
+("Flute", "Grand Piano", "Choir Aahs", ...), in any case. A soundfont in
+~/Documents/MuseScore4/SoundFonts can be named before the preset, by its
+file name without extension: "GeneralUser-GS:Grand Piano". (MuseScore
+plays some other sound, without a warning, for a soundfont name it doesn't
+know, so the name is checked here.)
 """
 import argparse, copy, difflib, json, os, re, struct, sys, zipfile
 import xml.etree.ElementTree as ET
@@ -140,18 +155,123 @@ def tidy(el, tenor):
 
 
 def add_lyrics(chord, lyrics):
+    """Copies of lyrics on chord; returns them."""
     at = next((i for i, c in enumerate(chord) if c.tag in ("Spanner", "Note")), len(chord))
+    out = []
     for ly in reversed(lyrics):
         new = copy.deepcopy(ly)
         strip_eids(new)
         chord.insert(at, new)
+        out.append(new)
+    return out
+
+
+SPLIT_MELISMA = {"begin": "single", "middle": "end"}  # a word cut after the melisma syllable
+SPLIT_NEXT = {"end": "single", "middle": "begin"}     # and before the next syllable
+JOIN_MELISMA = {v: k for k, v in SPLIT_MELISMA.items()}
+JOIN_NEXT = {v: k for k, v in SPLIT_NEXT.items()}
+SPLIT_WORDS = os.path.join(os.path.dirname(os.path.abspath(__file__)), "split-words.txt")
+
+
+def letters(text):
+    return "".join(c for c in (text or "") if c.isalpha()).lower()
+
+
+def split_words():
+    """The splits in tools/split-words.txt, as "sme|king" in letters only."""
+    if not os.path.exists(SPLIT_WORDS):
+        return set()
+    with open(SPLIT_WORDS, encoding="utf-8") as f:
+        lines = (line.split("#")[0].strip() for line in f)
+        return {"|".join(letters(p) for p in line.split("|")) for line in lines if "|" in line}
+
+
+def set_syllabic(ly, value):
+    """Set a lyric's syllabic; single is written as no <syllabic>."""
+    el = ly.find("syllabic")
+    if value == "single":
+        if el is not None:
+            ly.remove(el)
+    elif el is None:
+        el = ET.Element("syllabic")
+        el.text = value
+        ly.insert(0, el)
+    else:
+        el.text = value
+
+
+def melismas(staff, copied):
+    """Fit the melisma lines of the copied lyrics to the notes of the voice they were
+    copied to: each one up to the last note before the voice's next syllable."""
+    items, tick = [], Fraction(0)
+    for m in staff.findall("Measure"):
+        tl, end = timeline(m.find("voice"))
+        items += [(tick + t, el) for t, el in tl if el.tag in CHORD_REST]
+        tick += end
+
+    def verse(el, no):
+        return next((ly for ly in el.findall("Lyrics") if ly.findtext("no", "0") == no), None)
+    # each verse's syllables in order, with their syllabic before any change
+    syllables = {}
+    for _, el in items:
+        for ly in el.findall("Lyrics"):
+            syllables.setdefault(ly.findtext("no", "0"), []).append(
+                (ly, ly.findtext("syllabic", "single")))
+    joins = []
+    for i, (start, el) in enumerate(items):
+        for ly in el.findall("Lyrics"):
+            if id(ly) not in copied:
+                continue
+            no, j = ly.findtext("no", "0"), i + 1
+            while j < len(items) and items[j][1].tag == "Chord" and verse(items[j][1], no) is None:
+                j += 1
+            held = items[i + 1:j]
+            if j == len(items) or items[j][1].tag == "Rest":  # no next syllable: bare notes only
+                k = next((k for k, (_, c) in enumerate(held) if c.find("Lyrics") is not None),
+                         len(held))
+                held = held[:k]
+            old = ly.find("ticks_f")
+            if not held:
+                if old is not None:
+                    ly.remove(old)
+                    joins.append((no, ly))
+                continue
+            length = held[-1][0] - start
+            if old is None or Fraction(old.text) != length:  # else keep its "2/4"
+                set_child(ly, "ticks_f", f"{length.numerator}/{length.denominator}",
+                          before="text")
+            syllabic = ly.findtext("syllabic", "single")
+            if syllabic in SPLIT_MELISMA:
+                set_syllabic(ly, SPLIT_MELISMA[syllabic])
+                after = verse(items[j][1], no) if j < len(items) else None
+                if after is not None and after.findtext("syllabic", "single") in SPLIT_NEXT:
+                    set_syllabic(after, SPLIT_NEXT[after.findtext("syllabic", "single")])
+    # the melisma has gone: join the word again where tools/split-words.txt says so
+    known = split_words() if joins else set()
+    for no, ly in joins:
+        seq = syllables[no]
+        k = next(k for k, (s, _) in enumerate(seq) if s is ly)
+        if k + 1 == len(seq) or seq[k][1] not in JOIN_MELISMA or seq[k + 1][1] not in JOIN_NEXT:
+            continue
+        a = k
+        while a > 0 and seq[a][1] in ("middle", "end"):
+            a -= 1
+        b = k + 1
+        while b + 1 < len(seq) and seq[b][1] in ("begin", "middle"):
+            b += 1
+        word = (letters("".join(s.findtext("text") or "" for s, _ in seq[a:k + 1])) + "|"
+                + letters("".join(s.findtext("text") or "" for s, _ in seq[k + 1:b + 1])))
+        if word in known:  # from the syllabic now: "boor" in "ge|boor|te" is joined twice
+            nxt = seq[k + 1][0]
+            set_syllabic(ly, JOIN_MELISMA.get(ly.findtext("syllabic", "single"), "middle"))
+            set_syllabic(nxt, JOIN_NEXT.get(nxt.findtext("syllabic", "single"), "middle"))
 
 
 def explode_staff(staff, j, nvoices, lyric_at, tenor):
     """The staff for voice j of a score-level <Staff>."""
     new = ET.Element("Staff", staff.attrib)
     new.text, new.tail = staff.text, staff.tail
-    mi, sig = -1, None
+    mi, sig, copied = -1, None, set()
     for child in staff:
         if child.tag != "Measure":
             if j == 0:
@@ -200,10 +320,11 @@ def explode_staff(staff, j, nvoices, lyric_at, tenor):
         voice = ET.SubElement(measure, "voice")
         for t, _, el in items:
             if el.tag == "Chord" and el.find("Lyrics") is None and lyric_at:
-                add_lyrics(el, lyric_at.get((mi, t), []))
+                copied.update(id(ly) for ly in add_lyrics(el, lyric_at.get((mi, t), [])))
             voice.append(el)
         tidy(voice, tenor)
         new.append(measure)
+    melismas(new, copied)
     if j > 0:
         strip_eids(new)
     return new
@@ -404,23 +525,27 @@ def presets(name):
 
 
 def set_sound(track, preset):
-    """Point a mixer track at a preset of its soundfont."""
+    """Point a mixer track at a preset of its soundfont, or of the one named
+    before the preset as in "GeneralUser-GS:Grand Piano"."""
     meta = track.get("in", {}).get("resourceMeta", {})
     attrs = meta.get("attributes", {})
     if meta.get("type") != "fluid_soundfont" or "soundFontName" not in attrs:
         sys.exit(f"part {track.get('partId')}: its sound isn't a soundfont, can't set {preset!r}")
-    font = attrs["soundFontName"]
+    font, _, preset = preset.rpartition(":")
+    font = font or attrs["soundFontName"]
     known = presets(font)
     if preset.lower() not in known:
         close = difflib.get_close_matches(preset.lower(), known, n=5, cutoff=0.4)
         sys.exit(f"{font} has no preset {preset!r}"
                  + (f"; did you mean {', '.join(known[c][2] for c in close)}?" if close else ""))
     bank, program, name = known[preset.lower()]
-    attrs.update(presetBank=str(bank), presetProgram=str(program), presetName=name)
+    attrs.update(soundFontName=font, presetBank=str(bank), presetProgram=str(program),
+                 presetName=name)
     meta["id"] = f"{font}\\{bank}\\{program}"
 
 
-def audio_settings(text, new_parts, old_ids, spotlight, background_db, sounds=(None, None)):
+def audio_settings(text, new_parts, old_ids, spotlight, background_db, sounds=(None, None),
+                   spotlight_db=None):
     """audiosettings.json with a mixer track per new part, copied from the old part's;
     sounds are the presets for the spotlighted part and the others (None: unchanged)."""
     settings = json.loads(text)
@@ -444,6 +569,8 @@ def audio_settings(text, new_parts, old_ids, spotlight, background_db, sounds=(N
         background = spotlight and p.findtext("trackName").lower() != spotlight.lower()
         if background:
             track.setdefault("out", {})["volumeDb"] = background_db
+        elif spotlight and spotlight_db is not None:
+            track.setdefault("out", {})["volumeDb"] = spotlight_db
         if sounds[bool(background)]:
             set_sound(track, sounds[bool(background)])
         out.append(track)
@@ -465,11 +592,14 @@ def main():
                     help="turn every other part down in the mixer, e.g. soprano")
     ap.add_argument("--background-db", type=float, default=-12.0,
                     help="mixer volume of the other parts with --spotlight (default -12)")
+    ap.add_argument("--spotlight-db", type=float,
+                    help="mixer volume of the spotlighted part (default: unchanged)")
     ap.add_argument("--spotlight-color", metavar="COLOR",
                     help="colour of the spotlighted voice's notes and lyrics: red, blue, "
                          "green, orange or #rrggbb")
     ap.add_argument("--instrument", metavar="PRESET",
-                    help='sound of every part, a soundfont preset such as "Grand Piano"')
+                    help='sound of every part, a soundfont preset such as "Grand Piano" '
+                         '(another soundfont: "GeneralUser-GS:Grand Piano")')
     ap.add_argument("--spotlight-instrument", metavar="PRESET",
                     help="sound of the spotlighted part (default: --instrument)")
     ap.add_argument("--background-instrument", metavar="PRESET",
@@ -478,9 +608,9 @@ def main():
     sounds = (args.spotlight_instrument or args.instrument,
               args.background_instrument or args.instrument)
     if not args.spotlight and (args.spotlight_instrument or args.background_instrument
-                               or args.spotlight_color):
-        sys.exit("--spotlight-instrument, --background-instrument and --spotlight-color "
-                 "need --spotlight")
+                               or args.spotlight_color or args.spotlight_db is not None):
+        sys.exit("--spotlight-instrument, --background-instrument, --spotlight-color and "
+                 "--spotlight-db need --spotlight")
     override = [n.strip() for n in args.names.split(",")] if args.names else None
 
     with zipfile.ZipFile(args.input) as zin:
@@ -503,7 +633,7 @@ def main():
     if "audiosettings.json" in data:
         data["audiosettings.json"] = audio_settings(
             data["audiosettings.json"].decode("utf-8"), new_parts, old_ids,
-            args.spotlight, args.background_db, sounds).encode("utf-8")
+            args.spotlight, args.background_db, sounds, args.spotlight_db).encode("utf-8")
     elif args.spotlight or any(sounds):
         sys.exit("--spotlight, --instrument: the score has no audiosettings.json")
     with zipfile.ZipFile(args.output, "w", zipfile.ZIP_DEFLATED) as zout:

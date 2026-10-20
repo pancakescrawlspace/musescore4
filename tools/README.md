@@ -152,12 +152,24 @@ mixer name is always set; the staff names only when the staff had them.
 Lyrics are copied by position, not attached to the soprano's rhythm as in
 LilyPond: a note without lyrics gets those of the first voice in the score
 with lyrics at the same moment, so a syllable that falls while the voice
-holds an earlier note is lost (`--single-lyrics` copies none). The tenor
+holds an earlier note is lost (`--single-lyrics` copies none; this happens
+in megalinarion_geboorte and prokimen_t8_huwelijkskroning). Each syllable
+is held until the next one, so every note has a syllable or a melisma
+line: the copies get the voice's own lines, over its notes up to its next
+syllable, and none on a single note. Where a voice has a melisma the
+soprano lacks, a word-internal syllable is split as in the house style
+("sme ___ king"); where it lacks the soprano's melisma, a word split for
+it is joined again ("of-fer" on one note), but only if that split is in
+`tools/split-words.txt`, since the score can't tell "sme ___ king" from
+"U ___ roep". Add new scores' word-internal melisma splits there. The tenor
 (a voice named Tenor, or the upper voice of a bass-clef staff) gets the
 octave treble clef; `--tenor-bass` keeps its clef.
 
 `--spotlight VOICE` sets all other parts in the mixer to `--background-db`
-(default -12 dB, as in `practice-mp3.py`; up to +12); MuseScore's
+(default -12 dB, as in `practice-mp3.py`; the mixer's slider stops at
++12, but MuseScore plays more from the file) and `--spotlight-db` the
+spotlighted voice (default: unchanged), so both can go down together
+when the background would need more than +12; MuseScore's
 audio and video exports, also from the command line, use those settings.
 Tuplets and grace notes are refused.
 
@@ -165,13 +177,40 @@ The sounds can be set too, as in `practice-mp3.py`, but by the preset
 names of the soundfont in the mixer, MuseScore's MS Basic (`Flute`,
 `"Grand Piano"`, `"Choir Aahs"`, ...; a wrong name gets suggestions):
 `--instrument` for every part, `--spotlight-instrument` and
-`--background-instrument` for the spotlighted voice and the others. The
-`video-flute/` set (gitignored, like all MP4s) is the whole score in piano
-plus one video per voice, that voice on flute and the others on piano.
-MS Basic's piano is 6-7 dB softer than its flute at the same mixer level,
-so the piano voices are turned up instead (`--background-db 8`): -12, -6
-and -3 were too soft, and of the samples from 0 to +12 (the mixer's
-maximum), +8 and +10 were fine and +12 probably too loud.
+`--background-instrument` for the spotlighted voice and the others.
+Another soundfont in `~/Documents/MuseScore4/SoundFonts` goes before the
+preset, by its file name: `"GeneralUser-GS:Grand Piano"` (MuseScore plays
+some other sound, without a warning, for a soundfont name it doesn't know,
+such as the name inside the file, so the script checks it).
+
+The `video-flute/` set (gitignored, like all MP4s) is the whole score in
+piano plus one video per voice, that voice on a solo instrument and the
+others on piano. All sounds come from the Arachno soundfont
+(`Arachno-SoundFont-1.0.sf2`, linked into `~/Documents/MuseScore4/SoundFonts`
+from `~/soundfonts`; without it there the script refuses the names). The
+mixer levels:
+
+| video          | spotlight | spotlight dB | piano dB |
+|----------------|-----------|-------------:|---------:|
+| whole score    | –         |            – |        0 |
+| `_soprano`     | Flute     |            0 |     +7.5 |
+| `_alto`        | Flute     |            0 |     +7.5 |
+| `_tenor`       | Clarinet  |           −5 |       +8 |
+| `_bass`        | Cello     |            0 |     +3.7 |
+
+How they were found (all 2026-10-20, by ear, on tone 1): first everything
+was MS Basic with the flute for every voice. Its piano is 6-7 dB softer
+than its flute, so the piano voices are turned up instead: -12, -6 and -3
+were too soft, and of +0 to +12, +8 and +10 were fine and +12 probably too
+loud, so +8. The flute's range starts at C4, too weak for the tenor and
+bass, so the tenor got the clarinet (fine at +8) and the bass the cello,
+which needed the piano at +4 (bassoon had the piano on top at +8, trombone
+was too loud). Then Arachno sounded best of three other soundfonts
+(GeneralUser GS, Chorium). Its instruments are louder than MS Basic's by
+different amounts, so the levels were re-measured (integrated loudness of
+each sound alone) to keep those balances. Its clarinet is so loud that the
+piano would need +13, beyond the slider (MuseScore does play it) and
+clipping the audio, so both are turned down by 5 dB instead.
 
 `--spotlight-color red` (or blue, green, orange, `#rrggbb`) shows the
 spotlighted voice in that colour as well: note heads, dots, accidentals,
@@ -181,11 +220,13 @@ and melisma lines). Ledger lines stay black, like the staff lines. The
 
 ```sh
 s=heer_ik_roep_t1
-tools/voice-explode-mscz.py --instrument "Grand Piano" $s.mscz /tmp/$s.mscz
-for v in soprano alto tenor bass; do
-  tools/voice-explode-mscz.py --spotlight $v --spotlight-color red \
-    --spotlight-instrument Flute --background-instrument "Grand Piano" \
-    --background-db 8 $s.mscz /tmp/${s}_$v.mscz
+a=Arachno-SoundFont-1.0
+tools/voice-explode-mscz.py --instrument "$a:Grand Piano" $s.mscz /tmp/$s.mscz
+for v in soprano:Flute:7.5:0 alto:Flute:7.5:0 tenor:Clarinet:8:-5 bass:Cello:3.7:0; do
+  IFS=: read voice sound db sdb <<< $v
+  tools/voice-explode-mscz.py --spotlight $voice --spotlight-color red \
+    --spotlight-instrument "$a:$sound" --background-instrument "$a:Grand Piano" \
+    --background-db $db --spotlight-db $sdb $s.mscz /tmp/${s}_$voice.mscz
 done
 tools/score-video.py /tmp/$s.mscz /tmp/${s}_*.mscz && mv /tmp/$s*.mp4 video-flute/
 ```
