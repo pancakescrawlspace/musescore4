@@ -52,6 +52,12 @@ def title_text(mscx):
     return t
 
 
+def card_title(title):
+    """The title on one line: the title card shows only the first ("Heer ik roep",
+    without "toon 1")."""
+    return " – ".join(line.strip() for line in title.splitlines() if line.strip())
+
+
 
 def reflow_copy(src, dst, width, height):
     with zipfile.ZipFile(src) as zin:
@@ -74,14 +80,14 @@ def reflow_copy(src, dst, width, height):
             # Reflow hides vertical frames from the layout. The command line can't (it
             # ignores showVerticalFrames in viewsettings.json), so the title frame is
             # removed. The video's title card falls back to the workTitle metadata,
-            # so that gets the title frame's text.
+            # so that gets the title frame's text, on one line.
             title = title_text(data)
             data = re.sub(rb"[ \t]*<VBox>.*?</VBox>\n", b"", data, flags=re.S)
             # reflow also hides instrument names ("Women", "W.")
             data = re.sub(rb"<(longName|shortName)>.*?</\1>", rb"<\1></\1>", data, flags=re.S)
             if title is not None:
                 data = re.sub(rb'<metaTag name="workTitle">[^<]*</metaTag>',
-                              b'<metaTag name="workTitle">' + html.escape(title, quote=False).encode("utf-8") + b"</metaTag>",
+                              b'<metaTag name="workTitle">' + html.escape(card_title(title), quote=False).encode("utf-8") + b"</metaTag>",
                               data, count=1)
         out.append((info, data))
     if not any(i.filename == "score_style.mss" for i, _ in files):

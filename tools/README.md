@@ -123,6 +123,66 @@ clef (`\clef "treble_8"`; the tenor is the upper voice of a bass-clef staff
 with several voices). Scores whose staves are built by a music function
 (`groot_prokimen_pinksteren_alt.ly`'s `\choir`) aren't read.
 
+## One staff per voice in MuseScore (`voice-explode-mscz.py`)
+
+The same split for a `.mscz`, written as a new `.mscz`: each voice becomes
+a part (instrument) of its own, so it has its own mixer channel, e.g. for
+a video in which one voice stands out.
+
+```sh
+tools/voice-explode-mscz.py de_kelk_des_heils.mscz de_kelk_des_heils_satb.mscz
+tools/voice-explode-mscz.py --spotlight alto de_kelk_des_heils.mscz kelk_alto.mscz
+tools/score-video.py kelk_alto.mscz
+```
+
+Voice 1's staff keeps the title frame, line breaks, voltas and repeat
+counts; the other voices get the clefs, key and time signatures and
+barlines, and rests wherever they had nothing. Forced stem directions go,
+a fermata below becomes a fermata above, and a voice gets a copy of a
+fermata from another voice on its staff when it starts a note or rest at
+the same moment. Brackets grow to cover the new staves.
+
+Names work as in `voice-explode-ly.py` (`--names` for all new staves). The
+mixer name is always set; the staff names only when the staff had them.
+Lyrics are copied by position, not attached to the soprano's rhythm as in
+LilyPond: a note without lyrics gets those of the first voice in the score
+with lyrics at the same moment, so a syllable that falls while the voice
+holds an earlier note is lost (`--single-lyrics` copies none). The tenor
+(a voice named Tenor, or the upper voice of a bass-clef staff) gets the
+octave treble clef; `--tenor-bass` keeps its clef.
+
+`--spotlight VOICE` turns all other parts down in the mixer to
+`--background-db` (default -12 dB, as in `practice-mp3.py`); MuseScore's
+audio and video exports, also from the command line, use those settings.
+Tuplets and grace notes are refused.
+
+The sounds can be set too, as in `practice-mp3.py`, but by the preset
+names of the soundfont in the mixer, MuseScore's MS Basic (`Flute`,
+`"Grand Piano"`, `"Choir Aahs"`, ...; a wrong name gets suggestions):
+`--instrument` for every part, `--spotlight-instrument` and
+`--background-instrument` for the spotlighted voice and the others. The
+`video-flute/` set (gitignored, like all MP4s) is the whole score in piano
+plus one video per voice, that voice on flute and the others on piano.
+MS Basic's piano is 6-7 dB softer than its flute at the same mixer level,
+so the piano voices aren't turned down at all (`--background-db 0`): the
+flute stands out by being 6-7 dB louder (-3, -6 and -12 were too soft):
+
+```sh
+s=heer_ik_roep_t1
+tools/voice-explode-mscz.py --instrument "Grand Piano" $s.mscz /tmp/$s.mscz
+for v in soprano alto tenor bass; do
+  tools/voice-explode-mscz.py --spotlight $v --spotlight-instrument Flute \
+    --background-instrument "Grand Piano" --background-db 0 $s.mscz /tmp/${s}_$v.mscz
+done
+tools/score-video.py /tmp/$s.mscz /tmp/${s}_*.mscz && mv /tmp/$s*.mp4 video-flute/
+```
+
+Only the mixer changes, not the instrument in the score, so the staves
+keep their vocal ranges and no note shows up as out of range. (The MIDI
+program and instrument id in the score don't change the sound; MuseScore
+plays what the mixer's `audiosettings.json` says: preset bank, program and
+name, and the resource id `MS Basic\0\73`.)
+
 ## Practice MP3s (`practice-mp3.py`)
 
 Five MP3s per score for the singers to practise with, in `practice/`: the
@@ -142,12 +202,16 @@ whole choir's and the default for the other two. The file names don't
 change with the instruments, so give each set its own `--out-dir`:
 
 ```sh
-tools/practice-mp3.py --spotlight-instrument flute --background-instrument "acoustic grand" \
+tools/practice-mp3.py --instrument "acoustic grand" --spotlight-instrument flute \
+    --background-instrument "acoustic grand" --background 1.0 \
     --out-dir practice-flute heer_ik_roep_t{1,2,3,4,5,6,7,8}
 ```
 
 With different instruments, `--background 1.0` keeps all voices equally
-loud and lets the timbre alone pick out the voice.
+loud and lets the timbre alone pick out the voice: the flute is louder than
+the piano by itself. That is how `practice-flute/` is made (since
+2026-10-20; the default 0.5 left the piano too soft), matching the
+`video-flute/` videos.
 
 The score is split with `voice-explode-ly.py`, so every voice is a staff
 and so its own MIDI channel. LilyPond writes the MIDI (repeats played out),

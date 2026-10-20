@@ -228,14 +228,18 @@ Findings about `mscore` (MuseScore Studio 4.7.5, at
   title, taken from the title frame (`notationTitle()`). If there is no
   title frame, it falls back to the `workTitle` metadata (File > Project
   properties), which in these scores is still MuseScore's default
-  "Untitled score".
+  "Untitled score". The card shows only the title's first line, so a
+  title like "Heer ik roep" + line break + "toon 1" loses the tone, in the
+  dialog's export too.
 - **View settings are ignored:** the command line ignores
   `showVerticalFrames` in the `.mscz`'s `viewsettings.json`, so it can't
   hide the title frame the way reflow does.
 - **How `tools/score-video.py` gets reflow anyway:** it makes reflow's
   changes in a temporary copy of the score: the style in `score_style.mss`
   inside the `.mscz`, and removing the title frame, with the frame's title
-  text copied into `workTitle` for the title card. It then exports that
+  text copied into `workTitle` for the title card, its lines joined
+  with " – " ("Heer ik roep – toon 1"; since 2026-10-20, so the videos
+  made before then lack the tone). It then exports that
   copy with page layout. Because the page now has the video's aspect
   ratio, page layout fills the frame exactly as reflow does. Checked
   against `heer_ik_roep_t2.mp4` exported from the dialog: every frame of
