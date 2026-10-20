@@ -91,3 +91,70 @@ changes nothing and passes.
 
 A measure without a `len` attribute takes its length from the time signature
 in force; MuseScore leaves `len` out when the two agree.
+
+## One staff per voice (`voice-explode-ly.py`)
+
+The LilyPond counterpart of `~/dev/pitchmarks/tools/voice-explode.py`: it
+splits the two-voice staves of a `.ly` into one staff per voice, so Women
+and Men become Soprano, Alto, Tenor and Bass. It writes a new `.ly` and
+leaves the original alone.
+
+```sh
+tools/voice-explode-ly.py de_kelk_des_heils.ly de_kelk_des_heils_satb.ly
+tools/voice-explode-ly.py --single-lyrics --names "S,A,T,B" in.ly out.ly
+```
+
+It reads the musicxml2ly layout of the scores here: music in variables and
+`\context Voice` / `\new Lyrics \lyricsto` blocks in the `\score`. Each
+multi-voice staff is copied once per voice with the other voices taken out;
+the rest of the staff (overrides, the line-break spacer) goes into every
+copy. The music loses its two-voice layout (`\voiceOne`, `\oneVoice`,
+`\stemUp`, the `\U`/`\D` stem macros, forced directions like `^\fermata`),
+and its spacer rests become real rests (`s4` → `r4`, `s1*31` → `R1*31`).
+
+Staff names: "Alto, Tenor" or "S/A" is split per voice; otherwise two
+two-voice staves become Soprano, Alto, Tenor, Bass, and anything else
+"Women 1", "Women 2"; `--names` sets them all. Every voice without lyrics of
+its own gets a copy of the soprano's lyrics (attached to the soprano, so in
+the soprano's rhythm), except a voice that only rests; `--single-lyrics`
+leaves them under the soprano only. Clefs stay as they are, so the tenor
+keeps the bass clef, unless `--tenor-treble8` gives it the octave treble
+clef (`\clef "treble_8"`; the tenor is the upper voice of a bass-clef staff
+with several voices). Scores whose staves are built by a music function
+(`groot_prokimen_pinksteren_alt.ly`'s `\choir`) aren't read.
+
+## Practice MP3s (`practice-mp3.py`)
+
+Five MP3s per score for the singers to practise with, in `practice/`: the
+whole choir (`NAME.mp3`) and one per voice in which that voice stands out
+(`NAME_soprano.mp3`, `_alto`, `_tenor`, `_bass`). All voices are Choir Aahs.
+
+```sh
+tools/practice-mp3.py heer_ik_roep_t{1,2,3,4,5,6,7,8}
+tools/practice-mp3.py --tempo 100 --background 0.4 onder_uwe_hoede
+```
+
+The instruments can differ too, e.g. a flute for the voice that stands out
+against a piano for the others. Names are LilyPond's General MIDI names
+(`"choir aahs"`, `"flute"`, `"acoustic grand"`, ...); a wrong name is
+refused with suggestions. `--instrument` (default `"choir aahs"`) is the
+whole choir's and the default for the other two. The file names don't
+change with the instruments, so give each set its own `--out-dir`:
+
+```sh
+tools/practice-mp3.py --spotlight-instrument flute --background-instrument "acoustic grand" \
+    --out-dir practice-flute heer_ik_roep_t{1,2,3,4,5,6,7,8}
+```
+
+With different instruments, `--background 1.0` keeps all voices equally
+loud and lets the timbre alone pick out the voice.
+
+The score is split with `voice-explode-ly.py`, so every voice is a staff
+and so its own MIDI channel. LilyPond writes the MIDI (repeats played out),
+FluidSynth plays it with MuseScore's soundfont
+(`~/soundfonts/MuseScore_General.sf3`, or `--soundfont`/`SOUNDFONT`), and
+ffmpeg encodes it, normalised to a peak of -1 dB. The other voices get MIDI
+expression 0.5, about 12 dB softer (`--background 0.4` is about 16 dB). The
+scores have no tempo marking, so the default is MuseScore's ♩ = 120. The
+title tag is the score's title and subtitle, plus the voice. Needs
+`lilypond`, `fluidsynth` and `ffmpeg`; the MP3s are ignored by git.
