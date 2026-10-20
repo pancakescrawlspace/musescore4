@@ -156,8 +156,8 @@ holds an earlier note is lost (`--single-lyrics` copies none). The tenor
 (a voice named Tenor, or the upper voice of a bass-clef staff) gets the
 octave treble clef; `--tenor-bass` keeps its clef.
 
-`--spotlight VOICE` turns all other parts down in the mixer to
-`--background-db` (default -12 dB, as in `practice-mp3.py`); MuseScore's
+`--spotlight VOICE` sets all other parts in the mixer to `--background-db`
+(default -12 dB, as in `practice-mp3.py`; up to +12); MuseScore's
 audio and video exports, also from the command line, use those settings.
 Tuplets and grace notes are refused.
 
@@ -169,8 +169,9 @@ names of the soundfont in the mixer, MuseScore's MS Basic (`Flute`,
 `video-flute/` set (gitignored, like all MP4s) is the whole score in piano
 plus one video per voice, that voice on flute and the others on piano.
 MS Basic's piano is 6-7 dB softer than its flute at the same mixer level,
-so the piano voices aren't turned down at all (`--background-db 0`): the
-flute stands out by being 6-7 dB louder (-3, -6 and -12 were too soft).
+so the piano voices are turned up instead (`--background-db 8`): -12, -6
+and -3 were too soft, and of the samples from 0 to +12 (the mixer's
+maximum), +8 and +10 were fine and +12 probably too loud.
 
 `--spotlight-color red` (or blue, green, orange, `#rrggbb`) shows the
 spotlighted voice in that colour as well: note heads, dots, accidentals,
@@ -184,7 +185,7 @@ tools/voice-explode-mscz.py --instrument "Grand Piano" $s.mscz /tmp/$s.mscz
 for v in soprano alto tenor bass; do
   tools/voice-explode-mscz.py --spotlight $v --spotlight-color red \
     --spotlight-instrument Flute --background-instrument "Grand Piano" \
-    --background-db 0 $s.mscz /tmp/${s}_$v.mscz
+    --background-db 8 $s.mscz /tmp/${s}_$v.mscz
 done
 tools/score-video.py /tmp/$s.mscz /tmp/${s}_*.mscz && mv /tmp/$s*.mp4 video-flute/
 ```

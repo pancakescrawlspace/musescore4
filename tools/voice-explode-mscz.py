@@ -35,7 +35,7 @@ The tenor (a voice named Tenor, or the upper voice of a bass-clef staff with
 several voices) gets the octave treble clef; --tenor-bass keeps its clef.
 
 --spotlight sets the mixer: every part except the named voice (e.g.
-"soprano") is turned down to --background-db (default -12 dB).
+"soprano") is set to --background-db (default -12 dB, at most +12).
 --spotlight-color also colours that voice's notes (heads, dots,
 accidentals, stems, flags, beams), rests, slurs, ties and lyrics.
 
