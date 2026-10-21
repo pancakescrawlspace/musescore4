@@ -33,7 +33,11 @@ Two steps, so that each can be run (or redone) by itself:
    the score itself isn't touched.
 2. `score-video.py` exports a score to MP4 as it is, next to it (or into
    `--out-dir`). It warns if the page doesn't match the video, i.e. the score
-   wasn't reflowed for that `--resolution`.
+   wasn't reflowed for that `--resolution`. MuseScore's video has AAC audio
+   at about 125 kbps; `--audio-bitrate 320` exports the audio again and puts
+   it in at 320 kbps (Apple's AAC encoder, 48 kHz), at the same moment to the
+   sample, the picture untouched. YouTube re-encodes every upload anyway
+   (its recommendation is AAC at 384 kbps), but from a better source.
 
 The reflowed copy stays next to its video, so the video can also be made
 again from MuseScore itself: open the copy, File > Export > Video, with
@@ -182,7 +186,8 @@ octave treble clef; `--tenor-bass` keeps its clef.
 (default -12 dB, as in `practice-mp3.py`; the mixer's slider stops at
 +12, but MuseScore plays more from the file) and `--spotlight-db` the
 spotlighted voice (default: unchanged), so both can go down together
-when the background would need more than +12; MuseScore's
+when the background would need more than +12. Without `--spotlight`,
+`--volume-db` sets every part (the whole-score video). MuseScore's
 audio and video exports, also from the command line, use those settings.
 Tuplets and grace notes are refused.
 
@@ -198,18 +203,18 @@ such as the name inside the file, so the script checks it).
 
 The `video/` set (the MP4s gitignored, their reflowed scores committed) is
 the whole score in piano plus one video per voice, that voice on a solo
-instrument and the others on piano. All sounds come from the Arachno soundfont
-(`Arachno-SoundFont-1.0.sf2`, linked into `~/Documents/MuseScore4/SoundFonts`
-from `~/soundfonts`; without it there the script refuses the names). The
-mixer levels:
+instrument and the others on piano, with the audio at 320 kbps. All sounds
+come from the SGM-V2.01 soundfont (`SGM-V2.01.sf2` in
+`~/Documents/MuseScore4/SoundFonts`, where all the soundfonts are kept;
+without it there the script refuses the names). The mixer levels:
 
-| video          | spotlight | spotlight dB | piano dB |
-|----------------|-----------|-------------:|---------:|
-| whole score    | –         |            – |        0 |
-| `_soprano`     | Flute     |            0 |     +7.5 |
-| `_alto`        | Oboe      |         −1.8 |     +7.5 |
-| `_tenor`       | Clarinet  |           −5 |       +8 |
-| `_bass`        | Cello     |           +2 |     +3.7 |
+| video          | spotlight | spotlight dB | piano ("Piano 1") dB |
+|----------------|-----------|-------------:|---------------------:|
+| whole score    | –         |            – |                 +3.4 |
+| `_soprano`     | Flute     |         +4.0 |                +10.4 |
+| `_alto`        | Oboe      |         +3.5 |                +10.2 |
+| `_tenor`       | Clarinet  |         +2.2 |                +11.9 |
+| `_bass`        | Cello     |         +2.7 |                 +7.7 |
 
 How they were found (all 2026-10-20, by ear, on tone 1): first everything
 was MS Basic with the flute for every voice. Its piano is 6-7 dB softer
@@ -227,7 +232,12 @@ clipping the audio, so both are turned down by 5 dB instead. On 2026-10-21
 the cello still sounded a bit soft; of +0 to +4 dB (piano unchanged) the
 user chose +2. The alto (C4-B♭4) lies in the flute's weak bottom octave, so
 it got the oboe instead (chosen over English horn and viola), at the
-flute's measured balance (−1.8 dB).
+flute's measured balance (−1.8 dB). That gave, in Arachno: flute 0 / piano
++7.5, oboe −1.8 / +7.5, clarinet −5 / +8, cello +2 / +3.7, whole score 0.
+The same day SGM won a comparison with Musyng Kite (its Fazioli piano
+sounded muffled), Timbres of Heaven and a Salamander piano (converted from
+SFZ with Polyphone), each part matched in loudness to the Arachno mix, which
+gave the levels above.
 
 `--spotlight-color red` (or blue, green, orange, `#rrggbb`) shows the
 spotlighted voice in that colour as well: note heads, dots, accidentals,
@@ -237,16 +247,16 @@ and melisma lines). Ledger lines stay black, like the staff lines. The
 
 ```sh
 s=heer_ik_roep_t1
-a=Arachno-SoundFont-1.0
-tools/voice-explode-mscz.py --instrument "$a:Grand Piano" $s.mscz /tmp/$s.mscz
-for v in soprano:Flute:7.5:0 alto:Oboe:7.5:-1.8 tenor:Clarinet:8:-5 bass:Cello:3.7:2; do
+f=SGM-V2.01   # ${f} in braces: in zsh, "$f:P..." is a path modifier
+tools/voice-explode-mscz.py --instrument "${f}:Piano 1" --volume-db 3.4 $s.mscz /tmp/$s.mscz
+for v in soprano:Flute:10.4:4.0 alto:Oboe:10.2:3.5 tenor:Clarinet:11.9:2.2 bass:Cello:7.7:2.7; do
   IFS=: read voice sound db sdb <<< $v
   tools/voice-explode-mscz.py --spotlight $voice --spotlight-color red \
-    --spotlight-instrument "$a:$sound" --background-instrument "$a:Grand Piano" \
+    --spotlight-instrument "${f}:${sound}" --background-instrument "${f}:Piano 1" \
     --background-db $db --spotlight-db $sdb $s.mscz /tmp/${s}_$voice.mscz
 done
 tools/score-reflow.py --out-dir video /tmp/$s.mscz /tmp/${s}_*.mscz
-tools/score-video.py video/$s.mscz video/${s}_*.mscz
+tools/score-video.py --audio-bitrate 320 video/$s.mscz video/${s}_*.mscz
 ```
 
 A score saved by MuseScore's command line (such as the Bach chorales) has
@@ -292,7 +302,8 @@ of that day; the `video/` set has since moved to other sounds (see above).
 The score is split with `voice-explode-ly.py`, so every voice is a staff
 and so its own MIDI channel. LilyPond writes the MIDI (repeats played out),
 FluidSynth plays it with MuseScore's soundfont
-(`~/soundfonts/MuseScore_General.sf3`, or `--soundfont`/`SOUNDFONT`), and
+(`MuseScore_General.sf3` in `~/Documents/MuseScore4/SoundFonts`, or
+`--soundfont`/`SOUNDFONT`), and
 ffmpeg encodes it, normalised to a peak of -1 dB. The other voices get MIDI
 expression 0.5, about 12 dB softer (`--background 0.4` is about 16 dB). The
 scores have no tempo marking, so the default is MuseScore's ♩ = 120. The

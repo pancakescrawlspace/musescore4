@@ -47,6 +47,7 @@ several voices) gets the octave treble clef; --tenor-bass keeps its clef.
 "soprano") is set to --background-db (default -12 dB; the mixer's slider
 goes up to +12, but a file may hold more), and --spotlight-db sets the
 named voice (default: as it was), so both can be lowered together.
+Without --spotlight, --volume-db sets every part.
 --spotlight-color also colours that voice's notes (heads, dots,
 accidentals, stems, flags, beams), rests, slurs, ties and lyrics.
 
@@ -545,7 +546,7 @@ def set_sound(track, preset):
 
 
 def audio_settings(text, new_parts, old_ids, spotlight, background_db, sounds=(None, None),
-                   spotlight_db=None):
+                   spotlight_db=None, volume_db=None):
     """audiosettings.json with a mixer track per new part, copied from the old part's;
     sounds are the presets for the spotlighted part and the others (None: unchanged)."""
     settings = json.loads(text)
@@ -554,7 +555,7 @@ def audio_settings(text, new_parts, old_ids, spotlight, background_db, sounds=(N
     for p in new_parts:
         track = tracks.get(old_ids[p.get("id")])
         if track is None:
-            if not (spotlight or any(sounds)):
+            if not (spotlight or any(sounds) or volume_db is not None):
                 continue
             # a score saved by the command line has no mixer tracks: MuseScore's default one
             track = {"in": {"resourceMeta": {"attributes": {"playbackSetupData": "last.last.last",
@@ -571,6 +572,8 @@ def audio_settings(text, new_parts, old_ids, spotlight, background_db, sounds=(N
             track.setdefault("out", {})["volumeDb"] = background_db
         elif spotlight and spotlight_db is not None:
             track.setdefault("out", {})["volumeDb"] = spotlight_db
+        elif not spotlight and volume_db is not None:
+            track.setdefault("out", {})["volumeDb"] = volume_db
         if sounds[bool(background)]:
             set_sound(track, sounds[bool(background)])
         out.append(track)
@@ -594,6 +597,8 @@ def main():
                     help="mixer volume of the other parts with --spotlight (default -12)")
     ap.add_argument("--spotlight-db", type=float,
                     help="mixer volume of the spotlighted part (default: unchanged)")
+    ap.add_argument("--volume-db", type=float,
+                    help="mixer volume of every part, without --spotlight (default: unchanged)")
     ap.add_argument("--spotlight-color", metavar="COLOR",
                     help="colour of the spotlighted voice's notes and lyrics: red, blue, "
                          "green, orange or #rrggbb")
@@ -611,6 +616,9 @@ def main():
                                or args.spotlight_color or args.spotlight_db is not None):
         sys.exit("--spotlight-instrument, --background-instrument, --spotlight-color and "
                  "--spotlight-db need --spotlight")
+    if args.spotlight and args.volume_db is not None:
+        sys.exit("--volume-db is for scores without --spotlight; use --background-db and "
+                 "--spotlight-db")
     override = [n.strip() for n in args.names.split(",")] if args.names else None
 
     with zipfile.ZipFile(args.input) as zin:
@@ -633,9 +641,10 @@ def main():
     if "audiosettings.json" in data:
         data["audiosettings.json"] = audio_settings(
             data["audiosettings.json"].decode("utf-8"), new_parts, old_ids,
-            args.spotlight, args.background_db, sounds, args.spotlight_db).encode("utf-8")
-    elif args.spotlight or any(sounds):
-        sys.exit("--spotlight, --instrument: the score has no audiosettings.json")
+            args.spotlight, args.background_db, sounds, args.spotlight_db,
+            args.volume_db).encode("utf-8")
+    elif args.spotlight or any(sounds) or args.volume_db is not None:
+        sys.exit("--spotlight, --instrument, --volume-db: the score has no audiosettings.json")
     with zipfile.ZipFile(args.output, "w", zipfile.ZIP_DEFLATED) as zout:
         for info, _ in entries:
             zout.writestr(info, data[info.filename])

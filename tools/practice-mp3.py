@@ -35,7 +35,8 @@ instruments its own --out-dir.
 
 The scores have no tempo marking, so MuseScore plays them at its default,
 quarter = 120; --tempo changes it. Repeats are played out. The soundfont
-defaults to MuseScore's own (~/soundfonts/MuseScore_General.sf3), so the
+defaults to MuseScore's own (MuseScore_General.sf3 in
+~/Documents/MuseScore4/SoundFonts), so the
 choir sounds as in MuseScore.
 
 Needs lilypond, fluidsynth and ffmpeg (with libmp3lame) on PATH.
@@ -44,7 +45,7 @@ import argparse, difflib, os, re, subprocess, sys, tempfile
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 EXPLODE = os.path.join(ROOT, "tools", "voice-explode-ly.py")
-SOUNDFONT = os.path.expanduser("~/soundfonts/MuseScore_General.sf3")
+SOUNDFONT = os.path.expanduser("~/Documents/MuseScore4/SoundFonts/MuseScore_General.sf3")
 STAFF = re.compile(r'\\new\s+Staff\s*=\s*"[^"]*"\s*<<')
 
 
