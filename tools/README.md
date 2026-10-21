@@ -41,11 +41,11 @@ again from MuseScore itself: open the copy, File > Export > Video, with
 under "MuseScore command line".
 
 ```sh
-tools/score-reflow.py --out-dir video heer_ik_roep_t3.mscz   # 1080p
-tools/score-video.py video/heer_ik_roep_t3.mscz               # 24 fps
-tools/score-reflow.py --out-dir video --resolution 720p heer_ik_roep_t3.mscz
-tools/score-video.py --resolution 720p --fps 30 video/heer_ik_roep_t3.mscz
-tools/score-reflow.py --out-dir video --staff-scale 0.7 bwv4.8_tenor.mscz
+tools/score-reflow.py --out-dir /tmp/video heer_ik_roep_t3.mscz   # 1080p
+tools/score-video.py /tmp/video/heer_ik_roep_t3.mscz               # 24 fps
+tools/score-reflow.py --out-dir /tmp/video --resolution 720p heer_ik_roep_t3.mscz
+tools/score-video.py --resolution 720p --fps 30 /tmp/video/heer_ik_roep_t3.mscz
+tools/score-reflow.py --out-dir /tmp/video --staff-scale 0.7 bwv4.8_tenor.mscz
 ```
 
 Give both steps the same `--resolution`. `--staff-scale` makes the staves
@@ -149,8 +149,8 @@ a video in which one voice stands out.
 ```sh
 tools/voice-explode-mscz.py de_kelk_des_heils.mscz de_kelk_des_heils_satb.mscz
 tools/voice-explode-mscz.py --spotlight alto de_kelk_des_heils.mscz kelk_alto.mscz
-tools/score-reflow.py --out-dir video kelk_alto.mscz
-tools/score-video.py video/kelk_alto.mscz
+tools/score-reflow.py --out-dir /tmp/video kelk_alto.mscz
+tools/score-video.py /tmp/video/kelk_alto.mscz
 ```
 
 Voice 1's staff keeps the title frame, line breaks, voltas and repeat
@@ -196,7 +196,7 @@ preset, by its file name: `"GeneralUser-GS:Grand Piano"` (MuseScore plays
 some other sound, without a warning, for a soundfont name it doesn't know,
 such as the name inside the file, so the script checks it).
 
-The `video-flute/` set (gitignored, like all MP4s) is the whole score in
+The `video/` set (gitignored, like all MP4s) is the whole score in
 piano plus one video per voice, that voice on a solo instrument and the
 others on piano. All sounds come from the Arachno soundfont
 (`Arachno-SoundFont-1.0.sf2`, linked into `~/Documents/MuseScore4/SoundFonts`
@@ -233,7 +233,7 @@ flute's measured balance (−1.8 dB).
 spotlighted voice in that colour as well: note heads, dots, accidentals,
 stems, flags, beams, rests, slurs, ties and lyrics (with their hyphens
 and melisma lines). Ledger lines stay black, like the staff lines. The
-`video-flute/` spotlight videos are red:
+`video/` spotlight videos are red:
 
 ```sh
 s=heer_ik_roep_t1
@@ -245,8 +245,8 @@ for v in soprano:Flute:7.5:0 alto:Oboe:7.5:-1.8 tenor:Clarinet:8:-5 bass:Cello:3
     --spotlight-instrument "$a:$sound" --background-instrument "$a:Grand Piano" \
     --background-db $db --spotlight-db $sdb $s.mscz /tmp/${s}_$voice.mscz
 done
-tools/score-reflow.py --out-dir video-flute /tmp/$s.mscz /tmp/${s}_*.mscz
-tools/score-video.py video-flute/$s.mscz video-flute/${s}_*.mscz
+tools/score-reflow.py --out-dir video /tmp/$s.mscz /tmp/${s}_*.mscz
+tools/score-video.py video/$s.mscz video/${s}_*.mscz
 ```
 
 A score saved by MuseScore's command line (such as the Bach chorales) has
@@ -286,8 +286,8 @@ tools/practice-mp3.py --instrument "acoustic grand" --spotlight-instrument flute
 With different instruments, `--background 1.0` keeps all voices equally
 loud and lets the timbre alone pick out the voice: the flute is louder than
 the piano by itself. That is how `practice-flute/` is made (since
-2026-10-20; the default 0.5 left the piano too soft), matching the
-`video-flute/` videos.
+2026-10-20; the default 0.5 left the piano too soft), matching the videos
+of that day; the `video/` set has since moved to other sounds (see above).
 
 The score is split with `voice-explode-ly.py`, so every voice is a staff
 and so its own MIDI channel. LilyPond writes the MIDI (repeats played out),
