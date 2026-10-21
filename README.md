@@ -234,12 +234,13 @@ Findings about `mscore` (MuseScore Studio 4.7.5, at
 - **View settings are ignored:** the command line ignores
   `showVerticalFrames` in the `.mscz`'s `viewsettings.json`, so it can't
   hide the title frame the way reflow does.
-- **How `tools/score-video.py` gets reflow anyway:** it makes reflow's
-  changes in a temporary copy of the score: the style in `score_style.mss`
+- **How `tools/score-reflow.py` gets reflow anyway:** it makes reflow's
+  changes in a copy of the score (kept, for `tools/score-video.py` to
+  export or for MuseScore's dialog with reflow off): the style in `score_style.mss`
   inside the `.mscz`, and removing the title frame, with the frame's title
   text copied into `workTitle` for the title card, its lines joined
   with " – " ("Heer ik roep – toon 1"; since 2026-10-20, so the videos
-  made before then lack the tone). It then exports that
+  made before then lack the tone). `score-video.py` then exports that
   copy with page layout. Because the page now has the video's aspect
   ratio, page layout fills the frame exactly as reflow does. Checked
   against `heer_ik_roep_t2.mp4` exported from the dialog: every frame of

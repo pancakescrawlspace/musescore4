@@ -23,23 +23,35 @@ syllables underlined in the score (stressed syllables) become
 status 0 means done, 1 means a note check found differences, 2 means a step
 failed.
 
-## Videos with reflow (`score-video.py`)
+## Videos with reflow (`score-reflow.py`, `score-video.py`)
 
-Exports `score.mp4` from `score.mscz` with MuseScore, laid out as with
-"Reflow to fit video resolution" in the export dialog, which the command
-line can't select. It changes a temporary copy of the score to match
-reflow and exports that; the score itself isn't touched. Details are in
-`../README.md` under "MuseScore command line".
+Two steps, so that each can be run (or redone) by itself:
+
+1. `score-reflow.py` writes a copy of the score laid out as with "Reflow to
+   fit video resolution" in MuseScore's export dialog, which the command line
+   can't select. The copy goes into `--out-dir` under the score's own name;
+   the score itself isn't touched.
+2. `score-video.py` exports a score to MP4 as it is, next to it (or into
+   `--out-dir`). It warns if the page doesn't match the video, i.e. the score
+   wasn't reflowed for that `--resolution`.
+
+The reflowed copy stays next to its video, so the video can also be made
+again from MuseScore itself: open the copy, File > Export > Video, with
+"Reflow to fit video resolution" off (the copy is reflowed already). Details are in `../README.md`
+under "MuseScore command line".
 
 ```sh
-tools/score-video.py heer_ik_roep_t3.mscz                    # 1080p, 24 fps
-tools/score-video.py --resolution 720p --fps 30 heer_ik_roep_t3.mscz
-tools/score-video.py --staff-scale 0.7 bwv4.8_tenor.mscz   # smaller staves
+tools/score-reflow.py --out-dir video heer_ik_roep_t3.mscz   # 1080p
+tools/score-video.py video/heer_ik_roep_t3.mscz               # 24 fps
+tools/score-reflow.py --out-dir video --resolution 720p heer_ik_roep_t3.mscz
+tools/score-video.py --resolution 720p --fps 30 video/heer_ik_roep_t3.mscz
+tools/score-reflow.py --out-dir video --staff-scale 0.7 bwv4.8_tenor.mscz
 ```
 
-`--staff-scale` makes the staves smaller in the video copy, for a system
-that is taller than the frame: four staves with two lines of text each
-(the Bach chorales split by `voice-explode-mscz.py`) need about 0.7.
+Give both steps the same `--resolution`. `--staff-scale` makes the staves
+smaller in the copy, for a system that is taller than the frame: four
+staves with two lines of text each (the Bach chorales split by
+`voice-explode-mscz.py`) need about 0.7.
 
 ## Free-meter scores (`mscz-add-hidden-timesig.py`)
 
@@ -137,7 +149,8 @@ a video in which one voice stands out.
 ```sh
 tools/voice-explode-mscz.py de_kelk_des_heils.mscz de_kelk_des_heils_satb.mscz
 tools/voice-explode-mscz.py --spotlight alto de_kelk_des_heils.mscz kelk_alto.mscz
-tools/score-video.py kelk_alto.mscz
+tools/score-reflow.py --out-dir video kelk_alto.mscz
+tools/score-video.py video/kelk_alto.mscz
 ```
 
 Voice 1's staff keeps the title frame, line breaks, voltas and repeat
@@ -228,7 +241,8 @@ for v in soprano:Flute:7.5:0 alto:Flute:7.5:0 tenor:Clarinet:8:-5 bass:Cello:3.7
     --spotlight-instrument "$a:$sound" --background-instrument "$a:Grand Piano" \
     --background-db $db --spotlight-db $sdb $s.mscz /tmp/${s}_$voice.mscz
 done
-tools/score-video.py /tmp/$s.mscz /tmp/${s}_*.mscz && mv /tmp/$s*.mp4 video-flute/
+tools/score-reflow.py --out-dir video-flute /tmp/$s.mscz /tmp/${s}_*.mscz
+tools/score-video.py video-flute/$s.mscz video-flute/${s}_*.mscz
 ```
 
 A score saved by MuseScore's command line (such as the Bach chorales) has

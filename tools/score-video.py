@@ -1,129 +1,57 @@
 #!/usr/bin/env python3
-"""Export a score to MP4 with MuseScore, laid out as with "Reflow to fit video
-resolution" in the export dialog.
+"""Export scores to MP4 with MuseScore's command line, as they are.
 
-MuseScore's command line (--score-video) has no option for that: it always
-uses the "page layout" view mode. This script makes a temporary copy of the
-score with the style changes MuseScore applies for reflow (the Flexible
-view mode in src/importexport/videoexport/internal/videowriter.cpp,
-MuseScore 4.7.5), and exports that copy. Its page has the video's aspect
-ratio, so page layout then fills the frame exactly as reflow does:
-
-  page = video size / 300 dpi (6.4 x 3.6 in for 1080p), no top/bottom
-  margins, one-sided, no header/footer, system distance 10 sp, staff
-  borders 7/5 sp, no title frame and no instrument names.
-
-Reflow renders a score with more than three staves at a lower dpi, so that
-the original page's height fits the video (about 91 dpi for A4 at 1080p);
-that makes a short four-staff score one tiny line, so it isn't copied.
-Instead --staff-scale (e.g. 0.75) makes the staves smaller where a system
-is taller than the frame (four staves with two lines of text).
-
-Reflow only hides the title frame; the video's title card still reads the
-title from it. The command line ignores showVerticalFrames in
-viewsettings.json, so the frame is removed instead, and its title text goes
-into the workTitle metadata, which the title card falls back to.
-Checked against a video exported from the dialog: every frame identical.
+The command line always uses the "page layout" view mode, so a score made
+for video first goes through score-reflow.py, which sizes its page to the
+video. Give both the same --resolution: a score whose page doesn't match the
+video's size gets a warning (it is exported anyway).
 
 usage: tools/score-video.py score.mscz [...]   writes score.mp4 next to each
-       options: --resolution 1080p (2160p 1440p 1080p 720p 480p 360p), --fps 24,
-                --staff-scale 1.0
+       options: --out-dir DIR, --resolution 1080p (2160p 1440p 1080p 720p 480p 360p),
+                --fps 24
 """
-import argparse, html, os, re, shutil, subprocess, sys, tempfile, zipfile
+import argparse, os, re, shutil, subprocess, sys, tempfile, zipfile
 
 MSCORE = "/Applications/MuseScore 4.app/Contents/MacOS/mscore"
 HEIGHTS = {"2160p": 2160, "1440p": 1440, "1080p": 1080, "720p": 720, "480p": 480, "360p": 360}
 CANVAS_DPI = 300.0  # VideoWriter::Config::canvasDpi
 
 
-def set_style(mss, key, value):
-    tag = re.compile(rf"<{key}>[^<]*</{key}>")
-    new = f"<{key}>{value}</{key}>"
-    if tag.search(mss):
-        return tag.sub(new, mss, count=1)
-    return mss.replace("</Style>", f"    {new}\n  </Style>", 1)
-
-
-def get_style(mss, key, default):
-    m = re.search(rf"<{key}>([^<]*)</{key}>", mss)
-    return float(m.group(1)) if m else default
-
-
-def title_text(mscx):
-    """Plain text of the title frame's title, as MuseScore's Text::plainText() gives it."""
-    m = re.search(rb"<VBox>.*?<style>title</style>.*?<text>(.*?)</text>", mscx, flags=re.S)
-    if not m:
-        return None
-    t = re.sub(r"<br\s*/>", "\n", m.group(1).decode("utf-8"))
-    t = html.unescape(re.sub(r"<[^>]+>", "", t))
-    return t
-
-
-def card_title(title):
-    """The title on one line: the title card shows only the first ("Heer ik roep",
-    without "toon 1")."""
-    return " – ".join(line.strip() for line in title.splitlines() if line.strip())
-
-
-def reflow_copy(src, dst, width, height, staff_scale=1.0):
-    with zipfile.ZipFile(src) as zin:
-        files = [(i, zin.read(i)) for i in zin.infolist()]
-    out = []
-    for info, data in files:
-        if info.filename == "score_style.mss":
-            mss = data.decode("utf-8")
-            pw, ph = width / CANVAS_DPI, height / CANVAS_DPI
-            if staff_scale != 1.0:  # not reflow's: smaller staves, so a tall system fits the frame
-                mss = set_style(mss, "spatium", round(get_style(mss, "spatium", 1.75) * staff_scale, 4))
-            left = get_style(mss, "pageOddLeftMargin", 0.590551) + get_style(mss, "pageEvenLeftMargin", 0.590551)
-            for key, value in (("pageWidth", pw), ("pageHeight", ph), ("pagePrintableWidth", round(pw - left, 6)),
-                               ("pageEvenTopMargin", 0), ("pageEvenBottomMargin", 0),
-                               ("pageOddTopMargin", 0), ("pageOddBottomMargin", 0),
-                               ("pageTwosided", 0), ("showHeader", 0), ("showFooter", 0),
-                               ("minSystemDistance", 10), ("maxSystemDistance", 10),
-                               ("staffLowerBorder", 5), ("staffUpperBorder", 7)):
-                mss = set_style(mss, key, value)
-            data = mss.encode("utf-8")
-        elif info.filename.endswith(".mscx"):
-            # Reflow hides vertical frames from the layout. The command line can't (it
-            # ignores showVerticalFrames in viewsettings.json), so the title frame is
-            # removed. The video's title card falls back to the workTitle metadata,
-            # so that gets the title frame's text, on one line.
-            title = title_text(data)
-            data = re.sub(rb"[ \t]*<VBox>.*?</VBox>\n?", b"", data, flags=re.S)
-            # reflow also hides instrument names ("Women", "W.")
-            data = re.sub(rb"<(longName|shortName)>.*?</\1>", rb"<\1></\1>", data, flags=re.S)
-            if title is not None:
-                data = re.sub(rb'<metaTag name="workTitle">[^<]*</metaTag>',
-                              b'<metaTag name="workTitle">' + html.escape(card_title(title), quote=False).encode("utf-8") + b"</metaTag>",
-                              data, count=1)
-        out.append((info, data))
-    if not any(i.filename == "score_style.mss" for i, _ in files):
-        sys.exit(f"{src}: no score_style.mss in the .mscz")
-    with zipfile.ZipFile(dst, "w", zipfile.ZIP_DEFLATED) as zout:
-        for info, data in out:
-            zout.writestr(info, data)
+def page_size(score):
+    """(width, height) of the score's page in inches, None if not in its style."""
+    with zipfile.ZipFile(score) as z:
+        if "score_style.mss" not in z.namelist():
+            return None
+        mss = z.read("score_style.mss").decode("utf-8")
+    size = [re.search(rf"<{k}>([^<]*)</{k}>", mss) for k in ("pageWidth", "pageHeight")]
+    return tuple(float(m.group(1)) for m in size) if all(size) else None
 
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     ap.add_argument("scores", nargs="+")
+    ap.add_argument("--out-dir", metavar="DIR", help="folder for the videos (default: each score's)")
     ap.add_argument("--resolution", default="1080p", choices=HEIGHTS)
     ap.add_argument("--fps", default="24", choices=["24", "30", "60"])
-    ap.add_argument("--staff-scale", type=float, default=1.0,
-                    help="staff size factor, e.g. 0.75 when a system is taller than the frame")
     args = ap.parse_args()
     height = HEIGHTS[args.resolution]
-    width = height * 16 // 9
+    video = (height * 16 // 9 / CANVAS_DPI, height / CANVAS_DPI)
+    if args.out_dir:
+        os.makedirs(args.out_dir, exist_ok=True)
     status = 0
     for src in args.scores:
-        dst = os.path.splitext(src)[0] + ".mp4"
+        page = page_size(src)
+        if page is None or any(abs(p - v) > 0.01 for p, v in zip(page, video)):
+            print(f"{src}: warning: the page isn't {video[0]:g} x {video[1]:g} in, the "
+                  f"{args.resolution} video's; run score-reflow.py --resolution "
+                  f"{args.resolution} first")
+        name = os.path.splitext(os.path.basename(src))[0] + ".mp4"
+        dst = os.path.join(args.out_dir or os.path.dirname(src), name)
         with tempfile.TemporaryDirectory() as tmp:
-            copy = os.path.join(tmp, os.path.basename(src))
-            reflow_copy(src, copy, width, height, args.staff_scale)
             tmp_mp4 = os.path.join(tmp, "video.mp4")
-            r = subprocess.run([MSCORE, "--score-video", "--resolution", args.resolution, "--fps", args.fps,
-                                "-o", tmp_mp4, copy], capture_output=True, text=True)
+            r = subprocess.run([MSCORE, "--score-video", "--resolution", args.resolution,
+                                "--fps", args.fps, "-o", tmp_mp4, src],
+                               capture_output=True, text=True)
             if not os.path.exists(tmp_mp4) or os.path.getsize(tmp_mp4) == 0:
                 print(f"{src}: export FAILED (exit {r.returncode})\n{r.stderr[-2000:]}")
                 status = 1
