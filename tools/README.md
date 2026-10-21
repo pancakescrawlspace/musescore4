@@ -207,9 +207,9 @@ mixer levels:
 |----------------|-----------|-------------:|---------:|
 | whole score    | –         |            – |        0 |
 | `_soprano`     | Flute     |            0 |     +7.5 |
-| `_alto`        | Flute     |            0 |     +7.5 |
+| `_alto`        | Oboe      |         −1.8 |     +7.5 |
 | `_tenor`       | Clarinet  |           −5 |       +8 |
-| `_bass`        | Cello     |            0 |     +3.7 |
+| `_bass`        | Cello     |           +2 |     +3.7 |
 
 How they were found (all 2026-10-20, by ear, on tone 1): first everything
 was MS Basic with the flute for every voice. Its piano is 6-7 dB softer
@@ -223,7 +223,11 @@ was too loud). Then Arachno sounded best of three other soundfonts
 different amounts, so the levels were re-measured (integrated loudness of
 each sound alone) to keep those balances. Its clarinet is so loud that the
 piano would need +13, beyond the slider (MuseScore does play it) and
-clipping the audio, so both are turned down by 5 dB instead.
+clipping the audio, so both are turned down by 5 dB instead. On 2026-10-21
+the cello still sounded a bit soft; of +0 to +4 dB (piano unchanged) the
+user chose +2. The alto (C4-B♭4) lies in the flute's weak bottom octave, so
+it got the oboe instead (chosen over English horn and viola), at the
+flute's measured balance (−1.8 dB).
 
 `--spotlight-color red` (or blue, green, orange, `#rrggbb`) shows the
 spotlighted voice in that colour as well: note heads, dots, accidentals,
@@ -235,7 +239,7 @@ and melisma lines). Ledger lines stay black, like the staff lines. The
 s=heer_ik_roep_t1
 a=Arachno-SoundFont-1.0
 tools/voice-explode-mscz.py --instrument "$a:Grand Piano" $s.mscz /tmp/$s.mscz
-for v in soprano:Flute:7.5:0 alto:Flute:7.5:0 tenor:Clarinet:8:-5 bass:Cello:3.7:0; do
+for v in soprano:Flute:7.5:0 alto:Oboe:7.5:-1.8 tenor:Clarinet:8:-5 bass:Cello:3.7:2; do
   IFS=: read voice sound db sdb <<< $v
   tools/voice-explode-mscz.py --spotlight $voice --spotlight-color red \
     --spotlight-instrument "$a:$sound" --background-instrument "$a:Grand Piano" \
