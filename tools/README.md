@@ -196,9 +196,9 @@ preset, by its file name: `"GeneralUser-GS:Grand Piano"` (MuseScore plays
 some other sound, without a warning, for a soundfont name it doesn't know,
 such as the name inside the file, so the script checks it).
 
-The `video/` set (gitignored, like all MP4s) is the whole score in
-piano plus one video per voice, that voice on a solo instrument and the
-others on piano. All sounds come from the Arachno soundfont
+The `video/` set (the MP4s gitignored, their reflowed scores committed) is
+the whole score in piano plus one video per voice, that voice on a solo
+instrument and the others on piano. All sounds come from the Arachno soundfont
 (`Arachno-SoundFont-1.0.sf2`, linked into `~/Documents/MuseScore4/SoundFonts`
 from `~/soundfonts`; without it there the script refuses the names). The
 mixer levels:
