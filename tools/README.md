@@ -1,7 +1,8 @@
 # tools
 
 Scripts for getting the church scores from MuseScore to LilyPond. They use
-the Python standard library only; run them from the repository root. The
+the Python standard library only, except `video-audio.py`, which also needs
+numpy; run them from the repository root. The
 pipeline as a whole is described in `../README.md`.
 
 ## Rebuilding a score (`rebuild-score.py`)
@@ -23,9 +24,10 @@ syllables underlined in the score (stressed syllables) become
 status 0 means done, 1 means a note check found differences, 2 means a step
 failed.
 
-## Videos with reflow (`score-reflow.py`, `score-video.py`)
+## Videos with reflow (`score-reflow.py`, `score-video.py`, `video-audio.py`)
 
-Two steps, so that each can be run (or redone) by itself:
+Two steps, plus a third for other audio, so that each can be run (or
+redone) by itself:
 
 1. `score-reflow.py` writes a copy of the score laid out as with "Reflow to
    fit video resolution" in MuseScore's export dialog, which the command line
@@ -33,11 +35,33 @@ Two steps, so that each can be run (or redone) by itself:
    the score itself isn't touched.
 2. `score-video.py` exports a score to MP4 as it is, next to it (or into
    `--out-dir`). It warns if the page doesn't match the video, i.e. the score
-   wasn't reflowed for that `--resolution`. MuseScore's video has AAC audio
-   at about 125 kbps; `--audio-bitrate 320` exports the audio again and puts
-   it in at 320 kbps (Apple's AAC encoder, 48 kHz), at the same moment to the
-   sample, the picture untouched. YouTube re-encodes every upload anyway
-   (its recommendation is AAC at 384 kbps), but from a better source.
+   wasn't reflowed for that `--resolution`. The video has the score's own
+   audio, AAC at about 125 kbps.
+3. `video-audio.py` replaces that audio by the audio of another score of
+   the same music, the audio score, at 320 kbps (Apple's AAC encoder, 48
+   kHz), the picture untouched. For a video score `X.mscz` it takes `X.mp4`
+   next to it and the audio score `audio/X.mscz` next to that (or in
+   `--audio-dir`: `--audio-dir .` takes the original scores, from the
+   repository root, so the video gets its own audio again at 320 kbps).
+   This is how a spotlighted video gets its picture from two staves and
+   its sound from a staff per voice (see "One staff per voice in
+   MuseScore" below).
+
+`video-audio.py` exports both scores as WAV. MuseScore's audio starts after
+the title card, 3.0418 s into the video at the defaults; the script finds
+that moment, to the sample, by cross-correlating the video's audio with the
+video score's own WAV, and puts the audio score's WAV in there. (Matching
+the video against the audio score directly doesn't work: its sounds differ,
+and that was off by up to 0.17 s.) The moment goes into the MP4's metadata
+(comment `video-audio.py start=3.041814`), so the script can run again on
+its own, e.g. after a change in the audio score's mixer; a video without
+that comment whose audio isn't the video score's is refused. A warning
+says when the two scores don't last equally long, i.e. their timing
+differs. YouTube
+re-encodes every upload anyway (its recommendation is AAC at 384 kbps), but
+from a better source. Above 320 (the maximum of Apple's encoder, `aac_at`,
+macOS only) `--audio-bitrate` gets ffmpeg's own AAC encoder, which treats
+the bitrate as a ceiling: 384 gave only 261 kbps, so 320 is the default.
 
 The reflowed copy stays next to its video, so the video can also be made
 again from MuseScore itself: open the copy, File > Export > Video, with
@@ -49,6 +73,7 @@ tools/score-reflow.py --out-dir /tmp/video heer_ik_roep_t3.mscz   # 1080p
 tools/score-video.py /tmp/video/heer_ik_roep_t3.mscz               # 24 fps
 tools/score-reflow.py --out-dir /tmp/video --resolution 720p heer_ik_roep_t3.mscz
 tools/score-video.py --resolution 720p --fps 30 /tmp/video/heer_ik_roep_t3.mscz
+tools/video-audio.py --audio-dir . /tmp/video/heer_ik_roep_t3.mscz  # own audio, 320 kbps
 tools/score-reflow.py --out-dir /tmp/video --staff-scale 0.7 bwv4.8_tenor.mscz
 ```
 
@@ -201,9 +226,16 @@ preset, by its file name: `"GeneralUser-GS:Grand Piano"` (MuseScore plays
 some other sound, without a warning, for a soundfont name it doesn't know,
 such as the name inside the file, so the script checks it).
 
-The `video/` set (the MP4s gitignored, their reflowed scores committed) is
-the whole score in piano plus one video per voice, that voice on a solo
-instrument and the others on piano, with the audio at 320 kbps. All sounds
+The `video/` set (the MP4s gitignored, their scores committed) is the whole
+score in piano plus one video per voice, that voice on a solo instrument
+and the others on piano, with the audio at 320 kbps. Each video has two
+scores: the video score `video/X.mscz`, the original two staves with the
+lyrics between them, reflowed, and the spotlighted voice in red
+(`voice-color-mscz.py`, below), and the audio score `video/audio/X.mscz`,
+one staff per voice from this script, with the sounds and levels below in
+its mixer. `video-audio.py` puts the audio score's sound into the video
+score's video. (Until 2026-10-21 the videos showed the four staves of the
+audio score itself.) All sounds
 come from the SGM-V2.01 soundfont (`SGM-V2.01.sf2` in
 `~/Documents/MuseScore4/SoundFonts`, where all the soundfonts are kept;
 without it there the script refuses the names). The mixer levels:
@@ -243,21 +275,30 @@ gave the levels above.
 spotlighted voice in that colour as well: note heads, dots, accidentals,
 stems, flags, beams, rests, slurs, ties and lyrics (with their hyphens
 and melisma lines). Ledger lines stay black, like the staff lines. The
-`video/` spotlight videos are red:
+`video/` set colours the voice on two staves instead, with
+`voice-color-mscz.py`:
 
 ```sh
 s=heer_ik_roep_t1
 f=SGM-V2.01   # ${f} in braces: in zsh, "$f:P..." is a path modifier
-tools/voice-explode-mscz.py --instrument "${f}:Piano 1" --volume-db 3.4 $s.mscz /tmp/$s.mscz
+mkdir -p video/audio /tmp/color
+tools/voice-explode-mscz.py --instrument "${f}:Piano 1" --volume-db 3.4 $s.mscz video/audio/$s.mscz
 for v in soprano:Flute:10.4:4.0 alto:Oboe:10.2:3.5 tenor:Clarinet:11.9:2.2 bass:Cello:7.7:2.7; do
   IFS=: read voice sound db sdb <<< $v
-  tools/voice-explode-mscz.py --spotlight $voice --spotlight-color red \
+  tools/voice-explode-mscz.py --spotlight $voice \
     --spotlight-instrument "${f}:${sound}" --background-instrument "${f}:Piano 1" \
-    --background-db $db --spotlight-db $sdb $s.mscz /tmp/${s}_$voice.mscz
+    --background-db $db --spotlight-db $sdb $s.mscz video/audio/${s}_$voice.mscz
+  tools/voice-color-mscz.py --voice $voice --color red $s.mscz /tmp/color/${s}_$voice.mscz
 done
-tools/score-reflow.py --out-dir video /tmp/$s.mscz /tmp/${s}_*.mscz
-tools/score-video.py --audio-bitrate 320 video/$s.mscz video/${s}_*.mscz
+tools/score-reflow.py --out-dir video $s.mscz /tmp/color/${s}_*.mscz
+tools/score-video.py video/$s.mscz video/${s}_*.mscz
+tools/video-audio.py video/$s.mscz video/${s}_*.mscz
 ```
+
+The audio scores aren't reflowed: only their sound is used. A change of
+level needs only the audio score's mixer (or `audiosettings.json`) and
+`video-audio.py` again; a change in the picture needs `score-video.py` and
+then `video-audio.py`.
 
 A score saved by MuseScore's command line (such as the Bach chorales) has
 no mixer tracks; the parts then get MuseScore's default track before the
@@ -268,6 +309,27 @@ keep their vocal ranges and no note shows up as out of range. (The MIDI
 program and instrument id in the score don't change the sound; MuseScore
 plays what the mixer's `audiosettings.json` says: preset bank, program and
 name, and the resource id `MS Basic\0\73`.)
+
+## One voice in colour (`voice-color-mscz.py`)
+
+Colours one voice of a score without splitting its staves: the picture of
+a spotlighted video, whose sound comes from `voice-explode-mscz.py` (see
+above).
+
+```sh
+tools/voice-color-mscz.py --voice alto heer_ik_roep_t1.mscz /tmp/heer_ik_roep_t1_alto.mscz
+tools/voice-color-mscz.py --voice tenor --color blue de_kelk_des_heils.mscz /tmp/kelk_tenor.mscz
+```
+
+The voices have the names `voice-explode-mscz.py` gives their staves
+(Soprano, Alto, Tenor, Bass for two staves of two voices; `--names` as
+there). The colour (`--color`, default red; blue, green, orange or
+`#rrggbb`) goes on the same things as `--spotlight-color` there, but not on
+the lyrics, which belong to all voices of the staff. Where two voices sing
+the same pitch at the same moment with the same kind of head, MuseScore
+draws one head, in the colour of the voice it draws last, so the other
+voice's head gets the colour too (soprano and alto in heer_ik_roep_t5,
+tenor and bass in t6).
 
 ## Practice MP3s (`practice-mp3.py`)
 

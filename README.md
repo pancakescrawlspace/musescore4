@@ -193,12 +193,21 @@ with MuseScore's video export, using "Reflow to fit video resolution":
 
 ```sh
 tools/score-video.py heer_ik_roep_t{1,2,3,4,5,6,7,8}.mscz    # writes heer_ik_roep_tN.mp4
+tools/video-audio.py --audio-dir . heer_ik_roep_t{1,2,3,4,5,6,7,8}.mscz   # audio at 320 kbps
 ```
 
 The defaults (1080p, 24 fps) match the export dialog's defaults; use
-`--resolution` and `--fps` for others. `heer_ik_roep_t4_piano.mp4` is a
+`--resolution` and `--fps` for others. `video-audio.py` replaces
+MuseScore's audio (AAC at about 125 kbps) by the same audio at 320 kbps;
+without it the video keeps MuseScore's (see `tools/README.md`). `heer_ik_roep_t4_piano.mp4` is a
 separate video and isn't made this way. `onder_uwe_hoede.mp4` and
 `o_czom.mp4` are made the same way.
+
+The spotlighted videos in `video/` show the two staves with one voice in
+red, and sound from a copy of the score with a staff per voice, one voice
+on a solo instrument and the others on piano: two scores per video, put
+together by `tools/video-audio.py`. The recipe is in `tools/README.md`
+under "One staff per voice in MuseScore".
 
 ## MuseScore command line
 
@@ -211,7 +220,10 @@ Findings about `mscore` (MuseScore Studio 4.7.5, at
   same video as File > Export > Video, with options `--resolution`
   (2160p … 360p, default 1080p), `--fps` (60, 30, 24; default 24), `--ls`
   and `--ts` (pause before and after playback, default 3 s) and
-  `--no-audio`.
+  `--no-audio`. Its audio is AAC, 44.1 kHz stereo, at about 125 kbps, and
+  no option changes that (`tools/video-audio.py` replaces it afterwards).
+  The audio starts 3.0418 s into the video (at the defaults), after the
+  title card, at the start of a WAV export of the same score.
 - **No reflow from the command line:** the command line always uses "Use
   page layout", which shows whole A4 pages scaled into the frame. "Reflow
   to fit video resolution" is set only in the export dialog. It isn't saved
@@ -322,6 +334,9 @@ page.
 
 - MuseScore Studio 4 (`mscore` inside the app bundle), plus FFmpeg for its
   video export
+- `ffmpeg` and numpy for `video-audio.py`: up to 320 kbps it uses
+  ffmpeg's AudioToolbox encoder `aac_at`, which only exists on macOS
+  (MacPorts' ffmpeg has it)
 - LilyPond 2.26 with `musicxml2ly`: the official build in
   `~/Applications/lilypond-2.26.0`, with its commands linked into
   `~/.local/bin` (MacPorts only had 2.24 and the 2.25 development version

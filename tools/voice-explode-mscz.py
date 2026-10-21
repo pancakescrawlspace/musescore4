@@ -475,9 +475,9 @@ def set_color(el, color):
     c.attrib = dict(zip("rgba", map(str, (*color, 255))))
 
 
-def paint(staff, color):
-    """Colour a staff's notes (heads, dots, accidentals, stems, flags, beams), rests,
-    slurs, ties and lyrics; ledger lines, clefs and the rest stay black."""
+def paint(staff, color, lyrics=True):
+    """Colour a staff's (or a voice's) notes (heads, dots, accidentals, stems, flags,
+    beams), rests, slurs, ties and lyrics; ledger lines, clefs and the rest stay black."""
     for chord in staff.iter("Chord"):
         for tag in ("Stem", "Hook"):
             if tag == "Hook" and (DURATIONS.get(chord.findtext("durationType"), 1) > Fraction(1, 8)):
@@ -496,7 +496,8 @@ def paint(staff, color):
             for dot in dotted.findall("NoteDot"):
                 set_color(dot, color)
     for el in staff.iter():
-        if el.tag in ("Note", "Rest", "Accidental", "Lyrics", "Beam", "Slur", "Tie"):
+        if el.tag in ("Note", "Rest", "Accidental", "Beam", "Slur", "Tie") or (
+                lyrics and el.tag == "Lyrics"):
             set_color(el, color)
 
 
