@@ -80,7 +80,17 @@ tools/score-reflow.py --out-dir /tmp/video --staff-scale 0.7 bwv4.8_tenor.mscz
 Give both steps the same `--resolution`. `--staff-scale` makes the staves
 smaller in the copy, for a system that is taller than the frame: four
 staves with two lines of text each (the Bach chorales split by
-`voice-explode-mscz.py`) need about 0.7.
+`voice-explode-mscz.py`) need about 0.7. It also makes them larger, for a
+system that fills only part of the frame, with `--top-margin` and
+`--side-margin` (inches) instead of reflow's margins (none at the top, the
+score's own 0.59 in at the sides). Two staves with lyrics, as in the
+`video/` set, get `--staff-scale 1.4 --side-margin 0.2 --top-margin 0.18`
+(chosen 2026-10-21): the system then fills the frame, centred (16-84 % of
+its height in all eight tones of heer_ik_roep, against 7-56 % before). The
+width sets the limit: at 1.7 the lyrics of tone 8's longest line ran
+together, and 1.4 keeps its melisma line only with the narrower side
+margins. A top margin of 0.68 in alone centres the system at its old size,
+but leaves too much room above it.
 
 ## Free-meter scores (`mscz-add-hidden-timesig.py`)
 
@@ -230,7 +240,8 @@ The `video/` set (the MP4s gitignored, their scores committed) is the whole
 score in piano plus one video per voice, that voice on a solo instrument
 and the others on piano, with the audio at 320 kbps. Each video has two
 scores: the video score `video/X.mscz`, the original two staves with the
-lyrics between them, reflowed, and the spotlighted voice in red
+lyrics between them, reflowed with larger staves that fill the frame
+(see "Videos with reflow"), and the spotlighted voice in red
 (`voice-color-mscz.py`, below), and the audio score `video/audio/X.mscz`,
 one staff per voice from this script, with the sounds and levels below in
 its mixer. `video-audio.py` puts the audio score's sound into the video
@@ -290,7 +301,8 @@ for v in soprano:Flute:10.4:4.0 alto:Oboe:10.2:3.5 tenor:Clarinet:11.9:2.2 bass:
     --background-db $db --spotlight-db $sdb $s.mscz video/audio/${s}_$voice.mscz
   tools/voice-color-mscz.py --voice $voice --color red $s.mscz /tmp/color/${s}_$voice.mscz
 done
-tools/score-reflow.py --out-dir video $s.mscz /tmp/color/${s}_*.mscz
+tools/score-reflow.py --out-dir video --staff-scale 1.4 --side-margin 0.2 --top-margin 0.18 \
+  $s.mscz /tmp/color/${s}_*.mscz
 tools/score-video.py video/$s.mscz video/${s}_*.mscz
 tools/video-audio.py video/$s.mscz video/${s}_*.mscz
 ```

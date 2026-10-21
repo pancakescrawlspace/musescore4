@@ -17,7 +17,11 @@ Reflow renders a score with more than three staves at a lower dpi, so that
 the original page's height fits the video (about 91 dpi for A4 at 1080p);
 that makes a short four-staff score one tiny line, so it isn't copied.
 Instead --staff-scale (e.g. 0.75) makes the staves smaller where a system
-is taller than the frame (four staves with two lines of text).
+is taller than the frame (four staves with two lines of text), or larger
+where it fills only part of it. --top-margin and --side-margin (inches)
+replace reflow's margins (none at the top, the score's own at the sides):
+two staves with lyrics at --staff-scale 1.4 --side-margin 0.2 --top-margin
+0.18 fill the frame, centred, and the longest lines still fit.
 
 Reflow only hides the title frame; the video's title card still reads the
 title from it. The command line ignores showVerticalFrames in
@@ -31,7 +35,7 @@ reflow off: the copy is reflowed already).
 
 usage: tools/score-reflow.py --out-dir DIR score.mscz [...]   writes DIR/score.mscz
        options: --resolution 1080p (2160p 1440p 1080p 720p 480p 360p),
-                --staff-scale 1.0
+                --staff-scale 1.0, --top-margin 0, --side-margin IN
 """
 import argparse, html, os, re, sys, zipfile
 
@@ -68,7 +72,7 @@ def card_title(title):
     return " – ".join(line.strip() for line in title.splitlines() if line.strip())
 
 
-def reflow_copy(src, dst, width, height, staff_scale=1.0):
+def reflow_copy(src, dst, width, height, staff_scale=1.0, top_margin=0.0, side_margin=None):
     with zipfile.ZipFile(src) as zin:
         files = [(i, zin.read(i)) for i in zin.infolist()]
     out = []
@@ -78,10 +82,13 @@ def reflow_copy(src, dst, width, height, staff_scale=1.0):
             pw, ph = width / CANVAS_DPI, height / CANVAS_DPI
             if staff_scale != 1.0:  # not reflow's: smaller staves, so a tall system fits the frame
                 mss = set_style(mss, "spatium", round(get_style(mss, "spatium", 1.75) * staff_scale, 4))
+            if side_margin is not None:  # not reflow's either
+                for key in ("pageOddLeftMargin", "pageEvenLeftMargin"):
+                    mss = set_style(mss, key, side_margin)
             left = get_style(mss, "pageOddLeftMargin", 0.590551) + get_style(mss, "pageEvenLeftMargin", 0.590551)
             for key, value in (("pageWidth", pw), ("pageHeight", ph), ("pagePrintableWidth", round(pw - left, 6)),
-                               ("pageEvenTopMargin", 0), ("pageEvenBottomMargin", 0),
-                               ("pageOddTopMargin", 0), ("pageOddBottomMargin", 0),
+                               ("pageEvenTopMargin", top_margin), ("pageEvenBottomMargin", 0),
+                               ("pageOddTopMargin", top_margin), ("pageOddBottomMargin", 0),
                                ("pageTwosided", 0), ("showHeader", 0), ("showFooter", 0),
                                ("minSystemDistance", 10), ("maxSystemDistance", 10),
                                ("staffLowerBorder", 5), ("staffUpperBorder", 7)):
@@ -117,6 +124,10 @@ def main():
                     help="the video's size; give score-video.py the same")
     ap.add_argument("--staff-scale", type=float, default=1.0,
                     help="staff size factor, e.g. 0.75 when a system is taller than the frame")
+    ap.add_argument("--top-margin", type=float, default=0.0, metavar="IN",
+                    help="page top margin in inches (default 0, as reflow), e.g. 0.18")
+    ap.add_argument("--side-margin", type=float, metavar="IN",
+                    help="left and right page margins in inches (default: the score's), e.g. 0.2")
     args = ap.parse_args()
     height = HEIGHTS[args.resolution]
     width = height * 16 // 9
@@ -125,7 +136,7 @@ def main():
         dst = os.path.join(args.out_dir, os.path.basename(src))
         if os.path.exists(dst) and os.path.samefile(dst, src):
             sys.exit(f"{src}: --out-dir is the score's own folder; it would be overwritten")
-        reflow_copy(src, dst, width, height, args.staff_scale)
+        reflow_copy(src, dst, width, height, args.staff_scale, args.top_margin, args.side_margin)
         print(f"{src} -> {dst}")
 
 

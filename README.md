@@ -263,7 +263,8 @@ Findings about `mscore` (MuseScore Studio 4.7.5, at
   height in 1/1200 in − margins + 200), about 91 dpi for A4 at 1080p). That
   makes a short four-staff score one unreadable line; the script keeps
   300 dpi, and `--staff-scale` shrinks the staves where a system is taller
-  than the frame.
+  than the frame, or enlarges them where it fills only part of it (with
+  `--top-margin` and `--side-margin`, see `tools/README.md`).
 - **Repeat counts:** a repeated passage is marked with start/end repeat
   barlines, and the end repeat's "play count" says how often it is played
   (Properties panel on the barline). The count printed above it is a
