@@ -89,19 +89,27 @@ the bass lines are still open.
   [8](https://www.oca.org/liturgics/music-downloads/tone-8)
   (where "Lord I call…" is listed as "Obikhod").
 
-Compared with the Dutch version at the start of each tone (soprano and
-bass; both settings are in the same close harmony):
+Compared with the Dutch version note by note, all four voices, whole
+tones (2026-10-23). The OCA PDFs are vector files (Finale, Maestro font),
+so their notes were read exactly from the PDF (noteheads and staff lines)
+rather than by eye, and aligned with the `.mscz` voice by voice, repeated
+notes merged (English and Dutch put different numbers of syllables on a
+reciting note). Measure numbers are the Dutch ones.
 
-| tone | match with the OCA setting |
+| tone | Dutch against the OCA setting |
 |---|---|
-| 1 | Same melody and harmony; own ornament: "Heer ik roep tot U, verhoor mij" ends over D in the bass, the OCA on F. |
-| 2 | Unclear: the OCA harmonizes in G minor (bass G, F♯), the Dutch version in F major (bass C/F); cadences differ. |
-| 3 | Same, with an added B♭ neighbour note in the soprano; the cadence "verhoor mij, o Heer" (A–G–F–E over F–C–G–C) is identical. |
-| 4 | Melody and bass almost identical, differing only with the number of syllables. |
-| 5 | Unclear: the Dutch soprano recites on G, the OCA soprano on B♭. |
-| 6 | Same melody, harmony and key (G major). |
-| 7 | Same cadences; the first phrase partly different. |
-| 8 | Same melody and harmony. |
+| 1 | Same setting. The Dutch adds cadential turns: at "verhoor mij" in m1/m5 (soprano B♭–C … A–G–F, alto G–A … F–E–D, bass F–C–F–C–D) and in m7–8. |
+| 2 | Different setting: the OCA in G minor (bass on G and D), the Dutch in F major (bass on C and F, with B♭2); the cadences differ too (Dutch soprano C–D–C, OCA G–A). Melodically the Dutch rises a second where Bakhmetev and the OCA rise a third (see above). |
+| 3 | Same setting. The Dutch adds a G before each first phrase and a turn B♭–A–G–F (alto G–F–E–D) at "verhoor mij" (m1, 3, 5, 7, 9); a few tenor notes differ (m2, m10–11). |
+| 4 | Same setting, nearly identical; only the final cadence "verhoor mij, o Heer!" (m6, m11) differs: the OCA has an extra turn (soprano A–G, alto F–E), the Dutch tenor a C♯, the Dutch bass A3 for the OCA's A2. |
+| 5 | Different setting over a similar bass: the OCA keeps the melody in the alto (alto G with A–F turns, soprano on B♭–C), the Dutch puts it in the soprano (G), so soprano, alto and tenor all differ; the bass mostly agrees, with D3 for F3 at the final cadence (m6, m11). |
+| 6 | Same setting (G major). The Dutch adds a turn at the final cadence (m6, m11: soprano A–B–A–G, bass D–G–A–B for the OCA's A2) and has D♯ in the alto in m3 (the OCA D). |
+| 7 | Different upper voices: the OCA's first phrase moves (soprano G–A–B♭–B♭–A–G, alto E–F–G–G–F–E), the Dutch recites (soprano G…G F–G–A–F–G, alto E…E D–E–F–D–E); the cadences (…F–E) agree, the tenor (on C) too, the bass partly. |
+| 8 | Same setting, practically identical: one extra syllable in m7, a tenor C♯ for C at the final cadence (m6, m11), one bass note (m5: C3 for D3). |
+
+So the Dutch version is the OCA's setting in tones 1, 3, 4, 6 and 8 (with
+added turns at the cadences in 1, 3 and 6), and a different arrangement
+of the same chant in tones 2, 5 and 7.
 
 The keys agree too (F major, tone 6 G major), which points to the OCA's
 settings, or their source, as the model of the Dutch version.
@@ -168,13 +176,14 @@ The downloaded scores are in `references/heer_ik_roep/` (gitignored):
 tutorial's eight explanation PDFs),
 `obikhod_azbyka/` (the eight azbyka.ru "Обиход" PDFs), `smirnov/`,
 `court_obikhod_1914_djukliros.pdf` and
-`bakhmetev_obikhod_1869_vol1_ecmr.pdf`.
+`bakhmetev_obikhod_1869_vol1_ecmr.pdf`. The scripts that read the OCA PDFs and compared
+them with the scores are in `references/tools/` (`ocaread.py`,
+`cmp_oca.py`; run `python3 cmp_oca.py 1 2 … 8` there).
 
 ## Open questions
 
-1. The rest of each tone (after the first phrase), and tone 7, against
-   Bakhmetev; and the Dutch harmony against the OCA's, especially tone 2
-   (F major against G minor) and tone 5 (melody in the soprano).
+1. Tones 2, 5 and 7 against Bakhmetev beyond the first phrase, and against
+   other settings, to find where those three arrangements come from.
 2. Who made the Dutch adaptation, and from what: directly from the OCA's
    English settings, or from a common source. A Dutch parish book or the
    choir's own sheets would settle it.
