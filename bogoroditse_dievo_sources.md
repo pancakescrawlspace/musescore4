@@ -116,3 +116,50 @@ prayer in Russian civil script, from memory rather than an online source:
 > родила еси душ наших.
 
 The score capitalizes *Плод* (by choice) and *Благословенна*.
+
+## Terminology
+
+Russian terms in the headings and catalogues above:
+
+- **распев** (older spelling *роспев*): a chant, not a hymn. Either a whole
+  chant tradition in one style (*знаменный распев*, Znamenny chant;
+  *киевский*, Kievan; *греческий*, Greek; *болгарский*, Bulgarian), or one
+  chant's melody for a particular text ("the Greek *распев* of «Богородице
+  Дево»"). From *распевать*, "to sing out, to draw out in singing", which is
+  why a melisma (a syllable over several notes) is also a *распев*. The
+  Obikhod's title "…употребительных церковных роспевов" means "of the
+  chants in common use".
+- **греческий распев** (Greek chant): not the singing of the Greek Church,
+  but a chant that became known in Muscovite Russia in the mid-17th
+  century, the last of three new chants then (after Kievan and Bulgarian
+  chant). Its origins are debated, and it has no melodies for some
+  categories of hymns. The Synodal Obikhod of 1909 includes it in shortened
+  (*сокращённый*) form.
+- **песнопение**: a hymn, a liturgical chant as a text-and-music item
+  ("Богородице Дево" is a *песнопение*).
+- **напев**: a tune, often a local variant within a chant (*Киево-Печерский
+  напев*, the *напев Валаамского монастыря*).
+- **подобен** ("like"): a hymn whose melody and metre follow a model hymn;
+  "подобен «Еже от века утаенное»" means: sung to the melody of that hymn.
+- **глас** (tone): one of the eight modes of the Octoechos; «Еже от века
+  утаенное» belongs to tone 4 (*глас 4*, *гл. 4*).
+- **переложение**, abbreviated *перел.* ("в переложении", in the arrangement
+  of): a choral setting of an existing chant melody, the harmony and
+  voicing by the arranger. **гармонизация** (*гарм.*) means much the same.
+- **муз.** (*музыка*, music by): credits the composer with the music itself,
+  as for an original work like Arkhangelsky's Op. 39 No. 8. For a chant
+  setting "перел." is the accurate attribution.
+- **Обиход** (*Обиход нотного пения*): the book of the chants in regular
+  use (first printed in 1772); here the Synodal edition the Greek-chant
+  melody comes from.
+
+Checked on 2026-10-23 against:
+[Распев (Музыкальная энциклопедия, booksite.ru)](https://booksite.ru/FullText/1/001/008/095/538.htm)
+("самостоятельная система монодии… роспев"),
+[Подобен (azbyka.ru)](https://azbyka.ru/podoben),
+[Greek chant (churchmotherofgod.org)](https://churchmotherofgod.org/terminologies/greek-chant/),
+[Russian Chant (OrthodoxWiki)](https://orthodoxwiki.org/Russian_Chant),
+[Obikhod (churchmotherofgod.org)](https://churchmotherofgod.org/terminologies/obikhod/)
+and the 1909 Obikhod's catalogue entry linked above. The meanings of
+*песнопение*, *напев*, *глас*, *переложение*/*гармонизация* and *муз.* are
+from general knowledge, not from these sources.
