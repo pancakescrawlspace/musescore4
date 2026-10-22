@@ -172,9 +172,10 @@ densest odd measure alone (see "Line breaks" above) it fits.
 
 `tools/check-pdf-notes.py` reads the notes back from the PDF itself and
 compares them with the `.mscz`: pitch and spelling, durations, measures
-and slurs. It also rejects stems that point against their voice. It covers the two-staff SATB layout with quarter, half and
-whole notes; anything else (rests, ties, beams, tuplets) is reported as
-unsupported rather than passed. See `tools/README.md`.
+and slurs. It also rejects stems that point against their voice. It covers the two-staff SATB layout with whole notes down
+to sixteenths (flags and beams) and chords within a voice; anything else
+(rests, ties, tuplets) is reported as unsupported rather than passed. See
+`tools/README.md`.
 
 ## Heer ik roep: all eight tones
 

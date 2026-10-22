@@ -131,9 +131,15 @@ tools/check-pdf-notes.py $(for n in 1 2 3 4 5 6 7 8; do
 Exit status 0 means everything matches, 1 means differences (listed as
 `PROBLEM:` lines) and 2 means the score uses something the checker can't read
 yet. The check is written for the two-staff SATB layout of these scores: two
-voices per staff, one note per chord, quarter/half/whole notes, dots, slurs.
-Rests, ties, beams, tuplets, a slur end without a start in its voice, and
-other layouts give exit status 2 rather than a false pass.
+voices per staff, whole notes down to sixteenths, dots, slurs. Eighths and
+sixteenths are read from their flags or beams (one per halving), and the beam
+groups themselves aren't compared: the `.mscz` doesn't store them, MuseScore
+beams by the time signature as it lays out. A chord within a voice (the
+bass's octaves) is compared as a whole. Stemless whole notes can't show their
+voice, so a column of three or more is read as voice 1 on top and voice 2 for
+the rest; a score that splits them differently gets a `PROBLEM:`, not a pass.
+Rests, ties, tuplets, a slur end without a start in its voice, and other
+layouts give exit status 2 rather than a false pass.
 
 Stems must follow the voices: up in voice 1, down in voice 2. A stem
 direction forced against its voice in MuseScore (`StemDirection` down in
