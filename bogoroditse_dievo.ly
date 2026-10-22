@@ -67,7 +67,7 @@ PartPOneVoiceTwo = \relative g' {
 
 PartPTwoVoiceOne = \relative b {
   \clef "bass" \once \omit Staff.TimeSignature \time 9/4 \key g \major \U b8 [
-  \U c8 ] \U d4 \U d4 \U d4 \U c8 [ \U d8 ] \U e4 \U d4 \U d2 | % 1
+  ^\p \U c8 ] \U d4 \U d4 \U d4 \U c8 [ \U d8 ] \U e4 \U d4 \U d2 | % 1
   \once \omit Staff.TimeSignature \time 31/8 \U b4 \U e4 \U d4 \U c4 \U d4 \U c8
   ( [ \U d8 ) ] \U e4 \U d4 \U d4 \U d4 \U b4 \U d2 \U b2 ( \U b8 ) | % 2
   \once \omit Staff.TimeSignature \time 15/8 \U b8 [ \U b8 \U d8 ] \U d4 \U c8 (
