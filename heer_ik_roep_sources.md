@@ -40,8 +40,16 @@ wrongly concluded that they differ.
 
 ### The OCA's settings
 
-- [Tutorial for Learning the Church Tones: Common Chant](https://media.oca.org/chanting-tutorial/Tutorial-Intro-Obikhod-Tone1-Explanation.pdf)
-  (David Drillock, Deacon Gregory Ealy): Common Chant ("Obikhod chant")
+- The OCA's singing tutorial, [Learning the Tones](https://www.oca.org/liturgics/learning-the-tones):
+  a self-study course in the eight tones of Common (L'vov-Bakhmetev
+  Obikhod) and Kievan chant, for now only the stichera melodies (psalm
+  verses, troparia and kanons are announced, not there yet). Per tone an
+  explanation PDF and recordings: unison, full choir, and each voice
+  alone. The Common Chant explanations, tones [1](https://media.oca.org/chanting-tutorial/Tutorial-Intro-Obikhod-Tone1-Explanation.pdf), [2](https://media.oca.org/chanting-tutorial/Tutorial-Obikhod-Tone2-Explanation.pdf), [3](https://media.oca.org/chanting-tutorial/Tutorial-Common-Tone3-Explanation.pdf), [4](https://media.oca.org/chanting-tutorial/Tutorial-Obikhod-Tone4-Explanation.pdf), [5](https://media.oca.org/chanting-tutorial/Tutorial-Common-Tone5-Explanation.pdf), [6](https://media.oca.org/chanting-tutorial/Tutorial-Common-Tone6-Explanation.pdf), [7](https://media.oca.org/chanting-tutorial/Tutorial-Common-Tone7-Explanation.pdf), [8](https://media.oca.org/chanting-tutorial/Tutorial-Obikhod-Tone8-Explanation.pdf)
+  ([announcement](https://www.oca.org/news/headline-news/liturgical-music-tutorial-now-available)).
+- Its introduction, "Tutorial for Learning the Church Tones: Common
+  Chant" (David Drillock, Deacon Gregory Ealy, in the tone 1 PDF):
+  Common Chant ("Obikhod chant")
   was harmonized under A. F. L'vov in 1848 and re-edited by N. Bakhmetev
   in 1869; the tutorial and the OCA's settings use that 1869 edition, and
   have the melody in the alto. Each tone has five unrelated kinds of
@@ -143,7 +151,8 @@ settings, or their source, as the model of the Dutch version.
 ## Local copies
 
 The downloaded scores are in `references/heer_ik_roep/` (gitignored):
-`oca/` (the eight Common Chant PDFs, plus Kievan and Serbian tone 1),
+`oca/` (the eight Common Chant PDFs, Kievan and Serbian tone 1, and the
+tutorial's eight explanation PDFs),
 `obikhod_azbyka/` (the eight azbyka.ru "Обиход" PDFs), `smirnov/`,
 `court_obikhod_1914_djukliros.pdf` and
 `bakhmetev_obikhod_1869_vol1_ecmr.pdf`.
