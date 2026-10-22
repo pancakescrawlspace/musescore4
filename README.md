@@ -167,7 +167,7 @@ to the originals, so mirror any volta change there.
 lyrics, no staff names, verse numbers only when a score has more than one
 verse, no first-system indent, no footer, and the title on the left with
 the subtitle on the right (or the title centered when there is no
-subtitle). A subsubtitle goes centered below the title, in bold at 14 pt
+subtitle). A subsubtitle goes centered below the title, in bold at 12 pt
 (the title is about 17.5 pt). It uses LilyPond 2.26 syntax. The minimum gap between lyric
 words is 1.6. With 2.26 it was 1.4 for a while, because 1.6 didn't fit two
 measures per line in the Heer ik roep tones when m11 stood alone; with the
