@@ -2499,6 +2499,9 @@
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
+        <notations>
+          <slur type="start" number="1"/>
+          </notations>
         </note>
       <note>
         <pitch>
@@ -2509,6 +2512,9 @@
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
+        <notations>
+          <slur type="stop" number="1"/>
+          </notations>
         </note>
       <note>
         <pitch>

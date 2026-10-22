@@ -73,7 +73,7 @@ PartPTwoVoiceOne = \relative b {
   \once \omit Staff.TimeSignature \time 15/8 \U b8 [ \U b8 \U d8 ] \U d4 \U c8 (
   [ \U d8 ) ] \U e4 \U e4 \U e2 | % 3
   \once \omit Staff.TimeSignature \time 13/4 \U b8 [ \U b8 \U b8 \U d8 ] \U d2
-  \U c4 \U d4 \U e4 \U d4 \U d4 \U e4 \U d2. | % 4
+  \U c4 ( \U d4 ) \U e4 \U d4 \U d4 \U e4 \U d2. | % 4
   \once \omit Staff.TimeSignature \time 15/4 \U b8 [ \U c8 ] \U d4 \U d4 \U d4
   \U c8 ( [ \U d8 ) ] \U e4 \U d4 \U d4 \U b4 \U d2 b1 \bar "|."
 }
