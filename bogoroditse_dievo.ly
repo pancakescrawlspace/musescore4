@@ -36,8 +36,8 @@ PartPOneVoiceOne = \relative g' {
   \once \omit Staff.TimeSignature \time 13/4 \U g8 [ \U g8 \U g8 \U a8 ] \U b2
   \U c4 ( \U b4 ) \U c4 \U d4 \U d4 \U c4 \U b2. | % 4
   \once \omit Staff.TimeSignature \time 15/4 \U g8 [ \U a8 ] \U b4 \U b4 \U b4
-  \U a8 ( [ \U b8 ) ] \U c4 \U b4 \U b4 \U a8 [ \U g8 \U a8 ] \U b4 \U a8 g1
-  ^\fermata \bar "|."
+  \U a8 ( [ \U b8 ) ] \U c4 \U b4 \U b4 \U a8 ( [ \U g8 ) \U a8 ( ] \U b4 \U a8
+  ) g1 ^\fermata \bar "|."
 }
 
 PartPOneVoiceOneLyricsOne = \lyricmode {

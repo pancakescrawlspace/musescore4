@@ -1450,6 +1450,9 @@
         <type>eighth</type>
         <stem>up</stem>
         <beam number="1">begin</beam>
+        <notations>
+          <slur type="start" number="1"/>
+          </notations>
         <lyric number="1">
           <syllabic>single</syllabic>
           <text>душ</text>
@@ -1466,6 +1469,9 @@
         <type>eighth</type>
         <stem>up</stem>
         <beam number="1">continue</beam>
+        <notations>
+          <slur type="stop" number="1"/>
+          </notations>
         </note>
       <note>
         <pitch>
@@ -1477,6 +1483,9 @@
         <type>eighth</type>
         <stem>up</stem>
         <beam number="1">end</beam>
+        <notations>
+          <slur type="start" number="1"/>
+          </notations>
         <lyric number="1">
           <syllabic>single</syllabic>
           <text>на</text>
@@ -1502,6 +1511,9 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>up</stem>
+        <notations>
+          <slur type="stop" number="1"/>
+          </notations>
         </note>
       <note>
         <pitch>
