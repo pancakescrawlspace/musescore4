@@ -2,3 +2,6 @@
 *.mp4
 .mscbackup/
 .DS_Store
+
+# downloaded reference scores (see the *_sources.md files)
+references/
