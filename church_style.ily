@@ -31,7 +31,7 @@
   % with a subtitle (e.g. "toon N"): title on the left, subtitle on the
   % right, on one line; without one: title centered. A subsubtitle (the
   % score's Subtitle text, see tools/rebuild-score.py) goes centered below
-  % the title, at the lyrics' 14pt (the title is about 17.5pt).
+  % the title, in bold at the lyrics' 14pt (the title is about 17.5pt).
   bookTitleMarkup = \markup \column {
     \if #has-subtitle? \fill-line {
       \fontsize #4 \bold \fromproperty #'header:title
@@ -43,7 +43,7 @@
     \if #has-subsubtitle? \column {
       \vspace #0.3
       \fill-line {
-        \fontsize #(* 6 (/ (log (/ 14 11)) (log 2))) \fromproperty #'header:subsubtitle
+        \fontsize #(* 6 (/ (log (/ 14 11)) (log 2))) \bold \fromproperty #'header:subsubtitle
       }
       \vspace #0.8
     }
