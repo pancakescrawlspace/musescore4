@@ -73,7 +73,7 @@ tools/rebuild-score.py X Y Z        # several at once
 
 This runs all the steps below. The generic hand edits (and the line-break spacer below)
 are carried over from the current `.ly`; a score without a `.ly` yet gets
-its title and subtitle from its title frame. If a `.ly` has hand edits
+its title and subsubtitle from its title frame. If a `.ly` has hand edits
 the script can't carry over (groot_prokimen's voltas), it stops before
 replacing the `.ly`, so you can run the steps by hand. It also runs the
 note check, and rejoins `heer_ik_roep_alle_tonen.pdf` when a Heer ik roep
@@ -135,12 +135,15 @@ In every generated `.ly`:
 - the comment `% hand edits after conversion: …` after musicxml2ly's
   "automatically converted" line;
 - in `\header`, replace musicxml2ly's `title` ("Untitled score") and
-  `composer` with the title from the score's title frame, plus `subtitle`
-  if there is one (e.g. `subtitle = "toon 3"`);
-- `subsubtitle` from the title frame's Subtitle text (MuseScore's
+  `composer` with the title from the score's title frame, plus
+  `subsubtitle` from the title text's second line if there is one (e.g.
+  `subsubtitle = "toon 3"`);
+- `subtitle` from the title frame's Subtitle text (MuseScore's
   Subtitle style, which MuseScore centers below the title), if there is
   one. MuseScore doesn't export it to MusicXML; `rebuild-score.py` reads it
   from the `.mscz` on every rebuild (bogoroditse_dievo: "Verheug U Maagd").
+
+(Until 2026-10-22 the title text's second line was the `subtitle`.)
 
 A few files have more, each marked with a `% hand edit:` comment:
 
@@ -166,8 +169,8 @@ to the originals, so mirror any volta change there.
 `church_style.ily` holds the shared look: Helvetica throughout, 14 pt
 lyrics, no staff names, verse numbers only when a score has more than one
 verse, no first-system indent, no footer, and the title on the left with
-the subtitle on the right (or the title centered when there is no
-subtitle). A subsubtitle goes centered below the title, in bold at 12 pt
+the subsubtitle on the right (or the title centered when there is no
+subsubtitle). A subtitle goes centered below the title, in bold at 12 pt
 (the title is about 17.5 pt). It uses LilyPond 2.26 syntax. The minimum gap between lyric
 words is 1.6. With 2.26 it was 1.4 for a while, because 1.6 didn't fit two
 measures per line in the Heer ik roep tones when m11 stood alone; with the

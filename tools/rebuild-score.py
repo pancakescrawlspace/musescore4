@@ -10,16 +10,17 @@ signatures, hidden ones for free meter: a score without any is refused
 (add them with tools/mscz-add-hidden-timesig.py).
 
 Hand edits taken from the current .ly: the \\include of church_style.ily,
-the hand-edit comment, the \\header title/subtitle, and the line-break
+the hand-edit comment, the \\header title/subsubtitle, and the line-break
 spacer (`{ s4*N \\bar "" }`). Any other "% hand edit:" line makes the
 script stop before the .ly is replaced, so redo those by hand. A score
-without a .ly yet gets its title and subtitle from the score's title frame.
+without a .ly yet gets its title and subsubtitle from the score's title
+frame: the title text's first line, and its second line if any (like
+"toon 1"), which church_style.ily prints to the right of the title.
 
 A Subtitle text in the title frame (MuseScore's Subtitle style, centered
-below the title) becomes the \\header subsubtitle, read from the .mscz on
+below the title) becomes the \\header subtitle, read from the .mscz on
 every rebuild; church_style.ily centers it below the title. MuseScore doesn't
-export it to MusicXML. (A "subtitle" above means the title text's second
-line, like "toon 1", which LilyPond prints to the right of the title.)
+export it to MusicXML.
 
 System breaks and page breaks in the score (MuseScore's layout breaks) become
 \\break / \\pageBreak at the same measures. They are read from the .mscz
@@ -67,7 +68,7 @@ def problems(stderr, tool):
 
 
 def title_frame(mscz):
-    """(title, subtitle or None) from the score's title frame, e.g. "<b>Heer ik roep<br/></b>toon 1"."""
+    """(title, subsubtitle or None) from the title text's lines, e.g. "<b>Heer ik roep<br/></b>toon 1"."""
     with zipfile.ZipFile(mscz) as z:
         root = ET.fromstring(z.read([n for n in z.namelist() if n.endswith(".mscx")][0]))
     for t in root.iter("Text"):
@@ -99,15 +100,15 @@ def splice(new, old, mscz):
     if old is not None:
         inc = re.search(r'\\include "church_style.ily"\n', old).group(0)
         com = re.search(r"% hand edits after conversion:.*\n", old).group(0)
-        fields = dict(re.findall(r'^\s*(title|subtitle)\s*=\s*("[^"]*")', old, re.M))
+        fields = dict(re.findall(r'^\s*(title|subsubtitle)\s*=\s*("[^"]*")', old, re.M))
     else:
-        title, subtitle = title_frame(mscz)
-        print(f"  no .ly yet: title {title!r}" + (f", subtitle {subtitle!r}" if subtitle else ""))
+        title, subsub = title_frame(mscz)
+        print(f"  no .ly yet: title {title!r}" + (f", subsubtitle {subsub!r}" if subsub else ""))
         inc, com = '\\include "church_style.ily"\n', COMMENT + "\n"
-        fields = {"title": f'"{title}"', **({"subtitle": f'"{subtitle}"'} if subtitle else {})}
+        fields = {"title": f'"{title}"', **({"subsubtitle": f'"{subsub}"'} if subsub else {})}
     sub = frame_subtitle(mscz)
     if sub:
-        fields["subsubtitle"] = '"' + sub.replace('"', '\\"') + '"'
+        fields["subtitle"] = '"' + sub.replace('"', '\\"') + '"'
     version = re.search(r'\\version "[^"]*"\n', new).group(0)
     new = new.replace(version, version + inc, 1)
     conv = re.search(r"% automatically converted by musicxml2ly from .*\n", new).group(0)

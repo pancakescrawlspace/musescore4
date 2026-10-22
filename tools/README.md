@@ -17,7 +17,8 @@ tools/rebuild-score.py heer_ik_roep_t3 onder_uwe_hoede
 ```
 
 The hand edits come from the current `.ly`: the `\include`, the hand-edit
-comment, the `\header` title/subtitle and the line-break spacer. Other
+comment, the `\header` title/subsubtitle and the line-break spacer. The
+`subtitle` comes from the score's Subtitle text on every rebuild. Other
 `% hand edit:` lines stop the script before it replaces the `.ly`. Lyric
 syllables underlined in the score (stressed syllables) become
 `\markup \stressed`, a red underline from `church_style.ily`. Exit
@@ -387,5 +388,5 @@ FluidSynth plays it with MuseScore's soundfont
 ffmpeg encodes it, normalised to a peak of -1 dB. The other voices get MIDI
 expression 0.5, about 12 dB softer (`--background 0.4` is about 16 dB). The
 scores have no tempo marking, so the default is MuseScore's ♩ = 120. The
-title tag is the score's title and subtitle, plus the voice. Needs
+title tag is the score's title, subtitle and subsubtitle, plus the voice. Needs
 `lilypond`, `fluidsynth` and `ffmpeg`; the MP3s are ignored by git.

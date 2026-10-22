@@ -11,7 +11,7 @@ U = \tweak Stem.direction #UP \etc
 
 \header {
   title = "Heer ik roep"
-  subtitle = "toon 1"
+  subsubtitle = "toon 1"
   "id: software" = "MuseScore Studio 4.7.5"
   "id: encoding-date" = "2026-10-17"
 }

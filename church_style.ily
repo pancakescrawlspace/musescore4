@@ -2,7 +2,7 @@
 % House style for the generated .ly files (musicxml2ly output);
 % each of them does \include "church_style.ily" after \version.
 
-% true when the score's \header sets a subtitle
+% true when the score's \header sets a subtitle or subsubtitle
 #(define (has-subtitle? layout props)
    (chain-assoc-get 'header:subtitle props #f))
 #(define (has-subsubtitle? layout props)
@@ -28,22 +28,22 @@
   % no footer ("Music engraving by LilyPond ..." tagline)
   oddFooterMarkup = ##f
   evenFooterMarkup = ##f
-  % with a subtitle (e.g. "toon N"): title on the left, subtitle on the
-  % right, on one line; without one: title centered. A subsubtitle (the
+  % with a subsubtitle (e.g. "toon N"): title on the left, subsubtitle on
+  % the right, on one line; without one: title centered. A subtitle (the
   % score's Subtitle text, see tools/rebuild-score.py) goes centered below
   % the title, in bold at 12pt (the title is about 17.5pt).
   bookTitleMarkup = \markup \column {
-    \if #has-subtitle? \fill-line {
+    \if #has-subsubtitle? \fill-line {
       \fontsize #4 \bold \fromproperty #'header:title
-      \fromproperty #'header:subtitle
+      \fromproperty #'header:subsubtitle
     }
-    \unless #has-subtitle? \fill-line {
+    \unless #has-subsubtitle? \fill-line {
       \fontsize #4 \bold \fromproperty #'header:title
     }
-    \if #has-subsubtitle? \column {
+    \if #has-subtitle? \column {
       \vspace #0.3
       \fill-line {
-        \fontsize #(* 6 (/ (log (/ 12 11)) (log 2))) \bold \fromproperty #'header:subsubtitle
+        \fontsize #(* 6 (/ (log (/ 12 11)) (log 2))) \bold \fromproperty #'header:subtitle
       }
       \vspace #0.8
     }

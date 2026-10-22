@@ -116,8 +116,8 @@ def practice(name, args):
         if len(staves) != len(STAFF.findall(ly)):
             raise Failed("not every staff has an instrument name")
         header = re.search(r'^\s*title\s*=\s*"([^"]*)"', ly, re.M)
-        sub = re.search(r'^\s*subtitle\s*=\s*"([^"]*)"', ly, re.M)
-        title = ", ".join(m.group(1) for m in (header, sub) if m) or name
+        subs = [re.search(rf'^\s*{f}\s*=\s*"([^"]*)"', ly, re.M) for f in ("subtitle", "subsubtitle")]
+        title = ", ".join(m.group(1) for m in (header, *subs) if m) or name
         mixes = [("", [(args.instrument, 1.0)] * len(staves), title)]
         spot = (args.spotlight_instrument or args.instrument, 1.0)
         rest = (args.background_instrument or args.instrument, args.background)
