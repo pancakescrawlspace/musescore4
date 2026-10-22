@@ -258,18 +258,19 @@ lyrics between them, reflowed with larger staves that fill the frame
 one staff per voice from this script, with the sounds and levels below in
 its mixer. `video-audio.py` puts the audio score's sound into the video
 score's video. (Until 2026-10-21 the videos showed the four staves of the
-audio score itself.) All sounds
-come from the SGM-V2.01 soundfont (`SGM-V2.01.sf2` in
+audio score itself.) The solo
+instruments come from the SGM-V2.01 soundfont and the piano from Arachno's
+(`SGM-V2.01.sf2` and `Arachno-SoundFont-1.0.sf2` in
 `~/Documents/MuseScore4/SoundFonts`, where all the soundfonts are kept;
-without it there the script refuses the names). The mixer levels:
+without them there the script refuses the names). The mixer levels:
 
-| video          | spotlight | spotlight dB | piano ("Piano 1") dB |
-|----------------|-----------|-------------:|---------------------:|
-| whole score    | –         |            – |                 +3.4 |
-| `_soprano`     | Flute     |         +4.0 |                +10.4 |
-| `_alto`        | Oboe      |         +3.5 |                +10.2 |
-| `_tenor`       | Clarinet  |         +2.2 |                +11.9 |
-| `_bass`        | Cello     |         +2.7 |                 +7.7 |
+| video          | spotlight | spotlight dB | piano (Arachno "Grand Piano") dB |
+|----------------|-----------|-------------:|---------------------------------:|
+| whole score    | –         |            – |                             +0.1 |
+| `_soprano`     | Flute     |         +4.0 |                             +7.1 |
+| `_alto`        | Oboe      |         +3.5 |                             +6.9 |
+| `_tenor`       | Clarinet  |         +2.2 |                             +8.6 |
+| `_bass`        | Cello     |         +2.7 |                             +4.4 |
 
 How they were found (all 2026-10-20, by ear, on tone 1): first everything
 was MS Basic with the flute for every voice. Its piano is 6-7 dB softer
@@ -294,13 +295,16 @@ sounded muffled), Timbres of Heaven and a Salamander piano (converted from
 SFZ with Polyphone), each part matched in loudness to the Arachno mix, which
 gave the levels above.
 
-bogoroditse_dievo's whole-score video (2026-10-22) has Arachno's "Grand
-Piano" at +0.1 dB instead. Eight pianos were compared on it, each set to the
-same loudness (−29 LUFS): Arachno was clearly best, SGM's "Piano 1" a close
-second, and MS Basic, Salamander, Musyng Kite, Timbres of Heaven,
-GeneralUser GS and Chorium far behind, despite their size. (At first the
-tenor seemed to dominate there; that was the *p* on the women's staff only,
-not the piano: see the dynamics above.)
+On 2026-10-22 eight pianos were compared on bogoroditse_dievo's
+whole-score video, each set to the same loudness (−29 LUFS): Arachno's
+"Grand Piano" was clearly best, SGM's "Piano 1" a close second, and MS Basic,
+Salamander, Musyng Kite, Timbres of Heaven, GeneralUser GS and Chorium far
+behind, despite their size. So every video got Arachno's piano, 3.3 dB
+below SGM's levels (Arachno's piano is that much louder, on bogoroditse_dievo
+and tones 1 and 5 alike); until then the piano was SGM's "Piano 1" at
++3.4, +10.4, +10.2, +11.9 and +7.7 dB. (At first the tenor seemed to
+dominate bogoroditse_dievo; that was the *p* on the women's staff only, not
+the piano: see the dynamics above.)
 
 `--spotlight-color red` (or blue, green, orange, `#rrggbb`) shows the
 spotlighted voice in that colour as well: note heads, dots, accidentals,
@@ -312,12 +316,13 @@ and melisma lines). Ledger lines stay black, like the staff lines. The
 ```sh
 s=heer_ik_roep_t1
 f=SGM-V2.01   # ${f} in braces: in zsh, "$f:P..." is a path modifier
+a=Arachno-SoundFont-1.0
 mkdir -p video/audio /tmp/color
-tools/voice-explode-mscz.py --instrument "${f}:Piano 1" --volume-db 3.4 $s.mscz video/audio/$s.mscz
-for v in soprano:Flute:10.4:4.0 alto:Oboe:10.2:3.5 tenor:Clarinet:11.9:2.2 bass:Cello:7.7:2.7; do
+tools/voice-explode-mscz.py --instrument "${a}:Grand Piano" --volume-db 0.1 $s.mscz video/audio/$s.mscz
+for v in soprano:Flute:7.1:4.0 alto:Oboe:6.9:3.5 tenor:Clarinet:8.6:2.2 bass:Cello:4.4:2.7; do
   IFS=: read voice sound db sdb <<< $v
   tools/voice-explode-mscz.py --spotlight $voice \
-    --spotlight-instrument "${f}:${sound}" --background-instrument "${f}:Piano 1" \
+    --spotlight-instrument "${f}:${sound}" --background-instrument "${a}:Grand Piano" \
     --background-db $db --spotlight-db $sdb $s.mscz video/audio/${s}_$voice.mscz
   tools/voice-color-mscz.py --voice $voice --color red $s.mscz /tmp/color/${s}_$voice.mscz
 done
