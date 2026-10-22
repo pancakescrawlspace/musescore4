@@ -45,7 +45,7 @@ read in C; the Dutch version in F, tone 6 in G):
 | 4 | B…B C. C C │ D D D D D D C (7…1 │ 2…2 1) | alto E…E F F │ G G G G F | same melody, in the alto |
 | 5 | D…D E B C │ E E E E D D C (2…3 7 1 │ 3…2 2 1) | soprano G…G (F G) A F │ A A G F G (2…3 1 │ 3 3 2 1 2) | same melody, but in the **soprano**; the OCA keeps it in the alto (so its soprano recites on B♭) |
 | 6 | D…D C♯ D D │ E E E E E D E | alto E…E D♯ E │ F♯ F♯ E E F♯ (G major) | same melody, in the alto |
-| 7 | C D…D C. C B │ B D B B A A G (as far as legible) | soprano G…G F G A F G │ A B♭ A G F E; alto a third lower | unclear: the scan is hard to read here, and neither Dutch voice follows it closely |
+| 7 | B C D D D D D D C B (7 1 2…2 1 7; read from a 300 dpi scan) | soprano G…G F G A F G │ A B♭ A G F E (2…2 1 2 3 1 2 │ 3 4 3 2 1 7) | differs: Bakhmetev rises into the reciting note and falls back (as the OCA's alto); the Dutch recites plainly; it is the Kievan chant (see above) |
 | 8 | F E…E F E D │ F F F F F G F E (1 7…7 1 7 6 │ 1…2 1 7) | alto F E…E F E D │ F F G F E | same melody, in the alto |
 
 Only the first phrase of each tone was compared; the later phrases and
@@ -108,11 +108,48 @@ reciting note). Measure numbers are the Dutch ones.
 | 8 | Same setting, practically identical: one extra syllable in m7, a tenor C♯ for C at the final cadence (m6, m11), one bass note (m5: C3 for D3). |
 
 So the Dutch version is the OCA's setting in tones 1, 3, 4, 6 and 8 (with
-added turns at the cadences in 1, 3 and 6), and a different arrangement
-of the same chant in tones 2, 5 and 7.
+added turns at the cadences in 1, 3 and 6). Tones 2, 5 and 7 are not the
+Court chant: 2 and 7 are the Kievan chant, 5 a mixture (see "Tones 2, 5
+and 7: Kievan chant").
 
 The keys agree too (F major, tone 6 G major), which points to the OCA's
 settings, or their source, as the model of the Dutch version.
+
+## Tones 2, 5 and 7: Kievan chant
+
+The three tones that are not the OCA's setting turned out to come from
+another chant: the **Kievan chant** (*Киевский распев*) as Russian
+parishes commonly sing "Господи воззвах", not the Court chant.
+
+The witness found: *Обиход церковного пения*, ч. 1, Храм святителя Тихона,
+Архангельск 2005 (a parish obikhod; music typeset by Д. В. Аллеманов):
+[PDF on kliros.ru](http://kliros.ru/noty/obihod1_arhangelsk.pdf),
+section "Образцы напевов на «Господи воззвах»: Киевский распев", tones
+1–8 on pp. 8–15 (tone 2 p. 9, F major; tone 5 p. 12, G major; tone 7
+p. 14, G major), each with its "Запев" (the refrain "И ныне, и присно…").
+Soprano, alto and bass on two staves; the bass staff has one line. Its
+notes were read from the PDF (Sibelius, Opus font) and compared with the
+Dutch soprano, alto and bass, transposed where the key differs:
+
+- **Tone 2: the Kievan chant, same key.** Soprano, alto and bass agree
+  note for note from the start (soprano B♭ C B♭ A B♭ C B♭ A B♭ D C B♭ A…,
+  bass C F C F…); the Dutch version's F major harmony (where the OCA has
+  G minor) comes from here.
+- **Tone 7: the Kievan chant**, a tone lower (Kievan in G, Dutch in F).
+  Soprano 2…2 1 2 3 3 2 │ 3 4 3 2 2 1 1 7 against the Dutch 2…2 1 2 3 1 2 │
+  3 4 3 2 1 7; the bass practically identical (one G2 for G3); the Dutch
+  adds an occasional passing note. So the Dutch tone 7 is not a weak
+  adaptation of the Court chant's tone 7 (which rises 7–1–2 into its
+  reciting note and falls back, as in the OCA's alto), but the Kievan
+  chant, which recites plainly with a small turn before each cadence.
+- **Tone 5: a mixture.** The Dutch bass follows the Kievan bass outline
+  (C…F │ F…C │ C…D) and shares its cadence on C♯–D at "verhoor mij", but
+  the melody differs: the Kievan recites a third higher (on A, in F), the
+  Dutch soprano on G, which is closer to Bakhmetev's Court-chant melody
+  (see the table below).
+
+The comparisons are made with `references/tools/cmp_ref.py` (`python3
+cmp_ref.py PDF PAGE TONE SEMITONES`).
 
 ## Bakhmetev's Obikhod (1869)
 
@@ -193,6 +230,7 @@ references/
 │   │   ├── t6-lic-obikhod-tt.pdf
 │   │   ├── t7-lic-obikhod-tt.pdf
 │   │   ├── t8-lic-obikhod-tt.pdf
+│   │   ├── t2-lic-obikhod-yy.pdf, t5-…-yy.pdf, t7-…-yy.pdf   the "yy" layout (same music, "You" for "Thee")
 │   │   ├── t1-lic-kievan-tt.pdf                 Kievan chant, tone 1
 │   │   ├── LIC-T1-serb-tt.pdf                   Serbian chant, tone 1
 │   │   ├── Tutorial-Intro-Obikhod-Tone1-Explanation.pdf
@@ -212,6 +250,8 @@ references/
 │   │   ├── gospodi-vozzvah-glas-6-4g-smh.pdf
 │   │   ├── gospodi-vozzvah-glas-7-4g-smh.pdf
 │   │   ├── gospodi-vozzvah-glas-8-4g-smh.pdf
+│   ├── obikhod_arkhangelsk/
+│   │   └── obihod1_arhangelsk.pdf               Kievan chant, tones 1–8 (pp. 8–15)
 │   ├── smirnov/
 │   │   ├── glas-1-red-smirnova.pdf
 │   │   ├── glas-2-lavrskogo-napeva.pdf
@@ -219,8 +259,9 @@ references/
 │   ├── bakhmetev_obikhod_1869_vol1_ecmr.pdf   65 MB scan, 217 pages
 │   └── court_obikhod_1914_djukliros.pdf       28 pages
 └── tools/
-    ├── ocaread.py                             reads the four voices from an OCA PDF
-    └── cmp_oca.py                             compares them with heer_ik_roep_tN.mscz
+    ├── ocaread.py                             reads the voices from a vector PDF (Finale, Sibelius)
+    ├── cmp_oca.py                             compares the OCA PDFs with heer_ik_roep_tN.mscz
+    └── cmp_ref.py                             compares any page, transposed, with a tone
 ```
 
 Where each file comes from (local name → source):
@@ -245,6 +286,8 @@ Where each file comes from (local name → source):
 - `heer_ik_roep/obikhod_azbyka/gospodi-vozzvah-glas-N-4g-smh.pdf`:
   `https://azbyka.ru/kliros/wp-content/uploads/2025/09/gospodi-vozzvah-glas-N-4g-smh.pdf`, from
   [this page](https://azbyka.ru/kliros/noty-pesnopenij-gospodi-vozzvah-glasy-1-8-dlya-smeshannogo-hora/)
+- `heer_ik_roep/obikhod_arkhangelsk/obihod1_arhangelsk.pdf`:
+  [http://kliros.ru/noty/obihod1_arhangelsk.pdf](http://kliros.ru/noty/obihod1_arhangelsk.pdf)
 - `heer_ik_roep/smirnov/`: from
   [this page](https://azbyka.ru/kliros/voskresnye-stihiry-na-gospodi-vozzvah-noty-dlya-muzhskogo-hora/),
   `https://azbyka.ru/kliros/wp-content/uploads/2024/02/na-gospodi-vozzvah-stihiry-voskresnye-glas-1.-red.-g.-smirnova.pdf`,
@@ -259,7 +302,7 @@ Where each file comes from (local name → source):
   the [share link](https://drive.google.com/open?id=1oRzhP6P_ELtLYkSjQFdhvKzYBculR1F7)
   opens a viewer, the file itself comes from
   `https://drive.google.com/uc?export=download&id=1oRzhP6P_ELtLYkSjQFdhvKzYBculR1F7`.
-- `tools/ocaread.py`, `cmp_oca.py`: not downloaded but written here
+- `tools/ocaread.py`, `cmp_oca.py`, `cmp_ref.py`: not downloaded but written here
   (2026-10-23); they exist only in this directory. Run
   `python3 cmp_oca.py 1 2 3 4 5 6 7 8` in `references/tools/`; they need
   `mutool`.
@@ -274,9 +317,10 @@ curl -sSL -o $d/kpds42_arkhangelsky_greek.mid https://kpds42.ru/files/content/bo
 curl -sSL -o $d/azbyka_grecheskaya.pdf $A/2023/05/bogorodicze-devo-grecheskaya.pdf
 curl -sSL -o $d/azbyka_grecheskogo_raspeva_gl4.pdf $A/2023/05/bogoroditse_devo_grecheskogo_raspeva_gl_4.pdf
 curl -sSL -o $d/azbyka_arkhangelsky_op39_no8.pdf "$A/2026/05/bogorodicze-devo-arhangelskij-or-39-%E2%84%96-8-4g-smh.pdf"
-d=references/heer_ik_roep; mkdir -p $d/oca $d/obikhod_azbyka $d/smirnov
+d=references/heer_ik_roep; mkdir -p $d/oca $d/obikhod_azbyka $d/obikhod_arkhangelsk $d/smirnov
 for n in 1 2 3 4 5 6 7 8; do
   curl -sSL -o $d/oca/t$n-lic-obikhod-tt.pdf $O/Tone$n/t$n-lic-obikhod-tt.pdf
+  case $n in 2|5|7) curl -sSL -o $d/oca/t$n-lic-obikhod-yy.pdf $O/Tone$n/t$n-lic-obikhod-yy.pdf;; esac
   curl -sSL -o $d/obikhod_azbyka/gospodi-vozzvah-glas-$n-4g-smh.pdf $A/2025/09/gospodi-vozzvah-glas-$n-4g-smh.pdf
 done
 curl -sSL -o $d/oca/t1-lic-kievan-tt.pdf $O/Tone1/t1-lic-kievan-tt.pdf
@@ -284,6 +328,7 @@ curl -sSL -o $d/oca/LIC-T1-serb-tt.pdf $O/Tone1/LIC-T1-serb-tt.pdf
 for f in Tutorial-Intro-Obikhod-Tone1-Explanation Tutorial-Obikhod-Tone2-Explanation Tutorial-Common-Tone3-Explanation Tutorial-Obikhod-Tone4-Explanation Tutorial-Common-Tone5-Explanation Tutorial-Common-Tone6-Explanation Tutorial-Common-Tone7-Explanation Tutorial-Obikhod-Tone8-Explanation; do
   curl -sSL -o $d/oca/$f.pdf $T/$f.pdf
 done
+curl -sSL -o $d/obikhod_arkhangelsk/obihod1_arhangelsk.pdf http://kliros.ru/noty/obihod1_arhangelsk.pdf
 curl -sSL -o $d/smirnov/glas-1-red-smirnova.pdf $A/2024/02/na-gospodi-vozzvah-stihiry-voskresnye-glas-1.-red.-g.-smirnova.pdf
 curl -sSL -o $d/smirnov/glas-2-lavrskogo-napeva.pdf $A/2024/02/na-gospodi-vozzvah-stihiry-voskresnye-glas-2-lavrskogo-napeva.pdf
 curl -sSL -o $d/smirnov/glas-2-sokr-kievskogo-rospeva.pdf $A/2024/02/na-gospodi-vozzvah-stihiry-voskresnye-glas-2-sokrashhennogo-kievskogo-rospeva.pdf
@@ -293,8 +338,11 @@ curl -sSL -o $d/court_obikhod_1914_djukliros.pdf 'https://drive.google.com/uc?ex
 
 ## Open questions
 
-1. Tones 2, 5 and 7 against Bakhmetev beyond the first phrase, and against
-   other settings, to find where those three arrangements come from.
-2. Who made the Dutch adaptation, and from what: directly from the OCA's
-   English settings, or from a common source. A Dutch parish book or the
-   choir's own sheets would settle it.
+1. Where tone 5 comes from exactly: a Kievan variant closer to the Dutch,
+   or a deliberate combination of the Court chant's melody with a Kievan
+   bass.
+2. Who made the Dutch adaptation, and from what: apparently an
+   English-language Court-chant collection (the OCA's settings, or their
+   source) for tones 1, 3, 4, 6 and 8, and a Russian parish obikhod's
+   Kievan chant for tones 2 and 7. A Dutch parish book or the choir's own
+   sheets would settle it.
