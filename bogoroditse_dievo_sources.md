@@ -64,6 +64,22 @@ punctuation.
 setting of an existing chant melody for choir, as opposed to "муз."
 (music by), which the kpds42.ru edition has.
 
+## The chant behind the arrangement
+
+- [Архангельский, Александр – Богородице Дево, orthodoxchoral.ru](https://www.orthodoxchoral.ru/ru/sources/3623)
+  (catalogue card; 404 when fetched on 2026-10-23, quoted by the search
+  results): the melody is "из Обихода нотного пения, Греческого распева,
+  подобен «Еже от века утаенное»", SATB, first printed edition Ar002-16.
+- [Обиход нотного пения употребительных церковных роспевов, ч. 1, Всенощное бдение (Синодальное изд., 1909), Русское нотное наследие](https://kp.rusneb.ru/item/material/obihod-notnogo-peniya-upotrebitelnyh-cerkovnyh-rospevov-odnogolosie--ch-1-vsenoshchnoe-bdenie):
+  the Synodal monophonic chant book (first redaction 1892) the melody
+  comes from. Not yet compared with the score.
+- [Богородичны отпустительные, azbyka.ru](https://azbyka.ru/bogosluzhenie/bogorodichny-otpustitelnye-poyushhiesya-posle-troparej-ves-god/):
+  «Еже от века утаенное» is the dismissal Theotokion of tone 4. "Подобен"
+  means the text is sung to that hymn's melody; the D major Greek-chant
+  setting below is likewise labelled "Греческого распева, гл. 4".
+- [ikliros.com: Еже от века утаенное](https://ikliros.com/category/pervye-slova-pesnopeniya/ezhe-ot-veka-utaennoe):
+  settings of that Theotokion (other chants), found while searching.
+
 ## Other settings looked at (not this arrangement)
 
 - [Всенощная: «Богородице, Дево, радуйся» – подборка нот, azbyka.ru](https://azbyka.ru/kliros/vsenoshhnaya-bogorodicze-devo-radujsya-podborka-not-pesnopeniya/):
