@@ -16,8 +16,11 @@ other voices get the clefs, key and time signatures and barlines, and rests
 where they had nothing (a voice-2 gap, or a measure without voice 2).
 Forced stem directions go; a fermata below (voice 2) turns to above, and a
 voice without a fermata where another voice of its staff had one, on a note
-or rest that starts at the same moment, gets a copy. Single-voice staves
-stay as they are.
+or rest that starts at the same moment, gets a copy. Dynamics are copied the
+same way, since MuseScore plays a dynamic for every voice of its staff
+(unless it is set to apply to its own voice only); a dynamic at a moment
+where the voice starts nothing is reported, not copied. Single-voice
+staves stay as they are.
 
 Names: a part name that splits on "/" or "," into one name per voice
 ("Alto, Tenor") is split. Otherwise two staves of two voices become Soprano,
@@ -317,6 +320,20 @@ def explode_staff(staff, j, nvoices, lyric_at, tenor):
                 if el.tag == "Fermata" and t in starts and t not in have:
                     items.append((t, 0.5, copy.deepcopy(el)))  # before its note
                     have.add(t)
+        # dynamics of the other voices: MuseScore plays them for the whole staff
+        have = {t for t, el in mine if el.tag == "Dynamic"}
+        for k, v in enumerate(voices):
+            if k == j:
+                continue
+            for t, el in timeline(v)[0]:
+                if el.tag != "Dynamic" or t in have or el.findtext("voiceAssignment") == "currentVoiceOnly":
+                    continue
+                if t in starts:
+                    items.append((t, 0.5, copy.deepcopy(el)))
+                    have.add(t)
+                else:
+                    print(f"measure {mi + 1}: voice {j + 1} starts nothing at the {el.findtext('subtype')} "
+                          f"of voice {k + 1}; not copied", file=sys.stderr)
         items.sort(key=lambda i: (i[0], i[1]))
         voice = ET.SubElement(measure, "voice")
         for t, _, el in items:

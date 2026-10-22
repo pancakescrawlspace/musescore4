@@ -90,7 +90,9 @@ score's own 0.59 in at the sides). Two staves with lyrics, as in the
 its height in all eight tones of heer_ik_roep, against 7-56 % before). The
 width sets the limit: at 1.7 the lyrics of tone 8's longest line ran
 together, and 1.4 keeps its melisma line only with the narrower side
-margins. A top margin of 0.68 in alone centres the system at its old size,
+margins. bogoroditse_dievo's m2 (31/8) is wider still: at 1.4 its hyphens
+touched the syllables, and 1.2 was still cramped, so its video has no
+`--staff-scale` (reflow's own size). A top margin of 0.68 in alone centres the system at its old size,
 but leaves too much room above it.
 
 ## Free-meter scores (`mscz-add-hidden-timesig.py`)
@@ -204,7 +206,10 @@ counts; the other voices get the clefs, key and time signatures and
 barlines, and rests wherever they had nothing. Forced stem directions go,
 a fermata below becomes a fermata above, and a voice gets a copy of a
 fermata from another voice on its staff when it starts a note or rest at
-the same moment. Brackets grow to cover the new staves.
+the same moment. Dynamics are copied the same way: MuseScore plays a
+dynamic for every voice of its staff (unless it's set to its own voice
+only), so the alto needs the soprano's *p*. Until 2026-10-22 they weren't
+copied, and only the voice they were attached to followed them. Brackets grow to cover the new staves.
 
 Names work as in `voice-explode-ly.py` (`--names` for all new staves). The
 mixer name is always set; the staff names only when the staff had them.
@@ -288,6 +293,14 @@ The same day SGM won a comparison with Musyng Kite (its Fazioli piano
 sounded muffled), Timbres of Heaven and a Salamander piano (converted from
 SFZ with Polyphone), each part matched in loudness to the Arachno mix, which
 gave the levels above.
+
+bogoroditse_dievo's whole-score video (2026-10-22) has Arachno's "Grand
+Piano" at +0.1 dB instead. Eight pianos were compared on it, each set to the
+same loudness (−29 LUFS): Arachno was clearly best, SGM's "Piano 1" a close
+second, and MS Basic, Salamander, Musyng Kite, Timbres of Heaven,
+GeneralUser GS and Chorium far behind, despite their size. (At first the
+tenor seemed to dominate there; that was the *p* on the women's staff only,
+not the piano: see the dynamics above.)
 
 `--spotlight-color red` (or blue, green, orange, `#rrggbb`) shows the
 spotlighted voice in that colour as well: note heads, dots, accidentals,
