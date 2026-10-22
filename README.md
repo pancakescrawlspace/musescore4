@@ -136,7 +136,11 @@ In every generated `.ly`:
   "automatically converted" line;
 - in `\header`, replace musicxml2ly's `title` ("Untitled score") and
   `composer` with the title from the score's title frame, plus `subtitle`
-  if there is one (e.g. `subtitle = "toon 3"`).
+  if there is one (e.g. `subtitle = "toon 3"`);
+- `subsubtitle` from the title frame's Subtitle text (MuseScore's
+  Subtitle style, which MuseScore centers below the title), if there is
+  one. MuseScore doesn't export it to MusicXML; `rebuild-score.py` reads it
+  from the `.mscz` on every rebuild (bogoroditse_dievo: "Verheug U Maagd").
 
 A few files have more, each marked with a `% hand edit:` comment:
 
@@ -163,7 +167,8 @@ to the originals, so mirror any volta change there.
 lyrics, no staff names, verse numbers only when a score has more than one
 verse, no first-system indent, no footer, and the title on the left with
 the subtitle on the right (or the title centered when there is no
-subtitle). It uses LilyPond 2.26 syntax. The minimum gap between lyric
+subtitle). A subsubtitle goes centered below the title, at 14 pt (the
+title is about 17.5 pt). It uses LilyPond 2.26 syntax. The minimum gap between lyric
 words is 1.6. With 2.26 it was 1.4 for a while, because 1.6 didn't fit two
 measures per line in the Heer ik roep tones when m11 stood alone; with the
 densest odd measure alone (see "Line breaks" above) it fits.

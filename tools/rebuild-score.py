@@ -15,6 +15,12 @@ spacer (`{ s4*N \\bar "" }`). Any other "% hand edit:" line makes the
 script stop before the .ly is replaced, so redo those by hand. A score
 without a .ly yet gets its title and subtitle from the score's title frame.
 
+A Subtitle text in the title frame (MuseScore's Subtitle style, centered
+below the title) becomes the \\header subsubtitle, read from the .mscz on
+every rebuild; church_style.ily centers it below the title. MuseScore doesn't
+export it to MusicXML. (A "subtitle" above means the title text's second
+line, like "toon 1", which LilyPond prints to the right of the title.)
+
 System breaks and page breaks in the score (MuseScore's layout breaks) become
 \\break / \\pageBreak at the same measures. They are read from the .mscz
 itself: MuseScore exports them to MusicXML only with a matching preference.
@@ -75,6 +81,19 @@ def title_frame(mscz):
     raise Failed(f"no title frame in {mscz}")
 
 
+def frame_subtitle(mscz):
+    """The text of the title frame's Subtitle, or None."""
+    with zipfile.ZipFile(mscz) as z:
+        root = ET.fromstring(z.read([n for n in z.namelist() if n.endswith(".mscx")][0]))
+    for t in root.iter("Text"):
+        if t.findtext("style") == "subtitle":
+            raw = ET.tostring(t.find("text"), encoding="unicode")
+            text = " ".join(re.sub(r"<[^>]+>", " ", re.sub(r"<br\s*/>", " ", raw)).split())
+            if text:
+                return text
+    return None
+
+
 def splice(new, old, mscz):
     """Apply the hand edits to fresh musicxml2ly output: copied from the old .ly, or made from the title frame."""
     if old is not None:
@@ -86,6 +105,9 @@ def splice(new, old, mscz):
         print(f"  no .ly yet: title {title!r}" + (f", subtitle {subtitle!r}" if subtitle else ""))
         inc, com = '\\include "church_style.ily"\n', COMMENT + "\n"
         fields = {"title": f'"{title}"', **({"subtitle": f'"{subtitle}"'} if subtitle else {})}
+    sub = frame_subtitle(mscz)
+    if sub:
+        fields["subsubtitle"] = '"' + sub.replace('"', '\\"') + '"'
     version = re.search(r'\\version "[^"]*"\n', new).group(0)
     new = new.replace(version, version + inc, 1)
     conv = re.search(r"% automatically converted by musicxml2ly from .*\n", new).group(0)
