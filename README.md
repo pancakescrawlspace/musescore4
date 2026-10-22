@@ -141,7 +141,10 @@ In every generated `.ly`:
 - `subtitle` from the title frame's Subtitle text (MuseScore's
   Subtitle style, which MuseScore centers below the title), if there is
   one. MuseScore doesn't export it to MusicXML; `rebuild-score.py` reads it
-  from the `.mscz` on every rebuild (bogoroditse_dievo: "Verheug U Maagd").
+  from the `.mscz` on every rebuild (bogoroditse_dievo: "Verheug U Maagd");
+- `composer` from the title frame's Composer text, the same way
+  (bogoroditse_dievo_arkhangelsky). musicxml2ly's own `composer`
+  (MuseScore's "Composer / arranger" metadata) is dropped.
 
 (Until 2026-10-22 the title text's second line was the `subtitle`.)
 
@@ -171,7 +174,7 @@ lyrics, no staff names, verse numbers only when a score has more than one
 verse, no first-system indent, no footer, and the title on the left with
 the subsubtitle on the right (or the title centered when there is no
 subsubtitle). A subtitle goes centered below the title, in bold at 12 pt
-(the title is about 17.5 pt). It uses LilyPond 2.26 syntax. The minimum gap between lyric
+(the title is about 17.5 pt), and a composer flush right below them. It uses LilyPond 2.26 syntax. The minimum gap between lyric
 words is 1.6. With 2.26 it was 1.4 for a while, because 1.6 didn't fit two
 measures per line in the Heer ik roep tones when m11 stood alone; with the
 densest odd measure alone (see "Line breaks" above) it fits.

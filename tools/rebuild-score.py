@@ -20,7 +20,10 @@ frame: the title text's first line, and its second line if any (like
 A Subtitle text in the title frame (MuseScore's Subtitle style, centered
 below the title) becomes the \\header subtitle, read from the .mscz on
 every rebuild; church_style.ily centers it below the title. MuseScore doesn't
-export it to MusicXML.
+export it to MusicXML. Its lines (line breaks in the text) stay lines. A Composer text in the title frame becomes the
+\\header composer the same way, which church_style.ily prints flush right
+below the title (musicxml2ly's own composer, MuseScore's "Composer /
+arranger" metadata, is dropped).
 
 System breaks and page breaks in the score (MuseScore's layout breaks) become
 \\break / \\pageBreak at the same measures. They are read from the .mscz
@@ -82,17 +85,25 @@ def title_frame(mscz):
     raise Failed(f"no title frame in {mscz}")
 
 
-def frame_subtitle(mscz):
-    """The text of the title frame's Subtitle, or None."""
+def frame_text(mscz, style):
+    """The lines of the title frame's text in that style ("subtitle", "composer"), or None."""
     with zipfile.ZipFile(mscz) as z:
         root = ET.fromstring(z.read([n for n in z.namelist() if n.endswith(".mscx")][0]))
     for t in root.iter("Text"):
-        if t.findtext("style") == "subtitle":
+        if t.findtext("style") == style:
             raw = ET.tostring(t.find("text"), encoding="unicode")
-            text = " ".join(re.sub(r"<[^>]+>", " ", re.sub(r"<br\s*/>", " ", raw)).split())
-            if text:
-                return text
+            raw = re.sub(r"^<text>|</text>\s*$", "", raw.strip())
+            lines = [" ".join(re.sub(r"<[^>]+>", " ", p).split()) for p in re.split(r"<br\s*/>", raw)]
+            lines = [l for l in lines if l]
+            if lines:
+                return lines
     return None
+
+
+def header_value(lines, column):
+    """A \\header value: a string for one line, else a markup column of the lines."""
+    quoted = ['"' + l.replace('"', '\\"') + '"' for l in lines]
+    return quoted[0] if len(quoted) == 1 else f"\\markup \\{column} {{ {' '.join(quoted)} }}"
 
 
 def splice(new, old, mscz):
@@ -106,9 +117,10 @@ def splice(new, old, mscz):
         print(f"  no .ly yet: title {title!r}" + (f", subsubtitle {subsub!r}" if subsub else ""))
         inc, com = '\\include "church_style.ily"\n', COMMENT + "\n"
         fields = {"title": f'"{title}"', **({"subsubtitle": f'"{subsub}"'} if subsub else {})}
-    sub = frame_subtitle(mscz)
-    if sub:
-        fields["subtitle"] = '"' + sub.replace('"', '\\"') + '"'
+    for field, column in (("subtitle", "center-column"), ("composer", "right-column")):
+        lines = frame_text(mscz, field)
+        if lines:
+            fields[field] = header_value(lines, column)
     version = re.search(r'\\version "[^"]*"\n', new).group(0)
     new = new.replace(version, version + inc, 1)
     conv = re.search(r"% automatically converted by musicxml2ly from .*\n", new).group(0)

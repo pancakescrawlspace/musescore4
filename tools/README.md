@@ -18,7 +18,8 @@ tools/rebuild-score.py heer_ik_roep_t3 onder_uwe_hoede
 
 The hand edits come from the current `.ly`: the `\include`, the hand-edit
 comment, the `\header` title/subsubtitle and the line-break spacer. The
-`subtitle` comes from the score's Subtitle text on every rebuild. Other
+`subtitle` and `composer` come from the score's Subtitle and Composer texts
+on every rebuild. Other
 `% hand edit:` lines stop the script before it replaces the `.ly`. Lyric
 syllables underlined in the score (stressed syllables) become
 `\markup \stressed`, a red underline from `church_style.ily`. Exit

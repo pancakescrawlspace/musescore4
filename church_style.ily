@@ -7,6 +7,8 @@
    (chain-assoc-get 'header:subtitle props #f))
 #(define (has-subsubtitle? layout props)
    (chain-assoc-get 'header:subsubtitle props #f))
+#(define (has-composer? layout props)
+   (chain-assoc-get 'header:composer props #f))
 
 % a stressed syllable: underlined in red, the text itself stays black. The
 % line is thick enough to see, and low enough (offset 6) to clear a "g" and
@@ -31,7 +33,8 @@
   % with a subsubtitle (e.g. "toon N"): title on the left, subsubtitle on
   % the right, on one line; without one: title centered. A subtitle (the
   % score's Subtitle text, see tools/rebuild-score.py) goes centered below
-  % the title, in bold at 12pt (the title is about 17.5pt).
+  % the title, in bold at 12pt (the title is about 17.5pt). A composer
+  % (the score's Composer text) goes flush right below them.
   bookTitleMarkup = \markup \column {
     \if #has-subsubtitle? \fill-line {
       \fontsize #4 \bold \fromproperty #'header:title
@@ -46,6 +49,11 @@
         \fontsize #(* 6 (/ (log (/ 12 11)) (log 2))) \bold \fromproperty #'header:subtitle
       }
       \vspace #0.8
+    }
+    \if #has-composer? \column {
+      \vspace #0.3
+      \fill-line { \null \fromproperty #'header:composer }
+      \vspace #0.5
     }
   }
 }
