@@ -1,0 +1,94 @@
+# Богородице Дево (bogoroditse_dievo): sources
+
+Collected on 2026-10-22, while identifying the composer and checking the
+transcription in `bogoroditse_dievo.mscz`.
+
+## The scan the score was transcribed from
+
+- `IMG_6744.jpeg` (in this folder; first in `~/Downloads`): phone photo
+  (640×480) of a printed page in a choir folder. Too small to check notes against, but the enlarged
+  header and footer read:
+  - top right: "Греческий распев, в перел. А. А. Архангельского" (Greek
+    chant, arranged by Alexander Andreyevich Arkhangelsky, 1846–1924);
+  - bottom: "© МПРС, нотный набор, оформление, 2002" (typesetting and
+    layout; the last digit of the year is hard to read).
+
+## The arrangement: Greek chant, arr. A. A. Arkhangelsky
+
+- [Всенощное бдение, kpds42.ru](https://kpds42.ru/pages/vsenoshchnoe-bdenie):
+  list of Vigil hymns with "Богородице Дево, греч.р., гарм. Архангельского":
+  - [PDF](https://kpds42.ru/files/content/bogorodice_devo_grecheskiy_arhangelskiy.pdf):
+    "Богородице Дево. Греческий распев. Муз. А. Архангельского", G major,
+    SATB on two staves, in doubled note values (quarters where the score
+    has eighths). The same arrangement as the scan.
+  - [MIDI](https://kpds42.ru/files/content/bogorodice_devo_grecheskiy_arhangelskiy.mid):
+    a recorded performance (soprano in the track named "Tenor", alto in
+    "Lead", tenor and bass together in "Choir Aahs").
+
+Compared note for note (pitches and durations, all four voices) with the
+MIDI, and the doubtful spots checked in the PDF:
+
+- From "Ма-ри-е" in m2 to the end, all four voices agree note for note,
+  except as listed below.
+- m1 and the start of m2 differ, from the rearranged underlay. In the
+  source, "це" and "Де" are two-note melismas, "ра-дуй-ся" is sung on
+  D–C–B (soprano) at the start of the next phrase, and "бла-го-дат-на-я"
+  on B–A–B–B–B. The score has the melismas as single notes, with an extra
+  B for "це", "радуйся" on C–B–B, and "Благодатная" on D–C–B–A–B.
+  This is deliberate: it is how the choir has always sung it. "радуйся"
+  moved onto the notes of "Дево", "Дево" onto those of "це" (so "це" got
+  a chord of its own: B/G/D/G), and three chords of m2 were dropped.
+- m4, "Тво-е-го,": the last chord is a half note in the source (a whole
+  note in the PDF's doubled values), and a dotted half in the score.
+- m5, the final chord: a half note in the source (whole note in the PDF)
+  and a whole note with a fermata in the score. The source's bass has no
+  low G2.
+
+`bogoroditse_dievo_arkhangelsky.mscz` (with its `.musicxml`/`.ly`/`.pdf`)
+is the source written into a copy of `bogoroditse_dievo.mscz`, for
+comparison, with the source's attribution as composer text instead of
+the subtitle: the notes and slurs of m1 and of the first five chords of m2,
+the half notes at the end of m4 and m5, no low G2, no dynamics and no
+fermatas (the source has none), and the source's text: "плод" in
+lowercase, "Тобою:" and "женах,". It has the score's note values (half
+those of the PDF), measures, house-style underlay ("Де ___ во,") and
+hyphenation (the PDF hyphenates "ра-ду-йся", "Бла-го-да-тна-я",
+"Го-сподь", "Бла-го-сло-ве-нна"). It matches the MIDI note for note in all
+four voices.
+
+## Other settings looked at (not this arrangement)
+
+- [Всенощная: «Богородице, Дево, радуйся» – подборка нот, azbyka.ru](https://azbyka.ru/kliros/vsenoshhnaya-bogorodicze-devo-radujsya-podborka-not-pesnopeniya/):
+  azbyka.ru's collection of settings of the hymn, where the following came from.
+- ["Богородице Дево", Греческий распев (PDF)](https://azbyka.ru/kliros/wp-content/uploads/2023/05/bogorodicze-devo-grecheskaya.pdf):
+  the same chant in G major, typeset by koranna79, no arranger named.
+  Same melody, but a different harmonization from m2 on (e.g. "Господь с
+  Тобою"), and its *p* is at "ю" instead of at the start.
+- [Богородице Дево греческого распева, гл. 4 (PDF)](https://azbyka.ru/kliros/wp-content/uploads/2023/05/bogoroditse_devo_grecheskogo_raspeva_gl_4.pdf):
+  the same chant in D major, with the melody in thirds.
+- [Архангельский, ор. 39 № 8 (PDF)](https://azbyka.ru/kliros/wp-content/uploads/2026/05/bogorodicze-devo-arhangelskij-or-39-%E2%84%96-8-4g-smh.pdf):
+  Arkhangelsky's own composition on the text (D major, 3/4), unrelated to
+  the chant. The same piece is No. 08 in
+  [Сборник нот Всенощное бдение А. Архангельского](https://azbyka.ru/kliros/sbornik-not-vsenoshhnoe-bdenie-a-arhangelkogo-v-nabore-anny-korol/)
+  ([PDF](https://azbyka.ru/kliros/wp-content/uploads/2023/06/08-bogorodicze-devo.pdf)).
+- [Архангельский, Александр – Богородице Дево, orthodoxchoral.ru](https://www.orthodoxchoral.ru/ru/sources/3623):
+  according to the search results, an SATB arrangement by Arkhangelsky of
+  the Greek chant from the Обиход нотного пения, "подобен «Еже от века
+  утаенное»". The page returned 404 when fetched.
+- Other catalogues that turned up in searches, not used:
+  [azbyka.ru: Название «Богородице Дево»](https://azbyka.ru/kliros/metka/nazvanie-bogorodicze-devo/),
+  [azbyka.ru: Греческий распев](https://azbyka.ru/kliros/metka/grecheskij-raspev/),
+  [azbyka.ru: Архангельский А.](https://azbyka.ru/kliros/metka/a-arhangelskij/),
+  [ikliros.com: Богородице Дево радуйся](https://ikliros.com/category/pervye-slova-pesnopeniya/bogoroditse-devo-raduisya)
+  (with Г. В. Григорьев's Greek-chant setting).
+
+## The text
+
+The spelling and punctuation were checked against the standard text of the
+prayer in Russian civil script, from memory rather than an online source:
+
+> Богородице Дево, радуйся, Благодатная Марие, Господь с Тобою;
+> благословенна Ты в женах и благословен плод чрева Твоего, яко Спаса
+> родила еси душ наших.
+
+The score capitalizes *Плод* (by choice) and *Благословенна*.
