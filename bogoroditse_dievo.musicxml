@@ -1677,14 +1677,6 @@
           <line>4</line>
           </clef>
         </attributes>
-      <direction placement="above">
-        <direction-type>
-          <dynamics>
-            <p/>
-            </dynamics>
-          </direction-type>
-        <sound dynamics="54.44"/>
-        </direction>
       <note>
         <pitch>
           <step>B</step>
