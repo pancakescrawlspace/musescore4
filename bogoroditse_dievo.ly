@@ -11,6 +11,7 @@ U = \tweak Stem.direction #UP \etc
 
 \header {
   title = "Богородице Дево"
+  subsubtitle = "Verheug U Maagd"
   "id: software" = "MuseScore Studio 4.7.5"
   "id: encoding-date" = "2026-10-22"
 }
