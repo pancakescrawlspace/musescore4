@@ -45,16 +45,24 @@ MIDI, and the doubtful spots checked in the PDF:
   low G2.
 
 `bogoroditse_dievo_arkhangelsky.mscz` (with its `.musicxml`/`.ly`/`.pdf`)
-is the source written into a copy of `bogoroditse_dievo.mscz`, for
-comparison, with the source's attribution as composer text instead of
-the subtitle: the notes and slurs of m1 and of the first five chords of m2,
-the half notes at the end of m4 and m5, no low G2, no dynamics and no
-fermatas (the source has none), and the source's text: "плод" in
-lowercase, "Тобою:" and "женах,". It has the score's note values (half
-those of the PDF), measures, house-style underlay ("Де ___ во,") and
-hyphenation (the PDF hyphenates "ра-ду-йся", "Бла-го-да-тна-я",
-"Го-сподь", "Бла-го-сло-ве-нна"). It matches the MIDI note for note in all
-four voices.
+is meant to match the scan exactly: the kpds42.ru edition written into a
+copy of `bogoroditse_dievo.mscz`, then corrected to the scan where the two
+differ (2026-10-23). From the kpds42.ru edition: the notes and slurs of m1
+and of the first five chords of m2 (the scan's, before the choir's
+rearrangement), and the text with "Тобою:" and "женах,". As in the scan:
+the dotted half at the end of m4, the whole note with fermatas at the end
+of m5, the bass's low G2 there, the *p* at the start (shown above the
+women's staff, hidden on the men's), "Плод" with a capital, and the
+attribution "Греческий распев / в перел. А. А. Архангельского" as composer
+text. It has the score's note values (half those of the PDF), measures,
+house-style underlay ("Де ___ во,") and hyphenation (the PDF hyphenates
+"ра-ду-йся", "Бла-го-да-тна-я", "Го-сподь", "Бла-го-сло-ве-нна"). Not
+checked against the scan: the title (perhaps «Богородице Дево…») and the
+punctuation.
+
+"перел." is *переложение* ("в переложении", in the arrangement of): the
+setting of an existing chant melody for choir, as opposed to "муз."
+(music by), which the kpds42.ru edition has.
 
 ## Other settings looked at (not this arrangement)
 

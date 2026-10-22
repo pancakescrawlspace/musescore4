@@ -303,9 +303,8 @@ Salamander, Musyng Kite, Timbres of Heaven, GeneralUser GS and Chorium far
 behind, despite their size. So every video got Arachno's piano, 3.3 dB
 below SGM's levels (Arachno's piano is that much louder, on bogoroditse_dievo
 and tones 1 and 5 alike); until then the piano was SGM's "Piano 1" at
-+3.4, +10.4, +10.2, +11.9 and +7.7 dB. bogoroditse_dievo_arkhangelsky's video has
-the piano at −6.2 dB instead: that score has no *p*, so it plays at *mf*,
-and −6.2 brings it to the −29 LUFS of bogoroditse_dievo's. (At first the tenor seemed to
++3.4, +10.4, +10.2, +11.9 and +7.7 dB. bogoroditse_dievo_arkhangelsky's video has the
+same +0.1 dB (from 2026-10-23, when it got the scan's *p*; −6.2 before). (At first the tenor seemed to
 dominate bogoroditse_dievo; that was the *p* on the women's staff only, not
 the piano: see the dynamics above.)
 
