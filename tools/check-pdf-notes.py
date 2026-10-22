@@ -234,7 +234,8 @@ def read_pdf(pdf):
         # the other heads of a chord lie along the stem, in line with the first
         for o in heads:
             if (o is not h and o["type"] == h["type"] and abs(o["x"] - h["x"]) < 0.3
-                    and sy0 - 0.3 * sp < o["y"] < sy1 + 0.3 * sp and o["y"] != h["y"]):
+                    and sy0 - 0.3 * sp < o["y"] < sy1 + 0.3 * sp
+                    and abs(o["y"] - h["y"]) > 0.25 * sp):  # a unison's heads differ only by rounding
                 o["member_of"] = h
                 h["chord"].append(o)
         # flags or beams at the stem's tip halve the duration, once each
