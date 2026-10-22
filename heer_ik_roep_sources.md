@@ -31,12 +31,25 @@ in the alto voice"), while Bakhmetev gives the melody to the top voice.
 An earlier comparison of the Dutch soprano with Bakhmetev's soprano
 wrongly concluded that they differ.
 
-- Tone 1: the Dutch alto, G–(A)–G–G–G–G–E–F, is Bakhmetev's melody
-  (D…D–B–C, in C) in F; the OCA's alto is the same.
-- Tone 4: the Dutch alto, E…E–F │ G–G–G–G–F (degrees 7…1 │ 2 2 2 2 1),
-  matches the opening of Bakhmetev's tone 4 as far as it could be read
-  (B…C │ D D D D).
-- Tones 2, 3, 5–8: not yet compared voice by voice with Bakhmetev.
+Bakhmetev's melody (his top voice, read by eye from the 1869 scan) against
+the Dutch version, first phrase of each tone ("Господи воззвах к Тебе,
+услыши мя; услыши мя, Господи" / "Heer, ik roep tot U, verhoor mij;
+verhoor mij, o Heer"), by scale degree (Bakhmetev without key signature,
+read in C; the Dutch version in F, tone 6 in G):
+
+| tone | Bakhmetev (1869) | Dutch version | verdict |
+|---|---|---|---|
+| 1 | D…D B C. C C (2…2 7 1) | alto G (A) G…G E F E D (2…2 7 1 7 6) | same melody, in the alto; Dutch adds a falling ending |
+| 2 | D…D F E D │ D D D D (2…2 4 3 2) | alto G (A) G…G F G A A G (2…1 2 3 3 2) | differs: Bakhmetev (and the OCA's alto, G…B♭ A G) rise a third, the Dutch only a second; the Dutch harmony (F major) differs from the OCA's (G minor) too |
+| 3 | F…F F E (recitation, cadence a step down) | alto E F…F G F E D E | same recitation and cadence (as the OCA's alto F…F E), with Dutch additions: an E before, a G neighbour, E–D–E at the close |
+| 4 | B…B C. C C │ D D D D D D C (7…1 │ 2…2 1) | alto E…E F F │ G G G G F | same melody, in the alto |
+| 5 | D…D E B C │ E E E E D D C (2…3 7 1 │ 3…2 2 1) | soprano G…G (F G) A F │ A A G F G (2…3 1 │ 3 3 2 1 2) | same melody, but in the **soprano**; the OCA keeps it in the alto (so its soprano recites on B♭) |
+| 6 | D…D C♯ D D │ E E E E E D E | alto E…E D♯ E │ F♯ F♯ E E F♯ (G major) | same melody, in the alto |
+| 7 | C D…D C. C B │ B D B B A A G (as far as legible) | soprano G…G F G A F G │ A B♭ A G F E; alto a third lower | unclear: the scan is hard to read here, and neither Dutch voice follows it closely |
+| 8 | F E…E F E D │ F F F F F G F E (1 7…7 1 7 6 │ 1…2 1 7) | alto F E…E F E D │ F F G F E | same melody, in the alto |
+
+Only the first phrase of each tone was compared; the later phrases and
+the bass lines are still open.
 
 ### The OCA's settings
 
@@ -159,10 +172,9 @@ tutorial's eight explanation PDFs),
 
 ## Open questions
 
-1. A voice-by-voice comparison of all eight tones: the Dutch alto against
-   Bakhmetev's top voice (the melody), and the Dutch setting against the
-   OCA's (harmony), listing where the Dutch version deviates; tones 2 and
-   5 especially.
+1. The rest of each tone (after the first phrase), and tone 7, against
+   Bakhmetev; and the Dutch harmony against the OCA's, especially tone 2
+   (F major against G minor) and tone 5 (melody in the soprano).
 2. Who made the Dutch adaptation, and from what: directly from the OCA's
    English settings, or from a common source. A Dutch parish book or the
    choir's own sheets would settle it.
