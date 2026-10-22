@@ -169,16 +169,127 @@ settings, or their source, as the model of the Dutch version.
   scipy) was too unreliable on the skewed 1869 print with C clefs (hollow
   notes missed, notes off by a step); the comparisons above are by eye.
 
-## Local copies
+## The `references/` directory
 
-The downloaded scores are in `references/heer_ik_roep/` (gitignored):
-`oca/` (the eight Common Chant PDFs, Kievan and Serbian tone 1, and the
-tutorial's eight explanation PDFs),
-`obikhod_azbyka/` (the eight azbyka.ru "Обиход" PDFs), `smirnov/`,
-`court_obikhod_1914_djukliros.pdf` and
-`bakhmetev_obikhod_1869_vol1_ecmr.pdf`. The scripts that read the OCA PDFs and compared
-them with the scores are in `references/tools/` (`ocaread.py`,
-`cmp_oca.py`; run `python3 cmp_oca.py 1 2 … 8` there).
+Local copies of everything downloaded for this file and for
+`bogoroditse_dievo_sources.md`, in `references/` (gitignored, about 72
+MB, most of it the Bakhmetev scan). Layout:
+
+```
+references/
+├── bogoroditse_dievo/
+│   ├── kpds42_arkhangelsky_greek.pdf          the arrangement (kpds42.ru)
+│   ├── kpds42_arkhangelsky_greek.mid          its MIDI
+│   ├── azbyka_grecheskaya.pdf                 Greek chant, other harmonization
+│   ├── azbyka_grecheskogo_raspeva_gl4.pdf     Greek chant, tone 4, in D major
+│   └── azbyka_arkhangelsky_op39_no8.pdf       Arkhangelsky's own Op. 39 No. 8
+├── heer_ik_roep/
+│   ├── oca/
+│   │   ├── t1-lic-obikhod-tt.pdf
+│   │   ├── t2-lic-obikhod-tt.pdf
+│   │   ├── t3-lic-obikhod-tt.pdf
+│   │   ├── t4-lic-obikhod-tt.pdf
+│   │   ├── t5-lic-obikhod-tt.pdf
+│   │   ├── t6-lic-obikhod-tt.pdf
+│   │   ├── t7-lic-obikhod-tt.pdf
+│   │   ├── t8-lic-obikhod-tt.pdf
+│   │   ├── t1-lic-kievan-tt.pdf                 Kievan chant, tone 1
+│   │   ├── LIC-T1-serb-tt.pdf                   Serbian chant, tone 1
+│   │   ├── Tutorial-Intro-Obikhod-Tone1-Explanation.pdf
+│   │   ├── Tutorial-Obikhod-Tone2-Explanation.pdf
+│   │   ├── Tutorial-Common-Tone3-Explanation.pdf
+│   │   ├── Tutorial-Obikhod-Tone4-Explanation.pdf
+│   │   ├── Tutorial-Common-Tone5-Explanation.pdf
+│   │   ├── Tutorial-Common-Tone6-Explanation.pdf
+│   │   ├── Tutorial-Common-Tone7-Explanation.pdf
+│   │   ├── Tutorial-Obikhod-Tone8-Explanation.pdf
+│   ├── obikhod_azbyka/
+│   │   ├── gospodi-vozzvah-glas-1-4g-smh.pdf
+│   │   ├── gospodi-vozzvah-glas-2-4g-smh.pdf
+│   │   ├── gospodi-vozzvah-glas-3-4g-smh.pdf
+│   │   ├── gospodi-vozzvah-glas-4-4g-smh.pdf
+│   │   ├── gospodi-vozzvah-glas-5-4g-smh.pdf
+│   │   ├── gospodi-vozzvah-glas-6-4g-smh.pdf
+│   │   ├── gospodi-vozzvah-glas-7-4g-smh.pdf
+│   │   ├── gospodi-vozzvah-glas-8-4g-smh.pdf
+│   ├── smirnov/
+│   │   ├── glas-1-red-smirnova.pdf
+│   │   ├── glas-2-lavrskogo-napeva.pdf
+│   │   └── glas-2-sokr-kievskogo-rospeva.pdf
+│   ├── bakhmetev_obikhod_1869_vol1_ecmr.pdf   65 MB scan, 217 pages
+│   └── court_obikhod_1914_djukliros.pdf       28 pages
+└── tools/
+    ├── ocaread.py                             reads the four voices from an OCA PDF
+    └── cmp_oca.py                             compares them with heer_ik_roep_tN.mscz
+```
+
+Where each file comes from (local name → source):
+
+- `bogoroditse_dievo/kpds42_arkhangelsky_greek.pdf`, `.mid`:
+  [PDF](https://kpds42.ru/files/content/bogorodice_devo_grecheskiy_arhangelskiy.pdf),
+  [MIDI](https://kpds42.ru/files/content/bogorodice_devo_grecheskiy_arhangelskiy.mid)
+- `bogoroditse_dievo/azbyka_grecheskaya.pdf`:
+  [https://azbyka.ru/kliros/wp-content/uploads/2023/05/bogorodicze-devo-grecheskaya.pdf](https://azbyka.ru/kliros/wp-content/uploads/2023/05/bogorodicze-devo-grecheskaya.pdf)
+- `bogoroditse_dievo/azbyka_grecheskogo_raspeva_gl4.pdf`:
+  [https://azbyka.ru/kliros/wp-content/uploads/2023/05/bogoroditse_devo_grecheskogo_raspeva_gl_4.pdf](https://azbyka.ru/kliros/wp-content/uploads/2023/05/bogoroditse_devo_grecheskogo_raspeva_gl_4.pdf)
+- `bogoroditse_dievo/azbyka_arkhangelsky_op39_no8.pdf`:
+  [https://azbyka.ru/kliros/wp-content/uploads/2026/05/bogorodicze-devo-arhangelskij-or-39-№-8-4g-smh.pdf](https://azbyka.ru/kliros/wp-content/uploads/2026/05/bogorodicze-devo-arhangelskij-or-39-%E2%84%96-8-4g-smh.pdf)
+- `heer_ik_roep/oca/tN-lic-obikhod-tt.pdf`: `https://www.oca.org/PDF/Music/ToneN/tN-lic-obikhod-tt.pdf`
+  (N = 1…8), e.g. [tone 1](https://www.oca.org/PDF/Music/Tone1/t1-lic-obikhod-tt.pdf)
+- `heer_ik_roep/oca/t1-lic-kievan-tt.pdf`, `LIC-T1-serb-tt.pdf`:
+  [https://www.oca.org/PDF/Music/Tone1/t1-lic-kievan-tt.pdf](https://www.oca.org/PDF/Music/Tone1/t1-lic-kievan-tt.pdf),
+  [https://www.oca.org/PDF/Music/Tone1/LIC-T1-serb-tt.pdf](https://www.oca.org/PDF/Music/Tone1/LIC-T1-serb-tt.pdf)
+- `heer_ik_roep/oca/Tutorial-*.pdf`: `https://media.oca.org/chanting-tutorial/<name>.pdf`, e.g.
+  [Tutorial-Intro-Obikhod-Tone1-Explanation](https://media.oca.org/chanting-tutorial/Tutorial-Intro-Obikhod-Tone1-Explanation.pdf); the page is
+  [Learning the Tones](https://www.oca.org/liturgics/learning-the-tones)
+- `heer_ik_roep/obikhod_azbyka/gospodi-vozzvah-glas-N-4g-smh.pdf`:
+  `https://azbyka.ru/kliros/wp-content/uploads/2025/09/gospodi-vozzvah-glas-N-4g-smh.pdf`, from
+  [this page](https://azbyka.ru/kliros/noty-pesnopenij-gospodi-vozzvah-glasy-1-8-dlya-smeshannogo-hora/)
+- `heer_ik_roep/smirnov/`: from
+  [this page](https://azbyka.ru/kliros/voskresnye-stihiry-na-gospodi-vozzvah-noty-dlya-muzhskogo-hora/),
+  `https://azbyka.ru/kliros/wp-content/uploads/2024/02/na-gospodi-vozzvah-stihiry-voskresnye-glas-1.-red.-g.-smirnova.pdf`,
+  `…-glas-2-lavrskogo-napeva.pdf`, `…-glas-2-sokrashhennogo-kievskogo-rospeva.pdf`
+- `heer_ik_roep/bakhmetev_obikhod_1869_vol1_ecmr.pdf`: normally
+  `https://ecmr.fi/Scanned_Chantbooks/Obihod1869Bahm1.pdf`, but ecmr.fi was
+  down (HTTP 503) on 2026-10-23; the Wayback Machine has it:
+  `https://web.archive.org/web/2025id_/https://ecmr.fi/Scanned_Chantbooks/Obihod1869Bahm1.pdf`
+  (`id_` gives the file itself, not the archive's viewer page).
+- `heer_ik_roep/court_obikhod_1914_djukliros.pdf`: on Google Drive,
+  linked from [djuKliros](https://www.djukliros.com/octoechos-%D0%B3%D0%BB%D0%B0%D1%81%D1%8B);
+  the [share link](https://drive.google.com/open?id=1oRzhP6P_ELtLYkSjQFdhvKzYBculR1F7)
+  opens a viewer, the file itself comes from
+  `https://drive.google.com/uc?export=download&id=1oRzhP6P_ELtLYkSjQFdhvKzYBculR1F7`.
+- `tools/ocaread.py`, `cmp_oca.py`: not downloaded but written here
+  (2026-10-23); they exist only in this directory. Run
+  `python3 cmp_oca.py 1 2 3 4 5 6 7 8` in `references/tools/`; they need
+  `mutool`.
+
+To download everything again, from the repository root (Bash or zsh):
+
+```sh
+A=https://azbyka.ru/kliros/wp-content/uploads; O=https://www.oca.org/PDF/Music; T=https://media.oca.org/chanting-tutorial
+d=references/bogoroditse_dievo; mkdir -p $d
+curl -sSL -o $d/kpds42_arkhangelsky_greek.pdf https://kpds42.ru/files/content/bogorodice_devo_grecheskiy_arhangelskiy.pdf
+curl -sSL -o $d/kpds42_arkhangelsky_greek.mid https://kpds42.ru/files/content/bogorodice_devo_grecheskiy_arhangelskiy.mid
+curl -sSL -o $d/azbyka_grecheskaya.pdf $A/2023/05/bogorodicze-devo-grecheskaya.pdf
+curl -sSL -o $d/azbyka_grecheskogo_raspeva_gl4.pdf $A/2023/05/bogoroditse_devo_grecheskogo_raspeva_gl_4.pdf
+curl -sSL -o $d/azbyka_arkhangelsky_op39_no8.pdf "$A/2026/05/bogorodicze-devo-arhangelskij-or-39-%E2%84%96-8-4g-smh.pdf"
+d=references/heer_ik_roep; mkdir -p $d/oca $d/obikhod_azbyka $d/smirnov
+for n in 1 2 3 4 5 6 7 8; do
+  curl -sSL -o $d/oca/t$n-lic-obikhod-tt.pdf $O/Tone$n/t$n-lic-obikhod-tt.pdf
+  curl -sSL -o $d/obikhod_azbyka/gospodi-vozzvah-glas-$n-4g-smh.pdf $A/2025/09/gospodi-vozzvah-glas-$n-4g-smh.pdf
+done
+curl -sSL -o $d/oca/t1-lic-kievan-tt.pdf $O/Tone1/t1-lic-kievan-tt.pdf
+curl -sSL -o $d/oca/LIC-T1-serb-tt.pdf $O/Tone1/LIC-T1-serb-tt.pdf
+for f in Tutorial-Intro-Obikhod-Tone1-Explanation Tutorial-Obikhod-Tone2-Explanation Tutorial-Common-Tone3-Explanation Tutorial-Obikhod-Tone4-Explanation Tutorial-Common-Tone5-Explanation Tutorial-Common-Tone6-Explanation Tutorial-Common-Tone7-Explanation Tutorial-Obikhod-Tone8-Explanation; do
+  curl -sSL -o $d/oca/$f.pdf $T/$f.pdf
+done
+curl -sSL -o $d/smirnov/glas-1-red-smirnova.pdf $A/2024/02/na-gospodi-vozzvah-stihiry-voskresnye-glas-1.-red.-g.-smirnova.pdf
+curl -sSL -o $d/smirnov/glas-2-lavrskogo-napeva.pdf $A/2024/02/na-gospodi-vozzvah-stihiry-voskresnye-glas-2-lavrskogo-napeva.pdf
+curl -sSL -o $d/smirnov/glas-2-sokr-kievskogo-rospeva.pdf $A/2024/02/na-gospodi-vozzvah-stihiry-voskresnye-glas-2-sokrashhennogo-kievskogo-rospeva.pdf
+curl -sSL -o $d/bakhmetev_obikhod_1869_vol1_ecmr.pdf 'https://web.archive.org/web/2025id_/https://ecmr.fi/Scanned_Chantbooks/Obihod1869Bahm1.pdf'
+curl -sSL -o $d/court_obikhod_1914_djukliros.pdf 'https://drive.google.com/uc?export=download&id=1oRzhP6P_ELtLYkSjQFdhvKzYBculR1F7'
+```
 
 ## Open questions
 
