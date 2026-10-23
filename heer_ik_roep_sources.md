@@ -26,6 +26,42 @@ handbook traces to the «Круг церковных песнопений обы
 chant; the OCA's settings and Smirnov's are close relatives, the
 Moscow handbook is closer than either.
 
+## Which voice has the melody
+
+In the Dutch versions the chant melody is in the **alto in tones 1, 2, 3,
+4, 6, 7 and 8**, and in the **soprano in tone 5** (2026-10-23). The other
+of the two upper voices runs a third above (tone 5: below) in parallel
+thirds, but it is not a second copy of the melody: within the key the
+thirds are alternately major and minor, so its intervals differ from the
+melody's, and it does not fit the tone's phrases.
+
+- Tones 1, 3, 4, 6, 8: the Dutch alto is the OCA's alto (see "The OCA's
+  settings"), which the OCA's tutorial names as the melody, and it is
+  Bakhmetev's top-voice melody (see the table under "Earlier result").
+- Tones 2, 5, 7: checked against the melody sung in unison in the OCA's
+  "Learning the Tones" (Kievan chant tones 2 and 7, from the unison
+  Kievan chants of the 1909 *Обиход нотного пения*; Common Chant tone 5),
+  with every Dutch measure's soprano and alto as scale degrees against
+  the tone's phrases (`references/tools/melody_voice.py`; difflib's ratio
+  per measure, mean over the measures):
+
+| tone | alto | soprano | melody |
+|---|---|---|---|
+| 2 (Kievan) | 0.73 | 0.46 | alto: recites on re, ends every final phrase do re do ti; the soprano recites on fa and ends on re |
+| 5 (Common) | 0.53 | 0.82 | soprano: m3, 6, 9, 11 exactly the phrases C and Final (re ti do ti la; mi re do ti do ti la); the alto has a C♯ the melody lacks |
+| 7 (Kievan) | 0.94 | 0.47 | alto: m6, 8, 10, 11 exactly the phrases B and Final (sol fa mi re do; mi fa sol fa mi fa mi re); the soprano touches B♭, outside the melody's five notes |
+
+In tone 2 the alto's lower score comes from the Dutch's own phrase
+variants (m1 joins phrase A's intonation to phrase B's cadence do re mi
+re; m3 cadences re–do for mi–do), not from another voice fitting better.
+In tone 7 the melody (OCA in G, final on re = A) uses only do–sol; in the
+Dutch it lies on C D E F G, do = C, final on re = D, within the F-major
+key signature.
+
+The Moscow handbook's remark that the upper voices sing the melody "in
+parallel thirds" (see "The Moscow obikhod") describes the texture; it
+does not make soprano and alto equivalent.
+
 ## Method
 
 Melodies were compared by scale degree, not by pitch, so that a
@@ -46,7 +82,8 @@ The chant is the Court chant (*придворный напев*) of the L'vov-Ba
 Obikhod, and the harmonization is closest to the Orthodox Church in
 America's "Common Chant" settings of "Lord, I Call".
 
-**The melody is in the alto.** In the Dutch version, as in the OCA's
+**The melody is in the alto** (except in tone 5; see "Which voice has the
+melody"). In the Dutch version, as in the OCA's
 settings, the soprano runs a third above the alto, and the chant melody
 is the alto line. The OCA's chanting tutorial says so of its own settings
 ("transposed and in 'narrow' or 'closed' harmony, and the melody is found
@@ -561,6 +598,9 @@ references/
 │   │   ├── Tutorial-Common-Tone6-Explanation.pdf
 │   │   ├── Tutorial-Common-Tone7-Explanation.pdf
 │   │   ├── Tutorial-Obikhod-Tone8-Explanation.pdf
+│   │   ├── Tutorial-Intro-Kievan-Tone1-Explanation.pdf   Kievan chant: introduction and tone 1
+│   │   ├── Tutorial-Kievan-Tone2-Explanation.pdf
+│   │   ├── Tutorial-Kievan-Tone7-Explanation.pdf
 │   ├── obikhod_azbyka/
 │   │   ├── gospodi-vozzvah-glas-1-4g-smh.pdf
 │   │   ├── gospodi-vozzvah-glas-2-4g-smh.pdf
@@ -599,7 +639,8 @@ references/
     ├── cmp_oca.py                             compares the OCA PDFs with heer_ik_roep_tN.mscz
     ├── cmp_ref.py                             compares any page, transposed, with a tone
     ├── cmp_smirnov.py                         compares Smirnov's TTBB settings (and the OCA's) by pitch class
-    └── cmp_lines.py                           compares a book of tone lines, measure by measure
+    ├── cmp_lines.py                           compares a book of tone lines, measure by measure
+    └── melody_voice.py                        which voice has the melody (tones 2, 5, 7)
 ```
 
 Where each file comes from (local name → source):
@@ -656,7 +697,7 @@ Where each file comes from (local name → source):
   the [share link](https://drive.google.com/open?id=1oRzhP6P_ELtLYkSjQFdhvKzYBculR1F7)
   opens a viewer, the file itself comes from
   `https://drive.google.com/uc?export=download&id=1oRzhP6P_ELtLYkSjQFdhvKzYBculR1F7`.
-- `tools/ocaread.py`, `cmp_oca.py`, `cmp_ref.py`, `cmp_smirnov.py`, `cmp_lines.py`: not downloaded but written here
+- `tools/ocaread.py`, `cmp_oca.py`, `cmp_ref.py`, `cmp_smirnov.py`, `cmp_lines.py`, `melody_voice.py`: not downloaded but written here
   (2026-10-23); they exist only in this directory. Run
   `python3 cmp_oca.py 1 2 3 4 5 6 7 8` in `references/tools/`; they need
   `mutool`.
@@ -679,7 +720,7 @@ for n in 1 2 3 4 5 6 7 8; do
 done
 curl -sSL -o $d/oca/t1-lic-kievan-tt.pdf $O/Tone1/t1-lic-kievan-tt.pdf
 curl -sSL -o $d/oca/LIC-T1-serb-tt.pdf $O/Tone1/LIC-T1-serb-tt.pdf
-for f in Tutorial-Intro-Obikhod-Tone1-Explanation Tutorial-Obikhod-Tone2-Explanation Tutorial-Common-Tone3-Explanation Tutorial-Obikhod-Tone4-Explanation Tutorial-Common-Tone5-Explanation Tutorial-Common-Tone6-Explanation Tutorial-Common-Tone7-Explanation Tutorial-Obikhod-Tone8-Explanation; do
+for f in Tutorial-Intro-Obikhod-Tone1-Explanation Tutorial-Obikhod-Tone2-Explanation Tutorial-Common-Tone3-Explanation Tutorial-Obikhod-Tone4-Explanation Tutorial-Common-Tone5-Explanation Tutorial-Common-Tone6-Explanation Tutorial-Common-Tone7-Explanation Tutorial-Obikhod-Tone8-Explanation Tutorial-Intro-Kievan-Tone1-Explanation Tutorial-Kievan-Tone2-Explanation Tutorial-Kievan-Tone7-Explanation; do
   curl -sSL -o $d/oca/$f.pdf $T/$f.pdf
 done
 curl -sSL -o $d/obikhod_arkhangelsk/obihod1_arhangelsk.pdf http://kliros.ru/noty/obihod1_arhangelsk.pdf
