@@ -11,7 +11,7 @@ choir print with breaks of its own, also inside a measure, list them in a
 `layouts.txt` next to the choir prints (`heer_ik_roep_koor/layouts.txt`; see
 `koor-variant.py` in `tools/README.md`): they survive every rebuild, and the
 score stays as it is. Heer ik roep tones 1–3 are done that way. Editing the
-`.ly` by hand, as below, is for a quick change to one print, or for the choir
+`.ly` by hand, as below, is for a quick change or a try-out, or for the choir
 prints made with `koor-variant.py --free-breaks` (tones 4–8).
 
 ## Before you start: hand edits get overwritten
@@ -31,18 +31,21 @@ A line break is a command between two notes. It goes in the **soprano
 voice only**, the variable `PartPOneVoiceOne`, and applies to the whole
 system (all four voices, both staves). Leave the other voices alone.
 
-A piece of `heer_ik_roep_t1_koor.ly`:
+A piece of `heer_ik_roep_koor/heer_ik_roep_t4_koor.ly` (made with
+`koor-variant.py --free-breaks`):
 
 ```lilypond
-PartPOneVoiceOne = \relative bes' {
-  \clef "treble" \once \omit Staff.TimeSignature \time 14/4 \key f \major \U bes2
-  ( \noBreak \U c2 ) \U bes4 \U bes4 \U bes4 \U bes4 \U g4 \noBreak \U a2 ( \noBreak \U g4 ) \U f2 |  % 1
-  \once \omit Staff.TimeSignature \time 7/4 \U a4 \noBreak \U a2 \U bes4 \U bes4 \U g2 | % 2
+PartPOneVoiceOne = \relative g' {
+  \clef "treble" \once \omit Staff.TimeSignature \time 10/4 \key f \major \U g4
+  \U g4 \U g4 \U g4 \U g4 \U g4 \noBreak \U a2 \U a2 |  % 1
+  \once \omit Staff.TimeSignature \time 7/4 \U bes4 \noBreak \U bes2 \U bes4 \U bes4 \U a2
+  | % 2
+  \once \omit Staff.TimeSignature \time 11/4 \U c2 \break \U bes4 \U a4 \U a4 \U a4 \U
 ```
 
 How to read it:
 
-- `\U bes2`, `\U c2`, `a4` and so on are notes: the pitch (`bes` = B♭) and
+- `\U g4`, `\U bes2`, `a2` and so on are notes: the pitch (`bes` = B♭) and
   the length (`2` = half note, `4` = quarter). `\U` only makes the stem
   point up.
 - `|` ends a measure, and `% 1`, `% 2` give the measure numbers (comments;
@@ -54,18 +57,22 @@ How to read it:
   start a word, so LilyPond never breaks inside a word.
 - `\break` before a note means: start a new line with this note.
   `koor-variant.py --free-breaks` writes one for every line LilyPond chose,
-  so the breaks you see in the PDF are all in the file.
+  so the breaks you see in the PDF are all in the file. Here the third line
+  starts at "ik", in the middle of measure 3.
 
 To find a note, count along the lyrics. `PartPOneVoiceOneLyricsOne` has one
 item per soprano note: a syllable, or `\skip1` for a note that continues a
 melisma. `--` joins syllables of a word, and `__` is a melisma line.
 
 ```lilypond
-Heer __ \skip1 ik roep tot U ver -- hoor __ \skip1 "mij," ver -- hoor mij o
+Heer ik roep tot U ver -- hoor mij ver -- hoor mij o Heer Heer ik roep tot U
 ```
 
-`Heer` is the 1st note (`bes2`), `\skip1` the 2nd (`c2`, still "Heer"),
-`ik` the 3rd, and so on.
+`Heer` is the 1st note (`g4`), `ik` the 2nd, and so on: measure 1 has 8
+notes ("Heer … mij"), measure 2 has 5 ("ver-hoor mij o Heer"), so the third
+"Heer" is the `c2` at the start of measure 3, and "ik" after it the `bes4`
+with the `\break`. In other tones a melisma shows up as `\skip1`: `Heer __ \skip1 ik`
+means "Heer" is sung on two notes, and "ik" is the 3rd note.
 
 ## Adding a break
 
@@ -86,13 +93,9 @@ Put `\break` directly before the note that should begin the new line.
   ```
 
   If that note has a `\noBreak` in front of it, replace the `\noBreak` with
-  `\break`; don't leave both. A break inside a measure only works if this
-  line is near the top of the file (`koor-variant.py --free-breaks` writes
-  it):
-
-  ```lilypond
-  \layout { \context { \Score forbidBreakBetweenBarLines = ##f } }
-  ```
+  `\break`; don't leave both. Nothing else is needed for it, also in a file
+  that never had a break inside a measure (see the next section). Break
+  only before the first note of a word.
 
 - **Accidentals after a break inside a measure.** LilyPond doesn't repeat an
   accidental after a line break if it was printed earlier in the same
@@ -103,6 +106,39 @@ Put `\break` directly before the note that should begin the new line.
   old break (it would print a needless sharp) and check the notes after the
   new one. `check-pdf-notes.py` (see "Building and checking") reports a
   missing one as a wrong pitch.
+
+## A file without breaks inside measures
+
+A `.ly` straight from `rebuild-score.py` (any `NAME.ly`, or a choir print made
+without `--free-breaks` and without a `layouts.txt` line) breaks only at
+barlines. To break inside a measure there:
+
+1. **A break you choose:** just put `\break` before the note, as above, and
+   add the forced accidentals after it (see "Adding a break"). That is all:
+   LilyPond (2.26) obeys a `\break` anywhere, also inside a measure. The
+   measure numbers stay as they were; a line that starts inside a measure
+   just has no number at its start. (Tried on tone 5, with a break in
+   measure 6 between "mij" and "o": with `cis!4` for the alto's C♯ after the
+   break, `check-pdf-notes.py` says `OK`.)
+
+2. **Letting LilyPond choose breaks inside measures:** it only does that
+   when this line comes after the `\include` line(s) at the top:
+
+   ```lilypond
+   \layout { \context { \Score forbidBreakBetweenBarLines = ##f } }
+   ```
+
+   Then it may break before any note, also in the middle of a word, so put
+   `\noBreak` before every soprano note that doesn't start a word (a
+   syllable after `--`, a `\skip1`, or the second half of a word split at a
+   melisma, like "wie __ rook"). `koor-variant.py --free-breaks` does all of
+   this for you, writes the breaks it got as `\break`s and adds the forced
+   accidentals; use that rather than doing it by hand.
+
+An invisible barline (`\bar ""`) before the `\break` isn't needed, and it
+doesn't help with the accidentals either: they only start afresh in a real
+new measure, as made by `tools/mscz-split-measures.py` (which the
+`layouts.txt` route uses).
 
 ## Removing a break
 
@@ -134,8 +170,8 @@ From the `church` folder (`-I .` lets LilyPond find the style files in the
 root; `-o` puts the PDF next to the `.ly`):
 
 ```sh
-lilypond -I . -o heer_ik_roep_koor/heer_ik_roep_t1_koor heer_ik_roep_koor/heer_ik_roep_t1_koor.ly
-tools/check-pdf-notes.py heer_ik_roep_t1.mscz heer_ik_roep_koor/heer_ik_roep_t1_koor.pdf
+lilypond -I . -o heer_ik_roep_koor/heer_ik_roep_t4_koor heer_ik_roep_koor/heer_ik_roep_t4_koor.ly
+tools/check-pdf-notes.py heer_ik_roep_t4.mscz heer_ik_roep_koor/heer_ik_roep_t4_koor.pdf
 ```
 
 - LilyPond prints warnings in the terminal. "too few pages" only means it
