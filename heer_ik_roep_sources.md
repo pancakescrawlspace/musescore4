@@ -386,8 +386,7 @@ Found 2026-10-23 on azbyka.ru, from Smirnov's «Обиход» onwards.
   ([tone 1](https://azbyka.ru/kliros/glas-1-voskresnye-pesnopeniya-oktoiha-mosk-reg-pev-seminarii-tsl-smesh-hor/),
   [tone 2](https://azbyka.ru/kliros/voskresnye-pesnopeniya-oktoiha-glas-2-smesh-hor/)
   … `voskresnye-pesnopeniya-oktoiha-glas-N-smesh-hor/`, tone 6
-  `…-gals-6-…`). Tone 1 by eye: soprano, alto and bass are the Dutch,
-  with the cadence turns; the tenor (E–F … on the treble staff) differs.
+  `…-gals-6-…`). Compared by eye with the Dutch, see below.
   The tone 1 post also has `g1.pdf`, a four-part vector setting of the
   same tone (its URL names the Moscow Regent-Singing Seminary of the
   Trinity-Sergius Lavra): the Dutch in all four voices but for the
@@ -425,6 +424,49 @@ tone (its G major to the Dutch F). Where the Dutch differs from it:
   a longer final cadence (m6, m11); bass identical.
 - Tone 7: a passing F before the last G in soprano and alto (A F G for A
   G), E–F neighbour notes in the bass.
+
+**The 1996 «Живоносный Источник» book**, "Господи, воззвах" in
+"Образцы обиходных напевов" (PDF pages: tone 1 p. 36, 2 p. 44, 3 p. 48,
+4 p. 69, 5 p. 63, 6 p. 96, 7 p. 67, 8 p. 76), read by eye from the scans
+at 150 dpi (opening lines and, for tone 4, the closing line;
+2026-10-23). Keys: tone 1 F, tones 2–8 G (the Dutch: F, tone 6 G); the
+note names below are the Dutch transposed to the book's key.
+
+- Tone 1: soprano, alto and bass are the Dutch, with the cadence turns;
+  the tenor is a third voice on the treble staff (E–F …), where the
+  Dutch tenor recites on C.
+- Tone 2: soprano C–D C … B C–D C, alto A–B A … G A–B A, bass D–G D …
+  D–G D, and m2 (S B C, A G A, B G D): the Dutch. The tenor again lies
+  on the treble staff a third below the alto (F♯ G F♯ …), not on the
+  Dutch reciting note.
+- Tone 3: the m1 cadence has an upper neighbour (soprano …C B A B A,
+  alto …A G F♯ G F♯) where the Dutch has a lower one (…C B A G A), and
+  the bass moves there (D G D G D; the Dutch D G D). The tenor recites
+  on D, as the Dutch; m2 is the Dutch.
+- Tone 4: four voices on two staves; m1–3 and the closing line (soprano
+  C … B A G, alto A … G F♯ E, a sharp in the tenor at the final cadence)
+  are the Dutch. The doubled bass of the closing line is not legible
+  enough to check the passing note.
+- Tone 5: m1 soprano A … A B, alto F♯ … G, without the Dutch turns;
+  bass and tenor as the Dutch; m2 without the Dutch passing note. As the
+  handbook.
+- Tone 6: in the Dutch key (G), "в тесном расположении"; m1 (S G…G F♯ G,
+  A E…E D♯ E, T B, B E B E) and m2 are the Dutch, the alto's D♯
+  included.
+- Tone 7: m1 soprano A … (G) A B A, alto F♯ … (E) F♯ G F♯, the
+  bracketed notes optional (the Dutch sings them), but without the
+  Dutch passing note before the last (B G A); m2 tenor with C♯ as the
+  Dutch, the bass plain (D … A D) where the Dutch has G F♯ G. As the
+  handbook.
+- Tone 8: m1 is the Dutch (S B A … B A G, A G F♯ … G F♯ E, T D … B, B G
+  D … G D E); m2 has an extra A–B at "мя" (B A B C B A for the Dutch B C
+  B A).
+
+So the 1996 book is the same tradition, but not the Dutch model: where
+the Dutch differs from the handbook (tones 5, 7) it sides with the
+handbook, in tone 3 and 8 it is further from the Dutch than the handbook
+is, its tenor in tones 1–2 is laid out differently, and its keys agree
+with the Dutch only in tones 1 and 6 (the handbook's in 1, 2, 4 and 6).
 
 These are the kind of variants the authors expect between choirs ("иные
 традиционные варианты напевов … не считать их «неправильными»"). So the
@@ -677,6 +719,6 @@ curl -sSL -o $d/court_obikhod_1914_djukliros.pdf 'https://drive.google.com/uc?ex
    parish book or the choir's own sheets would settle it.
 3. Settled: Smirnov and the Dutch follow the contemporary Moscow
    obikhod (see "The Moscow obikhod"). Still open: whether the Dutch was
-   made from a printed witness (the 1999 handbook, the 1996 «Живоносный
-   Источник» series, or another) or from singing; the 1996 scans of
-   tones 2–8 (`references/heer_ik_roep/mrps/`) are not compared yet.
+   made from a printed witness or from singing. Of the two found, the
+   1999 handbook is the closer; the 1996 «Живоносный Источник» book is
+   not the model (tenor layout in tones 1–2, tone 3 cadence, keys).
