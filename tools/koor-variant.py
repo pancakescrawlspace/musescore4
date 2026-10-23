@@ -16,6 +16,10 @@ output directory has a layouts.txt with a line for NAME:
     heer_ik_roep_t1  4:8 8:4 | 2,4a,6,8a,9
 
 that is, splits and line breaks as tools/mscz-split-measures.py takes them.
+A line can name another score as its source, after the name, to try a layout
+under a name of its own: "heer_ik_roep_t4_als_t1 heer_ik_roep_t4 4:8 8:4 |
+2,4a,6,8a,9" makes heer_ik_roep_t4_als_t1_koor from heer_ik_roep_t4 (NAME on
+the command line is then heer_ik_roep_t4_als_t1).
 The choir print is then made from a copy of NAME.mscz with those splits and
 breaks (split measures can break a line inside a measure, for the layout of
 an existing sheet), built with tools/rebuild-score.py in a temporary
@@ -198,15 +202,16 @@ def apply_breaks(src, breaks):
 
 
 def read_layouts(path):
-    """{score name: (splits, line breaks)} from a layouts.txt; # starts a comment."""
+    """{name: (source score or None, splits, line breaks)} from a layouts.txt; # starts a comment."""
     out = {}
     if os.path.exists(path):
         for line in open(path):
             line = line.split('#')[0].strip()
             if not line: continue
             head, breaks = line.split('|')
-            name, *splits = head.split()
-            out[name] = (splits, breaks.strip())
+            name, *rest = head.split()
+            source = rest.pop(0) if rest and not re.fullmatch(r'\d+:\d+', rest[0]) else None
+            out[name] = (source, rest, breaks.strip())
     return out
 
 
@@ -246,11 +251,6 @@ def main(args):
     os.chdir(ROOT)
     status = 0
     for name in names:
-        src = open(name + '.ly').read()
-        inc = '\\include "church_style.ily"'
-        if inc not in src:
-            raise SystemExit(f'{name}.ly does not include church_style.ily')
-        head = f'koorPt = {size}\n\\include "church_style_koor.ily"\n'
         out, note = name + '_koor', ''
         if out_dir:
             os.makedirs(out_dir, exist_ok=True)
@@ -258,12 +258,19 @@ def main(args):
         layout = read_layouts(os.path.join(os.path.dirname(out), 'layouts.txt')).get(os.path.basename(name))
         if layout and free:
             raise SystemExit(f'{name}: --free-breaks, but layouts.txt has a layout for it')
-        info = subprocess.run(['mutool', 'info', name + '.pdf'], capture_output=True, text=True).stdout
+        source = layout[0] if layout and layout[0] else name
+        src = open(source + '.ly').read()
+        inc = '\\include "church_style.ily"'
+        if inc not in src:
+            raise SystemExit(f'{source}.ly does not include church_style.ily')
+        head = f'koorPt = {size}\n\\include "church_style_koor.ily"\n'
+        info = subprocess.run(['mutool', 'info', source + '.pdf'], capture_output=True, text=True).stdout
         pages = re.search(r'Pages: (\d+)', info)
         if layout:
             with tempfile.TemporaryDirectory() as tmp:
-                src, pages = split_copy(name, *layout, tmp)
-            note = f', layout from layouts.txt ({" ".join(layout[0])} | {layout[1]})'
+                src, pages = split_copy(source, *layout[1:], tmp)
+            note = (f', layout from layouts.txt ({" ".join(layout[1])} | {layout[2]}'
+                    + (f', from {source})' if source != name else ')'))
         if free:
             marked, systems = mark_word_starts(src)
             layout = '\\layout { \\context { \\Score forbidBreakBetweenBarLines = ##f } }\n'

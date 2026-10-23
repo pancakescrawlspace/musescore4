@@ -3,7 +3,7 @@ koorPt = 16
 \include "church_style_koor.ily"
 \paper { page-count = 1 }
 
-% automatically converted by musicxml2ly from heer_ik_roep_layout/heer_ik_roep_t2_als_t1.musicxml
+% automatically converted by musicxml2ly from heer_ik_roep_t2.musicxml
 % hand edits after conversion: the \include above and the \header title/subtitle (replacing musicxml2ly's title and composer)
 \pointAndClickOff
 

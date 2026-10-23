@@ -137,8 +137,8 @@ put the splits and breaks in a `layouts.txt` (see `koor-variant.py`): the
 choir print is then made from a split copy, and the 14pt score keeps its own
 line breaks. The Heer ik roep choir prints work that way
 (`heer_ik_roep_koor/layouts.txt`, with the layouts of the choir's sheets for
-tones 1–3), and so do the trial layouts in `heer_ik_roep_layout/`, which are
-split copies.
+tones 1–3), and so do the trial layouts in `heer_ik_roep_layout/` (its own
+`layouts.txt`, whose lines name their source score).
 
 `M:K` splits measure M before its K-th soprano note (both counted from 1, M as
 MuseScore numbers it). The split is made at that moment on both staves; it
@@ -493,7 +493,7 @@ larger than the house style's 14pt (`church_style_koor.ily`, which includes
 `rebuild-score.py`, since it starts from the current `NAME.ly`. `--out-dir DIR`
 puts both files in `DIR` instead: the Heer ik roep choir prints are in
 `heer_ik_roep_koor/` (and those of the trial layouts in
-`heer_ik_roep_layout/koor/`), to keep the root uncluttered.
+`heer_ik_roep_layout/`), to keep the root uncluttered.
 
 ```sh
 tools/koor-variant.py --size 18 bogoroditse_dievo bogoroditse_dievo_arkhangelsky
@@ -515,6 +515,11 @@ and the line breaks, as `mscz-split-measures.py` takes them:
 ```
 heer_ik_roep_t1  4:8 8:4      | 2,4a,6,8a,9
 ```
+
+A line can name its source score after the name, to try a layout under a
+name of its own; `heer_ik_roep_layout/layouts.txt` has
+`heer_ik_roep_t4_als_t1  heer_ik_roep_t4  4:8 8:4 | 2,4a,6,8a,9`, built with
+`tools/koor-variant.py --out-dir heer_ik_roep_layout heer_ik_roep_t4_als_t1`.
 
 `koor-variant.py` then splits a temporary copy of `NAME.mscz` that way,
 builds it with `rebuild-score.py`, and makes the choir print from that.

@@ -1,0 +1,15 @@
+# Trial layouts for the choir prints (see README.md), used by tools/koor-variant.py:
+# name, source score, splits (M:K) | line breaks; see tools/mscz-split-measures.py.
+# _als_t1: m4 split before "sme", m8 before "voor" (as tone 1)
+# _als_t3: m4 split before "mijn", m8 before "Uw" (as tone 3)
+heer_ik_roep_t2_als_t1  heer_ik_roep_t2  4:8 8:4 | 2,4a,6,8a,9
+heer_ik_roep_t4_als_t1  heer_ik_roep_t4  4:8 8:4 | 2,4a,6,8a,9
+heer_ik_roep_t4_als_t3  heer_ik_roep_t4  4:7 8:5 | 2,4a,6,8a,9
+heer_ik_roep_t5_als_t1  heer_ik_roep_t5  4:8 8:4 | 2,4a,6,8a,9
+heer_ik_roep_t5_als_t3  heer_ik_roep_t5  4:7 8:5 | 2,4a,6,8a,9
+heer_ik_roep_t6_als_t1  heer_ik_roep_t6  4:8 8:4 | 2,4a,6,8a,9
+heer_ik_roep_t6_als_t3  heer_ik_roep_t6  4:7 8:5 | 2,4a,6,8a,9
+heer_ik_roep_t7_als_t1  heer_ik_roep_t7  4:8 8:4 | 2,4a,6,8a,9
+heer_ik_roep_t7_als_t3  heer_ik_roep_t7  4:7 8:5 | 2,4a,6,8a,9
+heer_ik_roep_t8_als_t1  heer_ik_roep_t8  4:8 8:4 | 2,4a,6,8a,9
+heer_ik_roep_t8_als_t3  heer_ik_roep_t8  4:7 8:5 | 2,4a,6,8a,9
