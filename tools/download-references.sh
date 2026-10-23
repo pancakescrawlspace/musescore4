@@ -1,8 +1,7 @@
 #!/bin/sh
-# Downloads the sources of heer_ik_roep_sources.md,
-# bogoroditse_dievo_sources.md and vriendelijk_licht_sources.md into
-# references/ (gitignored), where the files are listed under "References"
-# in heer_ik_roep_sources.md.
+# Downloads the sources of the *_sources.md files into references/
+# (gitignored), where the files are listed under "References" in
+# heer_ik_roep_sources.md.
 #
 # usage: tools/download-references.sh
 #
@@ -61,3 +60,9 @@ curl -sSL -o $d/court_obikhod_1914_djukliros.pdf 'https://drive.google.com/uc?ex
 d=references/svete_tihij; mkdir -p $d
 curl -sSL -o $d/azbyka_dvoretsky.pdf $A/2024/02/svete-tihij-i.-dvoreczkij.pdf
 curl -sSL -o $d/azbyka_kievan_dvoretsky_ttbb.pdf $A/2024/02/svete-tihij-kievskogo-rospeva.pdf
+d=references/milost_mira; mkdir -p $d
+curl -sSL -o $d/azbyka_feofan_smirnov_ttbb.pdf $A/2023/11/milost-mira-feofan-v-obrabotke-g.-smirnova.pdf
+curl -sSL -o $d/azbyka_feofan_diveevo.pdf $A/2023/11/milost-mira-feofana-diveev.-m-rya.pdf
+curl -sSL -o $d/azbyka_feofan_zazvonov.pdf $A/2023/03/milost-mira-feofan-obr.-zazvonova-m.h..pdf
+curl -sSL -o $d/azbyka_feofan_bolshoe.pdf $A/2023/03/milost-mira-arh.-feofan-bolshoe.pdf
+curl -sSL -o $d/azbyka_ziborov_smirnov_ttbb.pdf $A/2023/11/milost-mira-feofan-ziborov-tenor-v-obrabotke-g.-smirnova.pdf

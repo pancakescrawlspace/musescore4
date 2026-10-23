@@ -339,8 +339,8 @@ How they compare:
 
 ## References
 
-Local copies of the sources, for this file, `bogoroditse_dievo_sources.md`
-and `vriendelijk_licht_sources.md`, are kept in `references/` (gitignored,
+Local copies of the sources of this file and the other `*_sources.md`
+files are kept in `references/` (gitignored,
 about 72 MB, most of it the Bakhmetev scan).
 [`tools/download-references.sh`](tools/download-references.sh) downloads
 them again.
@@ -407,3 +407,11 @@ them again.
   (see `vriendelijk_licht_sources.md`)
   - `azbyka_kievan_dvoretsky_ttbb.pdf`: [Smirnov's edition for men's choir](https://azbyka.ru/kliros/wp-content/uploads/2024/02/svete-tihij-kievskogo-rospeva.pdf)
   - `azbyka_dvoretsky.pdf`: [a scan of an old print](https://azbyka.ru/kliros/wp-content/uploads/2024/02/svete-tihij-i.-dvoreczkij.pdf)
+- `milost_mira/`: «Милость мира» settings by Archimandrite Feofan and
+  others, from [azbyka.ru](https://azbyka.ru/kliros/liturgiya-milost-mira-noty-dlya-muzhskogo-hora/)
+  (see `milost_mira_sources.md`)
+  - `azbyka_feofan_smirnov_ttbb.pdf`: [«еп. Феофан», arr. Smirnov](https://azbyka.ru/kliros/wp-content/uploads/2023/11/milost-mira-feofan-v-obrabotke-g.-smirnova.pdf)
+  - `azbyka_feofan_diveevo.pdf`: [«Феофановская», Diveevo harmonization](https://azbyka.ru/kliros/wp-content/uploads/2023/11/milost-mira-feofana-diveev.-m-rya.pdf)
+  - `azbyka_feofan_zazvonov.pdf`: [arr. Zazvonov](https://azbyka.ru/kliros/wp-content/uploads/2023/03/milost-mira-feofan-obr.-zazvonova-m.h..pdf)
+  - `azbyka_feofan_bolshoe.pdf`: [«Большое»](https://azbyka.ru/kliros/wp-content/uploads/2023/03/milost-mira-arh.-feofan-bolshoe.pdf)
+  - `azbyka_ziborov_smirnov_ttbb.pdf`: [Hegumen Feofan (Ziborov), arr. Smirnov](https://azbyka.ru/kliros/wp-content/uploads/2023/11/milost-mira-feofan-ziborov-tenor-v-obrabotke-g.-smirnova.pdf)

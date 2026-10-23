@@ -413,10 +413,9 @@ title tag is the score's title, subtitle and subsubtitle, plus the voice. Needs
 
 ## Downloading the sources (`download-references.sh`)
 
-Downloads the sources of `heer_ik_roep_sources.md`,
-`bogoroditse_dievo_sources.md` and `vriendelijk_licht_sources.md` into
-`references/` (gitignored), where `heer_ik_roep_sources.md` lists them
-under "References". Needs `curl`.
+Downloads the sources of the `*_sources.md` files into `references/`
+(gitignored), where `heer_ik_roep_sources.md` lists them under
+"References". Needs `curl`.
 
 ```sh
 tools/download-references.sh
