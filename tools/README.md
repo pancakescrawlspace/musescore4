@@ -413,10 +413,11 @@ title tag is the score's title, subtitle and subsubtitle, plus the voice. Needs
 
 ## Downloading the sources (`download-references.sh`)
 
-Downloads the sources of the `*_sources.md` files into `references/`
-(gitignored), where `heer_ik_roep_sources.md` lists them under
-"References". Needs `curl`, and `mutool` for the one page it extracts
-(«Царю Небесный» from the Pentecostarion; skipped without it).
+Downloads the sources of `docs/*_sources.md` and
+`znamenny/znamenny_sources.md` into `references/` (gitignored), where
+`docs/heer_ik_roep_sources.md` lists them under "References". Needs
+`curl`, and `mutool` for the one page it extracts («Царю Небесный» from
+the Pentecostarion; skipped without it).
 
 ```sh
 tools/download-references.sh
@@ -424,13 +425,13 @@ tools/download-references.sh
 
 ## Comparing the sources (`compare-sources/`)
 
-The scripts behind `heer_ik_roep_sources.md` (see "How the comparisons
-were made" there), `vriendelijk_licht_sources.md` (`cmp_vriendelijk.py`)
-and `dostojno_est_sources.md` (`cmp_waarheid.py`, which reads the Dutch
-voices from the LilyPond files in `~/dev/liturgie/ly/stukken`): they read
-the voices from the vector PDFs in `references/` and compare them with
-the scores. They import each other,
-hence the underscores in their names, and need `mutool`.
+The scripts behind `docs/heer_ik_roep_sources.md` (see "How the
+comparisons were made" there), `docs/vriendelijk_licht_sources.md`
+(`cmp_vriendelijk.py`) and `docs/dostojno_est_sources.md`
+(`cmp_waarheid.py`, which reads the Dutch voices from the LilyPond files
+in `~/dev/liturgie/ly/stukken`): they read the voices from the vector
+PDFs in `references/` and compare them with the scores. They import each
+other, hence the underscores in their names, and need `mutool`.
 
 ```sh
 tools/compare-sources/cmp_oca.py 1 2 3 4 5 6 7 8

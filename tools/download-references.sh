@@ -1,7 +1,7 @@
 #!/bin/sh
-# Downloads the sources of the *_sources.md files into references/
-# (gitignored), where the files are listed under "References" in
-# heer_ik_roep_sources.md.
+# Downloads the sources of docs/*_sources.md and znamenny/znamenny_sources.md
+# into references/ (gitignored), where the files are listed under
+# "References" in docs/heer_ik_roep_sources.md.
 #
 # usage: tools/download-references.sh
 #

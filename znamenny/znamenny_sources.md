@@ -13,12 +13,12 @@ Znamenny chant. They belong to the later, simpler chants and to
 
 | piece | chant | file |
 |---|---|---|
-| Heer, ik roep, tones 1–8 | Moscow obikhod (Court chant; Kievan in tones 2 and 7) | `heer_ik_roep_sources.md` |
-| Bogoroditse Devo / Verheug U Maagd | Greek chant, arr. Arkhangelsky | `bogoroditse_dievo_sources.md` |
-| Vriendelijk licht | Kievan chant, arr. Dvoretsky | `vriendelijk_licht_sources.md` |
-| Welzalig is de mens | common obikhod («Обычный напев») | `blazhen_muzh_sources.md` |
-| Eucharistische Kanon (liturgy) | Feofan's own composition | `milost_mira_sources.md` |
-| In waarheid (liturgy) | parish "Kievan" «Достойно есть» | `dostojno_est_sources.md` |
+| Heer, ik roep, tones 1–8 | Moscow obikhod (Court chant; Kievan in tones 2 and 7) | `docs/heer_ik_roep_sources.md` |
+| Bogoroditse Devo / Verheug U Maagd | Greek chant, arr. Arkhangelsky | `docs/bogoroditse_dievo_sources.md` |
+| Vriendelijk licht | Kievan chant, arr. Dvoretsky | `docs/vriendelijk_licht_sources.md` |
+| Welzalig is de mens | common obikhod («Обычный напев») | `docs/blazhen_muzh_sources.md` |
+| Eucharistische Kanon (liturgy) | Feofan's own composition | `docs/milost_mira_sources.md` |
+| In waarheid (liturgy) | parish "Kievan" «Достойно есть» | `docs/dostojno_est_sources.md` |
 
 The following is general background, not checked against a source here.
 Znamenny chant is the oldest Russian chant: monophonic, and written in
@@ -65,7 +65,7 @@ copies").
   [«Милость мира» древних роспевов](https://azbyka.ru/kliros/noty-pesnopenij-liturgii-milost-mira-dvuhgolosie/).
 - **The Synodal *Обиход нотного пения*, part 2 (Liturgy, 1909)**, in a
   2004 retypesetting in the original square notation. Its Znamenny items
-  include «Милость мира» (p. 258). See `dostojno_est_sources.md`.
+  include «Милость мира» (p. 258). See `docs/dostojno_est_sources.md`.
 - **English adaptations** (Finale and similar):
   - [Orthodox Two-Part Music](https://orthodoxtwopartmusic.org/otpl): from
     St Tikhon's Monastery, in two parts with chord symbols. About 25
@@ -113,7 +113,7 @@ copies").
   scan in square notation. Znamenny settings of «Благослови, душе моя»,
   «Блажен муж» («малого знаменного»), «Господи воззвах», «Свете тихий»,
   the prokeimena, «Хвалите имя Господне», the Великое славословие and
-  more. See `bogoroditse_dievo_sources.md`.
+  more. See `docs/bogoroditse_dievo_sources.md`.
 
 ### Not usable here
 
@@ -219,7 +219,7 @@ on 2026-10-23.
 
 ## Local copies
 
-In `references/znamenny/` (gitignored; see `heer_ik_roep_sources.md`,
+In `references/znamenny/` (gitignored; see `docs/heer_ik_roep_sources.md`,
 "References", and `tools/download-references.sh`):
 
 - `kutuzov_obihod_znamennogo_peniya.pdf`: Kutuzov's Obikhod

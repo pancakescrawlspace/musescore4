@@ -148,7 +148,7 @@ does not make the two voices equivalent.)
 
 ## How the comparisons were made
 
-The scripts are in [`tools/compare-sources/`](tools/compare-sources/).
+The scripts are in [`tools/compare-sources/`](../tools/compare-sources/).
 They need `mutool` and read the downloaded PDFs in `references/` (see
 "References"), e.g. `tools/compare-sources/cmp_oca.py 1 2 3 4 5 6 7 8`.
 
@@ -339,10 +339,10 @@ How they compare:
 
 ## References
 
-Local copies of the sources of this file and the other `*_sources.md`
-files are kept in `references/` (gitignored,
+Local copies of the sources of this file, the other `docs/*_sources.md`
+files and `znamenny/znamenny_sources.md` are kept in `references/` (gitignored,
 about 72 MB, most of it the Bakhmetev scan).
-[`tools/download-references.sh`](tools/download-references.sh) downloads
+[`tools/download-references.sh`](../tools/download-references.sh) downloads
 them again.
 
 - `bogoroditse_dievo/`
@@ -432,7 +432,7 @@ them again.
   - `obihod_1909_ch1_vsenoshchnoe.pdf`: [part 1, Всенощное бдение](http://quadratum.glagol-verbum.com/biblioteka/Obikhod_1909_-_vsenoschnoe.pdf), a scan (204 pages)
   - `obihod_1909_ch2_liturgiya.pdf`: [part 2, Божественная литургия](http://quadratum.glagol-verbum.com/biblioteka/obihod1909_lit.pdf),
     retypeset in 2004 in the original notation and pagination (PDF page = printed page − 204)
-- `znamenny/`: Znamenny chant in staff notation (see `znamenny_sources.md`)
+- `znamenny/`: Znamenny chant in staff notation (see `znamenny/znamenny_sources.md`)
   - `kutuzov_obihod_znamennogo_peniya.pdf`: [B. Kutuzov, «Обиход знаменного пения»](https://azbyka.ru/kliros/wp-content/uploads/2024/12/obihod-znamennogo-peniya-b.-kutuzov.pdf)
   - `azbyka_vsenoshchnaya_i_liturgiya_znamennogo_rospeva.pdf`: [Bryansk 2013](https://azbyka.ru/kliros/wp-content/uploads/2024/12/vsenoshhnaya-i-liturgiya-znamennogo-rospeva.pdf)
   - `azbyka_vsenoshchnoe_bdenie_pakhtunova.pdf`: [T. Pakhtunova](https://azbyka.ru/kliros/wp-content/uploads/2024/12/vsenoshhnoe-bdenie-znamennogo-raspeva-sost.-t.-pahtunova.pdf)
@@ -456,4 +456,4 @@ them again.
   - `azbyka_grecheskij_raspev_smirnov_ttbb.pdf`: [Smirnov, men's choir](https://azbyka.ru/kliros/wp-content/uploads/2024/02/prednachinatelnyj-psalom-grecheskogo-raspeva-2.pdf)
 - `triod_1899/triod_1899_ch2_cvetnaya.pdf`: the Synodal *Триодь нотного
   пения*, part 2 (Pentecostarion), [from "Глаголь"](http://quadratum.glagol-verbum.com/biblioteka/triod_col.pdf),
-  retypeset in 2004 (PDF page = printed page − 203); see `znamenny_sources.md`
+  retypeset in 2004 (PDF page = printed page − 203); see `znamenny/znamenny_sources.md`
