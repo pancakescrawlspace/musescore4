@@ -126,14 +126,19 @@ The measures of a free-meter score are long, and a sheet the choir already
 sings from may break a line in the middle of one. MuseScore and LilyPond only
 break at barlines, so the measure is split there in the `.mscz`, as
 MuseScore's "Split measure before selected note" does, with an invisible
-barline at the split. The line breaks then live in the `.mscz` and survive
-every rebuild.
+barline at the split.
 
 ```sh
-tools/mscz-split-measures.py heer_ik_roep_t1.mscz 4:8 8:4 --line-breaks 2,4a,6,8a,9
-tools/rebuild-score.py heer_ik_roep_t1
-tools/koor-variant.py heer_ik_roep_t1
+tools/mscz-split-measures.py copy.mscz 4:8 8:4 --line-breaks 2,4a,6,8a,9
 ```
+
+When only the choir print should have that layout, leave the score alone and
+put the splits and breaks in a `layouts.txt` (see `koor-variant.py`): the
+choir print is then made from a split copy, and the 14pt score keeps its own
+line breaks. The Heer ik roep choir prints work that way
+(`heer_ik_roep_koor/layouts.txt`, with the layouts of the choir's sheets for
+tones 1–3), and so do the trial layouts in `heer_ik_roep_layout/`, which are
+split copies.
 
 `M:K` splits measure M before its K-th soprano note (both counted from 1, M as
 MuseScore numbers it). The split is made at that moment on both staves; it
@@ -144,19 +149,12 @@ MusicXML gives it the number `X1`, and `rebuild-score.py` resets LilyPond's
 bar number after the invisible barline (`\set Score.currentBarNumber`).
 `--line-breaks` replaces all line breaks: the measures after which a line
 breaks, `4a` being the first half of split measure 4. The score is changed
-in place; MuseScore opens it normally (the halves show as two measures).
+in place; MuseScore opens it normally (the halves show as two measures). The
+video and practice-MP3 tools haven't been tried on split scores.
 
 Splitting by hand in MuseScore works too, but then the halves also need
 their hidden time signatures and the second half "Exclude from measure
 count", which the script does in one go.
-
-Heer ik roep tones 1–3 have the line breaks of the choir's sheets this way:
-
-| tone | splits        | line breaks     |
-|------|---------------|-----------------|
-| 1    | `4:8 8:4`     | `2,4a,6,8a,9`   |
-| 2    | `4:7 6:6 8:4` | `2,4a,6a,8a,9`  |
-| 3    | `4:7 8:5`     | `2,4a,6,8a,9`   |
 
 `musicxml2ly` warns "Overfull measure?" and "Negative skip" for a split
 score; `rebuild-score.py` hides those warnings, since the notes come out
@@ -505,11 +503,25 @@ qpdf --empty --pages heer_ik_roep_koor/heer_ik_roep_t?_koor.pdf -- heer_ik_roep_
 ```
 
 Without `--free-breaks` the line breaks stay those of `NAME.ly`, which come
-from the `.mscz` (including breaks inside a split measure, see
-`mscz-split-measures.py`), and the choir print gets as many pages as
-`NAME.pdf`: LilyPond tightens the vertical spacing rather than add a page.
-That is enough for bogoroditse_dievo at 18pt and for Heer ik roep tones 1–3,
-whose `.mscz` have the breaks of the choir's sheets. Tones 4–8 at 16pt don't
+from the `.mscz`, and the choir print gets as many pages as `NAME.pdf`:
+LilyPond tightens the vertical spacing rather than add a page. That is enough
+for bogoroditse_dievo at 18pt.
+
+A choir print can also have a layout of its own, for example that of the
+sheets the choir already sings from, without touching the score: a
+`layouts.txt` in the output directory lists, per score, measures to split
+and the line breaks, as `mscz-split-measures.py` takes them:
+
+```
+heer_ik_roep_t1  4:8 8:4      | 2,4a,6,8a,9
+```
+
+`koor-variant.py` then splits a temporary copy of `NAME.mscz` that way,
+builds it with `rebuild-score.py`, and makes the choir print from that.
+Heer ik roep tones 1–3 have the layouts of the choir's sheets this way
+(`heer_ik_roep_koor/layouts.txt`; only those three sheets were photographed).
+
+Tones 4–8 at 16pt don't
 fit their 14pt breaks: a system that is too wide gets split at a barline,
 and the seventh system goes to a second page. `--free-breaks` lets LilyPond
 break within measures too, but only before a new word, in two passes:

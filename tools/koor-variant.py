@@ -6,13 +6,22 @@ usage: tools/koor-variant.py [--size PT] [--free-breaks] [--out-dir DIR] NAME [N
 
 NAME is a score name relative to the repository root (heer_ik_roep_t3, or with
 .ly/.mscz); its .ly must exist (tools/rebuild-score.py makes it). --size sets
-the lyric size in points (default 16). Without --free-breaks the line breaks
-stay those of NAME.ly, which come from the line breaks in NAME.mscz; to break
-a line inside a measure, split the measure there in the .mscz
-(tools/mscz-split-measures.py). The choir print gets as many pages as NAME.pdf
-(page-count), so LilyPond tightens the spacing rather than add a page.
-The choir print goes next to NAME.ly, or with --out-dir in DIR (relative to
-the repository root; the Heer ik roep tones use heer_ik_roep_koor).
+the lyric size in points (default 16). The choir print goes next to NAME.ly,
+or with --out-dir in DIR (relative to the repository root; the Heer ik roep
+tones use heer_ik_roep_koor).
+
+The line breaks stay those of NAME.ly, which come from NAME.mscz, unless the
+output directory has a layouts.txt with a line for NAME:
+
+    heer_ik_roep_t1  4:8 8:4 | 2,4a,6,8a,9
+
+that is, splits and line breaks as tools/mscz-split-measures.py takes them.
+The choir print is then made from a copy of NAME.mscz with those splits and
+breaks (split measures can break a line inside a measure, for the layout of
+an existing sheet), built with tools/rebuild-score.py in a temporary
+directory; NAME.mscz itself stays as it is. The choir print gets as many
+pages as the 14pt PDF it starts from (page-count), so LilyPond tightens the
+spacing rather than add a page.
 
 --free-breaks is for scores whose .mscz breaks don't suit the larger lyrics:
 LilyPond chooses the line breaks, also within measures but only before a new
@@ -32,7 +41,7 @@ word, in two passes:
 
 Needs lilypond.
 """
-import os, re, subprocess, sys, tempfile
+import os, re, shutil, subprocess, sys, tempfile
 from fractions import Fraction
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -188,6 +197,36 @@ def apply_breaks(src, breaks):
     return src
 
 
+def read_layouts(path):
+    """{score name: (splits, line breaks)} from a layouts.txt; # starts a comment."""
+    out = {}
+    if os.path.exists(path):
+        for line in open(path):
+            line = line.split('#')[0].strip()
+            if not line: continue
+            head, breaks = line.split('|')
+            name, *splits = head.split()
+            out[name] = (splits, breaks.strip())
+    return out
+
+
+def split_copy(name, splits, breaks, tmp):
+    """NAME.ly and its page count as they come out of a copy of NAME.mscz with the measures split
+    and the line breaks set as in layouts.txt."""
+    base = os.path.join(tmp, os.path.basename(name))
+    shutil.copy(name + '.mscz', base + '.mscz')
+    shutil.copy(name + '.ly', base + '.ly')        # rebuild-score.py takes its hand edits from it
+    for cmd in (['mscz-split-measures.py', base + '.mscz', *splits, '--line-breaks', breaks],
+                ['rebuild-score.py', base]):
+        r = subprocess.run([sys.executable, os.path.join(ROOT, 'tools', cmd[0]), *cmd[1:]],
+                           capture_output=True, text=True)
+        if r.returncode:
+            raise SystemExit(f'{name}: {cmd[0]} failed\n{r.stdout}{r.stderr}')
+    info = subprocess.run(['mutool', 'info', base + '.pdf'], capture_output=True, text=True).stdout
+    src = open(base + '.ly').read().replace(tmp + os.sep, '')   # musicxml2ly's comment names the copy
+    return src, re.search(r'Pages: (\d+)', info)
+
+
 def lilypond(out, src, workdir):
     path = os.path.join(workdir, os.path.basename(out))
     open(path + '.ly', 'w').write(src)
@@ -216,6 +255,15 @@ def main(args):
         if out_dir:
             os.makedirs(out_dir, exist_ok=True)
             out = os.path.join(out_dir, os.path.basename(out))
+        layout = read_layouts(os.path.join(os.path.dirname(out), 'layouts.txt')).get(os.path.basename(name))
+        if layout and free:
+            raise SystemExit(f'{name}: --free-breaks, but layouts.txt has a layout for it')
+        info = subprocess.run(['mutool', 'info', name + '.pdf'], capture_output=True, text=True).stdout
+        pages = re.search(r'Pages: (\d+)', info)
+        if layout:
+            with tempfile.TemporaryDirectory() as tmp:
+                src, pages = split_copy(name, *layout, tmp)
+            note = f', layout from layouts.txt ({" ".join(layout[0])} | {layout[1]})'
         if free:
             marked, systems = mark_word_starts(src)
             layout = '\\layout { \\context { \\Score forbidBreakBetweenBarLines = ##f } }\n'
@@ -228,8 +276,6 @@ def main(args):
             src = apply_breaks(marked, breaks).replace(inc, head + '\\paper { page-count = 1 }\n' + layout, 1)
             note = f', free breaks ({len(breaks)} breaks)'
         else:
-            info = subprocess.run(['mutool', 'info', name + '.pdf'], capture_output=True, text=True).stdout
-            pages = re.search(r'Pages: (\d+)', info)
             src = src.replace(inc, head + (f'\\paper {{ page-count = {pages.group(1)} }}\n' if pages else ''), 1)
         open(out + '.ly', 'w').write(src)
         r = subprocess.run(['lilypond', '-I', ROOT, '-o', out, out + '.ly'], capture_output=True, text=True)

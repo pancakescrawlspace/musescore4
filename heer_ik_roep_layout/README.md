@@ -6,7 +6,7 @@ have six lines, with a split measure (an invisible barline) in m4 and m8:
     m1 m2 | m3 m4a | m4b m5 m6 | m7 m8a | m8b m9 | m10 m11
 
 This folder tries that layout on the other tones, without replacing anything;
-the scores next to the repository root are unchanged. Two variants, after the
+the scores in the root are unchanged. Two variants, after the
 split points of tone 1 and tone 3:
 
 | suffix    | m4 split before | m8 split before | like   |
@@ -36,6 +36,7 @@ tools/rebuild-score.py heer_ik_roep_layout/NAME
 tools/koor-variant.py --out-dir heer_ik_roep_layout/koor heer_ik_roep_layout/NAME
 ```
 
-To adopt a variant, copy its `.mscz` over `heer_ik_roep_tN.mscz` in the root
-and rebuild there (`rebuild-score.py`, then `koor-variant.py --out-dir
-heer_ik_roep_koor`).
+To adopt a variant for the choir print only, add its splits and line breaks
+to `../heer_ik_roep_koor/layouts.txt` and rerun `tools/koor-variant.py
+--out-dir heer_ik_roep_koor heer_ik_roep_tN` (without `--free-breaks`); the
+score itself stays as it is.

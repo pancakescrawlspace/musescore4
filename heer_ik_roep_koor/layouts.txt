@@ -1,0 +1,7 @@
+# Line breaks of the choir prints that differ from the 14pt scores, used by
+# tools/koor-variant.py: score, splits (M:K = split measure M before its K-th
+# soprano note) | line breaks (after these measures; 4a = at the split in 4).
+# See tools/mscz-split-measures.py. Here: the layouts of the choir's sheets.
+heer_ik_roep_t1  4:8 8:4      | 2,4a,6,8a,9
+heer_ik_roep_t2  4:7 6:6 8:4  | 2,4a,6a,8a,9
+heer_ik_roep_t3  4:7 8:5      | 2,4a,6,8a,9

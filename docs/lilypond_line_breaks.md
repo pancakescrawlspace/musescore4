@@ -5,13 +5,14 @@ Heer ik roep are in `heer_ik_roep_koor/`), for
 example to match the breaks of the sheets the choir already sings from.
 The same commands work in the ordinary `NAME.ly`.
 
-**First choice: put the breaks in the `.mscz`.** Line breaks set in
-MuseScore end up in `NAME.ly` and `NAME_koor.ly` on every rebuild, and a
-break inside a measure can be made there too, by splitting the measure with
-an invisible barline: `tools/mscz-split-measures.py` (see `tools/README.md`).
-Heer ik roep tones 1–3 are done that way. Editing the `.ly` by hand, as
-below, is for a quick change to one print, or for the choir prints made with
-`koor-variant.py --free-breaks` (tones 4–8).
+**First choice: let the tools set the breaks.** Line breaks set in
+MuseScore end up in `NAME.ly` and `NAME_koor.ly` on every rebuild. For a
+choir print with breaks of its own, also inside a measure, list them in a
+`layouts.txt` next to the choir prints (`heer_ik_roep_koor/layouts.txt`; see
+`koor-variant.py` in `tools/README.md`): they survive every rebuild, and the
+score stays as it is. Heer ik roep tones 1–3 are done that way. Editing the
+`.ly` by hand, as below, is for a quick change to one print, or for the choir
+prints made with `koor-variant.py --free-breaks` (tones 4–8).
 
 ## Before you start: hand edits get overwritten
 
