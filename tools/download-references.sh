@@ -68,3 +68,8 @@ curl -sSL -o $d/azbyka_feofan_bolshoe.pdf $A/2023/03/milost-mira-arh.-feofan-bol
 curl -sSL -o $d/azbyka_ziborov_smirnov_ttbb.pdf $A/2023/11/milost-mira-feofan-ziborov-tenor-v-obrabotke-g.-smirnova.pdf
 d=references/dostojno_est; mkdir -p $d
 curl -sSL -o $d/azbyka_kievan.pdf $A/2025/07/dostojno-est-kievski-raspev-4g-smh.pdf
+d=references/blazhen_muzh; mkdir -p $d
+curl -sSL -o $d/azbyka_obychnyj_napev.pdf $A/2025/03/blazhen-muzh_obychnyj.pdf
+curl -sSL -o $d/azbyka_obihod.pdf $A/2024/02/blazhen-muzh-obihod.pdf
+curl -sSL -o $d/azbyka_obihod_2023.pdf $A/2023/04/blazhen-muzh-obihod.pdf
+curl -sSL -o $d/azbyka_kievan_kastorsky.pdf $A/2023/04/blazhen-muzh-kievskij.pdf

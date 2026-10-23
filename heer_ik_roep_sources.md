@@ -418,3 +418,10 @@ them again.
 - `dostojno_est/`: «Достойно есть» (see `dostojno_est_sources.md`)
   - `azbyka_kievan.pdf`: [Kievan chant, azbyka.ru](https://azbyka.ru/kliros/wp-content/uploads/2025/07/dostojno-est-kievski-raspev-4g-smh.pdf),
     from [this page](https://azbyka.ru/kliros/dostojno-est-kievskij-raspev-dlya-razuchivaniya/)
+- `blazhen_muzh/`: «Блажен муж», from
+  [azbyka.ru](https://azbyka.ru/kliros/metka/nazvanie-blazhen-muzh/)
+  (see `blazhen_muzh_sources.md`)
+  - `azbyka_obychnyj_napev.pdf`: [«Обычный напев» (2025)](https://azbyka.ru/kliros/wp-content/uploads/2025/03/blazhen-muzh_obychnyj.pdf), the choir's setting
+  - `azbyka_obihod.pdf`: [«Обиход» (2024)](https://azbyka.ru/kliros/wp-content/uploads/2024/02/blazhen-muzh-obihod.pdf)
+  - `azbyka_obihod_2023.pdf`: [«Обиход» (2023)](https://azbyka.ru/kliros/wp-content/uploads/2023/04/blazhen-muzh-obihod.pdf)
+  - `azbyka_kievan_kastorsky.pdf`: [Kievan chant, ed. Kastorsky](https://azbyka.ru/kliros/wp-content/uploads/2023/04/blazhen-muzh-kievskij.pdf)
