@@ -85,6 +85,67 @@ files in `references/` are listed in `heer_ik_roep_sources.md`,
 - [ikliros.com: Еже от века утаенное](https://ikliros.com/category/pervye-slova-pesnopeniya/ezhe-ot-veka-utaennoe):
   settings of that Theotokion (other chants), found while searching.
 
+## The Dutch version credited to Kastorsky (2026-10-23)
+
+A Dutch version, "Verheug U Maagd", in G major for four voices on two
+staves, credits the music to **"Kastorskij"**. It is known here from a
+phone photo of the choir's copy, too poor to keep. According to the
+user, its notes are the same, or almost the same, as this arrangement's.
+That has not been checked note by note.
+
+**Who Kastorsky was.** Aleksei Vasil'evich Kastorsky (1869–1944) was a
+regent in Penza and a teacher of church singing. He trained in the
+regents' class of the Court Chapel (1892–1897), where he studied
+composition with Rimsky-Korsakov. He was mainly an arranger of chant.
+His main work is *Церковные хоры*, a collection of common chant for
+mixed choir:
+
+- Part 1, «Песнопения всенощного бдения» (St Petersburg, 1899), the
+  Vigil, which is where «Богородице Дево» belongs.
+- Part 2, «Песнопения Божественной литургии» (1901).
+
+It had a 6th edition by 1915 and was reprinted in Tver (1994) and Moscow
+(1998). The *Orthodox Encyclopedia* says he arranged Greek chant among
+others, in simple chordal harmony and in keys convenient for singing
+(G, e, F, d), following the melodies closely. On azbyka.ru all his
+pieces are labelled «в ред. Касторского», «гарм. Касторского» or «по
+Касторскому», including three obikhod Cherubic Hymns. The choir also
+sings a Cherubic Hymn credited to him (`~/dev/koor/static/koormappen/`,
+"cherubijnen hymne (kastorski)").
+
+**Why one arrangement can carry two names.** The melody is the
+anonymous Greek chant; only the harmony is the arranger's. There are
+three possible explanations, none confirmed:
+
+1. **A misattribution on the Dutch sheet.** "Arkhangelsky" is backed
+   by two independent printed editions: the scan («в перел. А. А.
+   Архангельского») and kpds42.ru («Муз. А. Архангельского»). The
+   orthodoxchoral.ru catalogue also lists an Arkhangelsky arrangement
+   of this chant. "Kastorsky" is backed only by the Dutch sheet, and
+   the choir also sings his arrangements, so his name may have been
+   carried over by mistake.
+2. **The same harmonization in Kastorsky's collection.** Collections
+   of common chant often took over existing harmonizations without
+   crediting them. If *Церковные хоры* includes this harmonization, a
+   Dutch adapter working from that collection would credit Kastorsky.
+3. **His own, nearly identical arrangement.** Simple four-part
+   settings of one chant in one key can be close. But "the same, or
+   almost the same" makes chance unlikely.
+
+What would settle it: Kastorsky's «Богородице Дево» from part 1 of
+*Церковные хоры* (e.g. the 1998 reprint). It was not found online: not
+on azbyka.ru, and no scan of the collection.
+
+Sources:
+[Православная энциклопедия: КАСТОРСКИЙ](https://www.pravenc.ru/text/1681335.html);
+[azbyka.ru: Касторский, ноты для хора](https://azbyka.ru/kliros/metka/kompozitory-kastorskij/);
+[azbyka.ru: Херувимская песнь «Обиходная», гарм. А. В. Касторский](https://azbyka.ru/kliros/heruvimskaya-pesn-obihodnaya-garm-a-v-kastorskij-dlya-razuchivaniya/);
+[Православная энциклопедия: Издательства и издания духовно-музыкальные](https://www.pravenc.ru/text/293876.html),
+which mentions reprints of «сборники обиходных песнопений, составленные
+А. В. Касторским». Not to be confused with A. D. Kastalsky (who
+edited the Synodal Choir's Obikhod), nor with the bass singer
+V. I. Kastorsky.
+
 ## Other settings looked at (not this arrangement)
 
 - [Всенощная: «Богородице, Дево, радуйся» – подборка нот, azbyka.ru](https://azbyka.ru/kliros/vsenoshhnaya-bogorodicze-devo-radujsya-podborka-not-pesnopeniya/):
@@ -104,6 +165,12 @@ files in `references/` are listed in `heer_ik_roep_sources.md`,
   according to the search results, an SATB arrangement by Arkhangelsky of
   the Greek chant from the Обиход нотного пения, "подобен «Еже от века
   утаенное»". The page returned 404 when fetched.
+- "Bogoroditse Devo / Verheug U Maagd", credited to "Voznesenskiy", in
+  the choir's folder (`~/dev/koor/static/koormappen/concert/bogoroditse
+  devo - verheug u maagd.pdf`; a scan of the women's voices only, Slavonic
+  and Dutch text, no key signature): a different setting. Its melody
+  departs from this one in the opening notes (A B C D C B C B against
+  G A B B B A B C).
 - Other catalogues that turned up in searches, not used:
   [azbyka.ru: Название «Богородице Дево»](https://azbyka.ru/kliros/metka/nazvanie-bogorodicze-devo/),
   [azbyka.ru: Греческий распев](https://azbyka.ru/kliros/metka/grecheskij-raspev/),
