@@ -11,7 +11,10 @@ repository).
 It is the **common obikhod «Блажен муж»** («Обычный напев»,
 «Обиход»), in its standard anonymous four-part harmonization and in the
 same key, G major / E minor. It is not Kastorsky's Kievan-chant setting,
-whose melody differs. No edition found names a harmonizer.
+whose melody differs. No edition found names a harmonizer. The matching file belongs to an
+anonymous azbyka.ru series («Восстановлено порталом») whose no. 11 is
+the choir's Greek-chant «Благослови, душе моя» (see
+`blagoslovi_sources.md`).
 
 ## The choir's copy
 

@@ -451,6 +451,9 @@ them again.
     `https://azbyka.ru/kliros/wp-content/uploads/2025/04/`
   - `triod_1899_tsaryu_nebesnyj_p311.pdf`: «Царю Небесный», extracted from
     the Pentecostarion below
+- `blagoslovi/`: «Благослови, душе моя», Greek chant (see `blagoslovi_sources.md`)
+  - `azbyka_11_grecheskij_raspev.pdf`: [«11. Предначинательный псалом»](https://azbyka.ru/kliros/wp-content/uploads/2025/02/11_prednachinatelnyj-psalom_grecheskogo-raspeva.pdf), the choir's setting
+  - `azbyka_grecheskij_raspev_smirnov_ttbb.pdf`: [Smirnov, men's choir](https://azbyka.ru/kliros/wp-content/uploads/2024/02/prednachinatelnyj-psalom-grecheskogo-raspeva-2.pdf)
 - `triod_1899/triod_1899_ch2_cvetnaya.pdf`: the Synodal *Триодь нотного
   пения*, part 2 (Pentecostarion), [from "Глаголь"](http://quadratum.glagol-verbum.com/biblioteka/triod_col.pdf),
   retypeset in 2004 (PDF page = printed page − 203); see `znamenny_sources.md`

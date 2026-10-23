@@ -93,6 +93,9 @@ mkdir -p $d/azbyka_series
 for f in 08_1_psalom-gospodi-vozzvah-i-zapevy-glas-1 08_2_psalom-gospodi-vozzvah-i-zapevy-glas-2 08_3_psalom-gospodi-vozzvah-i-zapevy-glas-3 08_4_psalom-gospodi-vozzvah-i-zapevy-glas-4 08_5_psalom-gospodi-vozzvah-i-zapevy-glas-5 08_6_psalom-gospodi-vozzvah-i-zapevy-glas-6 08_7_psalom-gospodi-vozzvah-i-zapevy-glas-7 08_8_psalom-gospodi-vozzvah-i-zapevy-glas-8 09_1_svete-tihij 09_2_svete-tihij-glas-2 09_3_svete-tihij-glas-3 09_4_svete-tihij-glas-6 16_bogorodicze-devo.-kirillo-beloezerskij-monastyr; do
   curl -sSL -o $d/azbyka_series/$f.pdf $A/2025/04/$f.pdf
 done
+d=references/blagoslovi; mkdir -p $d
+curl -sSL -o $d/azbyka_11_grecheskij_raspev.pdf $A/2025/02/11_prednachinatelnyj-psalom_grecheskogo-raspeva.pdf
+curl -sSL -o $d/azbyka_grecheskij_raspev_smirnov_ttbb.pdf $A/2024/02/prednachinatelnyj-psalom-grecheskogo-raspeva-2.pdf
 d=references/triod_1899; mkdir -p $d
 curl -sSL -o $d/triod_1899_ch2_cvetnaya.pdf $G/triod_col.pdf
 # «Царю Небесный» (p. 311 = PDF page 108) as a page of its own, if mutool is there
