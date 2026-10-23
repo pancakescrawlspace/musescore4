@@ -34,7 +34,10 @@
   % the right, on one line; without one: title centered. A subtitle (the
   % score's Subtitle text, see tools/rebuild-score.py) goes centered below
   % the title, in bold at 12pt (the title is about 17.5pt). A composer
-  % (the score's Composer text) goes flush right below them.
+  % (the score's Composer text) goes flush right below them, in a serif
+  % italic: C059 (Century Schoolbook, with Cyrillic), which comes with
+  % LilyPond. (With font-name set, \italic has no effect, hence "Italic"
+  % in the name.)
   bookTitleMarkup = \markup \column {
     \if #has-subsubtitle? \fill-line {
       \fontsize #4 \bold \fromproperty #'header:title
@@ -52,7 +55,7 @@
     }
     \if #has-composer? \column {
       \vspace #0.3
-      \fill-line { \null \fromproperty #'header:composer }
+      \fill-line { \null \override #'(font-name . "C059 Italic") \fromproperty #'header:composer }
       \vspace #0.5
     }
   }
