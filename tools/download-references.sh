@@ -66,3 +66,5 @@ curl -sSL -o $d/azbyka_feofan_diveevo.pdf $A/2023/11/milost-mira-feofana-diveev.
 curl -sSL -o $d/azbyka_feofan_zazvonov.pdf $A/2023/03/milost-mira-feofan-obr.-zazvonova-m.h..pdf
 curl -sSL -o $d/azbyka_feofan_bolshoe.pdf $A/2023/03/milost-mira-arh.-feofan-bolshoe.pdf
 curl -sSL -o $d/azbyka_ziborov_smirnov_ttbb.pdf $A/2023/11/milost-mira-feofan-ziborov-tenor-v-obrabotke-g.-smirnova.pdf
+d=references/dostojno_est; mkdir -p $d
+curl -sSL -o $d/azbyka_kievan.pdf $A/2025/07/dostojno-est-kievski-raspev-4g-smh.pdf

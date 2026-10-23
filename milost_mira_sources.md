@@ -69,6 +69,10 @@ an archimandrite, not a bishop, and no other Feofan with this «Милость
 мира» was found. azbyka.ru files these settings under "Феофан архим.".
 The "bishop" is taken to be a slip, but this has not been confirmed.
 
+The canon shares most of its melodic lines with the Kievan-chant
+«Достойно есть», which the liturgy sings as "In waarheid": see
+`dostojno_est_sources.md`.
+
 Not done yet: a note-by-note comparison of the whole canon. Smirnov's
 PDF is a vector file, which `tools/compare-sources/ocaread.py` can
 probably read. The Dutch notes would have to come from the LilyPond

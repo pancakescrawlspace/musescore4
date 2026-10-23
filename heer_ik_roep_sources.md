@@ -415,3 +415,6 @@ them again.
   - `azbyka_feofan_zazvonov.pdf`: [arr. Zazvonov](https://azbyka.ru/kliros/wp-content/uploads/2023/03/milost-mira-feofan-obr.-zazvonova-m.h..pdf)
   - `azbyka_feofan_bolshoe.pdf`: [«Большое»](https://azbyka.ru/kliros/wp-content/uploads/2023/03/milost-mira-arh.-feofan-bolshoe.pdf)
   - `azbyka_ziborov_smirnov_ttbb.pdf`: [Hegumen Feofan (Ziborov), arr. Smirnov](https://azbyka.ru/kliros/wp-content/uploads/2023/11/milost-mira-feofan-ziborov-tenor-v-obrabotke-g.-smirnova.pdf)
+- `dostojno_est/`: «Достойно есть» (see `dostojno_est_sources.md`)
+  - `azbyka_kievan.pdf`: [Kievan chant, azbyka.ru](https://azbyka.ru/kliros/wp-content/uploads/2025/07/dostojno-est-kievski-raspev-4g-smh.pdf),
+    from [this page](https://azbyka.ru/kliros/dostojno-est-kievskij-raspev-dlya-razuchivaniya/)

@@ -424,9 +424,11 @@ tools/download-references.sh
 ## Comparing the sources (`compare-sources/`)
 
 The scripts behind `heer_ik_roep_sources.md` (see "How the comparisons
-were made" there) and `vriendelijk_licht_sources.md`
-(`cmp_vriendelijk.py`): they read the voices from the vector PDFs in
-`references/` and compare them with the scores. They import each other,
+were made" there), `vriendelijk_licht_sources.md` (`cmp_vriendelijk.py`)
+and `dostojno_est_sources.md` (`cmp_waarheid.py`, which reads the Dutch
+voices from the LilyPond files in `~/dev/liturgie/ly/stukken`): they read
+the voices from the vector PDFs in `references/` and compare them with
+the scores. They import each other,
 hence the underscores in their names, and need `mutool`.
 
 ```sh
