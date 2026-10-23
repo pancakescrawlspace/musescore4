@@ -4,8 +4,9 @@
 
 usage: tools/rebuild-score.py NAME [NAME ...]
 
-NAME is a score name like heer_ik_roep_t3 (or heer_ik_roep_t3.mscz). The
-outputs are NAME.musicxml, NAME.ly and NAME.pdf. Scores need time
+NAME is a score name like heer_ik_roep_t3 (or heer_ik_roep_t3.mscz), relative
+to the repository root; it may be in a subdirectory (znamenny/svete_tihij_znamennyj).
+The outputs are NAME.musicxml, NAME.ly and NAME.pdf, next to the score. Scores need time
 signatures, hidden ones for free meter: a score without any is refused
 (add them with tools/mscz-add-hidden-timesig.py).
 
@@ -266,7 +267,7 @@ def rebuild(name):
             raise Failed(f"{base}.musicxml is incomplete")
     # 3. musicxml2ly into a scratch directory, so a failure leaves the .ly alone
     with tempfile.TemporaryDirectory() as tmp:
-        out = os.path.join(tmp, base + ".ly")
+        out = os.path.join(tmp, os.path.basename(base) + ".ly")
         r = run("musicxml2ly", "-o", out, base + ".musicxml")
         problems(r.stderr, "musicxml2ly")
         if r.returncode or not os.path.exists(out):
@@ -277,7 +278,8 @@ def rebuild(name):
     with open(base + ".ly", "w") as f:
         f.write(ly)
     # 5. PDF
-    r = run("lilypond", base + ".ly")
+    # -I: church_style.ily is in the root; -o: the PDF goes next to the score
+    r = run("lilypond", "-I", ROOT, "-o", base, base + ".ly")
     problems(r.stderr, "lilypond")
     if r.returncode:
         raise Failed("lilypond failed")

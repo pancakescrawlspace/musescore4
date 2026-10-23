@@ -213,9 +213,12 @@ on 2026-10-23.
   signatures (no courtesy signatures), slurs and melisma lines on all 24
   multi-note syllables (words split after a melisma), lyrics in Arial 14
   with minimum distance 1.3.
-- **Not done yet:** the MusicXML/LilyPond/PDF outputs
-  (`tools/rebuild-score.py`). The other versions in the series (tones 2,
-  3, 6: 09_2–09_4) and Kutuzov's tone 6 are not transcribed.
+- **Outputs:** `svete_tihij_znamennyj.musicxml`, `.ly` and `.pdf` in this
+  folder, built with `tools/rebuild-score.py znamenny/svete_tihij_znamennyj`.
+  The note check is skipped: `tools/check-pdf-notes.py` handles only the
+  two-staff choir layout.
+- **Not done yet:** the other versions in the series (tones 2, 3, 6:
+  09_2–09_4) and Kutuzov's tone 6.
 
 ## Local copies
 

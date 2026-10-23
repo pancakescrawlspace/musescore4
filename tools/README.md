@@ -14,7 +14,11 @@ section).
 
 ```sh
 tools/rebuild-score.py heer_ik_roep_t3 onder_uwe_hoede
+tools/rebuild-score.py znamenny/svete_tihij_znamennyj
 ```
+
+A score in a subdirectory gets its outputs next to it; LilyPond finds
+`church_style.ily` in the root through its include path (`-I`).
 
 The hand edits come from the current `.ly`: the `\include`, the hand-edit
 comment, the `\header` title/subsubtitle and the line-break spacer. The
