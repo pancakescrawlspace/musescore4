@@ -74,6 +74,58 @@ PDF is a vector file, which `tools/compare-sources/ocaread.py` can
 probably read. The Dutch notes would have to come from the LilyPond
 source, e.g. through a MIDI export.
 
+## The text: "a mercy of peace", not "mercy, peace"
+
+The Dutch sings "Barmhartigheid, Vrede, een Offer van lof", as if mercy
+and peace were two items in a list. The Slavonic (and the Greek) say
+something else (looked into on 2026-10-23):
+
+> **Милость мира, жертву хваления.**
+> Greek: *Ἔλεον εἰρήνης, θυσίαν αἰνέσεως.*
+> *A mercy of peace, a sacrifice of praise.*
+
+| word | form | meaning |
+|---|---|---|
+| милость | accusative singular (same form as the nominative) | mercy |
+| мира | **genitive** of *мир* (Greek *εἰρήνης*, also genitive) | of peace (not "world", which was *міръ* in the old spelling) |
+| жертву | accusative of *жертва* | a sacrifice, offering |
+| хваления | genitive of *хваление* | of praise |
+
+**Why accusatives.** The phrase answers the deacon's call «Станем
+добре, станем со страхом, вонмем, святое возношение в мире приносити»
+("Let us stand well, let us stand with fear, let us attend, to offer the
+holy oblation in peace"). The people answer with what is offered:
+"(we offer) a mercy of peace, a sacrifice of praise". "Peace" picks up
+the deacon's «в мире»; "sacrifice of praise" is biblical (Ps. 49(50),
+Hebr. 13:15).
+
+**A variant reading.** Some Greek manuscripts read "mercy, peace, a
+sacrifice of praise", and some modern translations and commentators
+follow it as easier to understand. Robert Taft, as cited by Fr. John
+Whiteford, notes that the oldest witness, St Germanus of
+Constantinople's commentary on the liturgy, has the received reading
+("mercy of peace"). A 2021 text-critical study likewise argues that the
+genitive is original and that copyists changed it because it was hard to
+understand. These two are cited from search summaries; neither was read
+in full.
+
+**So the Dutch** does not render the Slavonic, which the choir otherwise
+follows, but this minority reading. A rendering that follows the
+Slavonic would be "Barmhartigheid van vrede, een offer van lof". "van"
+adds a syllable, so the underlay of the first phrase would need
+adjusting.
+
+Sources:
+[A Textual-Critical Study and Interpretation of the Liturgical Response Ἔλεον εἰρήνης, θυσίαν αἰνέσεως (CEEOL)](https://www.ceeol.com/search/article-detail?id=1006586);
+[A Mercy of Peace (pravoslavie.ru)](https://pravoslavie.ru/90172.html),
+also on [orthochristian.com](https://orthochristian.com/90172.html);
+[Liturgical Origin of the Words "A Mercy of Peace…"](https://catalog.obitel-minsk.com/blog/2018/01/liturgical-origin-of-words-mercy-of);
+[Understanding the Liturgy: Mercy, Peace, the Sacrifice of Praise](https://ukmidcopts.org/resources/spiritual-articles/understanding-the-liturgy-mercy-peace-the-sacrifice-of-praise/);
+[The Byzantine Forum](https://www.byzcath.org/forums/ubbthreads.php/topics/305390);
+[Word Magazine, February 2001](https://almoutran.com/?p=956).
+The grammar and the deacon's call are from general knowledge of the
+Slavonic liturgy, not from these sources.
+
 ## Sources
 
 - [S. Golubtsov, «Церковный композитор архимандрит Феофан»](https://azbyka.ru/otechnik/Sergij_Golubcov/tserkovnyj-kompozitor-arhimandrit-feofan/)
