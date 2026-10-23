@@ -441,3 +441,39 @@ other, hence the underscores in their names, and need `mutool`.
 tools/compare-sources/cmp_oca.py 1 2 3 4 5 6 7 8
 tools/compare-sources/cmp_lines.py 1 references/heer_ik_roep/moscow_osmoglasie/glas1.pdf 1-7
 ```
+
+## Choir prints with larger lyrics (`koor-variant.py`)
+
+Makes `NAME_koor.ly` and `NAME_koor.pdf` next to `NAME.ly`, with the lyrics
+larger than the house style's 14pt (`church_style_koor.ily`, which includes
+`church_style.ily`); `NAME.ly` and `NAME.pdf` stay as they are. Run it after
+`rebuild-score.py`, since it starts from the current `NAME.ly`.
+
+```sh
+tools/koor-variant.py --size 18 bogoroditse_dievo bogoroditse_dievo_arkhangelsky
+tools/koor-variant.py --size 16 --free-breaks heer_ik_roep_t{1,2,3,4,5,6,7,8}
+qpdf --empty --pages heer_ik_roep_t?_koor.pdf -- heer_ik_roep_alle_tonen_koor.pdf
+```
+
+Without `--free-breaks` the line breaks stay those of `NAME.ly`; that is
+enough for bogoroditse_dievo at 18pt (one page). The Heer ik roep tones at
+16pt no longer fit their fixed breaks: a system that is too wide gets split
+at a barline, and the seventh system goes to a second page. `--free-breaks`
+lets LilyPond break within measures too, but only before a new word, in two
+passes:
+
+1. The `\break`s are removed, and `\noBreak` goes before every soprano note
+   that doesn't start a word (a hyphen before it, a melisma note, or a word
+   split at a melisma as listed in `split-words.txt`, so "wie ___ rook" stays
+   together). LilyPond lays it out with the number of systems of `NAME.ly`
+   on one page and reports where it broke the lines.
+2. Those breaks are written into `NAME_koor.ly` as explicit `\break`s, so
+   they can be moved by hand (`docs/lilypond_line_breaks.md`). After a break
+   inside a measure LilyPond doesn't repeat an accidental printed earlier in
+   that measure, so the first such note after the break gets a forced
+   accidental (`cis!4`); `check-pdf-notes.py` caught the missing ones (a C♯
+   read as C in tones 5 and 8). Printing every accidental instead
+   (`\accidentalStyle forget`) repeated them on successive notes too.
+
+LilyPond warns "too few pages" for the fullest tones and tightens the vertical
+spacing to keep one page, which is harmless.
