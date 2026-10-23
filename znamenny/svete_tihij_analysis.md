@@ -56,6 +56,21 @@ The final depends on the tone (*glas*) and the chant, not on a "key".
 **Caveat:** the figures for the other settings come from automatic reading,
 checked for plausibility only, not note by note.
 
+## Does tone 6 mean G Dorian?
+
+No. The melody analysed here (09_1) carries no tone label; the series'
+tone-6 «Свете тихий» is a different file (09_4). As written, that one
+ends on D and centres on D, E and F. So "G Dorian" describes this one
+melody's note set and final, not a tone.
+
+More generally (from general knowledge, not checked against a source
+here), a Russian tone (*glas*) is a family of melodic formulas
+(*popevki*) and cadences, not a scale. Its notes and final depend on the
+chant (Znamenny, Kievan, Greek, obikhod) and the kind of hymn (stichera,
+troparia, irmoi, prokeimena). The eight tones don't map one-to-one onto
+the eight Western church modes. In the repository's obikhod tones (Heer,
+ik roep) the tones are written mostly in F major regardless of the tone.
+
 ## Possible follow-up
 
 The same analysis for the choir's Kievan-chant «Свете тихий» ("Vriendelijk
