@@ -66,8 +66,8 @@ setting of an existing chant melody for choir, as opposed to "муз."
 
 The downloaded scores (the kpds42.ru PDF and MIDI, and the azbyka.ru
 PDFs below) are in `references/bogoroditse_dievo/` (gitignored); the
-layout of `references/` and how to download it again are in
-`heer_ik_roep_sources.md`, "The `references/` directory".
+files in `references/` are listed in `heer_ik_roep_sources.md`,
+"References", and `tools/download-references.sh` downloads them again.
 
 ## The chant behind the arrangement
 

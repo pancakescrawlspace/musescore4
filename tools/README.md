@@ -410,3 +410,26 @@ expression 0.5, about 12 dB softer (`--background 0.4` is about 16 dB). The
 scores have no tempo marking, so the default is MuseScore's ♩ = 120. The
 title tag is the score's title, subtitle and subsubtitle, plus the voice. Needs
 `lilypond`, `fluidsynth` and `ffmpeg`; the MP3s are ignored by git.
+
+## Downloading the sources (`download-references.sh`)
+
+Downloads the sources of `heer_ik_roep_sources.md` and
+`bogoroditse_dievo_sources.md` into `references/` (gitignored), where
+`heer_ik_roep_sources.md` lists them under "References". Needs `curl`.
+
+```sh
+tools/download-references.sh
+```
+
+## Comparing the sources (`compare-sources/`)
+
+The scripts behind `heer_ik_roep_sources.md` (see "How the comparisons
+were made" there): they read the voices from the vector PDFs in
+`references/` and compare them with the `heer_ik_roep_tN.mscz` scores.
+They import each other, hence the underscores in their names, and need
+`mutool`.
+
+```sh
+tools/compare-sources/cmp_oca.py 1 2 3 4 5 6 7 8
+tools/compare-sources/cmp_lines.py 1 references/heer_ik_roep/moscow_osmoglasie/glas1.pdf 1-7
+```

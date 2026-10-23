@@ -2,6 +2,7 @@
 *.mp4
 .mscbackup/
 .DS_Store
+__pycache__/
 
 # downloaded reference scores (see the *_sources.md files)
 references/
