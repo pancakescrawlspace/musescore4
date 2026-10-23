@@ -11,7 +11,11 @@ DUR = {"whole": F(1), "half": F(1, 2), "quarter": F(1, 4), "eighth": F(1, 8)}
 SP = "FCGDAEB"
 
 def dutch(n):
-    z = zipfile.ZipFile(f"{CH}/heer_ik_roep_t{n}.mscz")
+    return voices(f"{CH}/heer_ik_roep_t{n}.mscz")
+
+def voices(path):
+    """The S A T B voices of a two-staff .mscz: (note name, measure) per note."""
+    z = zipfile.ZipFile(path)
     sc = ET.fromstring(z.read([m for m in z.namelist() if m.endswith(".mscx")][0])).find("Score")
     out = {}
     for si, st in enumerate(sc.findall("Staff")):

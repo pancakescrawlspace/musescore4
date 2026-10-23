@@ -1,7 +1,8 @@
 #!/bin/sh
-# Downloads the sources of heer_ik_roep_sources.md and
-# bogoroditse_dievo_sources.md into references/ (gitignored), where the
-# files are listed under "References" in heer_ik_roep_sources.md.
+# Downloads the sources of heer_ik_roep_sources.md,
+# bogoroditse_dievo_sources.md and vriendelijk_licht_sources.md into
+# references/ (gitignored), where the files are listed under "References"
+# in heer_ik_roep_sources.md.
 #
 # usage: tools/download-references.sh
 #
@@ -57,3 +58,6 @@ for f in tone_1/tone_1_00_titul tone_2/glas_2_00_titul_soderzanie tone_3/tone_3_
 done
 curl -sSL -o $d/bakhmetev_obikhod_1869_vol1_ecmr.pdf 'https://web.archive.org/web/2025id_/https://ecmr.fi/Scanned_Chantbooks/Obihod1869Bahm1.pdf'
 curl -sSL -o $d/court_obikhod_1914_djukliros.pdf 'https://drive.google.com/uc?export=download&id=1oRzhP6P_ELtLYkSjQFdhvKzYBculR1F7'
+d=references/svete_tihij; mkdir -p $d
+curl -sSL -o $d/azbyka_dvoretsky.pdf $A/2024/02/svete-tihij-i.-dvoreczkij.pdf
+curl -sSL -o $d/azbyka_kievan_dvoretsky_ttbb.pdf $A/2024/02/svete-tihij-kievskogo-rospeva.pdf

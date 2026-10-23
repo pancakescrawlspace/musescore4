@@ -339,8 +339,8 @@ How they compare:
 
 ## References
 
-Local copies of the sources, for this file and for
-`bogoroditse_dievo_sources.md`, are kept in `references/` (gitignored,
+Local copies of the sources, for this file, `bogoroditse_dievo_sources.md`
+and `vriendelijk_licht_sources.md`, are kept in `references/` (gitignored,
 about 72 MB, most of it the Bakhmetev scan).
 [`tools/download-references.sh`](tools/download-references.sh) downloads
 them again.
@@ -402,3 +402,8 @@ them again.
       Common Chant tones 1–8, Kievan chant tones 1, 2 and 7
   - `obikhod_arkhangelsk/obihod1_arhangelsk.pdf`: [the Arkhangelsk obikhod](http://kliros.ru/noty/obihod1_arhangelsk.pdf),
     Kievan chant, tones 1–8 on pp. 8–15
+- `svete_tihij/`: «Свете тихий», Kievan chant arr. Dvoretsky, from
+  [azbyka.ru](https://azbyka.ru/kliros/svete-tihij-noty-pesnopenij-dlya-muzhskogo-hora/)
+  (see `vriendelijk_licht_sources.md`)
+  - `azbyka_kievan_dvoretsky_ttbb.pdf`: [Smirnov's edition for men's choir](https://azbyka.ru/kliros/wp-content/uploads/2024/02/svete-tihij-kievskogo-rospeva.pdf)
+  - `azbyka_dvoretsky.pdf`: [a scan of an old print](https://azbyka.ru/kliros/wp-content/uploads/2024/02/svete-tihij-i.-dvoreczkij.pdf)

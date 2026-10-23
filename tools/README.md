@@ -413,9 +413,10 @@ title tag is the score's title, subtitle and subsubtitle, plus the voice. Needs
 
 ## Downloading the sources (`download-references.sh`)
 
-Downloads the sources of `heer_ik_roep_sources.md` and
-`bogoroditse_dievo_sources.md` into `references/` (gitignored), where
-`heer_ik_roep_sources.md` lists them under "References". Needs `curl`.
+Downloads the sources of `heer_ik_roep_sources.md`,
+`bogoroditse_dievo_sources.md` and `vriendelijk_licht_sources.md` into
+`references/` (gitignored), where `heer_ik_roep_sources.md` lists them
+under "References". Needs `curl`.
 
 ```sh
 tools/download-references.sh
@@ -424,10 +425,10 @@ tools/download-references.sh
 ## Comparing the sources (`compare-sources/`)
 
 The scripts behind `heer_ik_roep_sources.md` (see "How the comparisons
-were made" there): they read the voices from the vector PDFs in
-`references/` and compare them with the `heer_ik_roep_tN.mscz` scores.
-They import each other, hence the underscores in their names, and need
-`mutool`.
+were made" there) and `vriendelijk_licht_sources.md`
+(`cmp_vriendelijk.py`): they read the voices from the vector PDFs in
+`references/` and compare them with the scores. They import each other,
+hence the underscores in their names, and need `mutool`.
 
 ```sh
 tools/compare-sources/cmp_oca.py 1 2 3 4 5 6 7 8
