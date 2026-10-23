@@ -20,16 +20,18 @@
 % church_style.ily (title about 17.5pt and subtitle 12pt with 14pt lyrics):
 % with 18pt lyrics the title is about 22.4pt and the subtitle 15.4pt, so
 % the subtitle stays smaller than the lyrics, as before. The subsubtitle
-% (e.g. "toon 1") and the composer keep their size.
+% (e.g. "toon 1", 11pt with 14pt lyrics) grows in the same proportion; the
+% composer keeps its size.
 #(define (koor-steps pt) (* 6 (/ (log (/ pt 11)) (log 2))))
 #(define koor-title-steps (koor-steps (* 11 (expt 2 (/ 4 6)) (/ koor-pt 14))))
 #(define koor-subtitle-steps (koor-steps (min koor-pt (* 12 (/ koor-pt 14)))))
+#(define koor-subsubtitle-steps (koor-steps (* 11 (/ koor-pt 14))))
 
 \paper {
   bookTitleMarkup = \markup \column {
     \if #has-subsubtitle? \fill-line {
       \fontsize #koor-title-steps \bold \fromproperty #'header:title
-      \fromproperty #'header:subsubtitle
+      \fontsize #koor-subsubtitle-steps \fromproperty #'header:subsubtitle
     }
     \unless #has-subsubtitle? \fill-line {
       \fontsize #koor-title-steps \bold \fromproperty #'header:title
