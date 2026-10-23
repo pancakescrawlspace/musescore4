@@ -425,3 +425,10 @@ them again.
   - `azbyka_obihod.pdf`: [«Обиход» (2024)](https://azbyka.ru/kliros/wp-content/uploads/2024/02/blazhen-muzh-obihod.pdf)
   - `azbyka_obihod_2023.pdf`: [«Обиход» (2023)](https://azbyka.ru/kliros/wp-content/uploads/2023/04/blazhen-muzh-obihod.pdf)
   - `azbyka_kievan_kastorsky.pdf`: [Kievan chant, ed. Kastorsky](https://azbyka.ru/kliros/wp-content/uploads/2023/04/blazhen-muzh-kievskij.pdf)
+- `obihod_1909/`: the Synodal *Обиход нотного пения употребительных
+  церковных роспевов* (Moscow 1909), from the library of the church-singing
+  school "Глаголь" ([library](https://glagol-verbum.com/biblioteka)); see
+  `dostojno_est_sources.md` and `bogoroditse_dievo_sources.md`
+  - `obihod_1909_ch1_vsenoshchnoe.pdf`: [part 1, Всенощное бдение](http://quadratum.glagol-verbum.com/biblioteka/Obikhod_1909_-_vsenoschnoe.pdf), a scan (204 pages)
+  - `obihod_1909_ch2_liturgiya.pdf`: [part 2, Божественная литургия](http://quadratum.glagol-verbum.com/biblioteka/obihod1909_lit.pdf),
+    retypeset in 2004 in the original notation and pagination (PDF page = printed page − 204)

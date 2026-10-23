@@ -77,7 +77,11 @@ files in `references/` are listed in `heer_ik_roep_sources.md`,
   подобен «Еже от века утаенное»", SATB, first printed edition Ar002-16.
 - [Обиход нотного пения употребительных церковных роспевов, ч. 1, Всенощное бдение (Синодальное изд., 1909), Русское нотное наследие](https://kp.rusneb.ru/item/material/obihod-notnogo-peniya-upotrebitelnyh-cerkovnyh-rospevov-odnogolosie--ch-1-vsenoshchnoe-bdenie):
   the Synodal monophonic chant book (first redaction 1892) the melody
-  comes from. Not yet compared with the score.
+  comes from. A PDF of this part (a 2002 scan, 204 pages) is in the
+  library of the church-singing school "Глаголь":
+  [Всенощное бдение](http://quadratum.glagol-verbum.com/biblioteka/Obikhod_1909_-_vsenoschnoe.pdf), saved as
+  `references/obihod_1909/obihod_1909_ch1_vsenoshchnoe.pdf`; its table of
+  contents is on PDF p. 3. Not yet compared with the score.
 - [Богородичны отпустительные, azbyka.ru](https://azbyka.ru/bogosluzhenie/bogorodichny-otpustitelnye-poyushhiesya-posle-troparej-ves-god/):
   «Еже от века утаенное» is the dismissal Theotokion of tone 4. "Подобен"
   means the text is sung to that hymn's melody; the D major Greek-chant

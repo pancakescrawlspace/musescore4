@@ -10,12 +10,15 @@ it more repetitive. There is no MuseScore score of it here.
 
 ## Conclusion
 
-"In waarheid" is «Достойно есть» ("It is truly meet") in the **Kievan
-chant**, in essentially the common four-part harmonization. The
-resemblance to Feofan's canon is real, because the canon uses the same
-melodic lines. But the evidence does not show that "In waarheid" was
-taken from the canon (see "Which came first"). The attribution to
-Kastorsky's harmonization is plausible but not confirmed.
+"In waarheid" is the «Достойно есть» ("It is truly meet") that parish
+practice calls **Kievan chant**, in essentially the common four-part
+harmonization. The resemblance to Feofan's canon is real, because the
+canon uses the same melodic lines. But it is not the Kievan «Достойно
+есть» of the Synodal *Обиход нотного пения* (1909), whose melody is
+different. That makes it more likely that the parish "Kievan" melody
+comes from Feofan than the other way round, but it does not prove it
+(see "Which came first"). The attribution to Kastorsky's harmonization
+is plausible but not confirmed.
 
 ## The Kievan «Достойно есть»
 
@@ -84,10 +87,51 @@ Two explanations fit the data:
   and carries the chant label by tradition. The same remark of
   Pariisky's fits this too.
 
-What would settle it: the unison Kievan «Достойно есть» in an old chant
-book, such as the Synodal *Обиход нотного пения* (1909), or another
-pre-Feofan source. If it has these lines, (a) holds. It was not found
-online yet.
+### The Synodal Obikhod of 1909 (looked into on 2026-10-23)
+
+The Synodal *Обиход нотного пения употребительных церковных роспевов*,
+part 2 (Liturgy, Moscow 1909), was found as a PDF; see "Local copies".
+It has a «Достойно есть» «Кіевскаго роспѣва, гласъ 8» on p. 262. The
+same page range has the shortened Greek, the Greek ("Жуковская"), the
+Tsar Fyodor and the Bulgarian settings (pp. 260–263). The Kievan
+«Милость мира» is on pp. 256–257.
+
+The book is not older than Feofan (died 1852). But the Synodal chant
+books go back to 1772, and the Kievan chant in them is the official
+form, so it is the obvious source to test (a) against.
+
+**The 1909 Kievan «Достойно есть»** was transcribed from the square
+notation by staff position. The notehead positions were measured with a
+script and checked by eye on the first staff. Transposed to the Dutch
+key, its first line «Достойно есть яко воистину» runs F♯ G A B B A A G
+G │ G. The whole chant stays within those four notes and recites on G.
+"In waarheid" opens F♯ F♯ F♯ F♯ F♯ │ G–B A G │ F♯ G: it recites on F♯,
+leaps to B, and later reaches D.
+
+Compared by diatonic contour at the best transposition, the Synodal
+chant shares no run of six or more notes with any voice of "In waarheid"
+or of azbyka.ru's modern Kievan setting, tenor and bass included. The
+controls show what chance gives. In runs of ten or more notes, unrelated
+pieces (`heer_ik_roep_t6`, `bogoroditse_dievo`) score up to 0.51
+against these voices; the Synodal chant scores 0.00. So the parish
+"Kievan" «Достойно есть» is **not** the Synodal Kievan chant.
+
+**The 1909 Kievan «Милость мира»** recites on a single note («Ми-лость
+ми-ра жер-тву хва-ле-…» on one pitch, with short cadences). Feofan's
+canon is a through-composed melody spanning an octave (F♯ G A B D C B A
+…). So Feofan's canon is not the Synodal Kievan «Милость мира» either.
+This was judged by eye and by notehead measurement. A full automatic
+transcription of these pages failed: their stems point down, and the
+measurement does not handle that yet.
+
+**Consequence.** The lines shared by Feofan's canon and the parish
+"Kievan" «Достойно есть» are not those of the Synodal Kievan chant.
+That weakens (a), at least in the form "Feofan took them from the
+official Kievan chant". It makes (b) more likely: the parish «Достойно
+есть» took its lines from Feofan and is called "Kievan" by tradition, as
+Pariisky says happened to Feofan's pieces. It is not proof. A local
+Kievan variant outside the Synodal books, such as those of the
+Kiev-Pechersk Lavra, could still be a common source of both.
 
 ## The attribution
 
@@ -118,6 +162,14 @@ online yet.
 - [Sourozh: Archpriest Michael Fortounatto celebrated his 90th birthday](https://www.sourozh.org/maineng/2021/5/19/archpriest-michael-fortounatto-celebrated-his-90th-birthday.html)
 - [In memoriam Father Michael Fortounatto](https://archeveche.eu/en/in-memoriam-father-michael-fortounatto/)
 - [Prof. L. Pariisky on Archimandrite Feofan (azbyka.ru)](https://www.azbyka.ru/otechnik/Feofan-Aleksandrov/tserkovnyj-kompozitor-arhimandrit-feofan-prof-l-parijskij/)
+- *Обиход нотного пения употребительных церковных роспевов*, ч. 2,
+  Божественная литургия, Moscow: Synodal Press, 1909:
+  [PDF](http://quadratum.glagol-verbum.com/biblioteka/obihod1909_lit.pdf) from the library of the church-singing
+  school "Глаголь" ([library](https://glagol-verbum.com/biblioteka)), a
+  2004 retypesetting (PageMaker) in the original square notation, layout
+  and page numbers (206–308; PDF page = printed page − 204). The original
+  print: [Russian State Library copy, digitized 2021](https://kp.rusneb.ru/item/material/obihod-notnogo-peniya-upotrebitelnyh-cerkovnyh-rospevov-odnogolosie--ch-2-bozhestvennaya-liturgiya)
+  (viewer only).
 
 ## Local copies
 
@@ -125,3 +177,7 @@ In `references/dostojno_est/` (gitignored; see `heer_ik_roep_sources.md`,
 "References", and `tools/download-references.sh`):
 
 - `azbyka_kievan.pdf`: the Kievan «Достойно есть», azbyka.ru
+
+and in `references/obihod_1909/`: `obihod_1909_ch2_liturgiya.pdf`, the
+Synodal Obikhod, part 2 (Kievan «Достойно есть» on p. 262, PDF p. 58;
+Kievan «Милость мира» on pp. 256–257, PDF pp. 52–53).

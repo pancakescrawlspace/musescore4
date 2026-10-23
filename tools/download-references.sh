@@ -73,3 +73,6 @@ curl -sSL -o $d/azbyka_obychnyj_napev.pdf $A/2025/03/blazhen-muzh_obychnyj.pdf
 curl -sSL -o $d/azbyka_obihod.pdf $A/2024/02/blazhen-muzh-obihod.pdf
 curl -sSL -o $d/azbyka_obihod_2023.pdf $A/2023/04/blazhen-muzh-obihod.pdf
 curl -sSL -o $d/azbyka_kievan_kastorsky.pdf $A/2023/04/blazhen-muzh-kievskij.pdf
+G=http://quadratum.glagol-verbum.com/biblioteka; d=references/obihod_1909; mkdir -p $d
+curl -sSL -o $d/obihod_1909_ch1_vsenoshchnoe.pdf $G/Obikhod_1909_-_vsenoschnoe.pdf
+curl -sSL -o $d/obihod_1909_ch2_liturgiya.pdf $G/obihod1909_lit.pdf

@@ -71,7 +71,9 @@ The "bishop" is taken to be a slip, but this has not been confirmed.
 
 The canon shares most of its melodic lines with the Kievan-chant
 «Достойно есть», which the liturgy sings as "In waarheid": see
-`dostojno_est_sources.md`.
+`dostojno_est_sources.md`. It is not the Kievan «Милость мира» of the
+Synodal Obikhod (1909, part 2, pp. 256–257; `references/obihod_1909/`),
+which recites on a single note; see there.
 
 Not done yet: a note-by-note comparison of the whole canon. Smirnov's
 PDF is a vector file, which `tools/compare-sources/ocaread.py` can
