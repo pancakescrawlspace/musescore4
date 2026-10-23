@@ -4,6 +4,14 @@ How to add or remove line breaks in a choir print (`NAME_koor.ly`), for
 example to match the breaks of the sheets the choir already sings from.
 The same commands work in the ordinary `NAME.ly`.
 
+**First choice: put the breaks in the `.mscz`.** Line breaks set in
+MuseScore end up in `NAME.ly` and `NAME_koor.ly` on every rebuild, and a
+break inside a measure can be made there too, by splitting the measure with
+an invisible barline: `tools/mscz-split-measures.py` (see `tools/README.md`).
+Heer ik roep tones 1–3 are done that way. Editing the `.ly` by hand, as
+below, is for a quick change to one print, or for the choir prints made with
+`koor-variant.py --free-breaks` (tones 4–8).
+
 ## Before you start: hand edits get overwritten
 
 `tools/koor-variant.py` writes `NAME_koor.ly` from scratch, and

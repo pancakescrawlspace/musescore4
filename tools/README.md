@@ -120,6 +120,48 @@ tools/mscz-add-hidden-timesig.py score.mscz copy.mscz
 Run it once on a new free-meter score; the free-meter scores here all
 have their hidden time signatures already.
 
+## Line breaks inside a measure (`mscz-split-measures.py`)
+
+The measures of a free-meter score are long, and a sheet the choir already
+sings from may break a line in the middle of one. MuseScore and LilyPond only
+break at barlines, so the measure is split there in the `.mscz`, as
+MuseScore's "Split measure before selected note" does, with an invisible
+barline at the split. The line breaks then live in the `.mscz` and survive
+every rebuild.
+
+```sh
+tools/mscz-split-measures.py heer_ik_roep_t1.mscz 4:8 8:4 --line-breaks 2,4a,6,8a,9
+tools/rebuild-score.py heer_ik_roep_t1
+tools/koor-variant.py heer_ik_roep_t1
+```
+
+`M:K` splits measure M before its K-th soprano note (both counted from 1, M as
+MuseScore numbers it). The split is made at that moment on both staves; it
+is refused if a note in another voice, or a slur, crosses it. Both halves get
+a hidden time signature, and the second half is excluded from the measure
+count (Measure properties in MuseScore), so the measure numbers don't change:
+MusicXML gives it the number `X1`, and `rebuild-score.py` resets LilyPond's
+bar number after the invisible barline (`\set Score.currentBarNumber`).
+`--line-breaks` replaces all line breaks: the measures after which a line
+breaks, `4a` being the first half of split measure 4. The score is changed
+in place; MuseScore opens it normally (the halves show as two measures).
+
+Splitting by hand in MuseScore works too, but then the halves also need
+their hidden time signatures and the second half "Exclude from measure
+count", which the script does in one go.
+
+Heer ik roep tones 1–3 have the line breaks of the choir's sheets this way:
+
+| tone | splits        | line breaks     |
+|------|---------------|-----------------|
+| 1    | `4:8 8:4`     | `2,4a,6,8a,9`   |
+| 2    | `4:7 6:6 8:4` | `2,4a,6a,8a,9`  |
+| 3    | `4:7 8:5`     | `2,4a,6,8a,9`   |
+
+`musicxml2ly` warns "Overfull measure?" and "Negative skip" for a split
+score; `rebuild-score.py` hides those warnings, since the notes come out
+right (the note check confirms it).
+
 ## Checking the PDF against the score (`check-pdf-notes.py`)
 
 Checks that a LilyPond PDF shows the same notes as the `.mscz` it came from,
@@ -160,7 +202,10 @@ Auto in the Properties panel. A forced direction that agrees with the voice
 changes nothing and passes.
 
 A measure without a `len` attribute takes its length from the time signature
-in force; MuseScore leaves `len` out when the two agree.
+in force; MuseScore leaves `len` out when the two agree. A measure excluded
+from the measure count (the second half of a split measure, see
+`mscz-split-measures.py`) counts as part of the one before, since the
+invisible barline between them doesn't show in the PDF.
 
 ## One staff per voice (`voice-explode-ly.py`)
 
@@ -451,16 +496,20 @@ larger than the house style's 14pt (`church_style_koor.ily`, which includes
 
 ```sh
 tools/koor-variant.py --size 18 bogoroditse_dievo bogoroditse_dievo_arkhangelsky
-tools/koor-variant.py --size 16 --free-breaks heer_ik_roep_t{1,2,3,4,5,6,7,8}
+tools/koor-variant.py --size 16 heer_ik_roep_t1 heer_ik_roep_t2 heer_ik_roep_t3
+tools/koor-variant.py --size 16 --free-breaks heer_ik_roep_t{4,5,6,7,8}
 qpdf --empty --pages heer_ik_roep_t?_koor.pdf -- heer_ik_roep_alle_tonen_koor.pdf
 ```
 
-Without `--free-breaks` the line breaks stay those of `NAME.ly`; that is
-enough for bogoroditse_dievo at 18pt (one page). The Heer ik roep tones at
-16pt no longer fit their fixed breaks: a system that is too wide gets split
-at a barline, and the seventh system goes to a second page. `--free-breaks`
-lets LilyPond break within measures too, but only before a new word, in two
-passes:
+Without `--free-breaks` the line breaks stay those of `NAME.ly`, which come
+from the `.mscz` (including breaks inside a split measure, see
+`mscz-split-measures.py`), and the choir print gets as many pages as
+`NAME.pdf`: LilyPond tightens the vertical spacing rather than add a page.
+That is enough for bogoroditse_dievo at 18pt and for Heer ik roep tones 1–3,
+whose `.mscz` have the breaks of the choir's sheets. Tones 4–8 at 16pt don't
+fit their 14pt breaks: a system that is too wide gets split at a barline,
+and the seventh system goes to a second page. `--free-breaks` lets LilyPond
+break within measures too, but only before a new word, in two passes:
 
 1. The `\break`s are removed, and `\noBreak` goes before every soprano note
    that doesn't start a word (a hyphen before it, a melisma note, or a word

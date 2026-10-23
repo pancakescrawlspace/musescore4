@@ -7,10 +7,14 @@ usage: tools/koor-variant.py [--size PT] [--free-breaks] NAME [NAME ...]
 NAME is a score name relative to the repository root (heer_ik_roep_t3, or with
 .ly/.mscz); its .ly must exist (tools/rebuild-score.py makes it). --size sets
 the lyric size in points (default 16). Without --free-breaks the line breaks
-stay those of NAME.ly.
+stay those of NAME.ly, which come from the line breaks in NAME.mscz; to break
+a line inside a measure, split the measure there in the .mscz
+(tools/mscz-split-measures.py). The choir print gets as many pages as NAME.pdf
+(page-count), so LilyPond tightens the spacing rather than add a page.
 
-With --free-breaks LilyPond chooses the line breaks, also within measures but
-only before a new word, in two passes:
+--free-breaks is for scores whose .mscz breaks don't suit the larger lyrics:
+LilyPond chooses the line breaks, also within measures but only before a new
+word, in two passes:
 
 1. The \\break commands are removed, and \\noBreak goes before every soprano
    note that doesn't start a word (from the soprano's lyrics, one token per
@@ -218,7 +222,9 @@ def main(args):
             src = apply_breaks(marked, breaks).replace(inc, head + '\\paper { page-count = 1 }\n' + layout, 1)
             note = f', free breaks ({len(breaks)} breaks)'
         else:
-            src = src.replace(inc, head, 1)
+            info = subprocess.run(['mutool', 'info', name + '.pdf'], capture_output=True, text=True).stdout
+            pages = re.search(r'Pages: (\d+)', info)
+            src = src.replace(inc, head + (f'\\paper {{ page-count = {pages.group(1)} }}\n' if pages else ''), 1)
         open(out + '.ly', 'w').write(src)
         r = subprocess.run(['lilypond', '-I', ROOT, '-o', out, out + '.ly'], capture_output=True, text=True)
         pages = subprocess.run(['mutool', 'info', out + '.pdf'], capture_output=True, text=True).stdout

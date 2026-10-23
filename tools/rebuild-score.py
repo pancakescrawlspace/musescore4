@@ -180,13 +180,16 @@ def repeat_counts(ly):
     return ly[:start] + "".join(out) + ly[i:]
 
 
-def layout_breaks(mscz):
-    """{measure index (0-based): "\\break" or "\\pageBreak"} from the score's first staff."""
+def first_staff(mscz):
     with zipfile.ZipFile(mscz) as z:
         root = ET.fromstring(z.read([n for n in z.namelist() if n.endswith(".mscx")][0]))
-    staff = root.find("Score").find("Staff")
+    return root.find("Score").find("Staff")
+
+
+def layout_breaks(mscz):
+    """{measure index (0-based): "\\break" or "\\pageBreak"} from the score's first staff."""
     out = {}
-    for i, m in enumerate(staff.findall("Measure")):
+    for i, m in enumerate(first_staff(mscz).findall("Measure")):
         for b in m.findall("LayoutBreak"):
             kind = b.findtext("subtype")
             if kind in ("line", "page"):
@@ -194,11 +197,22 @@ def layout_breaks(mscz):
     return out
 
 
+def irregular(mscz):
+    """Indices (0-based) of the measures excluded from the measure count: the second halves
+    of measures split by tools/mscz-split-measures.py (or by hand in MuseScore)."""
+    return {i for i, m in enumerate(first_staff(mscz).findall("Measure"))
+            if m.findtext("irregular") == "1"}
+
+
 def line_breaks(ly, mscz):
-    """Put the score's layout breaks into the first music variable. musicxml2ly ends every
-    measure but the last with a "% N" comment; the k-th such comment ends measure k."""
-    breaks = layout_breaks(mscz)
-    if not breaks:
+    """Put the score's layout breaks into the first music variable, and keep the measure
+    numbers of split measures. musicxml2ly ends every measure but the last with a "% N"
+    comment, except the first half of a split measure (before an excluded one), which ends
+    with an invisible barline (\\bar "") without a comment; the k-th end ends measure k.
+    LilyPond counts the second half as a measure of its own, so its number is set back to
+    that of the first half (\\set Score.currentBarNumber)."""
+    breaks, skip = layout_breaks(mscz), irregular(mscz)
+    if not breaks and not skip:
         return ly
     first = re.search(r"^(\w+) =\s*\\relative [^{]*\{", ly, re.M)
     start, depth, i = first.end(), 1, first.end()
@@ -207,12 +221,25 @@ def line_breaks(ly, mscz):
         depth -= ly[i] == "}"
         i += 1
     body = ly[start:i]
-    ends = list(re.finditer(r"% \d+[ \t]*\n", body))
-    for k in sorted(breaks, reverse=True):
+    end = r'% \d+[ \t]*\n' + (r'|\\bar ""(?![ \t]*%)' if skip else "")
+    ends = list(re.finditer(end, body))
+    number, numbers = 0, []   # the measure number shown, per measure index
+    for k in range(len(ends) + 1):
+        number += k not in skip
+        numbers.append(number)
+    for k in sorted(set(breaks) | {k - 1 for k in skip}, reverse=True):
         if k >= len(ends):
             continue  # a break after the last measure changes nothing
-        at = ends[k].start()
-        body = body[:at] + breaks[k] + " " + body[at:]
+        end = ends[k]
+        text = ""
+        if k in breaks:
+            text += breaks[k] + " "
+        if k + 1 in skip:
+            text += f"\\set Score.currentBarNumber = #{numbers[k]} "
+        if end.group(0).startswith("%"):
+            body = body[:end.start()] + text + body[end.start():]
+        else:   # after the invisible barline
+            body = body[:end.end()] + " " + text.rstrip() + body[end.end():]
     return ly[:start] + body + ly[i:]
 
 
@@ -269,7 +296,12 @@ def rebuild(name):
     with tempfile.TemporaryDirectory() as tmp:
         out = os.path.join(tmp, os.path.basename(base) + ".ly")
         r = run("musicxml2ly", "-o", out, base + ".musicxml")
-        problems(r.stderr, "musicxml2ly")
+        # a split measure (see line_breaks) confuses musicxml2ly's measure lengths; harmless
+        # (the notes come out right, check-pdf-notes.py checks them)
+        problems(r.stderr if not irregular(mscz) else
+                 "\n".join(l for l in r.stderr.splitlines()
+                           if not re.search(r"Overfull measure\?|Negative skip", l)),
+                 "musicxml2ly")
         if r.returncode or not os.path.exists(out):
             raise Failed("musicxml2ly failed")
         # 4. hand edits

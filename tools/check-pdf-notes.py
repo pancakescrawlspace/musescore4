@@ -70,7 +70,10 @@ def read_mscz(path):
     """-> ({staff id: [voice 1 notes, voice 2 notes]}, [measure lengths], [problems]).
     A note is (measure index, name, duration, slur start, slur end); a chord's name
     is its notes' names, low to high. A measure's
-    length is its len attribute, else that of the time signature in force."""
+    length is its len attribute, else that of the time signature in force. A measure
+    excluded from the measure count (the second half of a measure split for a line
+    break, see tools/mscz-split-measures.py) is joined to the one before: their
+    barline is invisible, so in the pdf they are one measure."""
     with zipfile.ZipFile(path) as z:
         mscx = [n for n in z.namelist() if n.endswith(".mscx")][0]
         score = ET.fromstring(z.read(mscx)).find("Score")
@@ -79,11 +82,17 @@ def read_mscz(path):
         voices = collections.defaultdict(list)
         staff_lens = []
         sig = None
-        for mi, meas in enumerate(staff.findall("Measure")):
+        mi = -1
+        for meas in staff.findall("Measure"):
             ts = meas.find("voice/TimeSig")
             if ts is not None:
                 sig = F(int(ts.findtext("sigN")), int(ts.findtext("sigD")))
-            staff_lens.append(F(meas.get("len")) if meas.get("len") else sig)
+            length = F(meas.get("len")) if meas.get("len") else sig
+            if meas.findtext("irregular") == "1" and staff_lens:
+                staff_lens[-1] += length
+            else:
+                mi += 1
+                staff_lens.append(length)
             stems = []  # (voice index, forced direction, note name)
             for vi, voice in enumerate(meas.findall("voice")):
                 if vi > 1:

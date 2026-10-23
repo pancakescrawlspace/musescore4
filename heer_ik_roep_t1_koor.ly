@@ -2,7 +2,6 @@
 koorPt = 16
 \include "church_style_koor.ily"
 \paper { page-count = 1 }
-\layout { \context { \Score forbidBreakBetweenBarLines = ##f } }
 
 % automatically converted by musicxml2ly from heer_ik_roep_t1.musicxml
 % hand edits after conversion: the \include above and the \header title/subtitle (replacing musicxml2ly's title and composer)
@@ -17,7 +16,7 @@ U = \tweak Stem.direction #UP \etc
   title = "Heer ik roep"
   subsubtitle = "toon 1"
   "id: software" = "MuseScore Studio 4.7.5"
-  "id: encoding-date" = "2026-10-17"
+  "id: encoding-date" = "2026-10-23"
 }
 \layout {
   \context {
@@ -31,27 +30,28 @@ U = \tweak Stem.direction #UP \etc
 }
 PartPOneVoiceOne = \relative bes' {
   \clef "treble" \once \omit Staff.TimeSignature \time 14/4 \key f \major \U bes2
-  ( \noBreak \U c2 ) \U bes4 \U bes4 \U bes4 \U bes4 \U g4 \noBreak \U a2 ( \noBreak \U g4 ) \U f2 |  % 1
-  \once \omit Staff.TimeSignature \time 7/4 \U a4 \noBreak \U a2 \U bes4 \U bes4 \U g2 | % 2
-  \once \omit Staff.TimeSignature \time 11/4 \break \U bes2 \U bes4 \U bes4 \U bes4 \U
-  bes4 \U bes4 \noBreak \U a2 \U g2 |  % 3
-  \once \omit Staff.TimeSignature \time 14/4 \U a4 \U a4 \U a4 \U a4 \U g2 \U g4
-  \break \U a4 \U bes2 ( \noBreak \U a2 ) \noBreak \U g2 | % 4
-  \once \omit Staff.TimeSignature \time 12/4 \U bes4 \noBreak \U bes2 ( \noBreak \U c2 ) \U bes4
-  \U g4 \U a2 ( \noBreak \U g4 ) \U f2 |  % 5
-  \once \omit Staff.TimeSignature \time 10/4 \U bes2 \noBreak \U a2 \break \U g4 \U g4 f1 \bar
-  "||" % 6
-  \once \omit Staff.TimeSignature \time 13/4 \U bes2 ( \noBreak \U c2 ) \U bes4 \U bes4
-  \noBreak \U bes4 \U g4 \U a2 ( \noBreak \U g4 ) \noBreak \U f2 |  % 7
-  \once \omit Staff.TimeSignature \time 11/4 \U a4 \noBreak \U a4 \noBreak \U a4 \break \U a4 \U g4 \U a2
-  \noBreak \U bes2 \noBreak \U g2 | % 8
-  \once \omit Staff.TimeSignature \time 10/4 \U bes4 \U bes4 \noBreak \U bes4 \noBreak \U bes4 \U
-  bes4 \U bes4 \U a2 \noBreak \U g2 |  % 9
+  ( \U c2 ) \U bes4 \U bes4 \U bes4 \U bes4 \U g4 \U a2 ( \U g4 ) \U f2 | % 1
+  \once \omit Staff.TimeSignature \time 7/4 \U a4 \U a2 \U bes4 \U bes4 \U g2 | \break % 2
+  \once \omit Staff.TimeSignature \time 11/4 \U bes2 \U bes4 \U bes4 \U bes4 \U
+  bes4 \U bes4 \U a2 \U g2 | % 3
+  \once \omit Staff.TimeSignature \time 8/4 \U a4 \U a4 \U a4 \U a4 \U g2 \U g4
+  \U a4 \bar "" \break \set Score.currentBarNumber = #4
+  \once \omit Staff.TimeSignature \time 6/4 \U bes2 ( \U a2 ) \U g2 | % 4
+  \once \omit Staff.TimeSignature \time 12/4 \U bes4 \U bes2 ( \U c2 ) \U bes4
+  \U g4 \U a2 ( \U g4 ) \U f2 | % 5
+  \once \omit Staff.TimeSignature \time 10/4 \U bes2 \U a2 \U g4 \U g4 f1 \bar
+  "||" \break % 6
+  \once \omit Staff.TimeSignature \time 13/4 \U bes2 ( \U c2 ) \U bes4 \U bes4
+  \U bes4 \U g4 \U a2 ( \U g4 ) \U f2 | % 7
+  \once \omit Staff.TimeSignature \time 3/4 \U a4 \U a4 \U a4 \bar "" \break \set Score.currentBarNumber = #8
+  \once \omit Staff.TimeSignature \time 8/4 \U a4 \U g4 \U a2 \U bes2 \U g2 | % 8
+  \once \omit Staff.TimeSignature \time 10/4 \U bes4 \U bes4 \U bes4 \U bes4 \U
+  bes4 \U bes4 \U a2 \U g2 | \break % 9
 
   \barNumberCheck #10
-  \once \omit Staff.TimeSignature \time 12/4 \U a4 \break \U a4 \U g2 \noBreak \U a2 \noBreak \U bes2 (
-  \noBreak \U a2 ) \noBreak \U g2 | % 10
-  \once \omit Staff.TimeSignature \time 10/4 \U bes2 \noBreak \U a2 \U g4 \U g4 f1 \bar
+  \once \omit Staff.TimeSignature \time 12/4 \U a4 \U a4 \U g2 \U a2 \U bes2 (
+  \U a2 ) \U g2 | % 10
+  \once \omit Staff.TimeSignature \time 10/4 \U bes2 \U a2 \U g4 \U g4 f1 \bar
   "|."
 }
 
@@ -72,16 +72,17 @@ PartPOneVoiceTwo = \relative g' {
   \once \omit Staff.TimeSignature \time 7/4 \D f4 \D f2 \D g4 \D g4 \D e2 | % 2
   \once \omit Staff.TimeSignature \time 11/4 \D g2 \D g4 \D g4 \D g4 \D g4 \D g4
   \D f2 \D e2 | % 3
-  \once \omit Staff.TimeSignature \time 14/4 \D f4 \D f4 \D f4 \D f4 \D e2 \D e4
-  \D f4 \D g2 ( \D f2 ) \D e2 | % 4
+  \once \omit Staff.TimeSignature \time 8/4 \D f4 \D f4 \D f4 \D f4 \D e2 \D e4
+  \D f4 \bar ""
+  \once \omit Staff.TimeSignature \time 6/4 \D g2 ( \D f2 ) \D e2 | % 4
   \once \omit Staff.TimeSignature \time 12/4 \D g4 \D g2 ( \D a2 ) \D g4 \D e4
   \D f2 ( \D e4 ) \D d2 | % 5
   \once \omit Staff.TimeSignature \time 10/4 \D g2 \D f2 \D e4 \D e4 d1 \bar
   "||" % 6
   \once \omit Staff.TimeSignature \time 13/4 \D g2 ( \D a2 ) \D g4 \D g4 \D g4
   \D e4 \D f2 ( \D e4 ) \D d2 | % 7
-  \once \omit Staff.TimeSignature \time 11/4 \D f4 \D f4 \D f4 \D f4 \D e4 \D f2
-  \D g2 \D e2 | % 8
+  \once \omit Staff.TimeSignature \time 3/4 \D f4 \D f4 \D f4 \bar ""
+  \once \omit Staff.TimeSignature \time 8/4 \D f4 \D e4 \D f2 \D g2 \D e2 | % 8
   \once \omit Staff.TimeSignature \time 10/4 \D g4 \D g4 \D g4 \D g4 \D g4 \D g4
   \D f2 \D e2 | % 9
 
@@ -98,15 +99,16 @@ PartPTwoVoiceOne = \relative c' {
   \once \omit Staff.TimeSignature \time 7/4 \U c4 \U c2 \U c4 \U c4 \U c2 | % 2
   \once \omit Staff.TimeSignature \time 11/4 \U c2 \U c4 \U c4 \U c4 \U c4 \U c4
   \U c2 \U c2 | % 3
-  \once \omit Staff.TimeSignature \time 14/4 \U c4 \U c4 \U c4 \U c4 \U c2 \U c4
-  \U c4 c1 \U c2 | % 4
+  \once \omit Staff.TimeSignature \time 8/4 \U c4 \U c4 \U c4 \U c4 \U c2 \U c4
+  \U c4 \bar ""
+  \once \omit Staff.TimeSignature \time 6/4 c1 \U c2 | % 4
   \once \omit Staff.TimeSignature \time 12/4 \U c4 c1 \U c4 \U c4 \U c2. \U a2 | % 5
   \once \omit Staff.TimeSignature \time 10/4 \U d2 \U d2 \U cis4 \U cis4 a1 \bar
   "||" % 6
   \once \omit Staff.TimeSignature \time 13/4 c1 \U c4 \U c4 \U c4 \U c4 \U c2.
   \U a2 | % 7
-  \once \omit Staff.TimeSignature \time 11/4 \U c4 \U c4 \U c4 \U c4 \U c4 \U c2
-  \U c2 \U c2 | % 8
+  \once \omit Staff.TimeSignature \time 3/4 \U c4 \U c4 \U c4 \bar ""
+  \once \omit Staff.TimeSignature \time 8/4 \U c4 \U c4 \U c2 \U c2 \U c2 | % 8
   \once \omit Staff.TimeSignature \time 10/4 \U c4 \U c4 \U c4 \U c4 \U c4 \U c4
   \U c2 \U c2 | % 9
 
@@ -122,16 +124,17 @@ PartPTwoVoiceTwo = \relative c {
   \once \omit Staff.TimeSignature \time 7/4 \D f4 \D f2 \D c4 \D c4 \D c2 | % 2
   \once \omit Staff.TimeSignature \time 11/4 \D c2 \D c4 \D c4 \D c4 \D c4 \D c4
   \D f2 \D c2 | % 3
-  \once \omit Staff.TimeSignature \time 14/4 \D f4 \D f4 \D f4 \D f4 \D c2 \D c4
-  \D f4 \D e2 ( \D f2 ) \D c2 | % 4
+  \once \omit Staff.TimeSignature \time 8/4 \D f4 \D f4 \D f4 \D f4 \D c2 \D c4
+  \D f4 \bar ""
+  \once \omit Staff.TimeSignature \time 6/4 \D e2 ( \D f2 ) \D c2 | % 4
   \once \omit Staff.TimeSignature \time 12/4 \D c4 \D c2 ( \D f2 ) \D c4 \D c4
   \D f2 ( \D c4 ) \D d2 | % 5
   \once \omit Staff.TimeSignature \time 10/4 \D g2 \D a2 \D a,4 \D a4 d1 \bar
   "||" % 6
   \once \omit Staff.TimeSignature \time 13/4 \D c2 ( \D f2 ) \D c4 \D c4 \D c4
   \D c4 \D f2 ( \D c4 ) \D d2 | % 7
-  \once \omit Staff.TimeSignature \time 11/4 \D f4 \D f4 \D f4 \D f4 \D c4 \D f2
-  \D c2 \D c2 | % 8
+  \once \omit Staff.TimeSignature \time 3/4 \D f4 \D f4 \D f4 \bar ""
+  \once \omit Staff.TimeSignature \time 8/4 \D f4 \D c4 \D f2 \D c2 \D c2 | % 8
   \once \omit Staff.TimeSignature \time 10/4 \D c4 \D c4 \D c4 \D c4 \D c4 \D c4
   \D f2 \D c2 | % 9
 
