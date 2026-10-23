@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Choir print of a church score: NAME_koor.ly and NAME_koor.pdf next to NAME.ly, with larger
-lyrics (church_style_koor.ily), leaving NAME.ly and NAME.pdf alone.
+"""Choir print of a church score: NAME_koor.ly and NAME_koor.pdf, with larger lyrics
+(church_style_koor.ily), leaving NAME.ly and NAME.pdf alone.
 
-usage: tools/koor-variant.py [--size PT] [--free-breaks] [--pdf-dir DIR] NAME [NAME ...]
+usage: tools/koor-variant.py [--size PT] [--free-breaks] [--out-dir DIR] NAME [NAME ...]
 
 NAME is a score name relative to the repository root (heer_ik_roep_t3, or with
 .ly/.mscz); its .ly must exist (tools/rebuild-score.py makes it). --size sets
@@ -11,8 +11,8 @@ stay those of NAME.ly, which come from the line breaks in NAME.mscz; to break
 a line inside a measure, split the measure there in the .mscz
 (tools/mscz-split-measures.py). The choir print gets as many pages as NAME.pdf
 (page-count), so LilyPond tightens the spacing rather than add a page.
---pdf-dir puts NAME_koor.pdf in DIR (relative to the repository root) instead
-of next to NAME_koor.ly.
+The choir print goes next to NAME.ly, or with --out-dir in DIR (relative to
+the repository root; the Heer ik roep tones use heer_ik_roep_koor).
 
 --free-breaks is for scores whose .mscz breaks don't suit the larger lyrics:
 LilyPond chooses the line breaks, also within measures but only before a new
@@ -195,12 +195,12 @@ def lilypond(out, src, workdir):
 
 
 def main(args):
-    size, free, pdf_dir, names = 16, False, None, []
+    size, free, out_dir, names = 16, False, None, []
     while args:
         a = args.pop(0)
         if a == '--size': size = int(args.pop(0))
         elif a == '--free-breaks': free = True
-        elif a == '--pdf-dir': pdf_dir = args.pop(0)
+        elif a == '--out-dir': out_dir = args.pop(0)
         else: names.append(re.sub(r'\.(ly|mscz)$', '', a))
     if not names:
         sys.exit(__doc__.split('\n\n')[1])
@@ -213,6 +213,9 @@ def main(args):
             raise SystemExit(f'{name}.ly does not include church_style.ily')
         head = f'koorPt = {size}\n\\include "church_style_koor.ily"\n'
         out, note = name + '_koor', ''
+        if out_dir:
+            os.makedirs(out_dir, exist_ok=True)
+            out = os.path.join(out_dir, os.path.basename(out))
         if free:
             marked, systems = mark_word_starts(src)
             layout = '\\layout { \\context { \\Score forbidBreakBetweenBarLines = ##f } }\n'
@@ -229,13 +232,11 @@ def main(args):
             pages = re.search(r'Pages: (\d+)', info)
             src = src.replace(inc, head + (f'\\paper {{ page-count = {pages.group(1)} }}\n' if pages else ''), 1)
         open(out + '.ly', 'w').write(src)
-        pdf = os.path.join(pdf_dir, os.path.basename(out)) if pdf_dir else out
-        if pdf_dir: os.makedirs(pdf_dir, exist_ok=True)
-        r = subprocess.run(['lilypond', '-I', ROOT, '-o', pdf, out + '.ly'], capture_output=True, text=True)
-        pages = subprocess.run(['mutool', 'info', pdf + '.pdf'], capture_output=True, text=True).stdout
+        r = subprocess.run(['lilypond', '-I', ROOT, '-o', out, out + '.ly'], capture_output=True, text=True)
+        pages = subprocess.run(['mutool', 'info', out + '.pdf'], capture_output=True, text=True).stdout
         n = re.search(r'Pages: (\d+)', pages)
         warn = [l for l in r.stderr.splitlines() if 'warning' in l and 'too few pages' not in l]
-        print(f"== {pdf}.pdf: {n.group(1) if n else '?'} page(s), lyrics {size}pt" + note
+        print(f"== {out}.pdf: {n.group(1) if n else '?'} page(s), lyrics {size}pt" + note
               + (f", {len(warn)} warning(s)" if warn else ''))
         for l in warn: print('  ' + l)
         if r.returncode: status = 2

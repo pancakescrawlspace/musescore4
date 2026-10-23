@@ -1,6 +1,7 @@
 # Setting line breaks by hand in the LilyPond files
 
-How to add or remove line breaks in a choir print (`NAME_koor.ly`), for
+How to add or remove line breaks in a choir print (`NAME_koor.ly`; those of
+Heer ik roep are in `heer_ik_roep_koor/`), for
 example to match the breaks of the sheets the choir already sings from.
 The same commands work in the ordinary `NAME.ly`.
 
@@ -128,11 +129,12 @@ file).
 
 ## Building and checking
 
-From the `church` folder:
+From the `church` folder (`-I .` lets LilyPond find the style files in the
+root; `-o` puts the PDF next to the `.ly`):
 
 ```sh
-lilypond heer_ik_roep_t1_koor.ly
-tools/check-pdf-notes.py heer_ik_roep_t1.mscz heer_ik_roep_t1_koor.pdf
+lilypond -I . -o heer_ik_roep_koor/heer_ik_roep_t1_koor heer_ik_roep_koor/heer_ik_roep_t1_koor.ly
+tools/check-pdf-notes.py heer_ik_roep_t1.mscz heer_ik_roep_koor/heer_ik_roep_t1_koor.pdf
 ```
 
 - LilyPond prints warnings in the terminal. "too few pages" only means it
@@ -143,5 +145,5 @@ tools/check-pdf-notes.py heer_ik_roep_t1.mscz heer_ik_roep_t1_koor.pdf
 - To rebuild the combined PDF of the eight tones:
 
   ```sh
-  qpdf --empty --pages heer_ik_roep_t?_koor.pdf -- heer_ik_roep_alle_tonen_koor.pdf
+  qpdf --empty --pages heer_ik_roep_koor/heer_ik_roep_t?_koor.pdf -- heer_ik_roep_koor/heer_ik_roep_alle_tonen_koor.pdf
   ```

@@ -492,14 +492,16 @@ tools/compare-sources/cmp_lines.py 1 references/heer_ik_roep/moscow_osmoglasie/g
 Makes `NAME_koor.ly` and `NAME_koor.pdf` next to `NAME.ly`, with the lyrics
 larger than the house style's 14pt (`church_style_koor.ily`, which includes
 `church_style.ily`); `NAME.ly` and `NAME.pdf` stay as they are. Run it after
-`rebuild-score.py`, since it starts from the current `NAME.ly`. `--pdf-dir DIR`
-puts the PDF in `DIR` instead (as for `heer_ik_roep_layout/koor/`).
+`rebuild-score.py`, since it starts from the current `NAME.ly`. `--out-dir DIR`
+puts both files in `DIR` instead: the Heer ik roep choir prints are in
+`heer_ik_roep_koor/` (and those of the trial layouts in
+`heer_ik_roep_layout/koor/`), to keep the root uncluttered.
 
 ```sh
 tools/koor-variant.py --size 18 bogoroditse_dievo bogoroditse_dievo_arkhangelsky
-tools/koor-variant.py --size 16 heer_ik_roep_t1 heer_ik_roep_t2 heer_ik_roep_t3
-tools/koor-variant.py --size 16 --free-breaks heer_ik_roep_t{4,5,6,7,8}
-qpdf --empty --pages heer_ik_roep_t?_koor.pdf -- heer_ik_roep_alle_tonen_koor.pdf
+tools/koor-variant.py --size 16 --out-dir heer_ik_roep_koor heer_ik_roep_t1 heer_ik_roep_t2 heer_ik_roep_t3
+tools/koor-variant.py --size 16 --out-dir heer_ik_roep_koor --free-breaks heer_ik_roep_t{4,5,6,7,8}
+qpdf --empty --pages heer_ik_roep_koor/heer_ik_roep_t?_koor.pdf -- heer_ik_roep_koor/heer_ik_roep_alle_tonen_koor.pdf
 ```
 
 Without `--free-breaks` the line breaks stay those of `NAME.ly`, which come
