@@ -221,7 +221,7 @@ def line_breaks(ly, mscz):
         depth -= ly[i] == "}"
         i += 1
     body = ly[start:i]
-    end = r'% \d+[ \t]*\n' + (r'|\\bar ""(?![ \t]*%)' if skip else "")
+    end = r'% \d+[ \t]*\n' + (r'|\\bar\s+""(?![ \t]*%)' if skip else "")
     ends = list(re.finditer(end, body))
     number, numbers = 0, []   # the measure number shown, per measure index
     for k in range(len(ends) + 1):
