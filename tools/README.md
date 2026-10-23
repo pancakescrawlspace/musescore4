@@ -415,7 +415,8 @@ title tag is the score's title, subtitle and subsubtitle, plus the voice. Needs
 
 Downloads the sources of the `*_sources.md` files into `references/`
 (gitignored), where `heer_ik_roep_sources.md` lists them under
-"References". Needs `curl`.
+"References". Needs `curl`, and `mutool` for the one page it extracts
+(«Царю Небесный» from the Pentecostarion; skipped without it).
 
 ```sh
 tools/download-references.sh

@@ -76,3 +76,24 @@ curl -sSL -o $d/azbyka_kievan_kastorsky.pdf $A/2023/04/blazhen-muzh-kievskij.pdf
 G=http://quadratum.glagol-verbum.com/biblioteka; d=references/obihod_1909; mkdir -p $d
 curl -sSL -o $d/obihod_1909_ch1_vsenoshchnoe.pdf $G/Obikhod_1909_-_vsenoschnoe.pdf
 curl -sSL -o $d/obihod_1909_ch2_liturgiya.pdf $G/obihod1909_lit.pdf
+d=references/znamenny; mkdir -p $d
+curl -sSL -o $d/kutuzov_obihod_znamennogo_peniya.pdf $A/2024/12/obihod-znamennogo-peniya-b.-kutuzov.pdf
+curl -sSL -o $d/azbyka_vsenoshchnaya_i_liturgiya_znamennogo_rospeva.pdf $A/2024/12/vsenoshhnaya-i-liturgiya-znamennogo-rospeva.pdf
+curl -sSL -o $d/azbyka_vsenoshchnoe_bdenie_pakhtunova.pdf $A/2024/12/vsenoshhnoe-bdenie-znamennogo-raspeva-sost.-t.-pahtunova.pdf
+curl -sSL -o $d/azbyka_milost_mira_znamennyj_51.pdf $A/2025/04/51_milost-mira_znam_rasp-znamen.pdf
+curl -sSL -o $d/azbyka_dostojno_est_velichanie_znamennyj.pdf $A/2025/04/06_dostojno-est.pdf
+curl -sSL -o $d/azbyka_milost_mira_znamennyj_lilypond.pdf $A/2024/01/milost-mira_znam_vl.pdf
+curl -sSL -o $d/azbyka_tsaryu_nebesnyj_malyj_znamennyj.pdf $A/2023/05/czaryu-nebesnyj-malyj-znamennyj-napev.pdf
+curl -sSL -o $d/ikliros_solovki1912_dostojno_est.pdf https://ikliros.com/sites/default/files/4688/25_dostoyno_est_znamennogo.pdf
+curl -sSL -o $d/ikliros_solovki1912_milost_mira.pdf https://ikliros.com/sites/default/files/4688/24_mm_znamennogo_medium.pdf
+curl -sSL -o $d/otpm_it_is_truly_meet_znamenny_t7.pdf https://orthodoxtwopartmusic.org/files/OM-Itistruly-znamt7.pdf
+curl -sSL -o $d/otpm_anaphora_tikhonovsky_znamenny_t7.pdf https://orthodoxtwopartmusic.org/files/01-tik-anaphora.pdf
+curl -sSL -o $d/stl_sunday_prokeimena_znamenny_unison.pdf https://music.russianorthodox-stl.org/music/prokeimenon/Prokeimenon_Znam_Unison_untrans_110805.pdf
+mkdir -p $d/azbyka_series
+for f in 08_1_psalom-gospodi-vozzvah-i-zapevy-glas-1 08_2_psalom-gospodi-vozzvah-i-zapevy-glas-2 08_3_psalom-gospodi-vozzvah-i-zapevy-glas-3 08_4_psalom-gospodi-vozzvah-i-zapevy-glas-4 08_5_psalom-gospodi-vozzvah-i-zapevy-glas-5 08_6_psalom-gospodi-vozzvah-i-zapevy-glas-6 08_7_psalom-gospodi-vozzvah-i-zapevy-glas-7 08_8_psalom-gospodi-vozzvah-i-zapevy-glas-8 09_1_svete-tihij 09_2_svete-tihij-glas-2 09_3_svete-tihij-glas-3 09_4_svete-tihij-glas-6 16_bogorodicze-devo.-kirillo-beloezerskij-monastyr; do
+  curl -sSL -o $d/azbyka_series/$f.pdf $A/2025/04/$f.pdf
+done
+d=references/triod_1899; mkdir -p $d
+curl -sSL -o $d/triod_1899_ch2_cvetnaya.pdf $G/triod_col.pdf
+# «Царю Небесный» (p. 311 = PDF page 108) as a page of its own, if mutool is there
+command -v mutool >/dev/null && mutool convert -o references/znamenny/triod_1899_tsaryu_nebesnyj_p311.pdf $d/triod_1899_ch2_cvetnaya.pdf 108

@@ -432,3 +432,25 @@ them again.
   - `obihod_1909_ch1_vsenoshchnoe.pdf`: [part 1, Всенощное бдение](http://quadratum.glagol-verbum.com/biblioteka/Obikhod_1909_-_vsenoschnoe.pdf), a scan (204 pages)
   - `obihod_1909_ch2_liturgiya.pdf`: [part 2, Божественная литургия](http://quadratum.glagol-verbum.com/biblioteka/obihod1909_lit.pdf),
     retypeset in 2004 in the original notation and pagination (PDF page = printed page − 204)
+- `znamenny/`: Znamenny chant in staff notation (see `znamenny_sources.md`)
+  - `kutuzov_obihod_znamennogo_peniya.pdf`: [B. Kutuzov, «Обиход знаменного пения»](https://azbyka.ru/kliros/wp-content/uploads/2024/12/obihod-znamennogo-peniya-b.-kutuzov.pdf)
+  - `azbyka_vsenoshchnaya_i_liturgiya_znamennogo_rospeva.pdf`: [Bryansk 2013](https://azbyka.ru/kliros/wp-content/uploads/2024/12/vsenoshhnaya-i-liturgiya-znamennogo-rospeva.pdf)
+  - `azbyka_vsenoshchnoe_bdenie_pakhtunova.pdf`: [T. Pakhtunova](https://azbyka.ru/kliros/wp-content/uploads/2024/12/vsenoshhnoe-bdenie-znamennogo-raspeva-sost.-t.-pahtunova.pdf)
+  - `azbyka_milost_mira_znamennyj_51.pdf`, `azbyka_dostojno_est_velichanie_znamennyj.pdf`:
+    azbyka.ru's numbered series, [no. 51](https://azbyka.ru/kliros/wp-content/uploads/2025/04/51_milost-mira_znam_rasp-znamen.pdf)
+    and [Величания no. 06](https://azbyka.ru/kliros/wp-content/uploads/2025/04/06_dostojno-est.pdf)
+  - `azbyka_milost_mira_znamennyj_lilypond.pdf`: [«Милость мира», LilyPond](https://azbyka.ru/kliros/wp-content/uploads/2024/01/milost-mira_znam_vl.pdf)
+  - `azbyka_tsaryu_nebesnyj_malyj_znamennyj.pdf`: [«Царю Небесный», Малый знаменный напев](https://azbyka.ru/kliros/wp-content/uploads/2023/05/czaryu-nebesnyj-malyj-znamennyj-napev.pdf)
+  - `ikliros_solovki1912_dostojno_est.pdf`, `ikliros_solovki1912_milost_mira.pdf`:
+    [Solovetsky Obikhod](https://ikliros.com/category/kompozitorraspev/znamennyi-raspev) (ikliros.com)
+  - `otpm_it_is_truly_meet_znamenny_t7.pdf`, `otpm_anaphora_tikhonovsky_znamenny_t7.pdf`:
+    [Orthodox Two-Part Music](https://orthodoxtwopartmusic.org/otpl)
+  - `stl_sunday_prokeimena_znamenny_unison.pdf`: [St Louis](https://music.russianorthodox-stl.org/music_liturgy)
+  - `azbyka_series/`: azbyka.ru's numbered Vespers series, «Господи воззвах»
+    tones 1–8 (08_N), «Свете тихий» (09_N), «Богородице Дево» (16), from
+    `https://azbyka.ru/kliros/wp-content/uploads/2025/04/`
+  - `triod_1899_tsaryu_nebesnyj_p311.pdf`: «Царю Небесный», extracted from
+    the Pentecostarion below
+- `triod_1899/triod_1899_ch2_cvetnaya.pdf`: the Synodal *Триодь нотного
+  пения*, part 2 (Pentecostarion), [from "Глаголь"](http://quadratum.glagol-verbum.com/biblioteka/triod_col.pdf),
+  retypeset in 2004 (PDF page = printed page − 203); see `znamenny_sources.md`
