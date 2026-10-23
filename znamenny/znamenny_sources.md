@@ -192,6 +192,31 @@ For the choir's texts the most useful are: Vespers 08 («Господи
 Liturgy 51–52 («Милость мира»); Sakhno 03–04 («Блажен муж»). Kutuzov
 and the 1909 Obikhod have Znamenny «Блажен муж» and «Достойно есть» too.
 
+## Transcription: `svete_tihij_znamennyj.mscz`
+
+In this folder: the Znamenny «Свете тихий» of azbyka.ru's Vespers series,
+no. 09_1 («Свете Тихий, знаменный распев»,
+[PDF](https://azbyka.ru/kliros/wp-content/uploads/2025/04/09_1_svete-tihij.pdf);
+`references/znamenny/azbyka_series/09_1_svete-tihij.pdf`), transcribed
+on 2026-10-23.
+
+- **The notes** were read from the PDF's vector shapes (it has no music
+  font): 9×6 filled heads are quarters, 9×6 hollow heads halves, 11×7
+  hollow heads wholes, plus one dotted half. That gives 128 notes. Each
+  pitch comes from the head's position on its staff (treble clef, one
+  flat).
+- **The syllables** (95) were assigned to the notes by their positions in
+  the PDF's text layer. The multi-note syllables are exactly the source's
+  slurred groups. The text is in civil script with the source's syllable
+  division (e.g. «без-сме-ртна-го», «со-лнца»).
+- **House style:** one measure per printed line with hidden time
+  signatures (no courtesy signatures), slurs and melisma lines on all 24
+  multi-note syllables (words split after a melisma), lyrics in Arial 14
+  with minimum distance 1.3.
+- **Not done yet:** the MusicXML/LilyPond/PDF outputs
+  (`tools/rebuild-score.py`). The other versions in the series (tones 2,
+  3, 6: 09_2–09_4) and Kutuzov's tone 6 are not transcribed.
+
 ## Local copies
 
 In `references/znamenny/` (gitignored; see `heer_ik_roep_sources.md`,
