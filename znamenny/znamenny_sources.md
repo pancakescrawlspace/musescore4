@@ -220,6 +220,38 @@ on 2026-10-23.
 - **Not done yet:** the other versions in the series (tones 2, 3, 6:
   09_2–09_4) and Kutuzov's tone 6.
 
+## Transcription: `tsaryu_nebesnyj_znamennyj.mscz`
+
+In this folder: «Царю Небесный», tone 6, Znamenny chant: the version sung on
+the Wikipedia page (see above). It was transcribed on 2026-10-23 from three
+frames of a YouTube video whose audio matches the Wikipedia recording
+(<https://www.youtube.com/watch?v=QhkhmG1tO_w>, frames saved as
+`~/Downloads/output_0001.png`, `_0008.png`, `_0014.png`, not kept here).
+The edition shown in the video is unidentified ("Глас 6-й / Знаменный
+распев", nine numbered phrases).
+
+- Clean typeset images: the pitches were checked with a notehead reader,
+  and the note values, slurs, tenutos and lyrics were read by eye. One
+  measure per printed segment, the phrase numbers as rehearsal marks
+  1–9, system breaks as printed, the final fermata.
+- In phrase 5 the final consonant of «благих» is printed "(х)" under the
+  last note; it is kept as a lyric there.
+- MuseScore leaves out a few short melisma lines in its tight layout
+  ("Со", "ще", "бла", "спа"); they are in the data, and the LilyPond PDF
+  draws them.
+- Outputs (`.musicxml`, `.ly`, `.pdf`) built with `tools/rebuild-score.py`.
+
+**Compared with the Synodal Triodion (1899), p. 311** («По 50-м псалме,
+стихира, глас 6»; see «Царю Небесный» above): the same melody. The
+first two phrases were compared by eye, square note by square note, and
+match in contour and grouping. Phrase 1: «Ца» two notes rising, «рю» a
+higher pair, «не» a lower pair, «бе́с» four up and three down, «ный» on
+the middle note. Phrase 2: «у» two rising, «тѣ́» a dotted note and a step
+down, «ши» two rising, «те» one high, «лю» two falling. An automatic
+comparison of the whole page was inconclusive, because the square-note
+reader is thrown off by the mixed stem directions on this page. Later
+phrases were not checked, and differences there remain possible.
+
 ## Local copies
 
 In `references/znamenny/` (gitignored; see `docs/heer_ik_roep_sources.md`,
