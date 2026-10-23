@@ -5,6 +5,27 @@ ik roep tot U" (Ps. 140/141, Slavonic «Господи, воззвах»), the D
 versions in `heer_ik_roep_t1.mscz` … `heer_ik_roep_t8.mscz`. The Dutch
 adaptation itself is not identified yet; see "Open questions".
 
+## Result: the Moscow obikhod tones (current Moscow parish practice)
+
+The Dutch tones are the stichera tones of the **contemporary Moscow
+obikhod** («современная московская традиция»), in the four-part
+close harmony of Moscow parish choirs, with soprano and alto in parallel
+thirds. The best witness is E. Kustovsky and N. Potemkina, *Пособие по
+изучению осмогласия современной московской традиции* (Moscow: Church of
+the Three Hierarchs at Kulishki, 1999): its stichera tones ("А.
+Стихирный") match the Dutch in all four voices, note for note, in tones
+1, 2, 6 and 8, and with only a few passing notes in 3, 4, 5 and 7 (see
+"The Moscow obikhod"). Tones 1, 2, 4 and 6 are in the Dutch key; 3, 5, 7
+and 8 are a tone higher there (G for the Dutch F).
+
+So the earlier findings below are refined, not overturned: the "Court
+chant in the OCA's setting" (tones 1, 3, 4, 6, 8) and the "Kievan chant"
+(2, 7) are both part of this Moscow tradition, whose melodies the
+handbook traces to the «Круг церковных песнопений обычного напева
+Московской епархии» (1882) with influence of the St Petersburg Court
+chant; the OCA's settings and Smirnov's are close relatives, the
+Moscow handbook is closer than either.
+
 ## Method
 
 Melodies were compared by scale degree, not by pitch, so that a
@@ -17,7 +38,9 @@ note-for-note comparison of whole tones.
 The eight tones here are in F major, except tone 6 in G major. All are
 four-part on two staves, reciting tones with cadence formulas.
 
-## Result: Bakhmetev's Court chant, in the OCA's close-harmony setting
+## Earlier result: Bakhmetev's Court chant, in the OCA's close-harmony setting
+
+(Refined by "The Moscow obikhod" below.)
 
 The chant is the Court chant (*придворный напев*) of the L'vov-Bakhmetev
 Obikhod, and the harmonization is closest to the Orthodox Church in
@@ -298,9 +321,12 @@ edition, see "Other editions") have the same melodies, but not the
 cadence turns that Smirnov shares with the Dutch. In tone 1, for example,
 the melody at "услыши мя" ends 2…2 7 1 in all three (azbyka.ru in G: A…A
 F♯ G G G), where Smirnov and the Dutch go on falling, 2…2 7 1 7 6. So
-Smirnov's «Обиход» is a later practice version of the Court chant. A
-likely candidate, not checked, is the Moscow Synodal Obikhod in A. D.
-Kastalsky's harmonization: *Воскресная служба Октоиха. Гласы 1–8. По
+Smirnov's «Обиход» is a later practice version of the Court chant: the
+contemporary Moscow obikhod (see "The Moscow obikhod"), which has these
+turns. Kastalsky's Synodal Obikhod, first taken as a candidate, is ruled
+out by its texture (open harmony, melody in sixths, per Kustovsky and
+Potemkina): *Воскресная служба Октоиха. Гласы 1–8. По
+обиходу Синодального хора*, гарм. А. Кастальского *Воскресная служба Октоиха. Гласы 1–8. По
 обиходу Синодального хора*, гарм. А. Кастальского (Живоносный Источник,
 2005; [shop listing](https://music-festivals.ru/catalog/noti/voskresnaya-sluzhba-oktoikha-glasy-1-8-po-obikhodu-sinodalnogo-khora-garm-a-kastalskogo)),
 and the St Petersburg Theological Academy's *Осмогласие на «Господи
@@ -317,6 +343,93 @@ Synodal edition), and Archimandrite Matfey's manuscript library at
 Downloads: `references/heer_ik_roep/smirnov/precentor/{men,mix}/`, from
 `https://precentor.ru/s_g/octoechos/<tone dir>/<file>.pdf` and
 `…/octoechos_mix/…` (file names as on the two pages above, `/` → `_`).
+
+## The Moscow obikhod (Kustovsky & Potemkina 1999; «Живоносный Источник» 1996)
+
+Found 2026-10-23 on azbyka.ru, from Smirnov's «Обиход» onwards.
+
+- **E. Kustovsky, N. Potemkina, *Пособие по изучению осмогласия
+  современной московской традиции***, Moscow: издательство Церкви Трех
+  Святителей на Кулишках, 1999. On azbyka.ru as
+  [the whole book](https://azbyka.ru/kliros/wp-content/uploads/2024/12/posobie-po-izucheniyu-osmoglasiya-e.-kustovskij-n.-potemkina.pdf)
+  (87 pp., with the preface) and as
+  [one PDF per tone](https://azbyka.ru/kliros/posobie-po-izucheniyu-osmoglasiya-sovremennoj-moskovskoj-tradiczii/)
+  (`kust/pdf/osmoglas/glasN.pdf`, page numbers as in the printed book;
+  tone 1 is pp. 12–18). Per tone: A. стихирный (refrain, lines 1–4,
+  variants, closing line, "Порядок строк"), Б. тропарный, В.
+  ирмологический, Г. прокимен. Vector PDFs (Finale; music font
+  "Anastasia", Maestro layout, staves drawn as `=` glyphs), read by
+  `ocaread.py`.
+- The preface (pp. 1–8): the melodies of today's Moscow obikhod were
+  fixed in the Synodal books from 1772 on and, for the stichera of all
+  tones, in the «Круг церковных песнопений обычного напева Московской
+  епархии» (earliest surviving edition 1882, Общество любителей
+  церковного пения, written down from Moscow parish precentors), with
+  influence of the St Petersburg Court Chapel (L'vov 1830/1848, Bakhmetev
+  1869) and of the Kiev and Trinity-Sergius Lavras. Its harmony is
+  practice, not an edition: "в современной певческой практике … верхние
+  голоса поют мелодию напева параллельными терциями", unlike Kastalsky
+  (open harmony, melody in sixths), Smolensky (men's choir, sixths) and
+  V. Martynov's *Осмогласие для смешанного хора* (1991; soprano and
+  tenor in sixths). The book sets the tones "в наиболее «обиходном», т. е.
+  распространенном виде: в четырехголосном тесном расположении …, для
+  смешанного состава хора …, с терцовым соотношением сопрано и альта".
+  It names the 1996 «Живоносный Источник» series as giving the obikhod
+  tones "в одном варианте в конце сборника".
+- ***Песнопения воскресной службы***, глас 1–8, Moscow: Православный
+  центр «Живоносный Источник» в Царицыне, 1996 (computer typesetting A.
+  Gorlov, M. Potokin, M. Smirnov; ed. S. Potokina): texts of the Sunday
+  Octoechos with a music supplement; at the end "Образцы обиходных
+  напевов", with "Господи, воззвах" through-composed (tone 1 pp. 35–36,
+  close harmony, F major, three upper voices on the treble staff). On
+  azbyka.ru as scans, one post per tone
+  ([tone 1](https://azbyka.ru/kliros/glas-1-voskresnye-pesnopeniya-oktoiha-mosk-reg-pev-seminarii-tsl-smesh-hor/),
+  [tone 2](https://azbyka.ru/kliros/voskresnye-pesnopeniya-oktoiha-glas-2-smesh-hor/)
+  … `voskresnye-pesnopeniya-oktoiha-glas-N-smesh-hor/`, tone 6
+  `…-gals-6-…`). Tone 1 by eye: soprano, alto and bass are the Dutch,
+  with the cadence turns; the tenor (E–F … on the treble staff) differs.
+  The tone 1 post also has `g1.pdf`, a four-part vector setting of the
+  same tone (its URL names the Moscow Regent-Singing Seminary of the
+  Trinity-Sergius Lavra): the Dutch in all four voices but for the
+  tenor's C where the Dutch has C♯ at the final cadence. There is no
+  `g2.pdf` … `g8.pdf`.
+
+Compared with the Dutch measure by measure (`cmp_lines.py TONE PDF PAGES
+[SHIFT]`): the handbook gives lines, not a through-composed setting, so
+each Dutch measure is matched with the best window anywhere in the
+source, by pitch class, repeats merged, scored by difflib's ratio (1.00:
+the same notes in the same order, nothing extra or missing). The order of
+the lines is not checked, so this measure is milder than the whole-tone
+"covers" used for the OCA and Smirnov above. Soprano / alto / tenor /
+bass, the same measure for every source:
+
+| tone | Moscow handbook (1999) | OCA | Smirnov | other |
+|---|---|---|---|---|
+| 1 | **1.00 1.00 1.00 1.00** | 0.91 0.91 0.94 0.97 | 1.00 1.00 0.96 0.98 | `g1.pdf` 1.00 1.00 0.94 1.00 |
+| 2 | **1.00 1.00 1.00 1.00** | 0.91 0.91 0.97 0.86 | shortened Kievan 0.94 1.00 0.97 0.97; 2007 close 1.00 1.00 1.00 0.98 | Kievan (Arkhangelsk) 1.00 1.00 0.97 0.97 |
+| 3 | 0.94 0.94 1.00 1.00 | 0.90 0.90 1.00 0.93 | 0.91 0.91 1.00 1.00 | |
+| 4 | 1.00 1.00 1.00 0.96 | 0.99 0.99 0.94 1.00 | 0.97 0.97 1.00 0.97 | |
+| 5 | 0.91 0.90 0.96 1.00 | 0.87 0.66 0.97 0.96 | 0.91 0.90 0.86 1.00 | Kievan 0.91 0.90 0.96 1.00 |
+| 6 | **1.00 1.00 1.00 1.00** | 1.00 1.00 0.97 0.96 | 1.00 1.00 1.00 0.98 | |
+| 7 | 0.96 0.96 1.00 0.89 | 0.83 0.83 1.00 0.92 | 0.89 0.89 0.98 0.89 | Kievan 0.96 0.96 0.88 0.99 |
+| 8 | **1.00 1.00 1.00 1.00** | 1.00 1.00 0.94 1.00 | 1.00 1.00 1.00 0.98 | |
+
+The handbook's transposition: tones 1, 2, 4, 6 none; 3, 5, 7, 8 down a
+tone (its G major to the Dutch F). Where the Dutch differs from it:
+
+- Tone 3: one added A in soprano and alto (G A B♭ A G F G for G B♭ A G F
+  G, m1, 3, 5, 7, 9) and a slightly different cadence in m6, m11; tenor
+  and bass identical.
+- Tone 4: two bass passing notes fewer (F A D for F G A D, m6, m11).
+- Tone 5: small added turns in the upper voices (E–D, C–D in m3, m9) and
+  a longer final cadence (m6, m11); bass identical.
+- Tone 7: a passing F before the last G in soprano and alto (A F G for A
+  G), E–F neighbour notes in the bass.
+
+These are the kind of variants the authors expect between choirs ("иные
+традиционные варианты напевов … не считать их «неправильными»"). So the
+Dutch adaptation was made from this Moscow practice, either from a
+printed witness like the handbook or the 1996 series, or from singing.
 
 ## Bakhmetev's Obikhod (1869)
 
@@ -415,6 +528,13 @@ references/
 │   │   ├── gospodi-vozzvah-glas-6-4g-smh.pdf
 │   │   ├── gospodi-vozzvah-glas-7-4g-smh.pdf
 │   │   ├── gospodi-vozzvah-glas-8-4g-smh.pdf
+│   ├── moscow_osmoglasie/                     Kustovsky & Potemkina 1999 (see "The Moscow obikhod")
+│   │   ├── glas1.pdf … glas8.pdf, glas4a.pdf  per tone (4a: tone 4 prokeimena)
+│   │   ├── glashelp.pdf                       the signs used
+│   │   └── posobie-po-izucheniyu-osmoglasiya-e.-kustovskij-n.-potemkina.pdf   the whole book, 87 pp.
+│   ├── mrps/                                  «Песнопения воскресной службы», Живоносный Источник 1996
+│   │   ├── g1.pdf                             tone 1, four-part vector setting
+│   │   └── pesnopenia_voskresnoy_sluzhby_glas_1.pdf … _8.pdf   scans; obikhod tones at the end
 │   ├── obikhod_arkhangelsk/
 │   │   └── obihod1_arhangelsk.pdf               Kievan chant, tones 1–8 (pp. 8–15)
 │   ├── smirnov/
@@ -436,7 +556,8 @@ references/
     ├── ocaread.py                             reads the voices from a vector PDF (Finale, Sibelius)
     ├── cmp_oca.py                             compares the OCA PDFs with heer_ik_roep_tN.mscz
     ├── cmp_ref.py                             compares any page, transposed, with a tone
-    └── cmp_smirnov.py                         compares Smirnov's TTBB settings (and the OCA's) by pitch class
+    ├── cmp_smirnov.py                         compares Smirnov's TTBB settings (and the OCA's) by pitch class
+    └── cmp_lines.py                           compares a book of tone lines, measure by measure
 ```
 
 Where each file comes from (local name → source):
@@ -461,6 +582,15 @@ Where each file comes from (local name → source):
 - `heer_ik_roep/obikhod_azbyka/gospodi-vozzvah-glas-N-4g-smh.pdf`:
   `https://azbyka.ru/kliros/wp-content/uploads/2025/09/gospodi-vozzvah-glas-N-4g-smh.pdf`, from
   [this page](https://azbyka.ru/kliros/noty-pesnopenij-gospodi-vozzvah-glasy-1-8-dlya-smeshannogo-hora/)
+- `heer_ik_roep/moscow_osmoglasie/glasN.pdf`, `glas4a.pdf`, `glashelp.pdf`:
+  `https://azbyka.ru/kliros/wp-content/uploads/kliros/kust/pdf/osmoglas/<name>.pdf`, from
+  [this page](https://azbyka.ru/kliros/posobie-po-izucheniyu-osmoglasiya-sovremennoj-moskovskoj-tradiczii/);
+  the whole book: `https://azbyka.ru/kliros/wp-content/uploads/2024/12/posobie-po-izucheniyu-osmoglasiya-e.-kustovskij-n.-potemkina.pdf`,
+  from [Обиход церковного пения: нотные сборники](https://azbyka.ru/kliros/obihod-czerkovnogo-peniya-notnye-sborniki/)
+- `heer_ik_roep/mrps/g1.pdf`, `pesnopenia_voskresnoy_sluzhby_glas_N.pdf`:
+  `https://azbyka.ru/kliros/wp-content/uploads/2022/10/<name>.pdf`, from the
+  posts listed in "The Moscow obikhod" (the folder name comes from the tone 1
+  post's URL, "mosk-reg-pev-seminarii")
 - `heer_ik_roep/obikhod_arkhangelsk/obihod1_arhangelsk.pdf`:
   [http://kliros.ru/noty/obihod1_arhangelsk.pdf](http://kliros.ru/noty/obihod1_arhangelsk.pdf)
 - `heer_ik_roep/smirnov/`: from
@@ -484,7 +614,7 @@ Where each file comes from (local name → source):
   the [share link](https://drive.google.com/open?id=1oRzhP6P_ELtLYkSjQFdhvKzYBculR1F7)
   opens a viewer, the file itself comes from
   `https://drive.google.com/uc?export=download&id=1oRzhP6P_ELtLYkSjQFdhvKzYBculR1F7`.
-- `tools/ocaread.py`, `cmp_oca.py`, `cmp_ref.py`, `cmp_smirnov.py`: not downloaded but written here
+- `tools/ocaread.py`, `cmp_oca.py`, `cmp_ref.py`, `cmp_smirnov.py`, `cmp_lines.py`: not downloaded but written here
   (2026-10-23); they exist only in this directory. Run
   `python3 cmp_oca.py 1 2 3 4 5 6 7 8` in `references/tools/`; they need
   `mutool`.
@@ -511,6 +641,15 @@ for f in Tutorial-Intro-Obikhod-Tone1-Explanation Tutorial-Obikhod-Tone2-Explana
   curl -sSL -o $d/oca/$f.pdf $T/$f.pdf
 done
 curl -sSL -o $d/obikhod_arkhangelsk/obihod1_arhangelsk.pdf http://kliros.ru/noty/obihod1_arhangelsk.pdf
+mkdir -p $d/moscow_osmoglasie $d/mrps
+for f in glas1 glas2 glas3 glas4 glas4a glas5 glas6 glas7 glas8 glashelp; do
+  curl -sSL -o $d/moscow_osmoglasie/$f.pdf $A/kliros/kust/pdf/osmoglas/$f.pdf
+done
+curl -sSL -o $d/moscow_osmoglasie/posobie-po-izucheniyu-osmoglasiya-e.-kustovskij-n.-potemkina.pdf $A/2024/12/posobie-po-izucheniyu-osmoglasiya-e.-kustovskij-n.-potemkina.pdf
+curl -sSL -o $d/mrps/g1.pdf $A/2022/10/g1.pdf
+for n in 1 2 3 4 5 6 7 8; do
+  curl -sSL -o $d/mrps/pesnopenia_voskresnoy_sluzhby_glas_$n.pdf $A/2022/10/pesnopenia_voskresnoy_sluzhby_glas_$n.pdf
+done
 curl -sSL -o $d/smirnov/glas-1-red-smirnova.pdf $A/2024/02/na-gospodi-vozzvah-stihiry-voskresnye-glas-1.-red.-g.-smirnova.pdf
 curl -sSL -o $d/smirnov/glas-2-lavrskogo-napeva.pdf $A/2024/02/na-gospodi-vozzvah-stihiry-voskresnye-glas-2-lavrskogo-napeva.pdf
 curl -sSL -o $d/smirnov/glas-2-sokr-kievskogo-rospeva.pdf $A/2024/02/na-gospodi-vozzvah-stihiry-voskresnye-glas-2-sokrashhennogo-kievskogo-rospeva.pdf
@@ -530,21 +669,14 @@ curl -sSL -o $d/court_obikhod_1914_djukliros.pdf 'https://drive.google.com/uc?ex
 
 ## Open questions
 
-1. Where tone 5 comes from exactly: Smirnov's setting (see "Smirnov's
-   men's-choir settings") is close, with the melody on top and the same
-   bass, but the Dutch soprano still differs in a few places; his 2007
-   mixed-choir version is no closer. An edition for mixed choir of the
-   same branch would settle it.
-2. Who made the Dutch adaptation, and from what: a Court-chant
-   collection in close harmony for tones 1, 3, 4, 6 and 8 (the OCA's
-   settings, or a Russian edition like the one behind Smirnov's, which is
-   closer in tones 1, 3, 5 and 6), and the Kievan chant for tones 2 and 7
-   (for tone 2, the shortened Kievan chant, exactly as in Smirnov's
-   close-harmony «Обиход» of 2007). A Dutch parish book or the choir's
-   own sheets would settle it.
-3. Which printed «Обиход» Smirnov (and probably the Dutch) follows: a
-   practice version of the Court chant with cadence turns that the Court
-   editions lack. To check: Kastalsky's Synodal Obikhod (Octoechos
-   tones 1–8, Живоносный Источник 2005) and the St Petersburg Academy's
-   *Осмогласие на «Господи воззвах»* (2014); see "What Smirnov's settings
-   are based on".
+1. Tone 5: the Moscow handbook has the same bass and nearly the same
+   upper voices (0.91/0.90); the Dutch adds small turns. Settled as far
+   as the source goes.
+2. Who made the Dutch adaptation: from what is now answered (the
+   contemporary Moscow obikhod tones, see "Result"), by whom not. A Dutch
+   parish book or the choir's own sheets would settle it.
+3. Settled: Smirnov and the Dutch follow the contemporary Moscow
+   obikhod (see "The Moscow obikhod"). Still open: whether the Dutch was
+   made from a printed witness (the 1999 handbook, the 1996 «Живоносный
+   Источник» series, or another) or from singing; the 1996 scans of
+   tones 2–8 (`references/heer_ik_roep/mrps/`) are not compared yet.
