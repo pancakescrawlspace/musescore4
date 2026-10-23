@@ -20,9 +20,9 @@ split points of tone 1 and tone 3:
 - Tones 4-8 have both.
 
 Every variant has its `.mscz`, `.musicxml`, `.ly`, `.pdf` (14pt) and
-`_koor.ly`/`_koor.pdf` (16pt); all are one page and pass
-`tools/check-pdf-notes.py`. The whole set of eight choir prints, tones 1 and 3
-from the root and tone 2 as `_als_t1`:
+`_koor.ly` here, and its choir print (16pt) in `koor/`; all are one page and
+pass `tools/check-pdf-notes.py`. Also in `koor/`, the whole set of eight
+choir prints, tones 1 and 3 from the root and tone 2 as `_als_t1`:
 
 - `heer_ik_roep_alle_tonen_koor_als_t1.pdf`: tones 4-8 like tone 1;
 - `heer_ik_roep_alle_tonen_koor_als_t3.pdf`: tones 4-8 like tone 3.
@@ -32,7 +32,7 @@ Made with (`SPLITS` = `4:8 8:4` for `_als_t1`, `4:7 8:5` for `_als_t3`):
 ```sh
 tools/mscz-split-measures.py heer_ik_roep_layout/NAME.mscz SPLITS --line-breaks 2,4a,6,8a,9
 tools/rebuild-score.py heer_ik_roep_layout/NAME
-tools/koor-variant.py heer_ik_roep_layout/NAME
+tools/koor-variant.py --pdf-dir heer_ik_roep_layout/koor heer_ik_roep_layout/NAME
 ```
 
 To adopt a variant, copy its `.mscz` over `heer_ik_roep_tN.mscz` in the root

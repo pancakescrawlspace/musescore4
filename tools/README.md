@@ -492,7 +492,8 @@ tools/compare-sources/cmp_lines.py 1 references/heer_ik_roep/moscow_osmoglasie/g
 Makes `NAME_koor.ly` and `NAME_koor.pdf` next to `NAME.ly`, with the lyrics
 larger than the house style's 14pt (`church_style_koor.ily`, which includes
 `church_style.ily`); `NAME.ly` and `NAME.pdf` stay as they are. Run it after
-`rebuild-score.py`, since it starts from the current `NAME.ly`.
+`rebuild-score.py`, since it starts from the current `NAME.ly`. `--pdf-dir DIR`
+puts the PDF in `DIR` instead (as for `heer_ik_roep_layout/koor/`).
 
 ```sh
 tools/koor-variant.py --size 18 bogoroditse_dievo bogoroditse_dievo_arkhangelsky
