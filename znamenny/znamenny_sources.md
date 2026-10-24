@@ -563,6 +563,29 @@ Dormition. Each feast also has its Vespers and Matins stichera,
 megalynarion, prokeimena, canons, zadostoinik and communion verse. The
 troparion of the Nativity of the Theotokos, glas 4, is on PDF p. 4.
 
+Where the troparia and kontakia are (found 2026-10-24 by going through
+the pages; all checked by their headings «Тропарь» / «Кондак»). The book
+is numbered by folio (лист), «об.» being the back: folio *n* is PDF page
+2*n* + 1, *n* об. is PDF page 2*n* + 2. A piece that starts at the foot of
+a page runs on to the next.
+
+| feast | troparion: folio (PDF page) | kontakion: folio (PDF page) |
+|---|---|---|
+| Nativity of the Theotokos | 1 об. (4), glas 4 | 8 (17), glas 4 «Иоаким и Анна» |
+| Exaltation of the Cross | 11–11 об. (23–24), glas 1 | 16 об. (34), glas 4 |
+| Entry of the Theotokos | 20 об.–21 (42–43), glas 4 | 28 (57), glas 4 «Пречистый храм Спасов» |
+| Nativity of Christ | 38 об. (78), glas 4; Greek chant 39 (79) | 39 (79), glas 3 «Дева днесь»; Greek chant 39–39 об. (79–80) |
+| Theophany | 57 об. (116), glas 1; Greek chant 57 об.–58 (116–117) | 58 об. (118), glas 4 «Явился еси днесь»; Greek chant on the same page |
+| Meeting of the Lord | 67 об. (136), glas 1 | 71–71 об. (145–146), glas 1 «Утробу девичу» |
+| Annunciation | 77–77 об. (155–156), glas 4 | 77 об. (156), glas 8 «Взбранной воеводе» |
+| Transfiguration | 83 об. (168), glas 7 | 89 об.–90 (180–181), glas 7 «На горе преобразился еси» |
+| Dormition | 94 (189), glas 1 | 103 об.–104 (208–209), glas 2 «В молитвах неусыпающую» |
+
+The troparia are at Small Vespers, except for the Nativity of Christ,
+Theophany and the Annunciation, which have no Small Vespers here (there
+they are at Great Vespers, as are those three kontakia). The other
+kontakia are at Matins, after the sixth ode of the canon.
+
 The movable feasts are in the Synodal Triodion (1899). The Pentecostarion
 (`references/triod_1899/`, see «Царю Небесный») opens with Pascha on
 p. 205 (PDF p. 2): «Воскресение Твое, Христе Спасе» in Greek chant,
