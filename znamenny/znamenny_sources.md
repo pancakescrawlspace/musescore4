@@ -325,6 +325,72 @@ comparison of the whole page was inconclusive, because the square-note
 reader is thrown off by the mixed stem directions on this page. Later
 phrases were not checked, and differences there remain possible.
 
+## Transcriptions: Ascension troparion and kontakion, «Елицы»
+
+In this folder, transcribed on 2026-10-24 from the files listed under
+"Znamenny hymns in common use" (local copies in
+`references/znamenny/festal/` and `eliczy/`):
+
+| score | source | notes | syllables |
+|---|---|---|---|
+| `voznesenie_tropar_znamennyj` | troparion, glas 4, «Знаменный распев» (2 pp.) | 146 | 61 |
+| `voznesenie_kondak_znamennyj` | kontakion, glas 6, «Знаменный распев» (2 pp.) | 165 | 74 |
+| `voznesenie_tropar_krasnogorskij` | troparion, glas 4, after the Krasnogorsk manuscript (1 p.) | 75 | 61 |
+| `voznesenie_kondak_krasnogorskij` | kontakion, glas 6, after the Krasnogorsk manuscript (1 p.) | 88 | 73 |
+| `eliczy_znamennyj` | «Елицы», with ison (first piece of `elici_krestu_trisvatoe_vl.pdf`) | 30 + ison | 23 |
+
+**The Ascension files** are engraved differently from the Vespers series.
+They were set in Finale: the noteheads, clef and dots are glyphs of its
+Inkpen2 font, the hyphens are text, and only the staff lines, stems,
+slurs and beams are drawn shapes. The notes were read from the glyphs'
+positions and the slurs and syllables as for the Vespers series, then
+compared with the source pages line by line, by eye. They have no key
+signature (C major, all within A3–A4) and matched in all four files.
+Points to note:
+
+- The troparion's «Избави́тель» has two beamed eighths (m10, F E on
+  «тель»), the only eighths in these scores.
+- In the Krasnogorsk kontakion, «съ ва́-ми» has «съ» and «ва́» under one
+  note. «съ» has no vowel to sing, so they share the note as «с ва».
+- The syllables «тель» (troparion) and the closing «въ» of «соедини́въ»
+  (kontakion) came out on the second note of a slur and were moved to its
+  first, as in the Vespers series.
+- The text: titlo abbreviations written out («хрⷭ҇-тѐ» → «Хри-сте»,
+  «сн҃ъ» → «Сын»), and the source's syllable division and pre-reform
+  spelling kept: «бы-вшым», «лю-бя-щым», «и-зве-ще-нным». The kontakion
+  has «вопия́» as in the source (not «вопия́й»). Capitals: «Христе Боже»,
+  «Святаго Духа», «Ты», «Сын Божий», «Избавитель», «Тя», «Аз».
+- Title «Тропарь Вознесения» / «Кондак Вознесения» with the tone as the
+  second line. The Krasnogorsk versions have «по Красногорской рукописи»
+  as a second composer line (from azbyka.ru's file title; the pages
+  themselves don't say it).
+
+**«Елицы»** is a LilyPond 2.24 PDF, whose glyphs have their names
+(`noteheads.s1`, `clefs.G` …), so the pitches and values were read
+exactly. The melody is F major, G4 to D5. The **ison** is printed only
+where it changes: under the first note (F, with the word «исон»), under
+the last note of «во Христа́» (G), and in the cadences (F and A, G, F; F,
+F). The source draws these as stemless whole-note heads. In the score
+they are a second voice, each note as long as the melody note above it,
+with hidden rests in between. Presumably the ison is held until the next
+one, as usual; the page doesn't say, and the score doesn't show it.
+
+- Measures follow the source's bar lines (after «крести́стеся,» and after
+  «облеко́стеся.»), with its line break after «во Христа́»: four measures.
+- Stress accents in the source's text (civil script) are left out, as in
+  the other scores. The other two pieces on the page, «Кресту Твоему»
+  (Valaam chant) and the Trisagion (Small Znamenny), were not transcribed.
+- The MusicXML was written by hand from the glyph reading (a short
+  script), not by the reader used for the azbyka.ru series.
+
+All five were built with `tools/rebuild-score.py`. The note check skips
+them: `check-pdf-notes.py` handles only the two-staff choir layout, and
+«Елицы» has rests in its second voice. MuseScore leaves out some short
+melisma lines in its tight layout (e.g. «кре», «сте» in «Елицы»); they
+are in the data, and LilyPond draws them, a few as short dashes. MP4s
+with Arachno's piano are made as described in `../README.md` under
+"Videos".
+
 ## Psalm 50
 
 Found on 2026-10-24 as no. 08 of azbyka.ru's Matins series (two files,
