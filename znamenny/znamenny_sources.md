@@ -429,6 +429,29 @@ are in the data, and LilyPond draws them, a few as short dashes. MP4s
 with Arachno's piano are made as described in `../README.md` under
 "Videos".
 
+## Square-notation counterparts: `square/`
+
+Since 2026-10-24 every score in this folder also exists in square notation,
+as in the Synodal chant books (`square/X.ly` and `square/X.pdf`, made by
+`tools/kievan-ly.py` from `X.musicxml`; how to read it:
+`docs/square_notation.md`). The scores in F major («Свете тихий», «Царю
+Небесный», «Богородице Дево», «Елицы», «Кресту Твоему», the Trisagion) are
+moved down a fourth, so that F becomes the C on the middle line, as in the
+Synodal books («Царю Небесный»'s first phrase then reads as on p. 311 of
+the Pentecostarion). The Ascension scores, without key signature, keep
+their pitches.
+
+- Only the melody and its lyrics, in the civil script of the scores (the
+  books have Church Slavonic). Left out: the ison of «Елицы», «Кресту
+  Твоему» and the Trisagion (with the Trisagion's «(последний раз)» C),
+  slurs, and «Царю Небесный»'s phrase numbers, tenutos and fermata.
+- «Свете тихий», tone 6, goes below the square-note scale: moved down a
+  fourth, its lowest notes are F3 and E3 (m3, m8, m9, m13), under the
+  scale's G3, drawn on ledger lines. The other twelve stay within it.
+- The values are the scores' own. LilyPond places the lines itself, so
+  the line breaks are not the source's; each of the score's measures ends
+  with a bar line, as phrases do in the books.
+
 ## Psalm 50
 
 Found on 2026-10-24 as no. 08 of azbyka.ru's Matins series (two files,

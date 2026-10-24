@@ -17,6 +17,10 @@ The pictures were made with LilyPond, which has this notation built in
 `square_notation/square_notation.ly`, and the build command is in that
 file.
 
+Every Znamenny score in `znamenny/` also has a square-notation
+counterpart in `znamenny/square/` (made with `tools/kievan-ly.py`), to
+read next to its modern version.
+
 ## The staff and the clef
 
 The staff has five lines, as in modern notation. There is only one clef,

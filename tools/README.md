@@ -538,6 +538,25 @@ none moves to that first note (the log says so). Compare every new score
 with the source by eye; `check-pdf-notes.py` can't check it. Needs
 `mutool` and MuseScore.
 
+## Square notation (`kievan-ly.py`)
+
+Writes the square-notation counterpart of a unison score (Kievan
+notation, as in the Synodal chant books; see `../docs/square_notation.md`)
+with LilyPond's Kievan contexts, from the score's MusicXML:
+
+```sh
+tools/kievan-ly.py znamenny/*.musicxml     # znamenny/square/X.ly and X.pdf
+```
+
+A score in F major is moved down a fourth (do on the middle line's C, as
+in the books), one without key signature stays as it is; notes outside the
+square-note scale (G3–D5, B natural below C4 and B♭ above) are warned
+about. Only the melody and its lyrics: the ison, slurs and articulations
+are left out. A syllable's notes are grouped close together, the groups
+separated by space; each measure ends with a bar line and the piece with
+the end-of-piece sign; the last note is the final note. Run it again after
+`rebuild-score.py`, which doesn't.
+
 ## Choir prints with larger lyrics (`koor-variant.py`)
 
 Makes `NAME_koor.ly` and `NAME_koor.pdf` next to `NAME.ly`, with the lyrics
