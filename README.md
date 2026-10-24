@@ -215,6 +215,19 @@ without it the video keeps MuseScore's (see `tools/README.md`). `heer_ik_roep_t4
 separate video and isn't made this way. `onder_uwe_hoede.mp4` and
 `o_czom.mp4` are made the same way.
 
+The Znamenny videos `znamenny/X.mp4` (2026-10-24) are made the same way,
+but with the piano sound of the whole-score videos in `video/`: Arachno's
+"Grand Piano" at +0.1 dB, set in the reflowed copy, which is then its own
+audio score:
+
+```sh
+tools/score-reflow.py --out-dir /tmp/zv znamenny/X.mscz
+tools/mscz-set-sound.py --instrument "Arachno-SoundFont-1.0:Grand Piano" --volume-db 0.1 /tmp/zv/X.mscz
+tools/score-video.py /tmp/zv/X.mscz
+tools/video-audio.py --audio-dir /tmp/zv /tmp/zv/X.mscz   # 320 kbps
+cp /tmp/zv/X.mp4 znamenny/
+```
+
 The spotlighted videos in `video/` show the two staves with one voice in
 red, and sound from a copy of the score with a staff per voice, one voice
 on a solo instrument and the others on piano: two scores per video, put

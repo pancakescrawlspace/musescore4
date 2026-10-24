@@ -150,7 +150,14 @@ follows this version, or the hook books directly, has not been checked.
   ([page](https://azbyka.ru/kliros/pyatidesyatnicza-troicza-noty-stihiry-czaryu-nebesnyj/)):
   «Малый знаменный напев» (four voices) and Znamenny harmonizations by
   Azeev, Solov'ev and Filipsonov. No unison staff-notation copy was
-  found.
+  found on 2026-10-23. **Found on 2026-10-24** under the tag «Знаменный
+  распев»: «Царю Небесный. Знаменный распев одноголосье»
+  ([PDF](https://azbyka.ru/kliros/wp-content/uploads/2025/11/czaryu-nebesnyj.-znamennyj-raspev-odnogolose-1g.pdf);
+  `references/znamenny/festal/`). It is unison, G major, 10 lines,
+  typeset (footer "http://aphanatos.ru"), with a final fermata. Its
+  phrase 1 is the same as `tsaryu_nebesnyj_znamennyj.mscz` a whole step
+  higher (G A | B A | G F♯ | E F♯ G A G F♯ G | A against F G | A G | F E |
+  D E F G F E F | G). The rest was not compared.
 
 ## azbyka.ru's numbered series
 
@@ -318,6 +325,186 @@ comparison of the whole page was inconclusive, because the square-note
 reader is thrown off by the mixed stem directions on this page. Later
 phrases were not checked, and differences there remain possible.
 
+## Psalm 50
+
+Found on 2026-10-24 as no. 08 of azbyka.ru's Matins series (two files,
+both under the tag «Знаменный распев»; local copies in
+`references/znamenny/azbyka_series/`):
+
+- **«50 псалом, знаменный распев, погласица»**
+  ([PDF](https://azbyka.ru/kliros/wp-content/uploads/2025/04/08_50-psalom_znamennyj-raspev_poglasicza.pdf),
+  2 pp.). The whole psalm (LXX/Slavonic numbering; Psalm 51 in the
+  Hebrew numbering), with its heading «Въ конецъ, псаломъ Давиду, внегда
+  внити къ нему Нафану пророку». It is a *погласица*, a reciting tone, not
+  a through-composed melody. There are two lines in staff notation, in
+  eighths on one reciting note with short cadences: «1-я строчка» for
+  the first half of a verse and «2-я строчка» for the second. Verse 1 is
+  underlaid. The other 19 verses are printed as text only, each split
+  at a "/" into its two halves. They are marked «в҃» and «а҃» in turn,
+  apparently the two choirs (my reading, not stated in the file). After
+  the last verse comes «Вкупѣ» with a «Конечная» line, a final cadence
+  for «тогда возложат на олтарь Твой тельцы». Church Slavonic text in
+  the UCS font, the same engraving style as the rest of the series.
+- **«По 50-м псалме», знаменный распев**
+  ([PDF](https://azbyka.ru/kliros/wp-content/uploads/2025/04/08_po-50-m-psalme_znamennyj-raspev.pdf),
+  2 pp.). The Sunday Matins verses sung after the psalm, fully notated
+  (unison, F major): «Слава… Молитвами апостолов…», «И ныне…
+  Молитвами Богородицы…», and the psalm's first verse «Помилуй мя,
+  Боже…», as a melody. The sticheron «Воскрес Иисус» that follows is
+  no. 09 of the series.
+
+The psalm itself is read at Matins in most parishes, which is
+presumably why only a reciting tone is printed. Another Psalm 50 found
+on azbyka.ru is not Znamenny: archim. Matfei (Mormyl'), four voices
+([page](https://azbyka.ru/kliros/noty-psalom-50-arhim-matfej/)).
+
+## Znamenny hymns in common use
+
+Research of 2026-10-24: which hymns that are sung often in the services
+exist in Znamenny chant, in staff notation, beyond those already
+transcribed here. The azbyka.ru tag
+[«Знаменный распев»](https://azbyka.ru/kliros/metka/znamennyj-raspev/)
+(4 pages, 361 PDFs) was listed in full. "1г" in azbyka.ru's titles means
+one voice (unison), "4г смх" four voices, mixed choir. Below, unison only
+unless stated. Local copies are in `references/znamenny/festal/`,
+`eliczy/` and `collections/`.
+
+### The fixed hymns of Vespers, Matins and the Liturgy
+
+Covered by azbyka.ru's numbered series (see the table above), all unison
+and vector-engraved like the four scores transcribed here. Among them:
+Vespers «Господи воззвах» tones 1–8 (08), «Свете тихий» (09),
+«Богородице Дево» (16); Matins «Бог Господь» (02), «Воскрес Иисус» (09),
+«Честнейшую» (11, 12), two Sunday troparia (17_1, 17_2); Liturgy
+antiphons, «Единородный Сыне» (14), «Приидите поклонимся» (16), the
+Trisagion (20), Cherubic Hymns (38–42), the Creed (44), «Милость мира»
+(51, 52), «Достойно есть» (53, Valaam chant), communion verses (65–67),
+«Видехом свет» (70). The other unison series, I. Sakhno's «Песнопения
+богослужебного обихода» (calligraphic scan, `2023/07/NN-….pdf`), has
+«Господи воззвах» with the Dogmatik in all eight tones.
+
+Single unison items under the tag, not in a series:
+
+- «Воскресение Христово видевше»
+  ([PDF](https://azbyka.ru/kliros/wp-content/uploads/2025/11/voskresenie-hristovo-videvshe-znamennyj-1g.pdf),
+  2 pp., typeset)
+- «Под Твою милость», "Знаменное"
+  ([PDF](https://azbyka.ru/kliros/wp-content/uploads/2023/03/pod-tvoyu-milost-znamennoe.pdf),
+  1 p., Finale, bass clef)
+- «Достойно есть», glas 3, 4 and 6 ("Знаменное одногол.", 2023/03), and
+  three more «Достойно есть» from 2024/10 (one of them "царя Феодора
+  Алексеевича")
+- «Царю Небесный», unison: see «Царю Небесный» above.
+
+### Festal troparia and kontakia
+
+**In staff notation (unison), on azbyka.ru:**
+
+| feast | hymn | PDF |
+|---|---|---|
+| Ascension | troparion, glas 4 | [Znamenny](https://azbyka.ru/kliros/wp-content/uploads/2025/05/voznesenie-tropar-znamennyj-raspev-1g.pdf) (2 pp.); [Krasnogorsk manuscript](https://azbyka.ru/kliros/wp-content/uploads/2025/05/voznesenie-tropar-krasnogorskaya-rukopis-znam-1g.pdf) (1 p.) |
+| Ascension | kontakion, glas 6 | [Znamenny](https://azbyka.ru/kliros/wp-content/uploads/2025/05/voznesenie-kondak-znamennyj-raspev-1g.pdf) (2 pp.); [Krasnogorsk manuscript](https://azbyka.ru/kliros/wp-content/uploads/2025/05/voznesenie-kondak-krasnogorskaya-rukopis-znam-1g.pdf) (1 p.) |
+| Dormition | kontakion «В молитвах неусыпающую» | [Znamenny](https://azbyka.ru/kliros/wp-content/uploads/2023/07/kondak-znamennyj-raspev.pdf); [Solovetsky Obikhod](https://azbyka.ru/kliros/wp-content/uploads/2023/07/kondak-iz-obihoda-soloveczkogo-monastyrya.pdf) (Finale, 1 p. each) |
+| Beheading of St John (29 Aug.) | troparion «Память праведнаго» | [PDF](https://azbyka.ru/kliros/wp-content/uploads/2023/09/znamenn-tropar-useknovenie-glavy-sv.-ioanna_29-avgusta.pdf) (2 pp., scan) |
+| a hierarch (common) | troparion «Правило веры» | [PDF](https://azbyka.ru/kliros/wp-content/uploads/2023/05/tropar-znamennyj-raspev.pdf) (Finale, 1 p.) |
+
+The Ascension files (troparion, kontakion, prokeimena, antiphons,
+zadostoinik, velichanie, communion verse) are in the series' vector
+style, Church Slavonic text, on the page
+[«Вознесение Господне: ноты песнопений знаменного распева»](https://azbyka.ru/kliros/voznesenie-gospodne-noty-pesnopenij-znamennogo-raspeva/).
+For the other great feasts azbyka.ru has only harmonizations of Znamenny
+troparia and kontakia (e.g. the Nativity troparion arr. Kastal'sky, as a
+video score; the Nativity kontakion harm. Trubachev, two women's voices).
+djuKliros ([Feasts](https://www.djukliros.com/feasts-%D0%BF%D1%80%D0%B0%D0%B7%D0%B4%D0%BD%D0%B8%D0%BA%D0%B8),
+Andrei Laptev, Australia) has Znamenny prokeimena and antiphons for most
+feasts, but no troparia or kontakia; its voicing isn't stated.
+
+**In square notation, complete for the fixed great feasts:** the
+Synodal *Праздники нотного пения* (St Petersburg, 1900; a 2004 PageMaker
+retypesetting, 214 pages, no text layer;
+[PDF](http://quadratum.glagol-verbum.com/biblioteka/prazdniki.pdf) from the
+"Глаголь" library, `references/prazdniki_1900/prazdniki_1900.pdf`). The
+table of contents (PDF pp. 1–2) says: «Пѣснопѣнія, безъ означенія
+роспѣва, принадлежатъ роспѣву знаменному» (hymns without a chant name are
+Znamenny). It has a troparion and a kontakion for each of the nine fixed
+great feasts: the Nativity of the Theotokos, the Exaltation of the Cross
+(also «Кресту Твоему»), the Entry of the Theotokos, the Nativity of
+Christ and Theophany (each troparion and kontakion in Znamenny and in
+Greek chant), the Meeting, the Annunciation, the Transfiguration and the
+Dormition. Each feast also has its Vespers and Matins stichera,
+megalynarion, prokeimena, canons, zadostoinik and communion verse. The
+troparion of the Nativity of the Theotokos, glas 4, is on PDF p. 4.
+
+The movable feasts are in the Synodal Triodion (1899). The Pentecostarion
+(`references/triod_1899/`, see «Царю Небесный») opens with Pascha on
+p. 205 (PDF p. 2): «Воскресение Твое, Христе Спасе» in Greek chant,
+then «Тропарь» «Христос воскресе» with no chant name, then «Инъ роспѣвъ».
+By the convention of *Праздники* the unnamed one would be Znamenny, but
+the Triodion itself has no table of contents saying so. Ascension and
+Pentecost are on pp. 304–322 (not looked at for troparia).
+
+The 1909 Synodal Obikhod, Liturgy part, lists «Задостойники на Господскія
+и Богородичныя праздники: знаменнаго, греческаго» in its table of
+contents (PDF p. 3). It has no heading for «Елицы» or the Trisagion on
+that page; its second page of contents (PDF p. 4) was not read.
+
+### «Елицы во Христа крестистеся»
+
+Sung **instead of the Trisagion** at the Liturgy on the Nativity of
+Christ, Theophany, Pascha, Pentecost, and Lazarus and Great Saturday
+(M. Sokolov, «Богослужение Православной Христианской Церкви», ch. 39,
+[azbyka.ru](https://azbyka.ru/otechnik/Mihail_Sokolov/bogosluzhenie-pravoslavnoj-hristianskoj-tserkvi/40)).
+That is why azbyka.ru files it with «Входное, Трисвятое, Елицы», and
+the Solovetsky copy below is headed «Вмѣсто трисвятаго».
+
+- **«Елицы», Знаменный распев, with ison**
+  ([PDF](https://azbyka.ru/kliros/wp-content/uploads/2024/01/elici_krestu_trisvatoe_vl.pdf),
+  `references/znamenny/eliczy/`). One page, typeset, F major: melody
+  over an ison, chords at the cadences. On the same page: «Кресту Твоему»
+  (Valaam chant) and the Trisagion (Small Znamenny). From the page
+  [«Господи, спаси благочестивыя, Трисвятое, Елицы, Кресту Твоему — ноты
+  песнопений знаменного распева»](https://azbyka.ru/kliros/gospodi-spasi-blagochestivyya-trisvyatoe-eliczy-noty-pesnopenij-znamennogo-raspeva-odnogolosnoe-dvuhgolosnoe/).
+  The short text has 2 lines of music.
+- **«Елицы», Solovetsky Obikhod (1912), pp. 88–89**, harm. hierodeacon
+  Afanasy (Savel'ev), two voices with the melody on top
+  ([PDF](https://azbyka.ru/kliros/wp-content/uploads/2025/09/eliczy-soloveczkoe-s-isonom-garm-ierod-afanasiya-saveleva-2g.pdf)),
+  on the same page. A local monastic form of the chant.
+- The numbered Liturgy series has no «Елицы»: no. 21 (between the
+  Trisagion, 20, and the prokeimena, 22) is missing, and five guesses at
+  its file name returned 404.
+
+### Collections not yet looked through
+
+Downloaded to `references/znamenny/collections/`. Their contents were not
+read: most are scans or use the UCS font, so a text search finds little.
+
+- N. G. Denisov, «Литургия: песнопения древних одноголосных распевов»
+  ([PDF](https://azbyka.ru/kliros/wp-content/uploads/2023/07/denisov.pdf), 88 pp., scan)
+- «Сборник Литургия Знаменного роспева», compiled by Denisov
+  ([PDF](https://azbyka.ru/kliros/wp-content/uploads/2025/11/sbornik-liturgiya-znamennogo-rospeva-sostavitel-denisov.pdf), 86 pp.)
+- «Всенощное бдение и Литургия Знаменного роспева», compiled by Egor'eva
+  ([PDF](https://azbyka.ru/kliros/wp-content/uploads/2025/11/vsenoshhnoe-bdenie-i-liturgiya-znamennogo-rospeva-sostavitel-egoreva.pdf), 102 pp.)
+- «Сборник Литургия Знаменного роспева», missionary department of the
+  Moscow Theological Academy
+  ([PDF](https://azbyka.ru/kliros/wp-content/uploads/2025/11/sbornik-liturgiya-znamennogo-rospeva-missionerskij-otdel-mda.pdf), 44 pp.,
+  with rubrics on which troparia and kontakia are sung when)
+- «Сборник Литургия Знаменного роспева», compiled by Ustinova
+  ([PDF](https://azbyka.ru/kliros/wp-content/uploads/2025/11/sbornik-liturgiya-znamennogo-rospeva-sostavitel-ustinova-um.pdf))
+  and by Sayapin
+  ([PDF](https://azbyka.ru/kliros/wp-content/uploads/2025/11/sbornik-liturgiya-znamennogo-rospeva-sostavitel-sayapin.pdf));
+  `mutool` reads 0 pages in both, so they may be damaged or use a format
+  it doesn't read
+- «Сборник: Всенощная, Литургия, Триодь постная и Требник»
+  ([PDF](https://azbyka.ru/kliros/wp-content/uploads/2025/11/sbornik-vsnoshhnaya-liturgiya-triod-postnaya-i-trebnik.pdf), 91 pp.,
+  with Sunday troparia «Днесь спасение»)
+
+Other libraries checked: the "Глаголь" library
+([list](https://glagol-verbum.com/biblioteka/)) also has the Synodal
+Ирмологий (1890), Октоих (1900), Lenten Triodion (1899), and Metallov's
+«Осмогласие знаменного роспева» (1899), all in square notation.
+Bogoglasnik ([Тропари и кондаки](https://www.bogoglasnik.ru/board/12_prazdniki/tropari_i_kondaki/40))
+has mostly four-part settings.
+
 ## Local copies
 
 In `references/znamenny/` (gitignored; see `docs/heer_ik_roep_sources.md`,
@@ -336,10 +523,18 @@ In `references/znamenny/` (gitignored; see `docs/heer_ik_roep_sources.md`,
 
 - `azbyka_series/`: from the numbered series, Vespers 08_1–08_8 («Господи
   воззвах» with refrains, tones 1–8), 09_1–09_4 («Свете тихий»), 16
-  («Богородице Дево»)
+  («Богородице Дево»); Matins 08 (Psalm 50 and «По 50-м псалме», see
+  "Psalm 50")
 - `triod_1899_tsaryu_nebesnyj_p311.pdf`: «Царю Небесный», the one page
   (PDF p. 108) extracted from the Pentecostarion
+- `festal/`: the unison «Царю Небесный», Ascension troparion and
+  kontakion (2 versions each), Dormition kontakion (2), «Память
+  праведнаго», «Правило веры», «Воскресение Христово видевше», «Под
+  Твою милость» (see "Znamenny hymns in common use"; file names as on
+  azbyka.ru)
+- `eliczy/`: the two «Елицы»
+- `collections/`: the seven collections not yet looked through
 
-and in `references/obihod_1909/` the two parts of the 1909 Synodal
+and in `references/prazdniki_1900/` the Synodal *Праздники* (1900), in `references/obihod_1909/` the two parts of the 1909 Synodal
 Obikhod, in `references/triod_1899/` the Synodal Pentecostarion
 (`triod_1899_ch2_cvetnaya.pdf`).

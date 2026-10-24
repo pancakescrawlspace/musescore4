@@ -90,7 +90,7 @@ curl -sSL -o $d/otpm_it_is_truly_meet_znamenny_t7.pdf https://orthodoxtwopartmus
 curl -sSL -o $d/otpm_anaphora_tikhonovsky_znamenny_t7.pdf https://orthodoxtwopartmusic.org/files/01-tik-anaphora.pdf
 curl -sSL -o $d/stl_sunday_prokeimena_znamenny_unison.pdf https://music.russianorthodox-stl.org/music/prokeimenon/Prokeimenon_Znam_Unison_untrans_110805.pdf
 mkdir -p $d/azbyka_series
-for f in 08_1_psalom-gospodi-vozzvah-i-zapevy-glas-1 08_2_psalom-gospodi-vozzvah-i-zapevy-glas-2 08_3_psalom-gospodi-vozzvah-i-zapevy-glas-3 08_4_psalom-gospodi-vozzvah-i-zapevy-glas-4 08_5_psalom-gospodi-vozzvah-i-zapevy-glas-5 08_6_psalom-gospodi-vozzvah-i-zapevy-glas-6 08_7_psalom-gospodi-vozzvah-i-zapevy-glas-7 08_8_psalom-gospodi-vozzvah-i-zapevy-glas-8 09_1_svete-tihij 09_2_svete-tihij-glas-2 09_3_svete-tihij-glas-3 09_4_svete-tihij-glas-6 16_bogorodicze-devo.-kirillo-beloezerskij-monastyr; do
+for f in 08_1_psalom-gospodi-vozzvah-i-zapevy-glas-1 08_2_psalom-gospodi-vozzvah-i-zapevy-glas-2 08_3_psalom-gospodi-vozzvah-i-zapevy-glas-3 08_4_psalom-gospodi-vozzvah-i-zapevy-glas-4 08_5_psalom-gospodi-vozzvah-i-zapevy-glas-5 08_6_psalom-gospodi-vozzvah-i-zapevy-glas-6 08_7_psalom-gospodi-vozzvah-i-zapevy-glas-7 08_8_psalom-gospodi-vozzvah-i-zapevy-glas-8 09_1_svete-tihij 09_2_svete-tihij-glas-2 09_3_svete-tihij-glas-3 09_4_svete-tihij-glas-6 16_bogorodicze-devo.-kirillo-beloezerskij-monastyr 08_50-psalom_znamennyj-raspev_poglasicza 08_po-50-m-psalme_znamennyj-raspev; do
   curl -sSL -o $d/azbyka_series/$f.pdf $A/2025/04/$f.pdf
 done
 d=references/blagoslovi; mkdir -p $d
@@ -100,3 +100,16 @@ d=references/triod_1899; mkdir -p $d
 curl -sSL -o $d/triod_1899_ch2_cvetnaya.pdf $G/triod_col.pdf
 # «Царю Небесный» (p. 311 = PDF page 108) as a page of its own, if mutool is there
 command -v mutool >/dev/null && mutool convert -o references/znamenny/triod_1899_tsaryu_nebesnyj_p311.pdf $d/triod_1899_ch2_cvetnaya.pdf 108
+# Znamenny hymns in common use, festal troparia and kontakia, «Елицы» (znamenny_sources.md, 2026-10-24)
+d=references/znamenny; mkdir -p $d/festal $d/eliczy $d/collections
+for f in 2025/11/czaryu-nebesnyj.-znamennyj-raspev-odnogolose-1g 2025/05/voznesenie-tropar-znamennyj-raspev-1g 2025/05/voznesenie-kondak-znamennyj-raspev-1g 2025/05/voznesenie-tropar-krasnogorskaya-rukopis-znam-1g 2025/05/voznesenie-kondak-krasnogorskaya-rukopis-znam-1g 2023/07/kondak-znamennyj-raspev 2023/07/kondak-iz-obihoda-soloveczkogo-monastyrya 2023/09/znamenn-tropar-useknovenie-glavy-sv.-ioanna_29-avgusta 2023/05/tropar-znamennyj-raspev 2025/11/voskresenie-hristovo-videvshe-znamennyj-1g 2023/03/pod-tvoyu-milost-znamennoe; do
+  curl -sSL -o $d/festal/$(basename $f).pdf $A/$f.pdf
+done
+for f in 2024/01/elici_krestu_trisvatoe_vl 2025/09/eliczy-soloveczkoe-s-isonom-garm-ierod-afanasiya-saveleva-2g; do
+  curl -sSL -o $d/eliczy/$(basename $f).pdf $A/$f.pdf
+done
+for f in 2023/07/denisov 2025/11/sbornik-liturgiya-znamennogo-rospeva-sostavitel-denisov 2025/11/vsenoshhnoe-bdenie-i-liturgiya-znamennogo-rospeva-sostavitel-egoreva 2025/11/sbornik-liturgiya-znamennogo-rospeva-missionerskij-otdel-mda 2025/11/sbornik-liturgiya-znamennogo-rospeva-sostavitel-ustinova-um 2025/11/sbornik-liturgiya-znamennogo-rospeva-sostavitel-sayapin 2025/11/sbornik-vsnoshhnaya-liturgiya-triod-postnaya-i-trebnik; do
+  curl -sSL -o $d/collections/$(basename $f).pdf $A/$f.pdf
+done
+d=references/prazdniki_1900; mkdir -p $d
+curl -sSL -o $d/prazdniki_1900.pdf $G/prazdniki.pdf

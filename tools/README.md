@@ -417,6 +417,20 @@ draws one head, in the colour of the voice it draws last, so the other
 voice's head gets the colour too (soprano and alto in heer_ik_roep_t5,
 tenor and bass in t6).
 
+## The sound of every part (`mscz-set-sound.py`)
+
+Sets the soundfont preset and mixer volume of every part, leaving the
+staves alone, for the scores `voice-explode-mscz.py` refuses because no
+staff has two voices (the unison Znamenny scores). It uses that script's
+code, so the preset names work and are checked the same way.
+
+```sh
+tools/mscz-set-sound.py --instrument "Arachno-SoundFont-1.0:Grand Piano" --volume-db 0.1 X.mscz [OUT.mscz]
+```
+
+The Znamenny videos are made with it; the recipe is in `../README.md`
+under "Videos".
+
 ## Practice MP3s (`practice-mp3.py`)
 
 Five MP3s per score for the singers to practise with, in `practice/`: the
