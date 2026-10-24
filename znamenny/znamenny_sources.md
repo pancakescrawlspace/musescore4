@@ -217,8 +217,74 @@ on 2026-10-23.
   folder, built with `tools/rebuild-score.py znamenny/svete_tihij_znamennyj`.
   The note check is skipped: `tools/check-pdf-notes.py` handles only the
   two-staff choir layout.
-- **Not done yet:** the other versions in the series (tones 2, 3, 6:
-  09_2–09_4) and Kutuzov's tone 6.
+- **Corrected on 2026-10-24:** «петь бы-ти» was a misreading of the
+  source's «пѣ́тъ бы́ти» (the short participle «пет», not the infinitive);
+  it now reads «пет».
+- **Not done yet:** Kutuzov's tone 6. (The series' tones 2, 3 and 6 are
+  done, see the next section.)
+
+## Transcriptions: «Свете тихий», tones 2, 3, 6, and «Богородице Дево»
+
+In this folder, transcribed on 2026-10-24 from the same Vespers series
+(`references/znamenny/azbyka_series/`):
+
+| score | source | notes | syllables |
+|---|---|---|---|
+| `svete_tihij_glas_2_znamennyj` | 09_2 «Свете тихий, глас 2» (2 pp.) | 232 | 95 |
+| `svete_tihij_glas_3_znamennyj` | 09_3 «Свете тихий, глас 3» (2 pp.) | 235 | 95 |
+| `svete_tihij_glas_6_znamennyj` | 09_4 «Свете тихий, глас 6» (2 pp.) | 283 | 94 |
+| `bogoroditse_devo_znamennyj` | 16 «Богородице Дево, глас 4», «Из рукописи Кирилло-Белоезерского монастыря (632/889)» | 154 | 56 |
+
+- **The notes** were read from the PDFs' vector shapes, as for 09_1:
+  the shapes were measured in staff spaces (the four PDFs are drawn at
+  different scales), filled heads with stems are quarters, hollow ones
+  halves, wide hollow ones wholes, and a dot right of a head makes it
+  dotted. The pitch comes from the head's position on its staff (treble
+  clef, one flat in all four). There are no accidentals. All four go
+  below the staff: tone 6 down to A3.
+- **The slurs** are the source's, each joined to the notes nearest its two
+  ends. In these files a slur does not always mark one syllable: some
+  slurs carry two syllables (e.g. «с То-» in «Богородице Дево»), and long
+  melismas often have no slur at all, only a row of hyphens in the text
+  (e.g. «Плод» over a whole line).
+- **The syllables** were placed under the notes nearest them, by their
+  positions in the text layer (Church Slavonic in the UCS fonts
+  Irmologion and Staro Uspenskaya; tone 6 partly in modern spelling). A
+  syllable that came out on an inner note of a slur whose first note had
+  none was moved to that first note (8 cases, in tones 2 and 6: e.g. «лнца», «мже»). The
+  source's spacing is loose, so the four scores were compared with the
+  source pages line by line, by eye.
+- **The text** was converted to modern civil script the same way as
+  09_1. The source's syllable division is kept (e.g. «бе-зсме-ртна-го»,
+  «жен-на-го» in tone 2). The pre-reform spelling is kept («безсмертнаго»,
+  «святаго»), and so is tone 6's «И-су-се». A word-final ъ is dropped.
+  Where the source puts a closing consonant under the end of a melisma
+  («свѣ́ — тъ», «по-е́ — мъ», «плодъ»), it joins the syllable
+  («свет», «ем», «Плод»). Capitals follow the civil text of 09_1:
+  sentence starts, and the divine names and pronouns («Отца», «Иисусе
+  Христе», «Сына», «Святаго Духа», «Бога», «Сыне Божий», «Тя»; in
+  «Богородице Дево» also «Благодатная», «Марие», «Господь», «с Тобою»,
+  «Ты», «Плод», «Твоего», «Спаса»).
+- **Editorial changes** (the source has an obvious gap):
+  - tone 2, m11: the source has only «бо́ — й,» for «Божий». «жий,» was
+    put on the last note, where the «й,» is printed.
+  - tone 6, m1: the source has «свѧ — ѧ» for «святыя». «ты» was put on
+    the slurred pair F–G at the end of the line, which has no syllable in
+    the source.
+  - tone 3: the titlo abbreviations «ѻ҆ц҃а» and «хрⷭ҇-сте» were written out
+    as «О-тца» and «Хри-сте».
+- **House style** as in 09_1: one measure per printed line with hidden
+  time signatures, melisma lines on all multi-note syllables (words split
+  after a melisma), lyrics in Arial 14 with minimum distance 1.3 (09_1's
+  style file). The title text has the tone as its second line, which
+  becomes the LilyPond subsubtitle. «Богородице Дево» has the source's
+  manuscript note as a second composer line ("Белозерского", for the
+  source's misspelling "Белоезерского").
+- **Outputs:** `.musicxml`, `.ly` and `.pdf` built with
+  `tools/rebuild-score.py znamenny/NAME`. The note check is skipped, as
+  for 09_1.
+- In tone 6 the breve of «й» in «Бо-жий» and «да-яй» is printed low, on
+  the slur below. It is part of the text, not a musical sign.
 
 ## Transcription: `tsaryu_nebesnyj_znamennyj.mscz`
 

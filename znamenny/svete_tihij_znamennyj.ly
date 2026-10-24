@@ -13,7 +13,7 @@ U = \tweak Stem.direction #UP \etc
   title = "Свете тихий"
   composer = "Знаменный распев"
   "id: software" = "MuseScore Studio 4.7.5"
-  "id: encoding-date" = "2026-10-23"
+  "id: encoding-date" = "2026-10-24"
 }
 \layout {
   \context {
@@ -59,7 +59,7 @@ PartPOneVoiceOneLyricsOne = \lyricmode {
   "вше" "свет" __ \skip1 "ве" __ \skip1 "че" -- "рний," "по" __ \skip1 "ем" "О"
   -- "тца," "Сы" -- "на" "и" "Свя" -- "та" -- "го" "Ду" -- "ха," "Бо" __ \skip1
   "га." "До" __ \skip1 "сто" -- "ин" "е" -- "си" "во" __ \skip1 "вся" "вре" --
-  "ме" -- "на" __ \skip1 "петь" "бы" -- "ти" __ \skip1 "гла" -- "сы" "пре" --
+  "ме" -- "на" __ \skip1 "пет" "бы" -- "ти" __ \skip1 "гла" -- "сы" "пре" --
   "по" -- "до" -- "бны" -- "ми," __ \skip1 "Сы" -- "не" "Бо" -- "жий," "жи" --
   "вот" __ \skip1 "да" __ \skip1 "яй:" "тем" -- "же" __ \skip1 "мир" "Тя" __
   \skip1 "сла" __ \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 "вит."

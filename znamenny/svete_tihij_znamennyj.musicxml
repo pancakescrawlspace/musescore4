@@ -8,7 +8,7 @@
     <creator type="composer">Знаменный распев</creator>
     <encoding>
       <software>MuseScore Studio 4.7.5</software>
-      <encoding-date>2026-10-23</encoding-date>
+      <encoding-date>2026-10-24</encoding-date>
       <supports element="accidental" type="yes"/>
       <supports element="beam" type="yes"/>
       <supports element="print" attribute="new-page" type="no"/>
@@ -1377,7 +1377,7 @@
         <stem>down</stem>
         <lyric number="1">
           <syllabic>single</syllabic>
-          <text>петь</text>
+          <text>пет</text>
           </lyric>
         </note>
       <note>
