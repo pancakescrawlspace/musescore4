@@ -113,3 +113,7 @@ for f in 2023/07/denisov 2025/11/sbornik-liturgiya-znamennogo-rospeva-sostavitel
 done
 d=references/prazdniki_1900; mkdir -p $d
 curl -sSL -o $d/prazdniki_1900.pdf $G/prazdniki.pdf
+# Reading square notation (docs/square_notation.md); Simmons' primer only survives in the Wayback Machine
+d=references/square_notation; mkdir -p $d
+curl -sSL -o $d/unicode_L2-12-327_kievan.pdf https://www.unicode.org/L2/L2012/12327-kievan.pdf
+curl -sSL -o $d/simmons_kievan_notation.pdf "https://web.archive.org/web/2012id_/http://www.synaxis.info/psalom/research/simmons/Kievan_notation.pdf"

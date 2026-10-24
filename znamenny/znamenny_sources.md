@@ -419,7 +419,8 @@ djuKliros ([Feasts](https://www.djukliros.com/feasts-%D0%BF%D1%80%D0%B0%D0%B7%D0
 Andrei Laptev, Australia) has Znamenny prokeimena and antiphons for most
 feasts, but no troparia or kontakia; its voicing isn't stated.
 
-**In square notation, complete for the fixed great feasts:** the
+**In square notation, complete for the fixed great feasts** (how to
+read it: `docs/square_notation.md`): the
 Synodal *Праздники нотного пения* (St Petersburg, 1900; a 2004 PageMaker
 retypesetting, 214 pages, no text layer;
 [PDF](http://quadratum.glagol-verbum.com/biblioteka/prazdniki.pdf) from the
