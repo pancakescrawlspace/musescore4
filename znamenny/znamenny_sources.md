@@ -338,6 +338,7 @@ In this folder, transcribed on 2026-10-24 from the files listed under
 | `voznesenie_tropar_krasnogorskij` | troparion, glas 4, after the Krasnogorsk manuscript (1 p.) | 75 | 61 |
 | `voznesenie_kondak_krasnogorskij` | kontakion, glas 6, after the Krasnogorsk manuscript (1 p.) | 88 | 73 |
 | `eliczy_znamennyj` | «Елицы», with ison (first piece of `elici_krestu_trisvatoe_vl.pdf`) | 30 + ison | 23 |
+| `krestu_tvoemu_valaamskij` | «Кресту Твоему», Valaam chant, with ison (second piece of the same page) | 34 + ison | 26 |
 
 **The Ascension files** are engraved differently from the Vespers series.
 They were set in Finale: the noteheads, clef and dots are glyphs of its
@@ -378,14 +379,26 @@ one, as usual; the page doesn't say, and the score doesn't show it.
 - Measures follow the source's bar lines (after «крести́стеся,» and after
   «облеко́стеся.»), with its line break after «во Христа́»: four measures.
 - Stress accents in the source's text (civil script) are left out, as in
-  the other scores. The other two pieces on the page, «Кресту Твоему»
-  (Valaam chant) and the Trisagion (Small Znamenny), were not transcribed.
+  the other scores. The third piece on the page, the Trisagion (Small
+  Znamenny), was not transcribed.
+
+**«Кресту Твоему»** (sung instead of the Trisagion on the Exaltation of
+the Cross and the Third Sunday of Lent: general background, not checked
+against a source here) is the second piece on that page, «На поклонение Кресту»,
+«Валаамский напев»: Valaam chant, not Znamenny, kept here with «Елицы»
+because it comes from the same file. It was read and written the same
+way. The melody is F major, F4 to D5. Ison notes (G, F, G, F in line 1;
+G, then F, G, F, E, D in line 2; C under the last note) are again printed
+only where it changes, sometimes as a unison next to the melody note.
+Four measures: line 1, «Влады́ко,» and «и свято́е Воскресе́ние» (the source's
+bar line), and «Твое́ сла́вим.» (a shorter last line). The source divides
+«покланя́емся» as «по-кла-ня́-ем-ся».
 - The MusicXML was written by hand from the glyph reading (a short
   script), not by the reader used for the azbyka.ru series.
 
 All five were built with `tools/rebuild-score.py`. The note check skips
 them: `check-pdf-notes.py` handles only the two-staff choir layout, and
-«Елицы» has rests in its second voice. MuseScore leaves out some short
+«Елицы» and «Кресту Твоему» have rests in their second voice. MuseScore leaves out some short
 melisma lines in its tight layout (e.g. «кре», «сте» in «Елицы»); they
 are in the data, and LilyPond draws them, a few as short dashes. MP4s
 with Arachno's piano are made as described in `../README.md` under
