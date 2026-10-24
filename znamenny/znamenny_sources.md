@@ -199,6 +199,20 @@ For the choir's texts the most useful are: Vespers 08 («Господи
 Liturgy 51–52 («Милость мира»); Sakhno 03–04 («Блажен муж»). Kutuzov
 and the 1909 Obikhod have Znamenny «Блажен муж» and «Достойно есть» too.
 
+## The transcription tool
+
+Since 2026-10-24 the transcriptions made from azbyka.ru's PDFs are made
+again, from the PDF, by `tools/transcribe-pdf/transcribe.py NAME` (see
+`tools/README.md`, "Transcribing a PDF"). The editorial choices of each
+score (title, capitals, text fixes) are in
+`tools/transcribe-pdf/scores/NAME.json`, and the notes of the three
+hand-entered LilyPond pieces in `scores/NAME.py`. It covers all the
+transcriptions below except the first «Свете тихий» (09_1) and «Царю
+Небесный» (from video frames), which were made earlier by other means.
+When it was moved into the repository, it reproduced the ten scores made
+before it note for note (pitches, values, slurs and syllables, compared
+with the committed MusicXML).
+
 ## Transcription: `svete_tihij_znamennyj.mscz`
 
 In this folder: the Znamenny «Свете тихий» of azbyka.ru's Vespers series,
@@ -339,6 +353,7 @@ In this folder, transcribed on 2026-10-24 from the files listed under
 | `voznesenie_kondak_krasnogorskij` | kontakion, glas 6, after the Krasnogorsk manuscript (1 p.) | 88 | 73 |
 | `eliczy_znamennyj` | «Елицы», with ison (first piece of `elici_krestu_trisvatoe_vl.pdf`) | 30 + ison | 23 |
 | `krestu_tvoemu_valaamskij` | «Кресту Твоему», Valaam chant, with ison (second piece of the same page) | 34 + ison | 26 |
+| `trisvyatoe_malyj_znamennyj` | the Trisagion, «Малый знаменный распев», with ison (third piece of the same page) | 22 + ison | 19 |
 
 **The Ascension files** are engraved differently from the Vespers series.
 They were set in Finale: the noteheads, clef and dots are glyphs of its
@@ -379,8 +394,7 @@ one, as usual; the page doesn't say, and the score doesn't show it.
 - Measures follow the source's bar lines (after «крести́стеся,» and after
   «облеко́стеся.»), with its line break after «во Христа́»: four measures.
 - Stress accents in the source's text (civil script) are left out, as in
-  the other scores. The third piece on the page, the Trisagion (Small
-  Znamenny), was not transcribed.
+  the other scores.
 
 **«Кресту Твоему»** (sung instead of the Trisagion on the Exaltation of
 the Cross and the Third Sunday of Lent: general background, not checked
@@ -393,12 +407,23 @@ only where it changes, sometimes as a unison next to the melody note.
 Four measures: line 1, «Влады́ко,» and «и свято́е Воскресе́ние» (the source's
 bar line), and «Твое́ сла́вим.» (a shorter last line). The source divides
 «покланя́емся» as «по-кла-ня́-ем-ся».
-- The MusicXML was written by hand from the glyph reading (a short
-  script), not by the reader used for the azbyka.ru series.
+
+**The Trisagion** («Трисвятое», «Малый знаменный распев») is the third
+piece on the page, read and entered the same way: «Аминь.», the source's
+double bar, then «Святый Боже, Святый Крепкий, Святый Безсмертный, помилуй
+нас.» on two lines (three measures). The melody is F major, F4 to A4.
+The ison: D and C under «Аминь», D under the first «Святый», D under
+«нас», and after it a C in parentheses marked «(последний раз)» (the last
+time), at its own position after the last melody note; in the score it
+is a parenthesized ison note there, with a hidden rest in the melody,
+and the text below it. The source's spelling «Безсмертный» is kept.
+- The notes were entered by hand from the glyph reading, in
+  `tools/transcribe-pdf/scores/eliczy_znamennyj.py` (and the same for the
+  two pieces below).
 
 All five were built with `tools/rebuild-score.py`. The note check skips
 them: `check-pdf-notes.py` handles only the two-staff choir layout, and
-«Елицы» and «Кресту Твоему» have rests in their second voice. MuseScore leaves out some short
+«Елицы» and «Кресту Твоему» and the Trisagion have rests in their second voice. MuseScore leaves out some short
 melisma lines in its tight layout (e.g. «кре», «сте» in «Елицы»); they
 are in the data, and LilyPond draws them, a few as short dashes. MP4s
 with Arachno's piano are made as described in `../README.md` under

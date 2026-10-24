@@ -1,0 +1,23 @@
+{
+ "pdf": "references/znamenny/festal/voznesenie-kondak-znamennyj-raspev-1g.pdf",
+ "title": "Кондак Вознесения",
+ "sub": "глас 6",
+ "caps": [
+  "христе",
+  "боже",
+  "тя",
+  "аз"
+ ],
+ "fix": [
+  [
+   "хr",
+   1,
+   "хри"
+  ],
+  [
+   "тE",
+   1,
+   "сте"
+  ]
+ ]
+}

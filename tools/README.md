@@ -499,6 +499,45 @@ tools/compare-sources/cmp_oca.py 1 2 3 4 5 6 7 8
 tools/compare-sources/cmp_lines.py 1 references/heer_ik_roep/moscow_osmoglasie/glas1.pdf 1-7
 ```
 
+## Transcribing a PDF (`transcribe-pdf/`)
+
+Makes the Znamenny scores in `znamenny/` from azbyka.ru's PDFs: it reads
+the notes, slurs and syllables from the PDF's vector drawing and text, and
+writes `znamenny/NAME.mscz` in the house style. Each score is a file in
+`transcribe-pdf/scores/`: `NAME.json` with the PDF (in `references/`, see
+`download-references.sh`) and the editorial choices (title, capitals,
+text fixes), all listed in `transcribe.py`'s docstring.
+
+```sh
+tools/transcribe-pdf/transcribe.py --show svete_tihij_glas_2_znamennyj   # print the reading only
+tools/transcribe-pdf/transcribe.py svete_tihij_glas_2_znamennyj          # replaces znamenny/NAME.mscz
+tools/rebuild-score.py znamenny/svete_tihij_glas_2_znamennyj
+```
+
+The steps: the PDF is read (`pdf_notes.py`), the lyrics are converted to
+civil script with the house style's melisma lines and word splits
+(`notes_musicxml.py`), MuseScore imports the MusicXML with
+`score_style.mss` (the lyric font and spacing of the Znamenny scores), the
+title frame gets the tone as the title's second line, and
+`mscz-add-hidden-timesig.py` adds the hidden time signatures. One measure
+per printed system. `--musicxml DIR` writes only the MusicXML.
+
+Three engravings are read: azbyka.ru's numbered series (notes drawn as
+shapes, measured in staff spaces), Finale PDFs (noteheads as glyphs of a
+music font such as Inkpen2), and LilyPond PDFs (glyphs with their names).
+The LilyPond pieces with an ison («Елицы», «Кресту Твоему», the
+Trisagion) are entered by hand from that reading, as `scores/NAME.py`
+(`ison_score.py` describes the format), with `"hand": true` in the JSON.
+Church Slavonic text in the UCS fonts comes out as Latin letters and
+digits; `notes_musicxml.py` maps them to civil script, so a new score's
+text needs checking (`--show`) and usually some `fix` entries.
+
+The reading is only as good as the source's spacing: a syllable goes to
+the nearest note, and one on an inner note of a slur whose first note has
+none moves to that first note (the log says so). Compare every new score
+with the source by eye; `check-pdf-notes.py` can't check it. Needs
+`mutool` and MuseScore.
+
 ## Choir prints with larger lyrics (`koor-variant.py`)
 
 Makes `NAME_koor.ly` and `NAME_koor.pdf` next to `NAME.ly`, with the lyrics

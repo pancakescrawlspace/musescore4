@@ -1,0 +1,24 @@
+{
+ "pdf": "references/znamenny/festal/voznesenie-kondak-krasnogorskaya-rukopis-znam-1g.pdf",
+ "title": "Кондак Вознесения",
+ "sub": "глас 6",
+ "composer_frame": "Знаменный распев<br/>по Красногорской рукописи",
+ "caps": [
+  "христе",
+  "боже",
+  "тя",
+  "аз"
+ ],
+ "fix": [
+  [
+   "хr",
+   1,
+   "хри"
+  ],
+  [
+   "тE",
+   1,
+   "сте"
+  ]
+ ]
+}
